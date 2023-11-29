@@ -1,0 +1,106 @@
+.dropDownField {
+  padding: 0px 25px 0 25px;
+  font-size: 12px !important;
+  color: #9e9e9e !important;
+  display: flex;
+  cursor: pointer;
+  margin-bottom: 0 !important;
+}
+
+.paginatindropDownField {
+  padding: 0px 25px 0 25px;
+  font-size: 14px !important;
+  color: #9e9e9e !important;
+  display: flex;
+  cursor: pointer;
+  margin-bottom: 0 !important;
+  max-width: 200px;
+  margin-top: 8px;
+
+}
+
+.dropDownFilter {
+  padding: 17px;
+  color: #9e9e9e !important;
+  display: flex;
+  cursor: pointer;
+  background-color: #7e81e8 !important;
+  margin-bottom: 0 !important;
+}
+
+
+.collapseMenu {
+  display: none;
+  margin-right: 20px;
+}
+
+.collapseTo {
+  margin-right: 10px;
+}
+
+.justify-bw {
+  justify-content: space-between;
+}
+
+.tabelCol {
+  background-color: #bbbbf9;
+}
+
+.selectorClass {
+  width: 100%;
+  margin-top: 25px;
+  margin-bottom: 25px;
+  border-color: #7e81e8;
+
+}
+
+.customDrawerHeader {
+  margin-bottom: 20px;
+  background-color: #416b92;
+
+}
+
+.ant-table-thead .ant-table-cell {
+  background-color: green;
+}
+
+
+@media (max-width: 800px) {
+  .collapseTo {
+    display: none;
+  }
+
+  .collapseMenu {
+    display: block;
+  }
+}
+
+@media (max-width: 767px) {
+  .documentSection {
+    padding: 8px 0px 5px 0px;
+  }
+
+  .commentSection {
+    padding: 8px 0 5px 0px;
+  }
+
+  .detailsSection {
+    min-height: auto;
+  }
+
+  .commentBox {
+    width: 100%;
+    left: 0px;
+  }
+
+  .dropDownField {
+    padding: 0px 15px 0 15px;
+  }
+}
+
+@media (max-width: 360px) {
+  .commentTS {
+    margin-top: -5px !important;
+    margin-left: 0px;
+  }
+}

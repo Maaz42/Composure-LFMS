@@ -1,0 +1,12 @@
+.sliderStyle {
+    background-color: #FAFAFA !important;
+    height: 100vh
+}
+
+@media (max-width: 800px) {
+    .sliderStyle {
+        width: 47px !important;
+        max-width: 47px !important;
+        min-width: 47px !important;
+    }
+}
