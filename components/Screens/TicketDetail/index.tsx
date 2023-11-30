@@ -95,7 +95,7 @@ export default function TicketDetail() {
         marginLeft: '1px',
         width: '85%'
     };
-    
+
     const [items, setItems] = useState<MenuProps['items']>([]);
 
     const navDropDown = [
