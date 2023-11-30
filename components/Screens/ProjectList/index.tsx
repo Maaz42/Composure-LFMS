@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import styles from "./styles.module.css";
-import { MenuOutlined, InboxOutlined, DownOutlined } from '@ant-design/icons';
+import { MenuOutlined, InboxOutlined } from '@ant-design/icons';
 import type { MenuProps } from 'antd';
 import {
     Button,
@@ -43,7 +43,8 @@ import {
     UNKNOWN,
     CROSS,
     THREEDOTS,
-    EDIT
+    EDIT,
+    ADDCIRCLE
 } from "@/constants/images";
 import projectsData from './projectData.json'
 import FloatLabel from "../../ReusableComponents/FloatLabel";
@@ -72,7 +73,9 @@ interface DataType {
     stage: string[];
     progress: any[];
     collaboration: any[];
+    rowData: any[];
 }
+console.log("projectsData", projectsData);
 
 export default function ProjectList({ title }: any) {
     const [items, setItems] = useState<MenuProps['items']>([]);
@@ -133,14 +136,41 @@ export default function ProjectList({ title }: any) {
         },
     ];
 
-    const expandedRowRender = () => {
-        return <>ghjkl;</>;
+
+    const expandedRowRender = (rowData: any) => {
+        return (
+            <>
+                {rowData.rowData.map((data: any) => {
+                    return (
+                        <>
+                            <div style={{ borderBottom: "1px solid #dbdbdb", padding: "5px 0 5px 0px", display: "flex", justifyContent: "space-between" }}>
+                                <div style={{ maxWidth: "720px" }}>{data}</div>
+                                <div>
+                                    <Button
+                                        style={{ color: "#7E81E8", marginRight: "20px", border: "1px solid #7E81E8", borderRadius: "20px" }}
+                                    >
+                                        <div style={{ display: "flex" }}>   <Image src={ADDCIRCLE} alt="..." style={{ marginRight: "5px" }} /> Add Collaborators </div>
+                                    </Button>
+                                    <Button
+                                        style={{ color: "#7E81E8", marginRight: "20px", border: "1px solid #7E81E8", borderRadius: "20px" }}
+                                    >
+                                        <div style={{ display: "flex", }}>   <Image src={ADDCIRCLE} alt="..." style={{ marginRight: "5px" }} /> Add Subtask </div>
+                                    </Button>
+                                </div>
+                            </div >
+                        </>
+                    );
+                })
+                }
+            </>
+        )
     };
 
     const columns: TableColumnsType<DataType> = [
         { title: 'Title', dataIndex: 'title', key: 'title' },
         { title: 'Due Date', dataIndex: 'due_date', key: 'due_date' },
-        { title: 'Stage', key: 'stage',
+        {
+            title: 'Stage', key: 'stage',
             render: (_, { stage }) => (
                 <>
                     {stage.map((status) => {
@@ -189,11 +219,12 @@ export default function ProjectList({ title }: any) {
             title: 'Progress', key: 'progress',
             render: (_, { progress }) => (
                 <>
-                    {progress.map((status) => {
-                        console.log(status)
+                    {progress.map((p) => {
+                        console.log(p)
                         return (
-                            <div className={styles.lines}>    <Progress percent={50} showInfo={false} />
-                                {status.gained}/{status.total}</div>
+                            <div key={p.key} className={styles.lines}>
+                                <Progress percent={50} showInfo={false} />
+                                {p.gained}/{p.total}</div>
                         );
                     })}
                 </>
@@ -275,7 +306,7 @@ export default function ProjectList({ title }: any) {
             ),
         },
     ];
-    
+
     const statusDropDown = [
         {
             key: "1",
@@ -345,7 +376,7 @@ export default function ProjectList({ title }: any) {
             ),
         },
     ];
-    
+
     const paginationDropDown = [
         {
             key: "1",

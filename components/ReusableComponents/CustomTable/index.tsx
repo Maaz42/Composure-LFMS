@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Table, ConfigProvider } from "antd";
+import styles from "./styles.module.css";
 
 
 export const CustomTable = ({ columns, data, isChecked, expandable = null }: any) => {
@@ -22,7 +23,8 @@ export const CustomTable = ({ columns, data, isChecked, expandable = null }: any
             Table: {
               headerBg: "#BBBBF9",
               headerColor: "#333793",
-              headerBorderRadius: 0
+              headerBorderRadius: 0,
+              rowExpandedBg: "#f3f3f3"
             },
           },
         }}
@@ -32,10 +34,10 @@ export const CustomTable = ({ columns, data, isChecked, expandable = null }: any
             <Table columns={columns} dataSource={tableData} style={{ overflowX: "auto" }} pagination={false} />
             :
             (
-            isChecked == 1 ?
-            <Table rowSelection={rowSelection} columns={columns} dataSource={tableData} style={{ overflowX: "auto" }} pagination={false} />
-            :
-            <Table rowSelection={rowSelection} columns={columns} expandable={expandable} dataSource={tableData}  pagination={false}/>
+              isChecked == 1 ?
+                <Table rowSelection={rowSelection} columns={columns} dataSource={tableData} style={{ overflowX: "auto" }} pagination={false} />
+                :
+                <Table rowSelection={rowSelection} columns={columns} expandable={expandable} dataSource={tableData} pagination={false} />
             )
         }
       </ConfigProvider>

@@ -43,3 +43,4 @@ export const BRIGHTFLAG = require("../img/brightflag.svg");
 export const ICERTIS = require("../img/icertis.svg");
 export const GOOGLEDRIVE = require("../img/googleDrive.svg");
 export const DROPBOX = require("../img/dropbox.svg");
+export const ADDCIRCLE = require("../img/add-circle.svg");
