@@ -39,14 +39,19 @@ export default function CustomDropDown({ title, dropDownItems }: any) {
             <Dropdown
                 trigger={["click"]}
                 menu={{ items }}
+                onOpenChange={(e) => { setSearchTerm("") }}
                 dropdownRender={(menu) => (
                     <div style={contentStyle}>
                         <Input placeholder="Search..." type="text" value={searchTerm}
                             onChange={handleSearch} style={{ border: "none", paddingLeft: "16px" }} />
-
                         <div style={{ display: "flex", justifyContent: "space-between", backgroundColor: "#eeeeee", }}>
                             <label style={{ color: "#9e9e9e", marginLeft: "14px", fontSize: "12px" }} htmlFor="">{title}</label>
-                            <div style={{ textDecoration: "underline", color: "#9e9e9e", fontSize: "12px", marginRight: "10px", cursor: "pointer" }}>clear</div>
+                            <div onClick={(e) => {
+                                e.preventDefault();
+                                setSearchTerm("");
+                                setItems(dropDownItems);
+                            }}
+                                style={{ textDecoration: "underline", color: "#9e9e9e", fontSize: "12px", marginRight: "10px", cursor: "pointer" }}>clear</div>
                         </div>
                         {React.cloneElement(menu as React.ReactElement, { style: menuStyle })}
                     </div>
