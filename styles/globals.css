@@ -74,3 +74,11 @@
 .ant-menu-horizontal, .ant-menu-item::after, .ant-menu-submenu::after {
   background-color: #333793;
  }
+
+ .d-flex{
+  display: flex;
+ }
+
+ .align-center{
+  align-items: center;
+ }

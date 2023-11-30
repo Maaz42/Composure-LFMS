@@ -48,7 +48,7 @@ const { Header } = Layout;
 const { Option } = Select;
 const { Title } = Typography;
 
-export default function TicketList({ title }: any) {
+export default function TicketList() {
     const [items, setItems] = useState<MenuProps['items']>([]);
     const [tableData, setTableData] = useState<any>(ticketsData)
     const [pageSize, setPageSize] = useState(10)

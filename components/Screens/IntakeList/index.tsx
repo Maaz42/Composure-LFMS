@@ -68,7 +68,7 @@ const props = {
     },
 };
 
-export default function IntakeList({ title }: any) {
+export default function IntakeList() {
     const [items, setItems] = useState<MenuProps['items']>([]);
     const [tableData, setTableData] = useState<any>(intakeData)
     const [pageSize, setPageSize] = useState(10)
@@ -870,7 +870,6 @@ export default function IntakeList({ title }: any) {
                                 <Option value="complete">
                                     <div style={{ display: "flex", color: "#4CAF50" }}><Image src={GREENDOT} height={10} alt="" style={{ width: 'auto', marginRight: "5px" }} />Complete</div>
                                 </Option>
-
                             </Select>
                         </FloatLabelArrow>
                         <FloatLabelArrow label="Priority" value={selectPriorityValue}>

@@ -12,14 +12,9 @@ import {
     Flex,
     Typography,
     Layout,
-    Table,
-    Tag,
-    Tooltip,
     Row,
     Col,
     Pagination,
-    Drawer,
-    Input,
     Select,
     Modal,
 } from "antd";
@@ -33,8 +28,6 @@ import {
 
 } from "@/constants/images";
 import workflowData from './workflowData.json'
-import FloatLabel from "../../ReusableComponents/FloatLabel";
-import FloatLabelArrow from "../../ReusableComponents/FloatLabelArrow";
 import { ColumnsType } from "antd/es/table";
 import { CustomTable } from "@/components/ReusableComponents/CustomTable";
 
@@ -42,7 +35,7 @@ const { Header } = Layout;
 const { Option } = Select;
 const { Title } = Typography;
 
-export default function WorkflowList({ title }: any) {
+export default function WorkflowList() {
     const [items, setItems] = useState<MenuProps['items']>([]);
     const [tableData, setTableData] = useState<any>(workflowData)
     const [pageSize, setPageSize] = useState(10)
@@ -62,7 +55,6 @@ export default function WorkflowList({ title }: any) {
     const handleCancel = () => {
         setIsModalOpen(false);
     }
-
 
     const topBoxStyle = {
         width: "100%",
