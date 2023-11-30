@@ -40,7 +40,9 @@ export default function Nav({ children }: any) {
                     <Link href={`/workflowList`}>
                         {pathname === 'WORKFLOWLIST' ? <Image width={100} height={50} src={WORKFLOW} alt='aaa' style={{ backgroundColor: "#DBDBDB", borderLeft: "3px solid #333793" }} /> : <Image width={100} height={50} src={WORKFLOW} alt='aaa' />}
                     </Link>
-                    <Image width={100} height={50} src={FILES} alt='' />
+                    <Link href={`/filesFolderList`}>
+                        {pathname === 'FILESFOLDERLIST' ? <Image width={100} height={50} src={FILES} alt='aaa' style={{ backgroundColor: "#DBDBDB", borderLeft: "3px solid #333793" }} /> : <Image width={100} height={50} src={FILES} alt='aaa' />}
+                    </Link>
                     <Image width={100} height={50} src={FORMBUILDER} alt='' />
                     <Image width={100} height={50} src={SETTINGS} alt='' />
                 </Sider>

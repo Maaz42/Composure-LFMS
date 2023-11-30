@@ -19,7 +19,7 @@ const props = {
     },
 };
 
-export default function TicketDetail({ title }: any) {
+export default function TicketDetail() {
     const topBoxStyle = {
         width: '100%',
         height: '65px',

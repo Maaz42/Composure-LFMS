@@ -79,7 +79,7 @@ interface DataType {
 }
 console.log("projectsData", projectsData);
 
-export default function ProjectList({ title }: any) {
+export default function ProjectList() {
     const [items, setItems] = useState<MenuProps['items']>([]);
     const [tableData, setTableData] = useState<any>(projectsData)
     const [pageSize, setPageSize] = useState(10)
