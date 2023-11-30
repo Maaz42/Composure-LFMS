@@ -6,12 +6,10 @@ import { MenuOutlined } from '@ant-design/icons';
 import type { MenuProps } from 'antd';
 import CustomDropDown from '../../ReusableComponents/DropDown';
 import {
-    Avatar,
     Button,
     Divider,
     Dropdown,
     Flex,
-    Space,
     Typography,
     Layout,
     Table,
@@ -29,15 +27,10 @@ import {
     ARROW,
     SEARCH,
     NAVBARS,
-    REDDOT,
-    PURPLEDOT,
-    GREENDOT,
-    BLUEDOT,
-    YELLOWDOT,
-    GRAYDOT,
     THREEDOTS,
     EDIT,
-    CLOSE
+    CLOSE,
+
 } from "@/constants/images";
 import workflowData from './workflowData.json'
 import FloatLabel from "../../ReusableComponents/FloatLabel";
@@ -81,7 +74,7 @@ export default function WorkflowList({ title }: any) {
         borderBottom: "1px solid #eeeeee",
     };
 
-    const handleSearch = ({ event }: any) => {
+    const handleSearch = (event: any) => {
         const searchTerm = event.target.value;
         console.log("Search term:", searchTerm);
     };
@@ -322,10 +315,49 @@ export default function WorkflowList({ title }: any) {
                     </Col>
                 </Row>
             </Layout>
-            <Modal title="Basic Modal" open={isModalOpen} onOk={handleOk} onCancel={handleCancel}>
-                <p>Some contents...</p>
-                <p>Some contents...</p>
-                <p>Some contents...</p>
+            <Modal title="Form Template" open={isModalOpen} onCancel={handleCancel} footer={null}>
+                <Divider />
+                <div className={styles.lines}
+                    style={{
+                        justifyContent: "space-between",
+                        height: "40px",
+                        padding: "10px",
+                        border: "1px solid #ccc",
+                        borderRadius: "65px",
+
+                    }}
+                >
+                    <input
+                        type="search"
+                        id="searchField"
+                        name="searchField"
+                        placeholder="Search"
+                        onChange={handleSearch}
+                        style={{
+                            width: "250px",
+                            outline: "none",
+                            padding: "10px",
+                        }}
+                    />
+                    <Image src={SEARCH} height={18} alt="" />
+                </div>
+                <div className={styles.formTemplate} >
+                    <div className={styles.formHeading} >Cease and Desist Copyright Infringement Letter</div>
+                    <div className={styles.formDes} >Brooklyn Simmons</div>
+                </div>
+                <div className={styles.formTemplate} >
+                    <div className={styles.formHeading} >Cease and Desist Copyright Infringement Letter</div>
+                    <div className={styles.formDes} >Brooklyn Simmons</div>
+                </div>
+                <div className={styles.formTemplate} >
+                    <div className={styles.formHeading} >Cease and Desist Copyright Infringement Letter</div>
+                    <div className={styles.formDes} >Brooklyn Simmons</div>
+                </div>
+                <div className={styles.formTemplate} >
+                    <div className={styles.formHeading} >Cease and Desist Copyright Infringement Letter</div>
+                    <div className={styles.formDes} >Brooklyn Simmons</div>
+                </div>
+
             </Modal>
         </>
     );

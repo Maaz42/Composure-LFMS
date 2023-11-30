@@ -62,8 +62,25 @@
 .ant-table-thead .ant-table-cell {
   background-color: green;
 }
+.lines{
+  display:flex;
+}
 
+.formTemplate{
+  margin-top: 15px;
+  border: 1px solid #dbdbdb;
+  padding: 7px;
+  background-color: #f3f3f3;
 
+}
+.formHeading{
+  font-weight: bold;
+  font-size: 12px; 
+}
+.formDes{
+  font-size: 12px;
+  color:gray
+}
 @media (max-width: 800px) {
   .collapseTo {
     display: none;

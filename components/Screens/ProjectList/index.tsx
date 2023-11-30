@@ -140,7 +140,8 @@ export default function ProjectList({ title }: any) {
     const columns: TableColumnsType<DataType> = [
         { title: 'Title', dataIndex: 'title', key: 'title' },
         { title: 'Due Date', dataIndex: 'due_date', key: 'due_date' },
-        { title: 'Stage', key: 'stage',
+        {
+            title: 'Stage', key: 'stage',
             render: (_, { stage }) => (
                 <>
                     {stage.map((status) => {
@@ -192,7 +193,7 @@ export default function ProjectList({ title }: any) {
                     {progress.map((status) => {
                         console.log(status)
                         return (
-                            <div className={styles.lines}>    <Progress percent={50} showInfo={false} />
+                            <div key={1} className={styles.lines}>    <Progress percent={50} showInfo={false} />
                                 {status.gained}/{status.total}</div>
                         );
                     })}
@@ -275,7 +276,7 @@ export default function ProjectList({ title }: any) {
             ),
         },
     ];
-    
+
     const statusDropDown = [
         {
             key: "1",
@@ -345,7 +346,7 @@ export default function ProjectList({ title }: any) {
             ),
         },
     ];
-    
+
     const paginationDropDown = [
         {
             key: "1",
