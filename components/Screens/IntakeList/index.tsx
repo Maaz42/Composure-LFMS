@@ -511,7 +511,6 @@ export default function IntakeList({ title }: any) {
                     15
                 </a>
             ),
-
         },
         {
             key: "3",
@@ -686,8 +685,7 @@ export default function IntakeList({ title }: any) {
                     closable={false}
                     onClose={onClose}
                     open={open}
-                    key="placement"
-                >
+                    key="placement">
                     <div>
                         <FloatLabel label="Title" value={intakeTitle}>
                             <Input style={{ height: "48px" }} value={intakeTitle} onChange={e => setIntakeTitle(e.target.value)} />
@@ -818,7 +816,7 @@ export default function IntakeList({ title }: any) {
                                 <Option value="Hassan">Hassan</Option>
                             </Select>
                         </FloatLabelArrow>
-                        <div style={{ color: "#9e9e9e", marginBottom: "10   px", fontSize: "12px" }}>Project Privacy</div>
+                        <div style={{ color: "#9e9e9e", marginBottom: "10px", fontSize: "12px" }}>Project Privacy</div>
                         <Radio.Group onChange={onRadioChange} value={value} >
                             <Radio value={"Public"}>Public</Radio>
                             <Radio value={"Private"}>Private</Radio>
@@ -1045,11 +1043,8 @@ export default function IntakeList({ title }: any) {
                             <a onClick={(e) => {
                                 e.preventDefault()
                                 setItems(createDropDown)
-                            }
-                            }>
-                                <Button
-                                    style={{ color: "white", background: "#7E81E8", display: 'flex' }}
-                                >
+                            }}>
+                                <Button style={{ color: "white", background: "#7E81E8", display: 'flex' }}>
                                     Create <Image src={ARROWDOWNWHITE} height={12} style={{ marginLeft: '5px', marginTop: '5px' }} alt="" />
                                 </Button>
                             </a>

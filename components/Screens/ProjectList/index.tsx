@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import Image from "next/image";
 import styles from "./styles.module.css";
 import { MenuOutlined, InboxOutlined } from '@ant-design/icons';
-import type { MenuProps } from 'antd';
+import type { MenuProps, RadioChangeEvent } from 'antd';
+
 import {
     Button,
     Divider,
@@ -23,7 +24,8 @@ import {
     Space,
     Progress,
     Avatar,
-    Tooltip
+    Tooltip,
+    Radio
 }
     from 'antd';
 
@@ -83,9 +85,16 @@ export default function ProjectList({ title }: any) {
     const [pageSize, setPageSize] = useState(10)
     const [open, setOpen] = useState(false);
     const [assigneeDrawer, setAssigneeDrawer] = useState(false)
-    const [intakeTitle, setIntakeTitle] = useState("");
-    const [selectCreatedByValue, setSelectCreatedByValue] = useState<any>();
+    const [projectTitle, setproJectTitle] = useState("");
+    const [projectWorkflow, setproJectWorkflow] = useState("");
+    const [selectCollaboratorValue, setSelectCollaoratorValue] = useState<any>();
     const [description, setDescription] = useState("");
+    const [value, setValue] = useState("Public");
+
+    
+    const onRadioChange = (e: RadioChangeEvent) => {
+        setValue(e.target.value);
+    };
 
     const showDrawer = () => {
         setOpen(true);
@@ -404,7 +413,6 @@ export default function ProjectList({ title }: any) {
                     15
                 </a>
             ),
-
         },
         {
             key: "3",
@@ -618,15 +626,18 @@ export default function ProjectList({ title }: any) {
                     key="placement"
                 >
                     <div>
-                        <FloatLabel label="Title" value={intakeTitle}>
-                            <Input style={{ height: "48px" }} value={intakeTitle} onChange={e => setIntakeTitle(e.target.value)} />
+                        <FloatLabel label="Title" value={projectTitle}>
+                            <Input style={{ height: "48px" }} value={projectTitle} onChange={e => setproJectTitle(e.target.value)} />
                         </FloatLabel>
-                        <FloatLabelArrow label="Created By" value={selectCreatedByValue}>
+                        <FloatLabel label="Workflow" value={projectWorkflow}>
+                            <Input style={{ height: "48px" }} value={projectWorkflow} onChange={e => setproJectWorkflow(e.target.value)} />
+                        </FloatLabel>
+                        <FloatLabelArrow label="Collaborators" value={selectCollaboratorValue}>
                             <Select
                                 showSearch
                                 style={{ width: "100%" }}
-                                onChange={value => setSelectCreatedByValue(value)}
-                                value={selectCreatedByValue}
+                                onChange={value => setSelectCollaoratorValue(value)}
+                                value={selectCollaboratorValue}
                                 suffixIcon={null}
                             >
                                 <Option value="Ali">Ali</Option>
@@ -635,45 +646,15 @@ export default function ProjectList({ title }: any) {
                                 <Option value="Maaz">Maaz</Option>
                             </Select>
                         </FloatLabelArrow>
-                        <FloatLabel label="Description" value={description}>
-                            <TextArea rows={3} value={intakeTitle} onChange={e => setIntakeTitle(e.target.value)} />
-                        </FloatLabel>
-                        <div style={{ marginTop: '55px' }}>
-                            Add Documents
-                        </div>
-                        <div>
-                            <Dragger {...props} >
-                                <Row style={{ justifyContent: 'center' }}>
-                                    <InboxOutlined style={{ fontSize: '24px' }} /> &nbsp;Drag or browse from device
-                                </Row>
-                            </Dragger>
-                        </div>
-                        <div>
-                            <div style={{ display: "flex", justifyContent: "space-between", marginTop: '10px' }}>
-                                <div style={{ display: 'flex' }}>
-                                    <Image style={{ marginRight: "5px" }} src={WORD} height={25} alt="" />GroupProject.doc
-                                </div>
-                                <Image src={CROSS} height={20} alt="" />
-                            </div>
-                            <div style={{ display: "flex", justifyContent: "space-between", marginTop: '10px' }}>
-                                <div style={{ display: 'flex' }}>
-                                    <Image style={{ marginRight: "5px" }} src={PDF} height={25} alt="" />Case_Lab_Report.pdf
-                                </div>
-                                <Image src={CROSS} height={20} alt="" />
-                            </div>
-                            <div style={{ display: "flex", justifyContent: "space-between", marginTop: '10px' }}>
-                                <div style={{ display: 'flex' }}>
-                                    <Image style={{ marginRight: "5px" }} src={EXCEL} height={25} alt="" />Investigation_Document.xlx
-                                </div>
-                                <Image src={CROSS} height={20} alt="" />
-                            </div>
-                            <div style={{ display: "flex", justifyContent: "space-between", marginTop: '10px' }}>
-                                <div style={{ display: 'flex' }}>
-                                    <Image style={{ marginRight: "5px" }} src={UNKNOWN} height={25} alt="" />Comapany_Draft.flv
-                                </div>
-                                <Image src={CROSS} height={20} alt="" />
-                            </div>
-                        </div>
+                        <div style={{ color: "#9e9e9e", marginBottom: "10px", fontSize: "12px" }}>Project Privacy</div>
+
+                        <Radio.Group onChange={onRadioChange} value={value} >
+                            <Radio value={"Public"}>Public</Radio>
+                            <Radio value={"Private"}>Private</Radio>
+                        </Radio.Group>
+                      
+                  
+                        
                     </div>
                 </Drawer>
             </Layout>
