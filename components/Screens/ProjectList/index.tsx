@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import styles from "./styles.module.css";
 import { MenuOutlined, InboxOutlined } from '@ant-design/icons';
 import type { MenuProps, RadioChangeEvent } from 'antd';
@@ -26,8 +27,7 @@ import {
     Avatar,
     Tooltip,
     Radio
-}
-    from 'antd';
+} from 'antd';
 
 import {
     ARROW,
@@ -39,11 +39,6 @@ import {
     BLUEDOT,
     YELLOWDOT,
     CLOSE,
-    WORD,
-    PDF,
-    EXCEL,
-    UNKNOWN,
-    CROSS,
     THREEDOTS,
     EDIT,
     ADDCIRCLE
@@ -52,21 +47,11 @@ import projectsData from './projectData.json'
 import FloatLabel from "../../ReusableComponents/FloatLabel";
 import FloatLabelArrow from "../../ReusableComponents/FloatLabelArrow";
 import { CustomTable } from "@/components/ReusableComponents/CustomTable";
-import Link from "next/link";
+import CustomDropDown from "@/components/ReusableComponents/DropDown";
 
 const { Header } = Layout;
 const { Option } = Select;
-const { Dragger } = Upload;
-const { TextArea } = Input;
 const { Title } = Typography;
-
-const props = {
-    name: 'file',
-    action: 'https://run.mocky.io/v3/435e224c-44fb-4773-9faf-380c5e6a2188',
-    onDrop({ e }: any) {
-        console.log('Dropped files', e.dataTransfer.files);
-    },
-};
 
 interface DataType {
     key: React.Key;
@@ -84,14 +69,12 @@ export default function ProjectList({ title }: any) {
     const [tableData, setTableData] = useState<any>(projectsData)
     const [pageSize, setPageSize] = useState(10)
     const [open, setOpen] = useState(false);
-    const [assigneeDrawer, setAssigneeDrawer] = useState(false)
+    const [collaoratorDrawer, setCollaoratorDrawer] = useState(false)
     const [projectTitle, setproJectTitle] = useState("");
-    const [projectWorkflow, setproJectWorkflow] = useState("");
+    const [projectWorkflow, setprojectWorkflow] = useState("");
     const [selectCollaboratorValue, setSelectCollaoratorValue] = useState<any>();
-    const [description, setDescription] = useState("");
     const [value, setValue] = useState("Public");
 
-    
     const onRadioChange = (e: RadioChangeEvent) => {
         setValue(e.target.value);
     };
@@ -102,11 +85,11 @@ export default function ProjectList({ title }: any) {
 
     const onClose = () => {
         setOpen(false);
-        setAssigneeDrawer(false);
+        setCollaoratorDrawer(false);
     }
 
     const showAssingeeDrawer = () => {
-        setAssigneeDrawer(true);
+        setCollaoratorDrawer(true);
     }
 
     const topBoxStyle = {
@@ -124,25 +107,17 @@ export default function ProjectList({ title }: any) {
         console.log("Search term:", searchTerm);
     };
 
-    const ticketDropDown = [
+    const projectActinDropDown = [
         {
             key: "1",
             label: (
-                <Link href={`/ticketDetail`}>View</Link>
+                <Link href="/projectDetail">View</Link>
             ),
         },
         {
             key: "2",
-            label: "Move to Project"
-        },
-        {
-            key: "3",
-            label: "Mark Urgent"
-        },
-        {
-            key: "4",
-            label: "Delete",
-        },
+            label: <a>Delete</a>
+        }
     ];
 
 
@@ -271,177 +246,94 @@ export default function ProjectList({ title }: any) {
             >
                 <Image src={THREEDOTS} alt="..." onClick={(e) => {
                     e.preventDefault();
-                    setItems(ticketDropDown);
+                    setItems(projectActinDropDown);
                 }} style={{ maxWidth: "24px", width: "24px", height: "28px", cursor: "pointer" }} />
             </Dropdown>)
         },
     ];
 
-    const allDropDown = [
+    const userDropDown = [
         {
             key: "1",
-            label: (
-                <a
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    href="https://www.antgroup.com"
-                >
-                    All 1st menu item
-                </a>
-            ),
+            label: " User 1st menu item"
         },
         {
             key: "2",
-            label: (
-                <a
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    href="https://www.aliyun.com"
-                >
-                    All 2nd menu item
-                </a>
-            ),
+            label: "All 2nd menu item"
         },
         {
             key: "3",
-            label: (
-                <a
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    href="https://www.luohanacademy.com"
-                >
-                    All 3rd menu item
-                </a>
-            ),
-        },
+            label: "All 3rd menu item"
+        }
     ];
 
     const statusDropDown = [
         {
             key: "1",
-            label: (
-                <a
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    href="https://www.antgroup.com"
-                >
-                    Status 1st menu item
-                </a>
-            ),
+            label: (<div className={styles.lines}><Image style={{ marginRight: "5px" }} src={REDDOT} alt="..." /> <div>New</div></div>)
         },
         {
             key: "2",
-            label: (
-                <a
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    href="https://www.aliyun.com"
-                >
-                    Status 2nd menu item
-                </a>
-            ),
+            label: (<div className={styles.lines}><Image style={{ marginRight: "5px" }} src={YELLOWDOT} alt="..." /> <div>In Review</div></div>)
         },
         {
             key: "3",
-            label: (
-                <a
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    href="https://www.luohanacademy.com"
-                >
-                    Status 3rd menu item
-                </a>
-            ),
+            label: (<div className={styles.lines}><Image style={{ marginRight: "5px" }} src={BLUEDOT} alt="..." /> <div>In Progress</div></div>)
+        },
+        {
+            key: "4",
+            label: (<div className={styles.lines}><Image height={16} width={16} style={{ marginRight: "5px" }} src={GREENDOT} alt="..." /> <div>Complete</div></div>)
         },
     ];
 
-    const priorityDropDown = [
+    const typeDropDown = [
         {
             key: "1",
-            label: "Priority 1st menu item"
+            label: "Type 1st menu item"
         },
         {
             key: "2",
-            label: (
-                <a
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    href="https://www.aliyun.com"
-                >
-                    Priority 2nd menu item
-                </a>
-            ),
+            label: " Type 2nd menu item"
         },
         {
             key: "3",
-            label: (
-                <a
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    href="https://www.luohanacademy.com"
-                >
-                    Priority 3rd menu item
-                </a>
-            ),
+            label: "Type 3rd menu item"
+        },
+    ];
+
+    const allProjectsDropDown = [
+        {
+            key: "1",
+            label: "Project 1"
+        },
+        {
+            key: "2",
+            label: "Project 2"
+        },
+        {
+            key: "3",
+            label: "Project 3"
         },
     ];
 
     const paginationDropDown = [
         {
             key: "1",
-            label: (
-                <a
-                    onClick={(e) => {
-                        e.preventDefault();
-                        setPageSize(10);
-                    }}
-                >
-                    10
-                </a>
-            ),
+            label: 10
+
         },
         {
             key: "2",
-            label: (
-                <a
-
-                    onClick={(e) => {
-                        e.preventDefault();
-                        setPageSize(15);
-                    }}
-                >
-                    15
-                </a>
-            ),
+            label: 15
         },
         {
             key: "3",
-            label: (
-                <a
-
-                    onClick={(e) => {
-                        e.preventDefault();
-                        setPageSize(20);
-                    }}
-                >
-                    20
-                </a>
-            ),
+            label: 20
         },
     ];
 
     return (
-        <ConfigProvider
-            theme={{
-                components: {
-                    Table: {
-                        headerBg: "#BBBBF9",
-                        headerColor: "#333793",
-                        headerBorderRadius: 0
-                    },
-                },
-            }}
-        >
+        <>
             <Header
                 style={{
                     padding: 0,
@@ -494,66 +386,18 @@ export default function ProjectList({ title }: any) {
                         <Title className={styles.dropDownFilter}>
                             {" "}
                             <Image src={NAVBARS} height={18} alt="" onClick={({ e }: any) => {
-                                e.preventDefault();
+
                             }} />
                         </Title>
                     </Dropdown>
                     <Divider style={{ height: "50px", margin: "0" }} type="vertical" />
-                    <a
-                        onClick={(e) => {
-                            e.preventDefault();
-                            setItems(allDropDown);
-                        }}
-                    >
-                        <Dropdown
-                            menu={{ items }}
-                            trigger={["click"]}
-                            placement="bottom"
-                            arrow={{ pointAtCenter: true }}
-                        >
-                            <Title className={styles.dropDownField}>
-                                Platform <Image src={ARROW} height={18} alt="" />
-                            </Title>
-                        </Dropdown>
-                    </a>
+                    <CustomDropDown title={"Status"} dropDownItems={statusDropDown} />
                     <Divider style={{ height: "50px", margin: "0" }} type="vertical" />
-                    <a
-                        onClick={(e) => {
-                            e.preventDefault();
-                            setItems(statusDropDown);
-                        }}
-                    >
-                        <Dropdown
-                            menu={{ items }}
-                            trigger={["click"]}
-                            placement="bottom"
-                            arrow={{ pointAtCenter: true }}
-
-                        >
-                            <Title className={styles.dropDownField}>
-                                Status <Image src={ARROW} height={18} alt="" />
-                            </Title>
-                        </Dropdown>
-                    </a>
+                    <CustomDropDown title={"User"} dropDownItems={userDropDown} />
                     <Divider style={{ height: "50px", margin: "0" }} type="vertical" />
-                    <a
-                        onClick={(e) => {
-                            e.preventDefault();
-                            setItems(priorityDropDown);
-                        }}
-                    >
-                        <Dropdown
-                            menu={{ items }}
-                            placement="bottom"
-                            trigger={["click"]}
-                            arrow={{ pointAtCenter: true }}
-                        >
-                            <Title className={styles.dropDownField}>
-                                Created By <Image src={ARROW} height={18} alt="" />
-                            </Title>
-                        </Dropdown>
-                    </a>
+                    <CustomDropDown title={"Type"} dropDownItems={typeDropDown} />
                     <Divider style={{ height: "50px", margin: "0" }} type="vertical" />
+                    <CustomDropDown title={"All Project"} dropDownItems={allProjectsDropDown} />
                 </Flex>
                 <Flex align={"center"} justify="space-between">
                     <Button
@@ -612,7 +456,7 @@ export default function ProjectList({ title }: any) {
                     title={
                         <div style={{ display: 'flex', justifyContent: 'space-between' }}>
                             <Image src={CLOSE} height={18} alt='...' onClick={onClose} />
-                            <h2 style={{ color: "#fff", marginRight: "100px", marginTop: "3px" }}>Create Intake </h2>
+                            <h2 style={{ color: "#fff", marginRight: "100px", marginTop: "3px" }}>Add Project </h2>
                             <Button style={{ backgroundColor: "#7E81E8", width: "100px", color: "#fff" }}  >
                                 Add
                             </Button>
@@ -630,7 +474,7 @@ export default function ProjectList({ title }: any) {
                             <Input style={{ height: "48px" }} value={projectTitle} onChange={e => setproJectTitle(e.target.value)} />
                         </FloatLabel>
                         <FloatLabel label="Workflow" value={projectWorkflow}>
-                            <Input style={{ height: "48px" }} value={projectWorkflow} onChange={e => setproJectWorkflow(e.target.value)} />
+                            <Input style={{ height: "48px" }} value={projectWorkflow} onChange={e => setprojectWorkflow(e.target.value)} />
                         </FloatLabel>
                         <FloatLabelArrow label="Collaborators" value={selectCollaboratorValue}>
                             <Select
@@ -647,17 +491,45 @@ export default function ProjectList({ title }: any) {
                             </Select>
                         </FloatLabelArrow>
                         <div style={{ color: "#9e9e9e", marginBottom: "10px", fontSize: "12px" }}>Project Privacy</div>
-
                         <Radio.Group onChange={onRadioChange} value={value} >
                             <Radio value={"Public"}>Public</Radio>
                             <Radio value={"Private"}>Private</Radio>
                         </Radio.Group>
-                      
-                  
-                        
                     </div>
                 </Drawer>
+                <Drawer
+                    title={
+                        <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                            <Image src={CLOSE} height={18} alt="..." onClick={onClose} />
+                            <h2 style={{ color: "#fff", marginRight: "33px", marginTop: "6px", fontSize: "14px" }}>Collaborator Management</h2>
+                            <Button style={{ backgroundColor: "#7E81E8", width: "100px", color: "#fff" }}  >
+                                Save
+                            </Button>
+                        </div>
+                    }
+                    className={styles.customDrawerHeader}
+                    placement="right"
+                    closable={false}
+                    onClose={onClose}
+                    key="placement"
+                    open={collaoratorDrawer}
+                >
+                    <FloatLabelArrow label="Collaborators" value={selectCollaboratorValue}>
+                        <Select
+                            showSearch
+                            style={{ width: "100%" }}
+                            onChange={value => setSelectCollaoratorValue(value)}
+                            value={selectCollaboratorValue}
+                            suffixIcon={null}
+                            mode="multiple"
+                        >
+                            <Option value="Ali">Ali</Option>
+                            <Option value="Haider">Haider</Option>
+                            <Option value="Hassan">Hassan</Option>
+                        </Select>
+                    </FloatLabelArrow>
+                </Drawer>
             </Layout>
-        </ConfigProvider>
+        </>
     );
 }

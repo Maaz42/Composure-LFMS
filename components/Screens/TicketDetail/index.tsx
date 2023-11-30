@@ -19,7 +19,7 @@ const props = {
     },
 };
 
-export default function TicketDetail({ title }: any) {
+export default function TicketDetail() {
     const topBoxStyle = {
         width: '100%',
         height: '65px',
@@ -95,7 +95,7 @@ export default function TicketDetail({ title }: any) {
         marginLeft: '1px',
         width: '85%'
     };
-    
+
     const [items, setItems] = useState<MenuProps['items']>([]);
 
     const navDropDown = [
