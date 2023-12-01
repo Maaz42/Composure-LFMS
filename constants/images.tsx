@@ -50,4 +50,5 @@ export const CALENDAR = require("../img/calendar-search.svg");
 export const FILEUPLOAD = require("../img/document-upload.svg");
 export const CHECKCIRCLE = require("../img/check-circle.svg");
 export const PROFILEUSERS = require("../img/profile-2user.svg");
- 
+
+export const FOLDERBLUE = require("../img/folder-blue.svg");
