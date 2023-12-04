@@ -16,16 +16,22 @@ import {
     Drawer,
     Input,
     Select,
-    Upload
+    Upload,
+    Tag
 } from "antd";
 import {
     SEARCH,
     NAVBARS,
     CLOSE,
     THREEDOTS,
-    FOLDERBLUE
+    FOLDERBLUE,
+    PURPLEDOT,
+    GREENDOT,
+    REDDOT,
+    YELLOWDOT,
+    BLUEDOT
 } from "@/constants/images";
-import intakeData from './fileData.json'
+import intakeData from './formData.json'
 import FloatLabel from "../../ReusableComponents/FloatLabel";
 import FloatLabelArrow from "../../ReusableComponents/FloatLabelArrow";
 import CustomDropDown from "@/components/ReusableComponents/DropDown";
@@ -44,7 +50,7 @@ const props = {
     },
 };
 
-export default function FilesFolderList() {
+export default function FormBuilderList() {
     const [items, setItems] = useState<MenuProps['items']>([]);
     const [tableData, setTableData] = useState<any>(intakeData);
     const [open, setOpen] = useState(false);
@@ -84,38 +90,75 @@ export default function FilesFolderList() {
 
     interface DataType {
         key: React.Key;
-        title: string;
-        addedBy: string;
-        dateAdded: string[];
-        dateModified: string[];
-        revision: any;
+        form: string;
+        createdAt: string;
+        createdBy: string[];
+        status: string[];
     }
 
     const columns: ColumnsType<DataType> = [
         {
-            title: "title",
-            dataIndex: "title",
-            key: "title",
+            title: "Form",
+            dataIndex: "form",
+            key: "form",
         },
         {
-            title: "Added By",
-            dataIndex: "addedBy",
-            key: "addedBy",
+            title: "Created At",
+            dataIndex: "createdAt",
+            key: "createdAt",
         },
         {
-            title: "Date Added",
-            dataIndex: "dateAdded",
-            key: "dateAdded",
+            title: "Created By",
+            dataIndex: "createdBy",
+            key: "createdBy",
         },
         {
-            title: "Last Modified",
-            dataIndex: "lastModified",
-            key: "lastModified",
-        },
-        {
-            title: "Revisions",
-            dataIndex: "revisions",
-            key: "revisions",
+            title: "Status",
+            key: "status",
+            dataIndex: "status",
+            render: (_, { status }) => (
+                <>
+                    {status.map((status) => {
+                        let color = status == "Pending" ? ("#7F7FEF") : (status == "Complete" ? "#4CAF50" : (status == "On Hold" ? "#D83A36" : (status == "Signature" ? "#FF9800" : (status == "To Projects" || "To Tickets" ? "#2196F3" : "#000000"))));
+                        return (
+                            <Tag
+                                style={{
+                                    backgroundColor: "#ffff",
+                                    display: "inline-flex",
+                                    border: "1px solid #E0E0E0",
+                                    borderRadius: "65px",
+                                    justifyContent: "space-evenly",
+                                    width: "100px",
+                                    color: color
+                                }}
+                                key={status}
+                            >
+                                {status == "Pending" ? (
+                                    <Image src={PURPLEDOT} height={10} alt="aaa" />
+                                ) : (
+                                    status == "Complete" ? (
+                                        <Image src={GREENDOT} height={10} alt="" />
+                                    ) : (
+                                        status == "On Hold" ? (
+                                            <Image src={REDDOT} height={10} alt="" />
+                                        ) : (
+                                            status == "Signature" ? (
+                                                <Image src={YELLOWDOT} height={10} alt="" />
+                                            ) : (
+                                                status == "To Projects" || "To Tickets" ? (
+                                                    <Image src={BLUEDOT} height={10} alt="" />
+                                                ) : (
+                                                    <></>
+                                                )
+                                            )
+                                        )
+                                    ))}
+                                {status}
+                            </Tag>
+                        );
+                    })}
+                </>
+            ),
         },
         {
             title: " ",
@@ -128,27 +171,13 @@ export default function FilesFolderList() {
                 >
                     <Image src={THREEDOTS} alt="..." onClick={(e) => {
                         e.preventDefault();
-                        setItems(fileDropDown);
+                        setItems(formDropDown);
                     }} style={{ maxWidth: "24px", width: "24px", height: "28px", cursor: "pointer" }} />
                 </Dropdown>
             ),
         },
     ];
 
-    const platformDropDown = [
-        {
-            key: "1",
-            label: "Platform 1st  item"
-        },
-        {
-            key: "2",
-            label: "All 2nd menu item"
-        },
-        {
-            key: "3",
-            label: "All 3rd menu item"
-        },
-    ];
 
     const statusDropDown = [
         {
@@ -169,22 +198,9 @@ export default function FilesFolderList() {
         },
     ];
 
-    const createdByDropDown = [
-        {
-            key: "1",
-            label: "Ali"
-        },
-        {
-            key: "2",
-            label: "Hassan"
-        },
-        {
-            key: "3",
-            label: "Anas"
-        },
-    ];
 
-    const fileDropDown = [
+
+    const formDropDown = [
         {
             key: "1",
             label: "Move to Folder",
@@ -207,29 +223,6 @@ export default function FilesFolderList() {
         },
     ];
 
-    const folderDropdown = [
-        {
-            key: "1",
-            label: "Link to Folder",
-        },
-        {
-            key: "3",
-            label: "Link to Project"
-        },
-        {
-            key: "4",
-            label: "Delete",
-        },
-        {
-            key: "5",
-            label: "Download",
-        },
-        {
-            key: "6",
-            label: "Rename",
-        },
-    ];
-
     return (
         <>
             <Header
@@ -241,7 +234,7 @@ export default function FilesFolderList() {
             >
                 <Flex gap="middle" align="start" vertical className="mx-3">
                     <Flex style={topBoxStyle} justify={"space-between"} align={"center"}>
-                        <Title level={4}>File Management</Title>
+                        <Title level={4}>Form Builder</Title>
                         <Flex className={styles.collapseTo} justify={"flex-end"} align={"center"}>
                             <div
                                 style={{
@@ -287,27 +280,16 @@ export default function FilesFolderList() {
                             }} />
                         </Title>
                     </Dropdown>
-                    <Divider style={{ height: "50px", margin: "0" }} type="vertical" />
-                    <CustomDropDown title={"User"} dropDownItems={platformDropDown} />
-                    <Divider style={{ height: "50px", margin: "0" }} type="vertical" />
-                    <CustomDropDown title={"Type"} dropDownItems={statusDropDown} />
-                    <Divider style={{ height: "50px", margin: "0" }} type="vertical" />
-                    <CustomDropDown title={"All Projects"} dropDownItems={createdByDropDown} />
+                    
+                    <CustomDropDown title={"Status"} dropDownItems={statusDropDown} />
                     <Divider style={{ height: "50px", margin: "0" }} type="vertical" />
                 </Flex>
                 <Flex align={"center"} justify="space-between">
-
-                    <Button
-                        onClick={showfolderDrawer}
-                        style={{ color: "white", background: "#333793", marginRight: "20px" }}
-                    >
-                        Add Folders
-                    </Button>
                     <Button
                         onClick={showDrawer}
                         style={{ color: "white", background: "#333793", marginRight: "20px" }}
                     >
-                        Add Files
+                        Add Form
                     </Button>
                 </Flex>
             </Flex>
@@ -316,81 +298,12 @@ export default function FilesFolderList() {
                     height: "calc(100vh - 120px)",
                     background: "white"
                 }}>
-                <Title level={4} className="ml-2 mt-2">Folders</Title>
-                <Row>
-                    <Col xxl={6} lg={6} md={8} sm={12} xs={24}>
-                        <div className={styles.innerBox}>
-                            <div className="d-flex align-center">
-                                <Image src={FOLDERBLUE} height={18} alt="" /> &nbsp; Employement Litigation
-                            </div>
-                            <Dropdown
-                                menu={{ items }}
-                                trigger={["click"]}
-                            >
-                                <Image src={THREEDOTS} alt="..." onClick={(e) => {
-                                    e.preventDefault();
-                                    setItems(folderDropdown);
-                                }} style={{ maxWidth: "20px", width: "20px", height: "20px", cursor: "pointer" }} />
-                            </Dropdown>
-                        </div>
-                    </Col>
-                    <Col xxl={6} lg={6} md={8} sm={12} xs={24}>
-                        <div className={styles.innerBox}>
-                            <div className="d-flex align-center">
-                                <Image src={FOLDERBLUE} height={18} alt="" /> &nbsp; Employement Litigation
-                            </div>
-                            <Dropdown
-                                menu={{ items }}
-                                trigger={["click"]}
-                            >
-                                <Image src={THREEDOTS} alt="..." onClick={(e) => {
-                                    e.preventDefault();
-                                    setItems(folderDropdown);
-                                }} style={{ maxWidth: "20px", width: "20px", height: "20px", cursor: "pointer" }} />
-                            </Dropdown>
-                        </div>
-                    </Col>
-                    <Col xxl={6} lg={6} md={8} sm={12} xs={24}>
-                        <div className={styles.innerBox}>
-                            <div className="d-flex align-center">
-                                <Image src={FOLDERBLUE} height={18} alt="" /> &nbsp; Employement Litigation
-                            </div>
-                            <Dropdown
-                                menu={{ items }}
-                                trigger={["click"]}
-                            >
-                                <Image src={THREEDOTS} alt="..." onClick={(e) => {
-                                    e.preventDefault();
-                                    setItems(folderDropdown);
-                                }} style={{ maxWidth: "20px", width: "20px", height: "20px", cursor: "pointer" }} />
-                            </Dropdown>
-                        </div>
-                    </Col>
-                    <Col xxl={6} lg={6} md={8} sm={12} xs={24}>
-                        <div className={styles.innerBox}>
-                            <div className="d-flex align-center">
-                                <Image src={FOLDERBLUE} height={18} alt="" /> &nbsp; Employement Litigation
-                            </div>
-
-                            <Dropdown
-                                menu={{ items }}
-                                trigger={["click"]}
-                            >
-                                <Image src={THREEDOTS} alt="..." onClick={(e) => {
-                                    e.preventDefault();
-                                    setItems(folderDropdown);
-                                }} style={{ maxWidth: "20px", width: "20px", height: "20px", cursor: "pointer" }} />
-                            </Dropdown>
-                        </div>
-                    </Col>
-                </Row>
-                <Title level={4} className="ml-2">Files</Title>
+             
                 <Row>
                     <Col span={24} >
                         <CustomTable columns={columns} data={tableData} isChecked={0} />
                     </Col>
                 </Row>
-               
                 <Drawer
                     title={
                         <div style={{ display: 'flex', justifyContent: 'space-between' }}>
@@ -441,7 +354,6 @@ export default function FilesFolderList() {
                             Add
                         </Button>
                     </div>
-                
                     }
                     className={styles.customDrawerHeader}
                     placement="right"
