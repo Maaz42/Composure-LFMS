@@ -379,7 +379,7 @@ export default function TicketDetail() {
                                             margin: 'auto',
                                             borderRadius: '5px'
                                         }}>
-                                            <Input placeholder='input with clear icon' allowClear style={{ border: 'none' }} />
+                                            <input placeholder='input with clear icon' style={{ border: 'none',width:"90%" }} />
                                             <Image src={SEND} height={18} alt='' style={{ marginRight: '5px' }} />
                                         </Flex>
                                     </Row>
