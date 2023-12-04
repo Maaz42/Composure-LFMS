@@ -37,7 +37,8 @@ import {
     GRAYDOT,
     THREEDOTS,
     EDIT,
-    CLOSE
+    CLOSE,
+    ARROWUP
 } from "@/constants/images";
 import ticketsData from './ticketsData.json'
 import FloatLabel from "../../ReusableComponents/FloatLabel";
@@ -102,7 +103,16 @@ export default function TicketList() {
 
     const columns: ColumnsType<DataType> = [
         {
-            title: "Status",
+            title: (
+                <div style={{ display: "flex", justifyContent: "space-end" }}>
+                    <div>
+                        Status
+                    </div>
+                    <div>
+                        <Image src={ARROWUP} height={10} alt="" style={{ position: "absolute", top: "22px", right: "10px" }} />
+                    </div>
+                </div>
+            ),
             key: "status",
             dataIndex: "status",
             render: (_, { status }) => (
@@ -151,7 +161,16 @@ export default function TicketList() {
             ),
         },
         {
-            title: "Priority",
+            title: (
+                <div style={{ display: "flex", justifyContent: "space-end" }}>
+                    <div>
+                        Priority
+                    </div>
+                    <div>
+                        <Image src={ARROWUP} height={10} alt="" style={{ position: "absolute", top: "22px", right: "10px" }} />
+                    </div>
+                </div>
+            ),
             dataIndex: "priority",
             key: "priority",
             render: (priority) => (
@@ -187,27 +206,72 @@ export default function TicketList() {
             ),
         },
         {
-            title: "Ticket No.",
+            title: (
+                <div style={{ display: "flex", justifyContent: "space-end" }}>
+                    <div>
+                        Ticket No.
+                    </div>
+                    <div>
+                        <Image src={ARROWUP} height={10} alt="" style={{ position: "absolute", top: "22px", right: "10px" }} />
+                    </div>
+                </div>
+            ),
             dataIndex: "ticketNo",
             key: "ticketNo",
         },
         {
-            title: "Ticket",
+            title: (
+                <div style={{ display: "flex", justifyContent: "space-end" }}>
+                    <div>
+                        Ticket
+                    </div>
+                    <div>
+                        <Image src={ARROWUP} height={10} alt="" style={{ position: "absolute", top: "22px", right: "10px" }} />
+                    </div>
+                </div>
+            ),
             dataIndex: "ticket",
             key: "ticket",
         },
         {
-            title: "Type",
+            title: (
+                <div style={{ display: "flex", justifyContent: "space-end" }}>
+                    <div>
+                        Type
+                    </div>
+                    <div>
+                        <Image src={ARROWUP} height={10} alt="" style={{ position: "absolute", top: "22px", right: "10px" }} />
+                    </div>
+                </div>
+            ),
             dataIndex: "type",
             key: "type",
         },
         {
-            title: "Received",
+            title: (
+                <div style={{ display: "flex", justifyContent: "space-end" }}>
+                    <div>
+                        Recieved
+                    </div>
+                    <div>
+                        <Image src={ARROWUP} height={10} alt="" style={{ position: "absolute", top: "22px", right: "10px" }} />
+                    </div>
+                </div>
+            ),
             dataIndex: "received",
             key: "received",
         },
         {
-            title: "Assignee",
+            title: (
+                <div style={{ display: "flex", justifyContent: "space-end" }}>
+                    <div>
+                        Assignee
+                    </div>
+                    <div>
+                        <Image src={ARROWUP} height={10} alt="" style={{ position: "absolute", top: "22px", right: "10px" }} />
+                    </div>
+                </div>
+            ),
             dataIndex: "assignee",
             key: "assignee",
             render: (_, { assignee }) => (

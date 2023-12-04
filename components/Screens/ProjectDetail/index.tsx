@@ -1,14 +1,15 @@
 import React, { useState } from 'react'
 import styles from './styles.module.css'
 import Image from 'next/image';
-import { Avatar, Layout, Typography, Flex, Button, Dropdown, Divider, Row, Col, Upload, Timeline, Tooltip, Progress } from 'antd';
+import { Avatar, Layout, Typography, Flex, Button, Dropdown, Divider, Row, Col, Upload, Timeline, Tooltip, Progress, Drawer, Select } from 'antd';
 import { MenuOutlined, InboxOutlined, UserOutlined } from '@ant-design/icons';
-import { ARROW, ARROWDOWN, BLUEDOT, CALENDAR, CHECKCIRCLE, CLOCK, EDIT, FILEUPLOAD, FOLDER, GREENDOT, INFO, MORE, PROFILEUSERS, RATING, REDDOT, SEND, TICKCOMPLETE, YELLOWDOT } from '@/constants/images'
+import { ARROWDOWN, BLUEDOT, CALENDAR, CHECKCIRCLE, CLOCK, CLOSE, EDIT, FILEUPLOAD, FOLDER, GREENDOT, INFO, MORE, PROFILEUSERS, RATING, REDDOT, SEND, TICKCOMPLETE, YELLOWDOT } from '@/constants/images'
 import CustomDropDown from '@/components/ReusableComponents/DropDown';
-
+import FloatLabelArrow from '@/components/ReusableComponents/FloatLabelArrow';
 const { Header } = Layout;
 const { Title } = Typography;
 const { Dragger } = Upload;
+const { Option } = Select;
 
 const props = {
     name: 'file',
@@ -44,19 +45,23 @@ const comment2Style = {
 };
 export default function ProjectDetail() {
     const [items, setItems] = useState<any>([])
+    const [collaboratorDrawer, setCollaboratorDrawer] = useState(false)
+    const [selectCollaboratorValue, setSelectCollaboratorValue] = useState<any>();
+
+    const onClose = () => {
+        setCollaboratorDrawer(false);
+    }
+
+    const showCollaboratorDrawer = () => {
+        setCollaboratorDrawer(true);
+    }
+
     const navDropDown = [
         {
             key: "1",
-            label: "nav1"
+            label: "Delete"
         },
-        {
-            key: "2",
-            label: "nav2"
-        },
-        {
-            key: "3",
-            label: "nav3"
-        }
+
     ]
     const statusDropDown = [
         {
@@ -91,6 +96,94 @@ export default function ProjectDetail() {
             label: "Legal 3"
         }
     ];
+    const docDropDown = [
+        {
+            key: '1',
+            label: "Export as Zip"
+        },
+        {
+            key: '2',
+            label: "Export to Dropbox"
+        },
+        {
+            key: '3',
+            label: "Export  to Sharepoint"
+        }
+    ];
+    const singleDocDropDown = [
+        {
+            key: '1',
+            label: "View Varaitions"
+        },
+        {
+            key: '2',
+            label: "Upload another Varation"
+        },
+        {
+            key: '3',
+            label: "Download"
+        },
+        {
+            key: '4',
+            label: "Delete"
+        }
+    ];
+    const taskDropDown = [
+        {
+            key: '1',
+            label: "Add Subtask"
+        },
+        {
+            key: '2',
+            label: "Add Collaborators"
+        },
+        {
+            key: '3',
+            label: " Collaborators"
+        },
+        {
+            key: '4',
+            label: "Delete"
+        }
+    ];
+    const taskStatusDropDown = [
+        {
+            key: '1',
+            label: (
+                <>
+                    <div className='flex'> <Image className='mr-2' src={GREENDOT} alt='...' />  Complete</div>
+                </>
+            )
+        },
+        {
+            key: '2',
+            label: (
+                <>
+                    <div className='flex'> <Image className='mr-2' src={YELLOWDOT} alt='...' />  Not Requried</div>
+                </>
+            )
+        },
+
+    ];
+    const allDropDown = [
+        {
+            key: '1',
+            label: (
+                <>
+                    <div>All</div>
+                </>
+            )
+        },
+        {
+            key: '2',
+            label: (
+                <>
+                    <div>My Task</div>
+                </>
+            )
+        },
+
+    ];
 
     return (
         <>
@@ -102,7 +195,10 @@ export default function ProjectDetail() {
                         <Flex justify={'flex-end'} align={'center'}>
                             <MenuOutlined className={styles.collapseMenu} style={{ marginRight: "5px" }} />
                             <Button className={styles.collapseTo} style={{ backgroundColor: "#7E81E8", color: "#fff" }}>Add Task</Button>
-                            <Button className={styles.collapseTo} style={{ backgroundColor: "#333793", color: "#fff" }}>Add Collaborators</Button>
+                            <Button onClick={(e) => {
+                                e.preventDefault();
+                                showCollaboratorDrawer()
+                            }} className={styles.collapseTo} style={{ backgroundColor: "#333793", color: "#fff" }}>Add Collaborators</Button>
                             <Dropdown menu={{ items }} trigger={['click']}>
                                 <a onClick={(e) => {
                                     e.preventDefault()
@@ -126,12 +222,22 @@ export default function ProjectDetail() {
                 <div style={{ width: "250px" }} className={`${styles.lines} mr-4`}><Progress percent={50} showInfo={false} />6/12</div>
             </Flex>
 
+
+
+
             <Layout style={{ height: '(100vh -120px)' }}>
-                <Flex gap={'24px'} style={{ padding: "20px" }}>
-                    <Col span={16} style={{ width: "100%", padding: "24px", backgroundColor: "#FAFAFA" }} className={styles.colStyle}>
+                <Row style={{ padding: "20px" }}>
+                    <Col xxl={16} lg={16} md={24} sm={24} xs={24} style={{ width: "100%", padding: "24px", backgroundColor: "#FAFAFA" }} className={styles.colStyle}>
                         <Row justify='space-between' style={{ marginBottom: "15px" }}>
                             <Title level={5}>Tasks(4)</Title>
-                            <Button style={{ borderRadius: "65px", display: "flex" }}>All <Image style={{ marginTop: "4px" }} src={ARROWDOWN} width={15} height={15} alt='...' /></Button>
+                            <a onClick={(e) => {
+                                e.preventDefault();
+                                setItems(allDropDown);
+                            }} >
+                                <Dropdown menu={{ items }} placement='bottom' trigger={['click']} arrow={{ pointAtCenter: true }}>
+                                    <Button style={{ borderRadius: "65px", display: "flex" }}>All <Image className='mt-1' src={ARROWDOWN} width={15} height={15} alt='...' /></Button>
+                                </Dropdown>
+                            </a>
                         </Row>
                         <Row className={styles.cardStyle}>
                             <Row style={{ width: "100%", backgroundColor: "#FFFFFF" }} >
@@ -178,14 +284,26 @@ export default function ProjectDetail() {
                                             <Image src={EDIT} height={25} alt="..." />
                                         </Avatar>
                                     </Avatar.Group></Row>
-                                <Row className={styles.cardSDetailStyle} style={{ width: "100%" }}>
+                                <div className={styles.cardSDetailStyle} style={{ width: "100%" }}>
                                     <Timeline
                                         items={[
                                             {
                                                 dot: <Row> <Image src={CHECKCIRCLE} height={15} width={15} alt="..." /></Row>,
                                                 children: (
                                                     <>
-                                                        <Button className={styles.taskCompletedSmall}>Completed</Button>
+                                                        <Flex style={{ width: "100%" }} justify={'space-between'}>
+                                                            <Button className={styles.taskCompletedSmall}>Completed</Button>
+                                                            <a
+                                                                onClick={(e) => {
+                                                                    e.preventDefault();
+                                                                    setItems(taskDropDown);
+                                                                }}
+                                                            >
+                                                                <Dropdown menu={{ items }} placement='bottom' trigger={['click']} arrow={{ pointAtCenter: true }}>
+                                                                    <Image className='mt-2' src={MORE} height={18} alt='' />
+                                                                </Dropdown>
+                                                            </a>
+                                                        </Flex>
                                                         <div className='font-medium text-base'>Shareholder Agreements</div>
                                                         <div className={styles.lines}><Avatar size={"small"} style={{ backgroundColor: '#f56a00' }}>K </Avatar>
                                                             <div style={{ borderRight: "1px solid #BDBDBD", padding: "3px" }}></div>
@@ -197,7 +315,19 @@ export default function ProjectDetail() {
                                                 dot: <Image src={CHECKCIRCLE} height={15} width={15} alt="..." />,
                                                 children: (
                                                     <>
-                                                        <Button className={styles.taskCompletedSmall}>Completed</Button>
+                                                        <Flex style={{ width: "100%" }} justify={'space-between'}>
+                                                            <Button className={styles.taskCompletedSmall}>Completed</Button>
+                                                            <a
+                                                                onClick={(e) => {
+                                                                    e.preventDefault();
+                                                                    setItems(taskDropDown);
+                                                                }}
+                                                            >
+                                                                <Dropdown menu={{ items }} placement='bottom' trigger={['click']} arrow={{ pointAtCenter: true }}>
+                                                                    <Image className='mt-2' src={MORE} height={18} alt='' />
+                                                                </Dropdown>
+                                                            </a>
+                                                        </Flex>
                                                         <div className='font-medium text-base'>Subscription Agreements</div>
                                                         <div className={styles.lines}>
                                                             <Col className={styles.lines} ><Image className='ml-2' src={CALENDAR} alt='...' /> <div className='ml-2 text-gray-400' > 08/02/2023</div> </Col> </div>
@@ -209,17 +339,40 @@ export default function ProjectDetail() {
                                                 color: 'gray',
                                                 children: (
                                                     <>
-                                                        <Button className='rounded-3xl'>Mark as Completed?</Button>
+                                                        <Flex style={{ width: "100%" }} justify={'space-between'}>
+                                                            <a onClick={(e) => {
+                                                                e.preventDefault();
+                                                                setItems(taskStatusDropDown);
+                                                            }}>
+                                                                <Dropdown menu={{ items }} placement='bottom' trigger={['click']} arrow={{ pointAtCenter: true }}>
+                                                                    <Button className='rounded-3xl'>Mark as Completed?</Button>
+                                                                </Dropdown>
+                                                            </a>
+                                                            <a
+                                                                onClick={(e) => {
+                                                                    e.preventDefault();
+                                                                    setItems(taskDropDown);
+                                                                }}
+                                                            >
+                                                                <Dropdown menu={{ items }} placement='bottom' trigger={['click']} arrow={{ pointAtCenter: true }}>
+                                                                    <Image className='mt-2' src={MORE} height={18} alt='' />
+                                                                </Dropdown>
+                                                            </a>
+                                                        </Flex>
                                                         <div className='font-medium text-base'>Credit Agreements</div>
                                                         <div className={styles.lines}>
-                                                            <Col className={styles.lines} ><Image className='ml-2' src={CALENDAR} alt='...' /> <div className='ml-2 text-gray-400 underline' > Select Date</div> </Col> </div>
+                                                            <Col className={styles.lines} >
+                                                                <Image className='ml-2' src={CALENDAR} alt='...' />
+                                                                <div className='ml-2 text-gray-400 underline' >Select Date</div>
+                                                            </Col>
+                                                        </div>
                                                     </>
                                                 ),
                                             },
 
                                         ]}
                                     />
-                                </Row>
+                                </div>
                             </Row>
                             <Row style={{ width: "100%", marginTop: "20px", backgroundColor: "#FAFAFA" }} justify={'space-between'} >
                                 <Button className={styles.infoButton}>
@@ -255,19 +408,19 @@ export default function ProjectDetail() {
                             </Row>
                         </Row>
                     </Col>
-                    <Col span={8} style={{ paddingRight: "24px" }}>
+                    <Col xxl={8} lg={8} md={24} sm={24} xs={24} style={{ paddingRight: "24px" }} className={styles.colStyle}>
                         <Row className='mb-8'>
-                            <Flex className={styles.cardStyle350px} vertical>
+                            <Flex className={styles.cardStyle450px} vertical>
                                 <Title level={3}>Affiliated Entity Creation</Title>
                                 <Row style={{ color: "#54577A", fontWeight: "500", fontSize: "14px" }}> Created By: Anmol Sahai </Row>
-                                <Row className='my-8'>
+                                <Row className='my-2'>
                                     <Col><Avatar size={'large'} src="https://xsgames.co/randomusers/avatar.php?g=pixel&key=13" /></Col>
                                     <Col><Avatar size={'large'} src="https://xsgames.co/randomusers/avatar.php?g=pixel&key=12" /></Col>
                                     <Col><Avatar size={'large'} src="https://xsgames.co/randomusers/avatar.php?g=pixel&key=11" /></Col>
                                     <Col><Avatar size={'large'} src="https://xsgames.co/randomusers/avatar.php?g=pixel&key=1" /></Col>
                                     <Avatar size={'large'} style={{ backgroundColor: '#f56a00' }}>+</Avatar>
                                 </Row>
-                                <Row className='my-5' >
+                                <Row className='my-2' >
                                     <Col className={styles.lines}><Image className='mr-2' src={PROFILEUSERS} alt='...' /> 6 People Involved</Col>
                                     <Col className={styles.lines}> <Image className='mx-2' src={CLOCK} alt='...' />Due at Aug 23,2023</Col>
                                 </Row>
@@ -277,88 +430,125 @@ export default function ProjectDetail() {
                             <Flex className={styles.cardStyle340px} vertical>
                                 <Row className={`${styles.lines} mb-6`} justify={'space-between'}>
                                     <Title style={cardTitleStyle2}>Documents (7)</Title>
-                                    <Button className={`${styles.lines} rounded-3xl text-sm text-gray-400`}>Internal <Image className='ml-2' src={ARROWDOWN} alt='...' height={20} /></Button>
+                                    <Flex>
+                                        <Button className={`${styles.lines} rounded-3xl text-sm text-gray-400`}>Internal <Image className='ml-2' src={ARROWDOWN} alt='...' height={20} />
+                                        </Button>&nbsp;
+                                        <a
+                                            onClick={(e) => {
+                                                e.preventDefault();
+                                                setItems(docDropDown);
+                                            }}
+                                        >
+                                            <Dropdown menu={{ items }} placement='bottom' trigger={['click']} arrow={{ pointAtCenter: true }}>
+                                                <Image className='mt-2' src={MORE} height={18} alt='' />
+                                            </Dropdown>
+                                        </a>
+                                    </Flex>
                                 </Row>
-                                <Row style={{ alignItems: 'baseline', justifyContent: 'space-between' }}>
-                                    <Title style={folderNameStyle}>  <Image src={FOLDER} height={18} alt='' />&nbsp;Case_Lab_Report.pdf&nbsp;< Image src={INFO} height={18} alt='...' /></Title>
+                                <Row className='mb-2' style={{ alignItems: 'baseline', justifyContent: 'space-between' }}>
+                                    <Title style={folderNameStyle}> <Image src={FOLDER} height={18} alt='' />&nbsp;Case_Lab_Report.pdf&nbsp;
+                                        <Tooltip title="Added on March 27, 2023. Last Modified on Marc 29,2023." placement="top">
+                                            < Image src={INFO} height={18} alt='...' />
+                                        </Tooltip>
+                                    </Title>
                                     <a
                                         onClick={(e) => {
                                             e.preventDefault();
-                                            // setItems(docsDropDown);
+                                            setItems(singleDocDropDown);
                                         }}
                                     >
                                         <Dropdown menu={{ items }} placement='bottom' trigger={['click']} arrow={{ pointAtCenter: true }}
                                         >
-                                            <Title style={{ marginTop: '0px' }}><Image src={MORE} height={18} alt='' /></Title>
+                                            <Image className='mt-1' src={MORE} height={18} alt='' />
                                         </Dropdown>
                                     </a>
                                 </Row>
-                                <Row style={{ alignItems: 'baseline', justifyContent: 'space-between' }}>
-                                    <Title style={folderNameStyle}>  <Image src={FOLDER} height={18} alt='' />&nbsp;Investigation_Document.doc&nbsp;< Image src={INFO} height={18} alt='...' /></Title>
+                                <Row className='mb-2' style={{ alignItems: 'baseline', justifyContent: 'space-between' }}>
+                                    <Title style={folderNameStyle}>  <Image src={FOLDER} height={18} alt='' />&nbsp;Investigation_Document.doc&nbsp;
+                                        <Tooltip title="Added on March 27, 2023. Last Modified on Marc 29,2023." placement="top">
+                                            < Image src={INFO} height={18} alt='...' />
+                                        </Tooltip>
+                                    </Title>
                                     <a
                                         onClick={(e) => {
                                             e.preventDefault();
-                                            // setItems(docsDropDown);
+                                            setItems(singleDocDropDown);
                                         }}
                                     >
                                         <Dropdown menu={{ items }} placement='bottom' trigger={['click']} arrow={{ pointAtCenter: true }}
                                         >
-                                            <Title style={{ marginTop: '0px' }}><Image src={MORE} height={18} alt='' /></Title>
+                                            <Image className='mt-1' src={MORE} height={18} alt='' />
                                         </Dropdown>
                                     </a>
                                 </Row>
-                                <Row style={{ alignItems: 'baseline', justifyContent: 'space-between' }}>
-                                    <Title style={folderNameStyle}>  <Image src={FOLDER} height={18} alt='' />&nbsp;Medical_Results.xlsx&nbsp;< Image src={INFO} height={18} alt='...' /></Title>
+                                <Row className='mb-2' style={{ alignItems: 'baseline', justifyContent: 'space-between' }}>
+                                    <Title style={folderNameStyle}>  <Image src={FOLDER} height={18} alt='' />&nbsp;Medical_Results.xlsx&nbsp;
+                                        <Tooltip title="Added on March 27, 2023. Last Modified on Marc 29,2023." placement="top">
+                                            < Image src={INFO} height={18} alt='...' />
+                                        </Tooltip>
+                                    </Title>
                                     <a
                                         onClick={(e) => {
                                             e.preventDefault();
-                                            // setItems(docsDropDown);
+                                            setItems(singleDocDropDown);
                                         }}
                                     >
                                         <Dropdown menu={{ items }} placement='bottom' trigger={['click']} arrow={{ pointAtCenter: true }}
                                         >
-                                            <Title style={{ marginTop: '0px' }}><Image src={MORE} height={18} alt='' /></Title>
+                                            <Image className='mt-1' src={MORE} height={18} alt='' />
                                         </Dropdown>
                                     </a>
                                 </Row>
-                                <Row style={{ alignItems: 'baseline', justifyContent: 'space-between' }}>
-                                    <Title style={folderNameStyle}>  <Image src={FOLDER} height={18} alt='' />&nbsp;GroupProject.doc&nbsp;< Image src={INFO} height={18} alt='...' /></Title>
+                                <Row className='mb-2' style={{ alignItems: 'baseline', justifyContent: 'space-between' }}>
+                                    <Title style={folderNameStyle}>  <Image src={FOLDER} height={18} alt='' />&nbsp;GroupProject.doc&nbsp;
+                                        <Tooltip title="Added on March 27, 2023. Last Modified on Marc 29,2023." placement="top">
+                                            < Image src={INFO} height={18} alt='...' />
+                                        </Tooltip>
+                                    </Title>
                                     <a
                                         onClick={(e) => {
                                             e.preventDefault();
-                                            // setItems(docsDropDown);
+                                            setItems(singleDocDropDown);
                                         }}
                                     >
                                         <Dropdown menu={{ items }} placement='bottom' trigger={['click']} arrow={{ pointAtCenter: true }}
                                         >
-                                            <Title style={{ marginTop: '0px' }}><Image src={MORE} height={18} alt='' /></Title>
+                                            <Image className='mt-1' src={MORE} height={18} alt='' />
                                         </Dropdown>
                                     </a>
                                 </Row>
-                                <Row style={{ alignItems: 'baseline', justifyContent: 'space-between' }}>
-                                    <Title style={folderNameStyle}>  <Image src={FOLDER} height={18} alt='' />&nbsp;Medical Notes.docx&nbsp;< Image src={INFO} height={18} alt='...' /></Title>
+                                <Row className='mb-2' style={{ alignItems: 'baseline', justifyContent: 'space-between' }}>
+                                    <Title style={folderNameStyle}>  <Image src={FOLDER} height={18} alt='' />&nbsp;Medical Notes.docx&nbsp;
+                                        <Tooltip title="Added on March 27, 2023. Last Modified on Marc 29,2023." placement="top">
+                                            < Image src={INFO} height={18} alt='...' />
+                                        </Tooltip>
+                                    </Title>
                                     <a
                                         onClick={(e) => {
                                             e.preventDefault();
-                                            // setItems(docsDropDown);
+                                            setItems(singleDocDropDown);
                                         }}
                                     >
                                         <Dropdown menu={{ items }} placement='bottom' trigger={['click']} arrow={{ pointAtCenter: true }}>
-                                            <Title style={{ marginTop: '0px' }}><Image src={MORE} height={18} alt='' /></Title>
+                                            <Image className='mt-1' src={MORE} height={18} alt='' />
                                         </Dropdown>
                                     </a>
                                 </Row>
-                                <Row style={{ alignItems: 'baseline', justifyContent: 'space-between' }}>
-                                    <Title style={folderNameStyle}>  <Image src={FOLDER} height={18} alt='' />&nbsp;ListOfPeopleInvolved.pdf&nbsp;< Image src={INFO} height={18} alt='...' /></Title>
+                                <Row className='mb-2' style={{ alignItems: 'baseline', justifyContent: 'space-between' }}>
+                                    <Title style={folderNameStyle}>  <Image src={FOLDER} height={18} alt='' />&nbsp;ListOfPeopleInvolved.pdf&nbsp;
+                                        <Tooltip title="Added on March 27, 2023. Last Modified on Marc 29,2023." placement="top">
+                                            < Image src={INFO} height={18} alt='...' />
+                                        </Tooltip>
+                                    </Title>
                                     <a
                                         onClick={(e) => {
                                             e.preventDefault();
-                                            // setItems(docsDropDown);
+                                            setItems(singleDocDropDown);
                                         }}
                                     >
                                         <Dropdown menu={{ items }} placement='bottom' trigger={['click']} arrow={{ pointAtCenter: true }}
                                         >
-                                            <Title style={{ marginTop: '0px' }}><Image src={MORE} height={18} alt='' /></Title>
+                                            <Image className='mt-1' src={MORE} height={18} alt='' />
                                         </Dropdown>
                                     </a>
                                 </Row>
@@ -380,7 +570,7 @@ export default function ProjectDetail() {
                                     <Title style={cardTitleStyle2}>Commets (9)</Title>
                                     <Button className={`${styles.lines} rounded-3xl text-sm text-gray-400`}>Internal <Image className='ml-2' src={ARROWDOWN} alt='...' height={20} /></Button>
                                 </Row>
-                                <Row style={{ alignItems: 'baseline', justifyContent: 'space-between' }}>
+                                <Row className='mb-2' style={{ alignItems: 'baseline', justifyContent: 'space-between' }}>
                                     <Flex style={{ width: '90%' }}>
                                         <Flex>
                                             <Avatar icon={<UserOutlined />} />
@@ -401,11 +591,11 @@ export default function ProjectDetail() {
                                         }}
                                     >
                                         <Dropdown menu={{ items }} placement='bottom' trigger={['click']} arrow={{ pointAtCenter: true }}>
-                                            <Title style={{ marginTop: '0px' }}><Image src={MORE} height={18} alt='' /></Title>
+                                            <Image className='mt-1' src={MORE} height={18} alt='' />
                                         </Dropdown>
                                     </a>
                                 </Row>
-                                <Row style={{ alignItems: 'baseline', justifyContent: 'space-between', marginTop: '8px' }}>
+                                <Row className='mb-2' style={{ alignItems: 'baseline', justifyContent: 'space-between', marginTop: '8px' }}>
                                     <Flex style={{ width: '90%' }}>
                                         <Flex>
                                             <Avatar icon={<UserOutlined />} />
@@ -426,11 +616,11 @@ export default function ProjectDetail() {
                                         }}
                                     >
                                         <Dropdown menu={{ items }} placement='bottom' trigger={['click']} arrow={{ pointAtCenter: true }}>
-                                            <Title style={{ marginTop: '0px' }}><Image src={MORE} height={18} alt='' /></Title>
+                                            <Image className='mt-1' src={MORE} height={18} alt='' />
                                         </Dropdown>
                                     </a>
                                 </Row>
-                                <Row style={{ alignItems: 'baseline', justifyContent: 'space-between', marginTop: '8px' }}>
+                                <Row className='mb-2' style={{ alignItems: 'baseline', justifyContent: 'space-between', marginTop: '8px' }}>
                                     <Flex style={{ width: '90%' }}>
                                         <Flex>
                                             <Avatar icon={<UserOutlined />} />
@@ -451,11 +641,11 @@ export default function ProjectDetail() {
                                         }}
                                     >
                                         <Dropdown menu={{ items }} placement='bottom' trigger={['click']} arrow={{ pointAtCenter: true }}>
-                                            <Title style={{ marginTop: '0px' }}><Image src={MORE} height={18} alt='' /></Title>
+                                            <Image className='mt-1' src={MORE} height={18} alt='' />
                                         </Dropdown>
                                     </a>
                                 </Row>
-                                <Row style={{ alignItems: 'baseline', justifyContent: 'space-between' }}>
+                                <Row className='mb-2' style={{ alignItems: 'baseline', justifyContent: 'space-between' }}>
                                     <Flex style={{ width: '90%' }}>
                                         <Flex>
                                             <Avatar icon={<UserOutlined />} />
@@ -476,11 +666,11 @@ export default function ProjectDetail() {
                                         }}
                                     >
                                         <Dropdown menu={{ items }} placement='bottom' trigger={['click']} arrow={{ pointAtCenter: true }}>
-                                            <Title style={{ marginTop: '0px' }}><Image src={MORE} height={18} alt='' /></Title>
+                                            <Image className='mt-1' src={MORE} height={18} alt='' />
                                         </Dropdown>
                                     </a>
                                 </Row>
-                                <Row style={{ alignItems: 'baseline', justifyContent: 'space-between', marginTop: '8px' }}>
+                                <Row className='mb-2' style={{ alignItems: 'baseline', justifyContent: 'space-between', marginTop: '8px' }}>
                                     <Flex style={{ width: '90%' }}>
                                         <Flex>
                                             <Avatar icon={<UserOutlined />} />
@@ -501,11 +691,11 @@ export default function ProjectDetail() {
                                         }}
                                     >
                                         <Dropdown menu={{ items }} placement='bottom' trigger={['click']} arrow={{ pointAtCenter: true }}>
-                                            <Title style={{ marginTop: '0px' }}><Image src={MORE} height={18} alt='' /></Title>
+                                            <Image className='mt-1' src={MORE} height={18} alt='' />
                                         </Dropdown>
                                     </a>
                                 </Row>
-                                <Row style={{ alignItems: 'baseline', justifyContent: 'space-between', marginTop: '8px' }}>
+                                <Row className='mb-2' style={{ alignItems: 'baseline', justifyContent: 'space-between', marginTop: '8px' }}>
                                     <Flex style={{ width: '90%' }}>
                                         <Flex>
                                             <Avatar icon={<UserOutlined />} />
@@ -526,11 +716,11 @@ export default function ProjectDetail() {
                                         }}
                                     >
                                         <Dropdown menu={{ items }} placement='bottom' trigger={['click']} arrow={{ pointAtCenter: true }}>
-                                            <Title style={{ marginTop: '0px' }}><Image src={MORE} height={18} alt='' /></Title>
+                                            <Image className='mt-1' src={MORE} height={18} alt='' />
                                         </Dropdown>
                                     </a>
                                 </Row>
-                                <Row style={{ alignItems: 'baseline', justifyContent: 'space-between' }}>
+                                <Row className='mb-2' style={{ alignItems: 'baseline', justifyContent: 'space-between' }}>
                                     <Flex style={{ width: '90%' }}>
                                         <Flex>
                                             <Avatar icon={<UserOutlined />} />
@@ -551,11 +741,11 @@ export default function ProjectDetail() {
                                         }}
                                     >
                                         <Dropdown menu={{ items }} placement='bottom' trigger={['click']} arrow={{ pointAtCenter: true }}>
-                                            <Title style={{ marginTop: '0px' }}><Image src={MORE} height={18} alt='' /></Title>
+                                            <Image className='mt-1' src={MORE} height={18} alt='' />
                                         </Dropdown>
                                     </a>
                                 </Row>
-                                <Row style={{ alignItems: 'baseline', justifyContent: 'space-between', marginTop: '8px' }}>
+                                <Row className='mb-2' style={{ alignItems: 'baseline', justifyContent: 'space-between', marginTop: '8px' }}>
                                     <Flex style={{ width: '90%' }}>
                                         <Flex>
                                             <Avatar icon={<UserOutlined />} />
@@ -576,11 +766,11 @@ export default function ProjectDetail() {
                                         }}
                                     >
                                         <Dropdown menu={{ items }} placement='bottom' trigger={['click']} arrow={{ pointAtCenter: true }}>
-                                            <Title style={{ marginTop: '0px' }}><Image src={MORE} height={18} alt='' /></Title>
+                                            <Image className='mt-1' src={MORE} height={18} alt='' />
                                         </Dropdown>
                                     </a>
                                 </Row>
-                                <Row style={{ alignItems: 'baseline', justifyContent: 'space-between', marginTop: '8px' }}>
+                                <Row className='mb-2' style={{ alignItems: 'baseline', justifyContent: 'space-between', marginTop: '8px' }}>
                                     <Flex style={{ width: '90%' }}>
                                         <Flex>
                                             <Avatar icon={<UserOutlined />} />
@@ -601,7 +791,7 @@ export default function ProjectDetail() {
                                         }}
                                     >
                                         <Dropdown menu={{ items }} placement='bottom' trigger={['click']} arrow={{ pointAtCenter: true }}>
-                                            <Title style={{ marginTop: '0px' }}><Image src={MORE} height={18} alt='' /></Title>
+                                            <Image className='mt-1' src={MORE} height={18} alt='' />
                                         </Dropdown>
                                     </a>
                                 </Row>
@@ -621,7 +811,42 @@ export default function ProjectDetail() {
                             </Row>
                         </Row>
                     </Col>
-                </Flex>
+                </Row>
+
+
+
+                <Drawer
+                    title={
+                        <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                            <Image src={CLOSE} height={18} alt="..." onClick={onClose} />
+                            <h2 style={{ color: "#fff", marginRight: "33px", marginTop: "6px", fontSize: "14px" }}>Collaborator Management</h2>
+                            <Button style={{ backgroundColor: "#7E81E8", width: "100px", color: "#fff" }}  >
+                                Save
+                            </Button>
+                        </div>
+                    }
+                    className={styles.customDrawerHeader}
+                    placement="right"
+                    closable={false}
+                    onClose={onClose}
+                    key="placement"
+                    open={collaboratorDrawer}
+                >
+                    <FloatLabelArrow label="Collaborators" value={selectCollaboratorValue}>
+                        <Select
+                            showSearch
+                            style={{ width: "100%" }}
+                            onChange={value => setSelectCollaboratorValue(value)}
+                            value={selectCollaboratorValue}
+                            suffixIcon={null}
+                            mode="multiple"
+                        >
+                            <Option value="Ali">Ali</Option>
+                            <Option value="Haider">Haider</Option>
+                            <Option value="Hassan">Hassan</Option>
+                        </Select>
+                    </FloatLabelArrow>
+                </Drawer>
             </Layout >
         </>
     )

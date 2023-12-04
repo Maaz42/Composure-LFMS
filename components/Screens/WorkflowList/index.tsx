@@ -25,6 +25,7 @@ import {
     THREEDOTS,
     EDIT,
     CLOSE,
+    ARROWUP,
 
 } from "@/constants/images";
 import workflowData from './workflowData.json'
@@ -82,27 +83,72 @@ export default function WorkflowList() {
 
     const columns: ColumnsType<DataType> = [
         {
-            title: "Title",
+            title: (
+                <div style={{ display: "flex", justifyContent: "space-end" }}>
+                    <div>
+                        Title
+                    </div>
+                    <div>
+                        <Image src={ARROWUP} height={10} alt="" style={{ position: "absolute", top: "22px", right: "10px" }} />
+                    </div>
+                </div>
+            ),
             key: "title",
             dataIndex: "title",
         },
         {
-            title: "Tasks",
+            title: (
+                <div style={{ display: "flex", justifyContent: "space-end" }}>
+                    <div>
+                        Tasks
+                    </div>
+                    <div>
+                        <Image src={ARROWUP} height={10} alt="" style={{ position: "absolute", top: "22px", right: "10px" }} />
+                    </div>
+                </div>
+            ),
             dataIndex: "tasks",
             key: "tasks",
         },
         {
-            title: "Documents",
+            title: (
+                <div style={{ display: "flex", justifyContent: "space-end" }}>
+                    <div>
+                        Documents
+                    </div>
+                    <div>
+                        <Image src={ARROWUP} height={10} alt="" style={{ position: "absolute", top: "22px", right: "10px" }} />
+                    </div>
+                </div>
+            ),
             dataIndex: "documents",
             key: "documents",
         },
         {
-            title: "Collaborators",
+            title: (
+                <div style={{ display: "flex", justifyContent: "space-end" }}>
+                    <div>
+                        Collaborators
+                    </div>
+                    <div>
+                        <Image src={ARROWUP} height={10} alt="" style={{ position: "absolute", top: "22px", right: "10px" }} />
+                    </div>
+                </div>
+            ),
             dataIndex: "collaborators",
             key: "collaborators",
         },
         {
-            title: "Created By",
+            title: (
+                <div style={{ display: "flex", justifyContent: "space-end" }}>
+                    <div>
+                        Creaed By
+                    </div>
+                    <div>
+                        <Image src={ARROWUP} height={10} alt="" style={{ position: "absolute", top: "22px", right: "10px" }} />
+                    </div>
+                </div>
+            ),
             dataIndex: "created_by",
             key: "created_by",
         },
@@ -316,7 +362,6 @@ export default function WorkflowList() {
                         padding: "10px",
                         border: "1px solid #ccc",
                         borderRadius: "65px",
-
                     }}
                 >
                     <input

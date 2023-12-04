@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import styles from "./styles.module.css";
-import { MenuOutlined, InboxOutlined } from '@ant-design/icons';
+import { MenuOutlined } from '@ant-design/icons';
 import type { MenuProps, RadioChangeEvent } from 'antd';
 
 import {
@@ -17,10 +17,8 @@ import {
     Col,
     Pagination,
     Drawer,
-    ConfigProvider,
     Input,
     Select,
-    Upload,
     TableColumnsType,
     Space,
     Progress,
@@ -41,7 +39,8 @@ import {
     CLOSE,
     THREEDOTS,
     EDIT,
-    ADDCIRCLE
+    ADDCIRCLE,
+    ARROWUP
 } from "@/constants/images";
 import projectsData from './projectData.json'
 import FloatLabel from "../../ReusableComponents/FloatLabel";
@@ -62,7 +61,6 @@ interface DataType {
     collaboration: any[];
     rowData: any[];
 }
-console.log("projectsData", projectsData);
 
 export default function ProjectList() {
     const [items, setItems] = useState<MenuProps['items']>([]);
@@ -110,9 +108,7 @@ export default function ProjectList() {
     const projectActinDropDown = [
         {
             key: "1",
-            label: (
-                <Link href="/projectDetail">View</Link>
-            ),
+            label: (<Link href="/projectDetail">View</Link>),
         },
         {
             key: "2",
@@ -133,12 +129,12 @@ export default function ProjectList() {
                                     <Button
                                         style={{ color: "#7E81E8", marginRight: "20px", border: "1px solid #7E81E8", borderRadius: "20px" }}
                                     >
-                                        <div style={{ display: "flex" }}>   <Image src={ADDCIRCLE} alt="..." style={{ marginRight: "5px" }} /> Add Collaborators </div>
+                                        <div style={{ display: "flex" }}><Image src={ADDCIRCLE} alt="..." style={{ marginRight: "5px" }} /> Add     Collaborators
+                                        </div>
                                     </Button>
                                     <Button
-                                        style={{ color: "#7E81E8", marginRight: "20px", border: "1px solid #7E81E8", borderRadius: "20px" }}
-                                    >
-                                        <div style={{ display: "flex", }}>   <Image src={ADDCIRCLE} alt="..." style={{ marginRight: "5px" }} /> Add Subtask </div>
+                                        style={{ color: "#7E81E8", marginRight: "20px", border: "1px solid #7E81E8", borderRadius: "20px" }}>
+                                        <div style={{ display: "flex", }}><Image src={ADDCIRCLE} alt="..." style={{ marginRight: "5px" }} /> Add Subtask </div>
                                     </Button>
                                 </div>
                             </div >
@@ -151,10 +147,41 @@ export default function ProjectList() {
     };
 
     const columns: TableColumnsType<DataType> = [
-        { title: 'Title', dataIndex: 'title', key: 'title' },
-        { title: 'Due Date', dataIndex: 'due_date', key: 'due_date' },
         {
-            title: 'Stage', key: 'stage',
+            title: (
+                <div style={{ display: "flex", justifyContent: "space-end" }}>
+                    <div>
+                        Title
+                    </div>
+                    <div>
+                        <Image src={ARROWUP} height={10} alt="" style={{ position: "absolute", top: "22px", right: "10px" }} />
+                    </div>
+                </div>
+            ), dataIndex: 'title', key: 'title'
+        },
+        {
+            title: (
+                <div style={{ display: "flex", justifyContent: "space-end" }}>
+                    <div>
+                        Due Date
+                    </div>
+                    <div>
+                        <Image src={ARROWUP} height={10} alt="" style={{ position: "absolute", top: "22px", right: "10px" }} />
+                    </div>
+                </div>
+            ), dataIndex: 'due_date', key: 'due_date'
+        },
+        {
+            title: (
+                <div style={{ display: "flex", justifyContent: "space-end" }}>
+                    <div>
+                        Stage
+                    </div>
+                    <div>
+                        <Image src={ARROWUP} height={10} alt="" style={{ position: "absolute", top: "22px", right: "10px" }} />
+                    </div>
+                </div>
+            ), key: 'stage',
             render: (_, { stage }) => (
                 <>
                     {stage.map((status) => {
@@ -200,11 +227,19 @@ export default function ProjectList() {
             ),
         },
         {
-            title: 'Progress', key: 'progress',
+            title: (
+                <div style={{ display: "flex", justifyContent: "space-end" }}>
+                    <div>
+                        Progress
+                    </div>
+                    <div>
+                        <Image src={ARROWUP} height={10} alt="" style={{ position: "absolute", top: "22px", right: "10px" }} />
+                    </div>
+                </div>
+            ), key: 'progress',
             render: (_, { progress }) => (
                 <>
                     {progress.map((p) => {
-                        console.log(p)
                         return (
                             <div key={p.key} className={styles.lines}>
                                 <Progress percent={50} showInfo={false} />
@@ -215,7 +250,16 @@ export default function ProjectList() {
             ),
         },
         {
-            title: 'Collaboration', key: 'collaboration',
+            title: (
+                <div style={{ display: "flex", justifyContent: "space-end" }}>
+                    <div>
+                        Collaboration
+                    </div>
+                    <div>
+                        <Image src={ARROWUP} height={10} alt="" style={{ position: "absolute", top: "22px", right: "10px" }} />
+                    </div>
+                </div>
+            ), key: 'collaboration',
             render: (_, { collaboration }) => (
                 <>
                     <Avatar.Group>
@@ -239,7 +283,16 @@ export default function ProjectList() {
             ),
         },
         {
-            title: 'Action', key: 'operation',
+            title: (
+                <div style={{ display: "flex", justifyContent: "space-end" }}>
+                    <div>
+                        Action
+                    </div>
+                    <div>
+                        <Image src={ARROWUP} height={10} alt="" style={{ position: "absolute", top: "22px", right: "10px" }} />
+                    </div>
+                </div>
+            ), key: 'operation',
             render: () => (<Dropdown
                 menu={{ items }}
                 trigger={["click"]}
@@ -464,7 +517,7 @@ export default function ProjectList() {
                     closable={false}
                     onClose={onClose}
                     open={open}
-                    key="placement"
+                    key="projectDrawer"
                 >
                     <div>
                         <FloatLabel label="Title" value={projectTitle}>
@@ -508,7 +561,7 @@ export default function ProjectList() {
                     placement="right"
                     closable={false}
                     onClose={onClose}
-                    key="placement"
+                    key="collaboratorDrawer"
                     open={collaoratorDrawer}
                 >
                     <FloatLabelArrow label="Collaborators" value={selectCollaboratorValue}>

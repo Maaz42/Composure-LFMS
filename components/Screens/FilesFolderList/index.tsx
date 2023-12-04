@@ -16,14 +16,16 @@ import {
     Drawer,
     Input,
     Select,
-    Upload
+    Upload,
+    Tooltip
 } from "antd";
 import {
     SEARCH,
     NAVBARS,
     CLOSE,
     THREEDOTS,
-    FOLDERBLUE
+    FOLDERBLUE,
+    ARROWUP
 } from "@/constants/images";
 import intakeData from './fileData.json'
 import FloatLabel from "../../ReusableComponents/FloatLabel";
@@ -93,27 +95,72 @@ export default function FilesFolderList() {
 
     const columns: ColumnsType<DataType> = [
         {
-            title: "title",
+            title: (
+                <div style={{ display: "flex", justifyContent: "space-end" }}>
+                    <div>
+                        Title
+                    </div>
+                    <div>
+                        <Image src={ARROWUP} height={10} alt="" style={{ position: "absolute", top: "22px", right: "10px" }} />
+                    </div>
+                </div>
+            ),
             dataIndex: "title",
             key: "title",
         },
         {
-            title: "Added By",
+            title: (
+                <div style={{ display: "flex", justifyContent: "space-end" }}>
+                    <div>
+                        Added By
+                    </div>
+                    <div>
+                        <Image src={ARROWUP} height={10} alt="" style={{ position: "absolute", top: "22px", right: "10px" }} />
+                    </div>
+                </div>
+            ),
             dataIndex: "addedBy",
             key: "addedBy",
         },
         {
-            title: "Date Added",
+            title: (
+                <div style={{ display: "flex", justifyContent: "space-end" }}>
+                    <div>
+                        Date Added
+                    </div>
+                    <div>
+                        <Image src={ARROWUP} height={10} alt="" style={{ position: "absolute", top: "22px", right: "10px" }} />
+                    </div>
+                </div>
+            ),
             dataIndex: "dateAdded",
             key: "dateAdded",
         },
         {
-            title: "Last Modified",
+            title: (
+                <div style={{ display: "flex", justifyContent: "space-end" }}>
+                    <div>
+                        Last Modified
+                    </div>
+                    <div>
+                        <Image src={ARROWUP} height={10} alt="" style={{ position: "absolute", top: "22px", right: "10px" }} />
+                    </div>
+                </div>
+            ),
             dataIndex: "lastModified",
             key: "lastModified",
         },
         {
-            title: "Revisions",
+            title: (
+                <div style={{ display: "flex", justifyContent: "space-end" }}>
+                    <div>
+                        Revisions
+                    </div>
+                    <div>
+                        <Image src={ARROWUP} height={10} alt="" style={{ position: "absolute", top: "22px", right: "10px" }} />
+                    </div>
+                </div>
+            ),
             dataIndex: "revisions",
             key: "revisions",
         },
@@ -320,8 +367,13 @@ export default function FilesFolderList() {
                 <Row>
                     <Col xxl={6} lg={6} md={8} sm={12} xs={24}>
                         <div className={styles.innerBox}>
-                            <div className="d-flex align-center">
-                                <Image src={FOLDERBLUE} height={18} alt="" /> &nbsp; Employement Litigation
+                            <div className="d-flex align-center ">
+                                <Image src={FOLDERBLUE} height={18} alt="" /> &nbsp;
+                                <Tooltip title={'Employement Litigation'} placement="top">
+                                    <div
+                                        className={styles.folderTitle}> Employement Litigation
+                                    </div>
+                                </Tooltip>
                             </div>
                             <Dropdown
                                 menu={{ items }}
@@ -337,7 +389,12 @@ export default function FilesFolderList() {
                     <Col xxl={6} lg={6} md={8} sm={12} xs={24}>
                         <div className={styles.innerBox}>
                             <div className="d-flex align-center">
-                                <Image src={FOLDERBLUE} height={18} alt="" /> &nbsp; Employement Litigation
+                                <Image src={FOLDERBLUE} height={18} alt="" /> &nbsp;
+                                <Tooltip title={'Employement Litigation'} placement="top">
+                                    <div
+                                        className={styles.folderTitle}> Employement Litigation
+                                    </div>
+                                </Tooltip>
                             </div>
                             <Dropdown
                                 menu={{ items }}
@@ -353,7 +410,12 @@ export default function FilesFolderList() {
                     <Col xxl={6} lg={6} md={8} sm={12} xs={24}>
                         <div className={styles.innerBox}>
                             <div className="d-flex align-center">
-                                <Image src={FOLDERBLUE} height={18} alt="" /> &nbsp; Employement Litigation
+                                <Image src={FOLDERBLUE} height={18} alt="" /> &nbsp;
+                                <Tooltip title={'Employement Litigation'} placement="top">
+                                    <div
+                                        className={styles.folderTitle}> Employement Litigation
+                                    </div>
+                                </Tooltip>
                             </div>
                             <Dropdown
                                 menu={{ items }}
@@ -369,7 +431,12 @@ export default function FilesFolderList() {
                     <Col xxl={6} lg={6} md={8} sm={12} xs={24}>
                         <div className={styles.innerBox}>
                             <div className="d-flex align-center">
-                                <Image src={FOLDERBLUE} height={18} alt="" /> &nbsp; Employement Litigation
+                                <Image src={FOLDERBLUE} height={18} alt="" /> &nbsp;
+                                <Tooltip title={'Employement Litigation'} placement="top">
+                                    <div
+                                        className={styles.folderTitle}> Employement Litigation
+                                    </div>
+                                </Tooltip>
                             </div>
 
                             <Dropdown
@@ -390,7 +457,7 @@ export default function FilesFolderList() {
                         <CustomTable columns={columns} data={tableData} isChecked={0} />
                     </Col>
                 </Row>
-               
+
                 <Drawer
                     title={
                         <div style={{ display: 'flex', justifyContent: 'space-between' }}>
@@ -435,13 +502,13 @@ export default function FilesFolderList() {
                 <Drawer
                     title={
                         <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                        <Image src={CLOSE} height={18} alt='...' onClick={onClose} />
-                        <h2 style={{ color: "#fff", marginRight: "100px", marginTop: "3px" }}>Add Folder</h2>
-                        <Button style={{ backgroundColor: "#7E81E8", width: "100px", color: "#fff" }}  >
-                            Add
-                        </Button>
-                    </div>
-                
+                            <Image src={CLOSE} height={18} alt='...' onClick={onClose} />
+                            <h2 style={{ color: "#fff", marginRight: "100px", marginTop: "3px" }}>Add Folder</h2>
+                            <Button style={{ backgroundColor: "#7E81E8", width: "100px", color: "#fff" }}  >
+                                Add
+                            </Button>
+                        </div>
+
                     }
                     className={styles.customDrawerHeader}
                     placement="right"
@@ -455,35 +522,35 @@ export default function FilesFolderList() {
                     </FloatLabel>
 
                     <FloatLabelArrow label="Link To Folder" value={selectLinkToFolderValue}>
-                            <Select
-                                showSearch
-                                style={{ width: "100%" }}
-                                onChange={value => setSelectLinkToFolderValue(value)}
-                                value={selectLinkToFolderValue}
-                                suffixIcon={null}
-                            >
-                                <Option value="Ali">Ali</Option>
-                                <Option value="Haider">Haider</Option>
-                                <Option value=" Asad">Asad</Option>
-                                <Option value="Maaz">Maaz</Option>
-                            </Select>
-                        </FloatLabelArrow>
-                        <FloatLabelArrow label="Link To Project" value={selectLinkToProjectValue}>
-                            <Select
-                                showSearch
-                                style={{ width: "100%" }}
-                                onChange={value => setSelectLinkToProjectValue(value)}
-                                value={selectLinkToProjectValue}
-                                suffixIcon={null}
-                            >
-                                <Option value="Ali">Ali</Option>
-                                <Option value="Haider">Haider</Option>
-                                <Option value=" Asad">Asad</Option>
-                                <Option value="Maaz">Maaz</Option>
-                            </Select>
-                        </FloatLabelArrow>
+                        <Select
+                            showSearch
+                            style={{ width: "100%" }}
+                            onChange={value => setSelectLinkToFolderValue(value)}
+                            value={selectLinkToFolderValue}
+                            suffixIcon={null}
+                        >
+                            <Option value="Ali">Ali</Option>
+                            <Option value="Haider">Haider</Option>
+                            <Option value=" Asad">Asad</Option>
+                            <Option value="Maaz">Maaz</Option>
+                        </Select>
+                    </FloatLabelArrow>
+                    <FloatLabelArrow label="Link To Project" value={selectLinkToProjectValue}>
+                        <Select
+                            showSearch
+                            style={{ width: "100%" }}
+                            onChange={value => setSelectLinkToProjectValue(value)}
+                            value={selectLinkToProjectValue}
+                            suffixIcon={null}
+                        >
+                            <Option value="Ali">Ali</Option>
+                            <Option value="Haider">Haider</Option>
+                            <Option value=" Asad">Asad</Option>
+                            <Option value="Maaz">Maaz</Option>
+                        </Select>
+                    </FloatLabelArrow>
                 </Drawer>
-            </Layout>
+            </Layout >
         </>
     );
 }
