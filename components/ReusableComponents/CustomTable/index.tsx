@@ -37,7 +37,14 @@ export const CustomTable = ({ columns, data, isChecked, expandable = null }: any
               isChecked == 1 ?
                 <Table rowSelection={rowSelection} columns={columns} dataSource={tableData} style={{ overflowX: "auto" }} pagination={false} />
                 :
-                <Table rowSelection={rowSelection} columns={columns} expandable={expandable} dataSource={tableData} pagination={false} />
+                <Table rowSelection={rowSelection} columns={columns} expandable={expandable} dataSource={tableData} pagination={false} expandRowByClick={true}
+                  expandIcon={({ expanded}) =>
+                    expanded ? (
+                      <></>
+                    ) : (
+                      <></>
+                    )}
+                />
             )
         }
       </ConfigProvider>

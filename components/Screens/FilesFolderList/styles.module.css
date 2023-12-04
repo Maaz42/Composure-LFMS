@@ -70,6 +70,8 @@
   margin: 10px;
   display: flex;
   justify-content: space-between;
+  
+ 
  }
 
 @media (max-width: 800px) {
@@ -82,10 +84,22 @@
   }
 }
 
+@media (max-width: 1150px) {
+  .folderTitle{
+    white-space: nowrap; 
+    width: 70px; 
+    overflow: hidden;
+    text-overflow: ellipsis; 
+   }
+}
+
 @media (max-width: 767px) {
   .documentSection {
     padding: 8px 0px 5px 0px;
   }
+  .folderTitle{
+    width: 100%;   
+   }
 
   .commentSection {
     padding: 8px 0 5px 0px;

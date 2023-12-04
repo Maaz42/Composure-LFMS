@@ -17,10 +17,8 @@ import {
     Col,
     Pagination,
     Drawer,
-    ConfigProvider,
     Input,
     Select,
-    Upload,
     TableColumnsType,
     Space,
     Progress,
@@ -41,7 +39,8 @@ import {
     CLOSE,
     THREEDOTS,
     EDIT,
-    ADDCIRCLE
+    ADDCIRCLE,
+    ARROWUP
 } from "@/constants/images";
 import projectsData from './projectData.json'
 import FloatLabel from "../../ReusableComponents/FloatLabel";
@@ -151,10 +150,41 @@ export default function ProjectList() {
     };
 
     const columns: TableColumnsType<DataType> = [
-        { title: 'Title', dataIndex: 'title', key: 'title' },
-        { title: 'Due Date', dataIndex: 'due_date', key: 'due_date' },
         {
-            title: 'Stage', key: 'stage',
+            title: (
+                <div style={{ display: "flex", justifyContent: "space-end" }}>
+                    <div>
+                        Title
+                    </div>
+                    <div>
+                        <Image src={ARROWUP} height={10} alt="" style={{ position: "absolute", top: "22px", right: "10px" }} />
+                    </div>
+                </div>
+            ), dataIndex: 'title', key: 'title'
+        },
+        {
+            title: (
+                <div style={{ display: "flex", justifyContent: "space-end" }}>
+                    <div>
+                        Due Date
+                    </div>
+                    <div>
+                        <Image src={ARROWUP} height={10} alt="" style={{ position: "absolute", top: "22px", right: "10px" }} />
+                    </div>
+                </div>
+            ), dataIndex: 'due_date', key: 'due_date'
+        },
+        {
+            title: (
+                <div style={{ display: "flex", justifyContent: "space-end" }}>
+                    <div>
+                        Stage
+                    </div>
+                    <div>
+                        <Image src={ARROWUP} height={10} alt="" style={{ position: "absolute", top: "22px", right: "10px" }} />
+                    </div>
+                </div>
+            ), key: 'stage',
             render: (_, { stage }) => (
                 <>
                     {stage.map((status) => {
@@ -200,7 +230,16 @@ export default function ProjectList() {
             ),
         },
         {
-            title: 'Progress', key: 'progress',
+            title: (
+                <div style={{ display: "flex", justifyContent: "space-end" }}>
+                    <div>
+                        Progress
+                    </div>
+                    <div>
+                        <Image src={ARROWUP} height={10} alt="" style={{ position: "absolute", top: "22px", right: "10px" }} />
+                    </div>
+                </div>
+            ), key: 'progress',
             render: (_, { progress }) => (
                 <>
                     {progress.map((p) => {
@@ -215,7 +254,16 @@ export default function ProjectList() {
             ),
         },
         {
-            title: 'Collaboration', key: 'collaboration',
+            title: (
+                <div style={{ display: "flex", justifyContent: "space-end" }}>
+                    <div>
+                        Collaboration
+                    </div>
+                    <div>
+                        <Image src={ARROWUP} height={10} alt="" style={{ position: "absolute", top: "22px", right: "10px" }} />
+                    </div>
+                </div>
+            ), key: 'collaboration',
             render: (_, { collaboration }) => (
                 <>
                     <Avatar.Group>
@@ -239,7 +287,16 @@ export default function ProjectList() {
             ),
         },
         {
-            title: 'Action', key: 'operation',
+            title: (
+                <div style={{ display: "flex", justifyContent: "space-end" }}>
+                    <div>
+                        Action
+                    </div>
+                    <div>
+                        <Image src={ARROWUP} height={10} alt="" style={{ position: "absolute", top: "22px", right: "10px" }} />
+                    </div>
+                </div>
+            ), key: 'operation',
             render: () => (<Dropdown
                 menu={{ items }}
                 trigger={["click"]}
