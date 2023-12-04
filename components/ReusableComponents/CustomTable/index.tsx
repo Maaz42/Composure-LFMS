@@ -1,9 +1,7 @@
 import React, { useState } from "react";
 import { Table, ConfigProvider } from "antd";
-import styles from "./styles.module.css";
 
-
-export const CustomTable = ({ columns, data, isChecked, expandable = null }: any) => {
+export const CustomTable = ({ columns, data, isChecked, expandable = null, expandedRowKeys = null }: any) => {
   const [tableData, setTableData] = useState<any>(data)
   const [selectedRowKeys, setSelectedRowKeys] = useState<React.Key[]>([]);
   const onSelectChange = (newSelectedRowKeys: React.Key[]) => {
@@ -37,7 +35,7 @@ export const CustomTable = ({ columns, data, isChecked, expandable = null }: any
               isChecked == 1 ?
                 <Table rowSelection={rowSelection} columns={columns} dataSource={tableData} style={{ overflowX: "auto" }} pagination={false} />
                 :
-                <Table rowSelection={rowSelection} columns={columns} expandable={expandable} dataSource={tableData} pagination={false} />
+                <Table rowSelection={rowSelection} columns={columns} expandable={expandable} dataSource={tableData} pagination={false} expandedRowKeys={expandedRowKeys} />
             )
         }
       </ConfigProvider>

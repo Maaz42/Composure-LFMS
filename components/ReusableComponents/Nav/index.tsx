@@ -43,7 +43,9 @@ export default function Nav({ children }: any) {
                     <Link href={`/filesFolderList`}>
                         {pathname === 'FILESFOLDERLIST' ? <Image width={100} height={50} src={FILES} alt='aaa' style={{ backgroundColor: "#DBDBDB", borderLeft: "3px solid #333793" }} /> : <Image width={100} height={50} src={FILES} alt='aaa' />}
                     </Link>
-                    <Image width={100} height={50} src={FORMBUILDER} alt='' />
+                    <Link href={`/formBuilderList`}>
+                        {pathname === 'FORMBUILDERLIST' ? <Image width={100} height={50} src={FORMBUILDER} alt='aaa' style={{ backgroundColor: "#DBDBDB", borderLeft: "3px solid #333793" }} /> : <Image width={100} height={50} src={FORMBUILDER} alt='aaa' />}
+                    </Link>
                     <Image width={100} height={50} src={SETTINGS} alt='' />
                 </Sider>
 
