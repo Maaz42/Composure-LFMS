@@ -222,9 +222,12 @@ export default function ProjectDetail() {
                 <div style={{ width: "250px" }} className={`${styles.lines} mr-4`}><Progress percent={50} showInfo={false} />6/12</div>
             </Flex>
 
+
+
+
             <Layout style={{ height: '(100vh -120px)' }}>
-                <Flex gap={'24px'} style={{ padding: "20px" }}>
-                    <Col span={16} style={{ width: "100%", padding: "24px", backgroundColor: "#FAFAFA" }} className={styles.colStyle}>
+                <Row style={{ padding: "20px" }}>
+                    <Col xxl={16} lg={16} md={24} sm={24} xs={24} style={{ width: "100%", padding: "24px", backgroundColor: "#FAFAFA" }} className={styles.colStyle}>
                         <Row justify='space-between' style={{ marginBottom: "15px" }}>
                             <Title level={5}>Tasks(4)</Title>
                             <a onClick={(e) => {
@@ -405,7 +408,7 @@ export default function ProjectDetail() {
                             </Row>
                         </Row>
                     </Col>
-                    <Col span={8} style={{ paddingRight: "24px" }}>
+                    <Col xxl={8} lg={8} md={24} sm={24} xs={24} style={{ paddingRight: "24px" }} className={styles.colStyle}>
                         <Row className='mb-8'>
                             <Flex className={styles.cardStyle450px} vertical>
                                 <Title level={3}>Affiliated Entity Creation</Title>
@@ -808,7 +811,9 @@ export default function ProjectDetail() {
                             </Row>
                         </Row>
                     </Col>
-                </Flex>
+                </Row>
+
+
 
                 <Drawer
                     title={

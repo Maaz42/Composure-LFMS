@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import styles from "./styles.module.css";
-import { MenuOutlined, InboxOutlined } from '@ant-design/icons';
+import { MenuOutlined } from '@ant-design/icons';
 import type { MenuProps, RadioChangeEvent } from 'antd';
 
 import {
@@ -61,7 +61,6 @@ interface DataType {
     collaboration: any[];
     rowData: any[];
 }
-console.log("projectsData", projectsData);
 
 export default function ProjectList() {
     const [items, setItems] = useState<MenuProps['items']>([]);
@@ -109,9 +108,7 @@ export default function ProjectList() {
     const projectActinDropDown = [
         {
             key: "1",
-            label: (
-                <Link href="/projectDetail">View</Link>
-            ),
+            label: (<Link href="/projectDetail">View</Link>),
         },
         {
             key: "2",
@@ -132,12 +129,12 @@ export default function ProjectList() {
                                     <Button
                                         style={{ color: "#7E81E8", marginRight: "20px", border: "1px solid #7E81E8", borderRadius: "20px" }}
                                     >
-                                        <div style={{ display: "flex" }}>   <Image src={ADDCIRCLE} alt="..." style={{ marginRight: "5px" }} /> Add Collaborators </div>
+                                        <div style={{ display: "flex" }}><Image src={ADDCIRCLE} alt="..." style={{ marginRight: "5px" }} /> Add     Collaborators
+                                        </div>
                                     </Button>
                                     <Button
-                                        style={{ color: "#7E81E8", marginRight: "20px", border: "1px solid #7E81E8", borderRadius: "20px" }}
-                                    >
-                                        <div style={{ display: "flex", }}>   <Image src={ADDCIRCLE} alt="..." style={{ marginRight: "5px" }} /> Add Subtask </div>
+                                        style={{ color: "#7E81E8", marginRight: "20px", border: "1px solid #7E81E8", borderRadius: "20px" }}>
+                                        <div style={{ display: "flex", }}><Image src={ADDCIRCLE} alt="..." style={{ marginRight: "5px" }} /> Add Subtask </div>
                                     </Button>
                                 </div>
                             </div >
@@ -243,7 +240,6 @@ export default function ProjectList() {
             render: (_, { progress }) => (
                 <>
                     {progress.map((p) => {
-                        console.log(p)
                         return (
                             <div key={p.key} className={styles.lines}>
                                 <Progress percent={50} showInfo={false} />
@@ -524,7 +520,7 @@ export default function ProjectList() {
                     closable={false}
                     onClose={onClose}
                     open={open}
-                    key="placement"
+                    key="projectDrawer"
                 >
                     <div>
                         <FloatLabel label="Title" value={projectTitle}>
@@ -568,7 +564,7 @@ export default function ProjectList() {
                     placement="right"
                     closable={false}
                     onClose={onClose}
-                    key="placement"
+                    key="collaboratorDrawer"
                     open={collaoratorDrawer}
                 >
                     <FloatLabelArrow label="Collaborators" value={selectCollaboratorValue}>
