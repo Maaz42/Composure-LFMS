@@ -159,22 +159,22 @@ export default function TicketList() {
                     <Space size="middle">
                         {priority == "critical" ? (
                             <>
-                                <Image src={REDDOT} height={18} alt="" />{" "}
+                                <Image src={REDDOT} height={18} alt="" />
                             </>
                         ) : (
                             priority == "high" ? (
                                 <>
-                                    <Image src={YELLOWDOT} height={18} alt="" />{" "}
+                                    <Image src={YELLOWDOT} height={18} alt="" />
                                 </>
                             ) : (
                                 priority == "medium" ? (
                                     <>
-                                        <Image src={BLUEDOT} height={18} alt="" />{" "}
+                                        <Image src={BLUEDOT} height={18} alt="" />
                                     </>
                                 ) : (
                                     priority == "low" ? (
                                         <>
-                                            <Image src={GRAYDOT} height={18} alt="" />{" "}
+                                            <Image src={GRAYDOT} height={18} alt="" />
                                         </>
                                     ) : (
                                         <></>
@@ -438,10 +438,8 @@ export default function TicketList() {
                         trigger={["click"]}
                         placement="bottom"
                         arrow={{ pointAtCenter: true }}
-
                     >
                         <Title className={styles.dropDownFilter}>
-                            {" "}
                             <Image src={NAVBARS} height={18} alt="" />
                         </Title>
                     </Dropdown>

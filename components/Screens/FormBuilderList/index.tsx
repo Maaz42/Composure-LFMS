@@ -36,6 +36,7 @@ import FloatLabel from "../../ReusableComponents/FloatLabel";
 import FloatLabelArrow from "../../ReusableComponents/FloatLabelArrow";
 import CustomDropDown from "@/components/ReusableComponents/DropDown";
 import { CustomTable } from "@/components/ReusableComponents/CustomTable";
+import { useRouter } from "next/router";
 
 const { Header } = Layout;
 const { Option } = Select;
@@ -53,25 +54,7 @@ const props = {
 export default function FormBuilderList() {
     const [items, setItems] = useState<MenuProps['items']>([]);
     const [tableData, setTableData] = useState<any>(intakeData);
-    const [open, setOpen] = useState(false);
-    const [folderDrawer, setFolderDrawer] = useState(false)
-    const [title, setTitle] = useState("Affiliated Entity Creation");
-    const [selectLinkToFolderValue, setSelectLinkToFolderValue] = useState<any>();
-    const [selectLinkToProjectValue, setSelectLinkToProjectValue] = useState<any>();
-    const [selectFolderValue, setSelectFolderValue] = useState<any>();
-
-    const showDrawer = () => {
-        setOpen(true);
-    }
-
-    const showfolderDrawer = () => {
-        setFolderDrawer(true);
-    }
-
-    const onClose = () => {
-        setOpen(false);
-        setFolderDrawer(false);
-    }
+    const router = useRouter()
 
     const topBoxStyle = {
         width: "100%",
@@ -178,7 +161,6 @@ export default function FormBuilderList() {
         },
     ];
 
-
     const statusDropDown = [
         {
             key: "1",
@@ -197,8 +179,6 @@ export default function FormBuilderList() {
             label: "To Projects"
         },
     ];
-
-
 
     const formDropDown = [
         {
@@ -286,7 +266,7 @@ export default function FormBuilderList() {
                 </Flex>
                 <Flex align={"center"} justify="space-between">
                     <Button
-                        onClick={showDrawer}
+                        onClick={() => router.push('/formBuilderAdd')}
                         style={{ color: "white", background: "#333793", marginRight: "20px" }}
                     >
                         Add Form
@@ -298,103 +278,11 @@ export default function FormBuilderList() {
                     height: "calc(100vh - 120px)",
                     background: "white"
                 }}>
-             
                 <Row>
                     <Col span={24} >
                         <CustomTable columns={columns} data={tableData} isChecked={0} />
                     </Col>
                 </Row>
-                <Drawer
-                    title={
-                        <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                            <Image src={CLOSE} height={18} alt='...' onClick={onClose} />
-                            <h2 style={{ color: "#fff", marginRight: "100px", marginTop: "3px" }}>Add File</h2>
-                            <Button style={{ backgroundColor: "#7E81E8", width: "100px", color: "#fff" }}  >
-                                Add
-                            </Button>
-                        </div>
-                    }
-                    className={styles.customDrawerHeader}
-                    placement="right"
-                    closable={false}
-                    onClose={onClose}
-                    open={open}
-                    key="placement"
-                >
-                    <div>
-                        <div className="mb-4">
-                            <Dragger {...props} >
-                                <Row style={{ justifyContent: 'center' }}>
-                                    <InboxOutlined style={{ fontSize: '24px' }} /> &nbsp;Drag or browse from device
-                                </Row>
-                            </Dragger>
-                        </div>
-                        <FloatLabelArrow label="Folder" value={selectFolderValue}>
-                            <Select
-                                showSearch
-                                style={{ width: "100%" }}
-                                onChange={value => setSelectFolderValue(value)}
-                                value={selectFolderValue}
-                                suffixIcon={null}
-                            >
-                                <Option value="Ali">Ali</Option>
-                                <Option value="Haider">Haider</Option>
-                                <Option value=" Asad">Asad</Option>
-                                <Option value="Maaz">Maaz</Option>
-                            </Select>
-                        </FloatLabelArrow>
-                    </div>
-                </Drawer>
-                <Drawer
-                    title={
-                        <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                        <Image src={CLOSE} height={18} alt='...' onClick={onClose} />
-                        <h2 style={{ color: "#fff", marginRight: "100px", marginTop: "3px" }}>Add Folder</h2>
-                        <Button style={{ backgroundColor: "#7E81E8", width: "100px", color: "#fff" }}  >
-                            Add
-                        </Button>
-                    </div>
-                    }
-                    className={styles.customDrawerHeader}
-                    placement="right"
-                    closable={false}
-                    onClose={onClose}
-                    key="folderDrawer"
-                    open={folderDrawer}
-                >
-                    <FloatLabel label="Title" value={title}>
-                        <Input style={{ height: "48px" }} value={title} onChange={e => setTitle(e.target.value)} />
-                    </FloatLabel>
-
-                    <FloatLabelArrow label="Link To Folder" value={selectLinkToFolderValue}>
-                            <Select
-                                showSearch
-                                style={{ width: "100%" }}
-                                onChange={value => setSelectLinkToFolderValue(value)}
-                                value={selectLinkToFolderValue}
-                                suffixIcon={null}
-                            >
-                                <Option value="Ali">Ali</Option>
-                                <Option value="Haider">Haider</Option>
-                                <Option value=" Asad">Asad</Option>
-                                <Option value="Maaz">Maaz</Option>
-                            </Select>
-                        </FloatLabelArrow>
-                        <FloatLabelArrow label="Link To Project" value={selectLinkToProjectValue}>
-                            <Select
-                                showSearch
-                                style={{ width: "100%" }}
-                                onChange={value => setSelectLinkToProjectValue(value)}
-                                value={selectLinkToProjectValue}
-                                suffixIcon={null}
-                            >
-                                <Option value="Ali">Ali</Option>
-                                <Option value="Haider">Haider</Option>
-                                <Option value=" Asad">Asad</Option>
-                                <Option value="Maaz">Maaz</Option>
-                            </Select>
-                        </FloatLabelArrow>
-                </Drawer>
             </Layout>
         </>
     );

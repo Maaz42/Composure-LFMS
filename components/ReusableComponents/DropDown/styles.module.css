@@ -16,7 +16,6 @@
   margin-bottom: 0 !important;
   max-width: 200px;
   margin-top: 8px;
-
 }
 
 .dropDownFilter {
@@ -27,8 +26,6 @@
   background-color: #7e81e8 !important;
   margin-bottom: 0 !important;
 }
-
-
 
 .justify-bw {
   justify-content: space-between;
@@ -43,19 +40,16 @@
   margin-top: 25px;
   margin-bottom: 25px;
   border-color: #7e81e8;
-
 }
 
 .customDrawerHeader {
   margin-bottom: 20px;
   background-color: #416b92;
-
 }
 
 .ant-table-thead .ant-table-cell {
   background-color: green;
 }
-
 
 @media (max-width: 800px) {
   .collapseTo {

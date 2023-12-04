@@ -1,7 +1,5 @@
 import React, { useState } from "react";
 import { Table, ConfigProvider } from "antd";
-import styles from "./styles.module.css";
-
 
 export const CustomTable = ({ columns, data, isChecked, expandable = null }: any) => {
   const [tableData, setTableData] = useState<any>(data)
@@ -15,6 +13,7 @@ export const CustomTable = ({ columns, data, isChecked, expandable = null }: any
     selectedRowKeys,
     onChange: onSelectChange,
   };
+  
   return (
     <>
       <ConfigProvider

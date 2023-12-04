@@ -384,10 +384,7 @@ export default function ProjectList() {
                         arrow={{ pointAtCenter: true }}
                     >
                         <Title className={styles.dropDownFilter}>
-                            {" "}
-                            <Image src={NAVBARS} height={18} alt="" onClick={({ e }: any) => {
-
-                            }} />
+                            <Image src={NAVBARS} height={18} alt="" onClick={({ e }: any) => {}} />
                         </Title>
                     </Dropdown>
                     <Divider style={{ height: "50px", margin: "0" }} type="vertical" />
