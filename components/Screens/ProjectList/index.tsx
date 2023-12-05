@@ -73,6 +73,14 @@ export default function ProjectList() {
     const [selectCollaboratorValue, setSelectCollaoratorValue] = useState<any>();
     const [value, setValue] = useState("Public");
 
+    const [expandedRowKeys, setExpandedRowKeys] = useState<string[]>([]);
+
+    const handleRowClick = (key: any) => {
+        const keys = expandedRowKeys.includes(key)
+            ? expandedRowKeys.filter((k) => k !== key)
+            : [...expandedRowKeys, key];
+        setExpandedRowKeys(keys);
+    };
     const onRadioChange = (e: RadioChangeEvent) => {
         setValue(e.target.value);
     };
@@ -157,7 +165,16 @@ export default function ProjectList() {
                         <Image src={ARROWUP} height={10} alt="" style={{ position: "absolute", top: "22px", right: "10px" }} />
                     </div>
                 </div>
-            ), dataIndex: 'title', key: 'title'
+            ),
+            dataIndex: 'title', key: 'title',
+            render: (text, record: any) => (
+                <span
+                    style={{ cursor: 'pointer' }}
+                    onClick={() => handleRowClick(record.key)}
+                >
+                    {text}
+                </span>
+            ),
         },
         {
             title: (
@@ -437,7 +454,7 @@ export default function ProjectList() {
                         arrow={{ pointAtCenter: true }}
                     >
                         <Title className={styles.dropDownFilter}>
-                            <Image src={NAVBARS} height={18} alt="" onClick={({ e }: any) => {}} />
+                            <Image src={NAVBARS} height={18} alt="" onClick={({ e }: any) => { }} />
                         </Title>
                     </Dropdown>
                     <Divider style={{ height: "50px", margin: "0" }} type="vertical" />
@@ -469,7 +486,15 @@ export default function ProjectList() {
                             columns={columns}
                             data={tableData}
                             isChecked={2}
-                            expandable={{ expandedRowRender, defaultExpandedRowKeys: ['0'] }}
+                            expandable={{
+                                expandedRowRender,
+                                rowExpandable: () => true,
+                                expandedRowKeys,
+                                onExpand: (record: any) => {
+                                    handleRowClick(record.key);
+                                },
+                                expandIcon: () => <></>
+                            }}
                         />
                     </Col>
                 </Row>

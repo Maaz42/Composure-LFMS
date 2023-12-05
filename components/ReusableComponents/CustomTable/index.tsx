@@ -13,7 +13,7 @@ export const CustomTable = ({ columns, data, isChecked, expandable = null }: any
     selectedRowKeys,
     onChange: onSelectChange,
   };
-  
+
   return (
     <>
       <ConfigProvider
@@ -30,12 +30,15 @@ export const CustomTable = ({ columns, data, isChecked, expandable = null }: any
       >
         {
           isChecked == 0 ?
+            //simple table
             <Table columns={columns} dataSource={tableData} style={{ overflowX: "auto" }} pagination={false} />
             :
             (
               isChecked == 1 ?
+                //checkbox table
                 <Table rowSelection={rowSelection} columns={columns} dataSource={tableData} style={{ overflowX: "auto" }} pagination={false} />
                 :
+                //expandable table
                 <Table rowSelection={rowSelection} columns={columns} expandable={expandable} dataSource={tableData} pagination={false} />
             )
         }
