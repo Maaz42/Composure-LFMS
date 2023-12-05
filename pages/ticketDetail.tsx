@@ -1,4 +1,5 @@
-import TicketDetail from "@/components/Screens/FormBuilderAdd";
+import TicketDetail from "@/components/Screens/TicketDetail";
+
 
 export default function TicketDetailPage() {
     return <TicketDetail/>
