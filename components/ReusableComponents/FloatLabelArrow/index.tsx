@@ -21,7 +21,7 @@ const FloatLabelArrow = ({ children, label, value  }: FloatLabelProps) => {
       onFocus={() => setFocus(true)}
     >
       {children}
-      <label className={labelClass}>{label} {<Image src={ARROWDOWN} height={18} className="arrow-down" alt="" />}</label>
+      <label className={labelClass}>{label} {<Image src={ARROWDOWN} height={18}  className="arrow-down " alt="..." />}</label>
     </div>
   );
 };

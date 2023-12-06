@@ -1,21 +1,33 @@
-.header {
-  padding: 0px;
-  border-bottom: 1px solid #eeeeee;
-  background: white;
+.documentSection {
+  padding: 8px 5px 5px 0px;
 }
 
-.topBoxStyle {
-  width: 100%;
-  height: 65px;
-  align-items: center;
-  justify-content: space-between;
+.commentSection {
+  padding: 8px 0 5px 5px;
 }
 
-.boxStyle {
+.detailsSection {
+  border: 1px solid rgb(223 223 223);
+  padding: 20px;
+  background-color: #FAFAFA;
+}
+
+.commentBox {
+  position: absolute;
+  bottom: 5px;
+  background: #0000000F;
+  width: 98.5%;
   height: 50px;
-  border-bottom: 1px solid #eeeeee;
-  align-items: center;
-  justify-content: space-between;
+  left: 6px;
+}
+
+.commentTS {
+  font-size: 11px !important;
+  font-weight: 600 !important;
+  color: #9E9E9E !important;
+  display: flex;
+  margin-top: 2px !important;
+  margin-left: 5px
 }
 
 .collapseMenu {
@@ -26,33 +38,17 @@
 .collapseTo {
   margin-right: 10px;
 }
-
-.divider {
-  height: 50px;
-  margin: 0;
-}
-
-.mainRow {
-  padding: 20px;
-}
-
-.colStyle {
-  width: 100%;
-  padding: 24px;
-  background-color: #fafafa;
-}
-
-.colStyle2 {
-  width: 100%;
-  padding: 24px;
-  background-color: #fafafa;
-}
-
-
-
 .cardStyle {
   border: 1px solid rgb(223 223 223);
   padding: 20px;
+  background-color: #fafafa;
+  border-radius: 4px;
+  margin-bottom: 20px;
+}
+
+.cardStyle2 {
+  border: 1px solid rgb(223 223 223);
+  
   background-color: #fafafa;
   border-radius: 4px;
   margin-bottom: 20px;
@@ -106,188 +102,57 @@
   display: flex;
   border-radius: 65px;
 }
-
-.commentBox {
-  bottom: 5px;
-  background: #0000000f;
+.colStyle {
   width: 100%;
-  height: 50px;
-  left: 6px;
+  padding: 24px;
+  background-color: #fafafa;
 }
+ 
 
-.commentTS {
-  font-size: 0.8052708638360175vw !important;
-  font-weight: 500 !important;
-  color: #9e9e9e !important;
-  display: flex;
-  margin-top: 2px !important;
-  margin-left: 5px;
-}
-
-.comment2Style {
-  font-size: 0.89vw !important;
-  font-weight: 400 !important;
-  color: #000000;
-  display: flex;
-  margin-top: -5px;
-  margin-left: 1px;
-  width: 85%;
-}
 
 .cardStyle340px {
   border: 1px solid rgb(223 223 223);
   padding: 20px;
-  background-color: #fafafa;
+  background-color: #FAFAFA;
   flex: 1;
   flex-direction: column;
   display: flex;
   min-height: calc(100vh - 320px);
   max-height: calc(100vh - 320px);
-  overflow: auto;
 }
 
-.cardStyle450px {
-  border: 1px solid rgb(223 223 223);
-  padding: 20px;
-  background-color: #fafafa;
-  flex: 1;
-  flex-direction: column;
-  display: flex;
-  min-height: calc(100vh - 450px);
-  max-height: calc(100vh - 450px);
-  overflow: auto;
-}
-
-.folderNameStyle {
-  font-size: 0.89vw !important;
-  font-weight: 600;
-  color: #000000;
-  display: flex;
-  margin-top: 5px;
-  align-items: center;
-}
-
-.internalButton {
-  display: flex;
-  color: #9e9e9e;
-  background-color: #f0f0f0;
-  font-size: 13px;
-  border-radius: 65px;
-  cursor: pointer;
-}
-
-@media (max-width: 1000px) {
-  .folderTitle {
-    white-space: nowrap;
-    width: 70px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-}
-
-@media (max-width: 990px) {
-  .colStyle2 {
-    width: 100%;
-    padding-top: 0px;
-    background-color: #fafafa;
-  }
-}
-
-@media (max-width: 900px) {
-  .mainRow {
-    padding: 0px;
+@media (max-width: 800px) {
+  .collapseTo {
+      display: none;
   }
 
-  .comment2Style {
-    font-size: 8px !important;
-    font-weight: 600 !important;
-    color: #000000;
-    display: flex;
-    margin-top: -5px;
-    margin-left: 1px;
-    width: 85%;
-  }
-
-  .cardTitleStyle3 {
-    font-size: 10px !important;
-    font-weight: 600 !important;
-    color: #000000;
-    display: flex;
-  }
-
-  .folderNameStyle {
-    font-size: 10px !important;
-    font-weight: 600;
-    color: #000000;
-    display: flex;
-    margin-top: 5px;
-    align-items: center;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-
-  .cardTitleStyle2 {
-    font-size: 13px !important;
-    font-weight: 600;
-    color: #000000;
-    display: flex;
-  }
-
-  .commentTS {
-    margin-top: 2px !important;
-    margin-left: 0px;
-    font-size: 9px !important;
-  }
-
-  .folderTitle {
-    width: 200px;
+  .collapseMenu {
+      display: block;
   }
 }
 
 @media (max-width: 767px) {
+  .documentSection {
+      padding: 8px 0px 5px 0px;
+  }
+
+  .commentSection {
+      padding: 8px 0 5px 0px;
+  }
+
+  .detailsSection {
+      min-height: auto;
+  }
+
   .commentBox {
-    width: 100%;
-    left: 0px;
+      width: 100%;
+      left: 0px;
   }
 }
 
-@media (max-width: 700px) {
-  .collapseTo {
-    display: none;
-    background-color: red;
-  }
-
-  .collapseMenu {
-    display: block;
-  }
-
-  .cardTitleStyle {
-    font-size: 12px;
-    font-weight: 500;
-    color: #000000;
-    border: none;
-  }
-
-  .cardDetailStyle2 {
-    font-size: 10px;
-  }
-}
-
-@media (max-width: 420px) {
-  .folderTitle {
-    white-space: nowrap;
-    width: 50px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-
-  .internalButton {
-    display: flex;
-    color: #9e9e9e;
-    background-color: #f0f0f0;
-    font-size: 11px;
-    border-radius: 65px;
-    cursor: pointer;
+@media (max-width: 360px) {
+  .commentTS {
+      margin-top: -5px !important;
+      margin-left: 0px
   }
 }

@@ -139,8 +139,7 @@
   flex: 1;
   flex-direction: column;
   display: flex;
-  min-height: calc(100vh - 320px);
-  max-height: calc(100vh - 320px);
+ 
   overflow: auto;
 }
 
@@ -151,8 +150,6 @@
   flex: 1;
   flex-direction: column;
   display: flex;
-  min-height: calc(100vh - 450px);
-  max-height: calc(100vh - 450px);
   overflow: auto;
 }
 
