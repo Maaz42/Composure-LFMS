@@ -19,10 +19,6 @@ const props = {
     },
 };
 
-const folderNameStyle = {
-
-};
-
 export default function ProjectDetail() {
     const [items, setItems] = useState<any>([])
     const [collaboratorDrawer, setCollaboratorDrawer] = useState(false)
@@ -46,19 +42,19 @@ export default function ProjectDetail() {
     const statusDropDown = [
         {
             key: "1",
-            label: (<div className={styles.lines}><Image style={{ marginRight: "5px" }} src={REDDOT} alt="..." /> <div>New</div></div>)
+            label: (<div className='flex'><Image style={{ marginRight: "5px" }} src={REDDOT} alt="..." /> <div>New</div></div>)
         },
         {
             key: "2",
-            label: (<div className={styles.lines}><Image style={{ marginRight: "5px" }} src={YELLOWDOT} alt="..." /> <div>In Review</div></div>)
+            label: (<div className='flex'><Image style={{ marginRight: "5px" }} src={YELLOWDOT} alt="..." /> <div>In Review</div></div>)
         },
         {
             key: "3",
-            label: (<div className={styles.lines}><Image style={{ marginRight: "5px" }} src={BLUEDOT} alt="..." /> <div>In Progress</div></div>)
+            label: (<div className='flex'><Image style={{ marginRight: "5px" }} src={BLUEDOT} alt="..." /> <div>In Progress</div></div>)
         },
         {
             key: "4",
-            label: (<div className={styles.lines}><Image height={16} width={16} style={{ marginRight: "5px" }} src={GREENDOT} alt="..." /> <div>Complete</div></div>)
+            label: (<div className='flex'><Image height={16} width={16} style={{ marginRight: "5px" }} src={GREENDOT} alt="..." /> <div>Complete</div></div>)
         },
     ];
 
@@ -214,7 +210,7 @@ export default function ProjectDetail() {
                     <Divider className={styles.divider} type='vertical' />
                 </Flex>
 
-                <div style={{ width: "200px" }} className={`${styles.lines} mr-2`}><Progress percent={50} showInfo={false} />6/12</div>
+                <div style={{ width: "200px" }} className={`flex mr-2`}><Progress percent={50} showInfo={false} />6/12</div>
             </Flex>
             <Layout style={{ height: '(100vh -120px)' }}>
                 <Row className={styles.mainRow}>
@@ -233,9 +229,9 @@ export default function ProjectDetail() {
                         <Row className={styles.cardStyle}>
                             <Row style={{ width: "100%", backgroundColor: "#FFFFFF" }} >
                                 <Row className={styles.cardTitleStyle}> Final Structure Chart at Closing – Please update the structure chart, attached, with final ownership percentages </Row>
-                                <Row className={styles.cardSDetailStyle} justify={'space-between'} style={{ width: "100%" }}><Col>Task Load</Col><Col className={styles.lines}><Image src={RATING} alt='...' /></Col> </Row>
-                                <Row className={styles.cardSDetailStyle} justify={'space-between'} style={{ width: "100%" }}><Col>Date</Col><Col className={styles.lines} ><Image className='mr-2' src={CALENDAR} alt='...' /> <div>08/02/2023</div></Col> </Row>
-                                <Row className={styles.cardSDetailStyle} justify={'space-between'} style={{ width: "100%" }}><Col>File</Col><Col className={styles.lines}><Image className='underline mr-2' src={FILEUPLOAD} alt='...' /> <div>Upload File</div></Col> </Row>
+                                <Row className={styles.cardSDetailStyle} justify={'space-between'} style={{ width: "100%" }}><Col>Task Load</Col><Col className='flex'><Image src={RATING} alt='...' /></Col> </Row>
+                                <Row className={styles.cardSDetailStyle} justify={'space-between'} style={{ width: "100%" }}><Col>Date</Col><Col className='flex' ><Image className='mr-2' src={CALENDAR} alt='...' /> <div>08/02/2023</div></Col> </Row>
+                                <Row className={styles.cardSDetailStyle} justify={'space-between'} style={{ width: "100%" }}><Col>File</Col><Col className='flex'><Image className='underline mr-2' src={FILEUPLOAD} alt='...' /> <div>Upload File</div></Col> </Row>
                                 <Row className={styles.cardSDetailStyle} >
                                     <Avatar.Group>
                                         <Avatar src="https://xsgames.co/randomusers/avatar.php?g=pixel&key=1" />
@@ -260,8 +256,8 @@ export default function ProjectDetail() {
                             <Row style={{ width: "100%", backgroundColor: "#FFFFFF" }} >
                                 <Row className={styles.cardTitleStyle}> Final Structure Chart at Closing – Please update the structure chart, attached, with final ownership percentages </Row>
                                 <Row className={styles.cardSDetailStyle} justify={'space-between'} style={{ width: "100%" }}><Col >Task Load</Col><Col><Image src={RATING} alt='...' /></Col> </Row>
-                                <Row className={styles.cardSDetailStyle} justify={'space-between'} style={{ width: "100%" }}><Col>Date</Col><Col className={styles.lines} ><Image className='underline mr-2' src={CALENDAR} alt='...' /> <div >08/02/2023</div></Col> </Row>
-                                <Row className={styles.cardSDetailStyle} justify={'space-between'} style={{ width: "100%" }}><Col>File</Col><Col className={styles.lines}><Image className='underline mr-2' src={FILEUPLOAD} alt='...' /> <div >Upload File</div></Col> </Row>
+                                <Row className={styles.cardSDetailStyle} justify={'space-between'} style={{ width: "100%" }}><Col>Date</Col><Col className='flex'  ><Image className='underline mr-2' src={CALENDAR} alt='...' /> <div >08/02/2023</div></Col> </Row>
+                                <Row className={styles.cardSDetailStyle} justify={'space-between'} style={{ width: "100%" }}><Col>File</Col><Col className='flex'><Image className='underline mr-2' src={FILEUPLOAD} alt='...' /> <div >Upload File</div></Col> </Row>
                                 <Row className={styles.cardSDetailStyle} style={{ width: "100%" }}>
                                     <Avatar.Group>
                                         <Avatar src="https://xsgames.co/randomusers/avatar.php?g=pixel&key=1" />
@@ -296,9 +292,9 @@ export default function ProjectDetail() {
                                                             </a>
                                                         </Flex>
                                                         <div className='font-medium text-base'>Shareholder Agreements</div>
-                                                        <div className={styles.lines}><Avatar size={"small"} style={{ backgroundColor: '#f56a00' }}>K </Avatar>
+                                                        <div className='flex'><Avatar size={"small"} style={{ backgroundColor: '#f56a00' }}>K </Avatar>
                                                             <div className='mr-2' style={{ borderRight: "1px solid #BDBDBD", padding: "3px" }}></div>
-                                                            <Col className={styles.lines} ><Image className='mr-2' src={CALENDAR} alt='...' /> <div className=' text-gray-400' > 08/02/2023</div> </Col></div>
+                                                            <Col className='flex' ><Image className='mr-2' src={CALENDAR} alt='...' /> <div className=' text-gray-400' > 08/02/2023</div> </Col></div>
                                                     </>
                                                 ),
                                             },
@@ -320,8 +316,8 @@ export default function ProjectDetail() {
                                                             </a>
                                                         </Flex>
                                                         <div className='font-medium text-base'>Subscription Agreements</div>
-                                                        <div className={styles.lines}>
-                                                            <Col className={styles.lines} ><Image className='mr-2' src={CALENDAR} alt='...' /> <div className='  text-gray-400' > 08/02/2023</div> </Col> </div>
+                                                        <div className='flex'>
+                                                            <Col className='flex' ><Image className='mr-2' src={CALENDAR} alt='...' /> <div className='  text-gray-400' > 08/02/2023</div> </Col> </div>
                                                     </>
                                                 ),
                                             },
@@ -351,8 +347,8 @@ export default function ProjectDetail() {
                                                             </a>
                                                         </Flex>
                                                         <div className='font-medium text-base'>Credit Agreements</div>
-                                                        <div className={styles.lines}>
-                                                            <Col className={styles.lines} >
+                                                        <div className='flex'>
+                                                            <Col className='flex' >
                                                                 <Image className='mr-2' src={CALENDAR} alt='...' />
                                                                 <div className='text-gray-400 underline' >Select Date</div>
                                                             </Col>
@@ -375,8 +371,8 @@ export default function ProjectDetail() {
                             <Row style={{ width: "100%", backgroundColor: "#FFFFFF" }} >
                                 <Row className={styles.cardTitleStyle}> FATCA/CRS Requirements: Please provide for all non coinvestors a complete and valid OECD Self-Certification Form, IRS Form W-9, W-8BEN, W-8BEN-E, W-8ECI, W-8EXP or W-8IMY, as applicable, and a certificate of information or equivalent</Row>
                                 <Row className={styles.cardSDetailStyle} justify={'space-between'} style={{ width: "100%" }}><Col>Task Load</Col><Col><Image src={RATING} alt='...' /></Col> </Row>
-                                <Row className={styles.cardSDetailStyle} justify={'space-between'} style={{ width: "100%" }}><Col>Date</Col><Col className={styles.lines} ><Image className='underline mr-2' src={CALENDAR} alt='...' /> <div >08/02/2023</div></Col> </Row>
-                                <Row className={styles.cardSDetailStyle} justify={'space-between'} style={{ width: "100%" }}><Col>File</Col><Col className={styles.lines}><Image className='underline mr-2' src={FILEUPLOAD} alt='...' /> <div >Upload File</div></Col> </Row>
+                                <Row className={styles.cardSDetailStyle} justify={'space-between'} style={{ width: "100%" }}><Col>Date</Col><Col className='flex'><Image className='underline mr-2' src={CALENDAR} alt='...' /> <div >08/02/2023</div></Col> </Row>
+                                <Row className={styles.cardSDetailStyle} justify={'space-between'} style={{ width: "100%" }}><Col>File</Col><Col className='flex'><Image className='underline mr-2' src={FILEUPLOAD} alt='...' /> <div >Upload File</div></Col> </Row>
 
                                 <Row className={styles.cardSDetailStyle} >
                                     <Avatar.Group>
@@ -413,13 +409,13 @@ export default function ProjectDetail() {
                                 </Row>
                                 <Row className='my-2' >
                                     <Col className='flex mr-2'><Image className='mr-2' src={PROFILEUSERS} alt='...' /> 6 People Involved</Col>
-                                    <Col className={styles.lines}> <Image className='mr-2' src={CLOCK} alt='...' />Due at Aug 23,2023</Col>
+                                    <Col className='flex'> <Image className='mr-2' src={CLOCK} alt='...' />Due at Aug 23,2023</Col>
                                 </Row>
                             </Flex>
                         </Row>
                         <Row className='mb-8'>
                             <Flex className={styles.cardStyle340px} vertical>
-                                <Row className={`${styles.lines} mb-6`} justify={'space-between'}>
+                                <Row className="flex mb-6" justify={'space-between'}>
                                     <Title className={styles.cardTitleStyle2} >Documents (7)</Title>
                                     <Flex>
                                         <Button className={styles.internalButton}>Internal <Image className='ml-2' src={ARROWDOWN} alt='...' height={20} width={20} />
@@ -576,7 +572,7 @@ export default function ProjectDetail() {
                         </Row>
                         <Row>
                             <Flex className={styles.cardStyle340px} vertical>
-                                <Row className={`${styles.lines} mb-6`} justify={'space-between'}>
+                                <Row className="flex mb-6" justify={'space-between'}>
                                     <Title className={styles.cardTitleStyle2} >Commets (9)</Title>
                                     <Button className={styles.internalButton} >Internal <Image className='ml-2' src={ARROWDOWN} alt='...' height={20} width={20} /></Button>
                                 </Row>
