@@ -508,7 +508,6 @@ export default function FilesFolderList() {
                                 Add
                             </Button>
                         </div>
-
                     }
                     className={styles.customDrawerHeader}
                     placement="right"

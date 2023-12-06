@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import styles from "./styles.module.css";
-import { MenuOutlined, InboxOutlined } from '@ant-design/icons';
+import { MenuOutlined } from '@ant-design/icons';
 import type { ColumnsType } from 'antd/es/table';
 import type { MenuProps } from 'antd';
 import {
@@ -13,18 +13,12 @@ import {
     Layout,
     Row,
     Col,
-    Drawer,
-    Input,
-    Select,
-    Upload,
     Tag
 } from "antd";
 import {
     SEARCH,
     NAVBARS,
-    CLOSE,
     THREEDOTS,
-    FOLDERBLUE,
     PURPLEDOT,
     GREENDOT,
     REDDOT,
@@ -32,24 +26,12 @@ import {
     BLUEDOT
 } from "@/constants/images";
 import intakeData from './formData.json'
-import FloatLabel from "../../ReusableComponents/FloatLabel";
-import FloatLabelArrow from "../../ReusableComponents/FloatLabelArrow";
 import CustomDropDown from "@/components/ReusableComponents/DropDown";
 import { CustomTable } from "@/components/ReusableComponents/CustomTable";
 import { useRouter } from "next/router";
 
 const { Header } = Layout;
-const { Option } = Select;
-const { Dragger } = Upload;
 const { Title } = Typography;
-
-const props = {
-    name: 'file',
-    action: 'https://run.mocky.io/v3/435e224c-44fb-4773-9faf-380c5e6a2188',
-    onDrop({ e }: any) {
-        console.log('Dropped files', e.dataTransfer.files);
-    },
-};
 
 export default function FormBuilderList() {
     const [items, setItems] = useState<MenuProps['items']>([]);

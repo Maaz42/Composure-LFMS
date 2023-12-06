@@ -1,5 +1,4 @@
 import * as React from 'react'
-import Nav from '../ReusableComponents/Nav'
 
 export default function DummyPage({ title }: any) {
     return (
