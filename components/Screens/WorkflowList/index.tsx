@@ -336,7 +336,7 @@ export default function WorkflowList() {
                                 placement="bottom"
                                 arrow={{ pointAtCenter: true }}
                             >
-                                <Title className={styles.paginatindropDownField}>
+                                <Title className={styles.paginationdropDownField}>
                                     Rows Per Page:  {pageSize} <Image src={ARROW} height={18} alt="^" />
                                 </Title>
                             </Dropdown>
@@ -355,7 +355,7 @@ export default function WorkflowList() {
             </Layout>
             <Modal title="Form Template" open={isModalOpen} onCancel={handleCancel} footer={null}>
                 <Divider />
-                <div className={styles.lines}
+                <div className='d-flex'
                     style={{
                         justifyContent: "space-between",
                         height: "40px",

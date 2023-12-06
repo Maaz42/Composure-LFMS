@@ -552,7 +552,7 @@ export default function TicketList() {
                                 placement="bottom"
                                 arrow={{ pointAtCenter: true }}
                             >
-                                <Title className={styles.paginatindropDownField}>
+                                <Title className={styles.paginationdropDownField}>
                                     Rows Per Page:  {pageSize} <Image src={ARROW} height={18} alt="^" />
                                 </Title>
                             </Dropdown>

@@ -23,15 +23,6 @@
     left: 6px;
 }
 
-.dropDownField {
-    padding: 0px 25px 0 25px;
-    font-size: 12px !important;
-    color: #9E9E9E !important;
-    display: flex;
-    cursor: pointer;
-    margin-bottom: 0 !important;
-}
-
 .commentTS {
     font-size: 11px !important;
     font-weight: 600 !important;
@@ -61,10 +52,6 @@
     max-height: calc(100vh - 320px);
 }
 
-.w10 {
-    width: 10%;
-}
-
 @media (max-width: 800px) {
     .collapseTo {
         display: none;
@@ -92,11 +79,6 @@
         width: 100%;
         left: 0px;
     }
-
-    .dropDownField {
-        padding: 0px 15px 0 15px;
-    }
-
 }
 
 @media (max-width: 360px) {
