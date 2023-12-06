@@ -1,11 +1,11 @@
 import React, { useState } from 'react'
 import styles from './styles.module.css'
 import Image from 'next/image';
-import { Avatar, Layout, Typography, Flex, Button, Dropdown, Divider, Row, Col, Upload, Timeline, Tooltip, Progress, Drawer, Select } from 'antd';
+import { Avatar, Layout, Typography, Flex, Button, Dropdown, Row, Col, Upload, Timeline, Tooltip, Input, Drawer, Select } from 'antd';
 import { MenuOutlined, InboxOutlined, UserOutlined } from '@ant-design/icons';
 import { ARROWDOWN, BLUEDOT, CALENDAR, CHECKCIRCLE, CLOCK, CLOSE, EDIT, FILEUPLOAD, FOLDER, GREENDOT, INFO, MORE, PROFILEUSERS, RATING, REDDOT, SEND, TICKCOMPLETE, YELLOWDOT } from '@/constants/images'
-import CustomDropDown from '@/components/ReusableComponents/DropDown';
 import FloatLabelArrow from '@/components/ReusableComponents/FloatLabelArrow';
+import FloatLabel from '@/components/ReusableComponents/FloatLabel';
 const { Header } = Layout;
 const { Title } = Typography;
 const { Dragger } = Upload;
@@ -19,10 +19,11 @@ const props = {
     },
 };
 
-export default function ProjectDetail() {
+export default function WorkflowForm() {
     const [items, setItems] = useState<any>([])
     const [collaboratorDrawer, setCollaboratorDrawer] = useState(false)
     const [selectCollaboratorValue, setSelectCollaboratorValue] = useState<any>();
+    const [title, setTitle] = useState("Hold Harmless (Indemnity) Agreement");
 
     const onClose = () => {
         setCollaboratorDrawer(false);
@@ -180,14 +181,14 @@ export default function ProjectDetail() {
             <Header className={styles.header}>
                 <Flex gap='middle' align={'start'} vertical className='mx-3'  >
                     <Flex className={styles.topBoxStyle}>
-                        <Title level={4}>Project Details</Title>
+                        <Title level={4}> Add Workflow </Title>
                         <Flex justify={'flex-end'} align={'center'}>
                             <MenuOutlined className={styles.collapseMenu} style={{ marginRight: "5px" }} />
-                            <Button className={styles.collapseTo} style={{ backgroundColor: "#7E81E8", color: "#fff" }}>Add Task</Button>
+                            <Button className={styles.collapseTo} style={{ backgroundColor: "#C8473E", color: "#fff" }}>Delelte</Button>
                             <Button onClick={(e) => {
                                 e.preventDefault();
                                 showCollaboratorDrawer()
-                            }} className={styles.collapseTo} style={{ backgroundColor: "#333793", color: "#fff" }}>Add Collaborators</Button>
+                            }} className={styles.collapseTo} style={{ backgroundColor: "#333793", color: "#fff" }}>Add</Button>
                             <Dropdown menu={{ items }} trigger={['click']}>
                                 <a onClick={(e) => {
                                     e.preventDefault()
@@ -200,56 +201,19 @@ export default function ProjectDetail() {
                     </Flex>
                 </Flex>
             </Header>
-            <Flex className={styles.boxStyle} align={"center"} justify="space-between" >
-                <MenuOutlined className={styles.collapseMenu} style={{ marginRight: "5px" }} />
-                <Flex className={styles.collapseTo} align={"center"} justify="space-between">
-                    <CustomDropDown className={styles.collapseTo} title={"Status"} dropDownItems={statusDropDown} />
-                    <Divider className={styles.divider} type='vertical' />
-                    <CustomDropDown className={styles.collapseTo} title={"Legal"} dropDownItems={legalDropDown} />
-                    <Divider className={styles.divider} type='vertical' />
-                </Flex>
-
-                <div style={{ width: "200px" }} className={`flex mr-2`}><Progress percent={50} showInfo={false} />6/12</div>
-            </Flex>
             <Layout style={{ height: '(100vh -120px)' }}>
                 <Row className={styles.mainRow}>
                     <Col xxl={16} lg={16} md={24} sm={24} xs={24} className={`${styles.colStyle}`}>
-                        <Row justify='space-between' style={{ marginBottom: "15px" }}>
-                            <Title level={5}>Tasks(4)</Title>
-                            <a onClick={(e) => {
-                                e.preventDefault();
-                                setItems(allDropDown);
-                            }} >
-                                <Dropdown menu={{ items }} placement='bottom' trigger={['click']} arrow={{ pointAtCenter: true }}>
-                                    <Button style={{ borderRadius: "65px", display: "flex" }}>All <Image className='mt-1' src={ARROWDOWN} width={15} height={15} alt='...' /></Button>
-                                </Dropdown>
-                            </a>
-                        </Row>
-                        <Row className={styles.cardStyle}>
-                            <Row style={{ width: "100%", backgroundColor: "#FFFFFF" }} >
-                                <Row className={styles.cardTitleStyle}> Final Structure Chart at Closing – Please update the structure chart, attached, with final ownership percentages </Row>
-                                <Row className={styles.cardSDetailStyle} justify={'space-between'} style={{ width: "100%" }}><Col>Task Load</Col><Col className='flex'><Image src={RATING} alt='...' /></Col> </Row>
-                                <Row className={styles.cardSDetailStyle} justify={'space-between'} style={{ width: "100%" }}><Col>Date</Col><Col className='flex' ><Image className='mr-2' src={CALENDAR} alt='...' /> <div>08/02/2023</div></Col> </Row>
-                                <Row className={styles.cardSDetailStyle} justify={'space-between'} style={{ width: "100%" }}><Col>File</Col><Col className='flex'><Image className='underline mr-2' src={FILEUPLOAD} alt='...' /> <div>Upload File</div></Col> </Row>
-                                <Row className={styles.cardSDetailStyle} >
-                                    <Avatar.Group>
-                                        <Avatar src="https://xsgames.co/randomusers/avatar.php?g=pixel&key=1" />
-                                        <a href="https://ant.design">
-                                            <Avatar style={{ backgroundColor: '#f56a00' }}>K</Avatar>
-                                        </a>
-                                        <Tooltip title="Ant User" placement="top">
-                                            <Avatar style={{ backgroundColor: '#87d068' }} icon={<UserOutlined />} />
-                                        </Tooltip>
-                                        <Avatar style={{ border: "1px dashed gray", backgroundColor: "#ffff", display: 'flex', alignItems: 'center' }} >
-                                            <Image src={EDIT} height={25} alt="..." />
-                                        </Avatar>
-                                    </Avatar.Group></Row>
+
+                        <Row className={`${styles.cardStyle} flex`} align={'middle'}>
+                            <Row className='flex w-full custom'>
+                                <div className='w-full m-0'>
+                                    <FloatLabel label="Title" value={title}>
+                                        <Input value={title} onChange={e => setTitle(e.target.value)} />
+                                    </FloatLabel>
+                                </div>
                             </Row>
-                            <Row style={{ width: "100%", marginTop: "20px", backgroundColor: "#FAFAFA" }} justify={'space-between'} >
-                                <Button className={styles.taskCompleted}>
-                                    <Image src={TICKCOMPLETE} alt="..." style={{ marginRight: "5px", marginTop: "3px" }} />Task Completed</Button>
-                                <Image src={MORE} alt="..." />
-                            </Row>
+
                         </Row>
                         <Row className={styles.cardStyle}>
                             <Row style={{ width: "100%", backgroundColor: "#FFFFFF" }} >
@@ -763,7 +727,6 @@ export default function ProjectDetail() {
                     key="placement"
                     open={collaboratorDrawer}
                 >
-                    <div className="mb-5">
                     <FloatLabelArrow label="Collaborators" value={selectCollaboratorValue}>
                         <Select
                             showSearch
@@ -778,7 +741,6 @@ export default function ProjectDetail() {
                             <Option value="Hassan">Hassan</Option>
                         </Select>
                     </FloatLabelArrow>
-                    </div>
                 </Drawer>
             </Layout >
         </>

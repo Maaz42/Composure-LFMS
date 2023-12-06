@@ -586,69 +586,81 @@ export default function TicketList() {
                     key="ticketDrawer"
                 >
                     <div className="example"  >
-                        <FloatLabel label="Title" value={ticketTitle}>
-                            <Input style={{ height: "48px" }} value={ticketTitle} onChange={e => setTicketTitle(e.target.value)} />
-                        </FloatLabel>
-                        <FloatLabelArrow label="Type" value={selectTypeValue}>
-                            <Select
-                                showSearch
-                                style={{ width: "100%" }}
-                                onChange={value => setSelectTypeValue(value)}
-                                value={selectTypeValue}
-                                suffixIcon={null}
-                            >
-                                <Option value="Request for Info">Request for Info</Option>
-                                <Option value="Advice / Opinion">Advice / Opinion</Option>
-                                <Option value="Doc. Management">Doc. Management</Option>
-                                <Option value="Action">Action</Option>
-                            </Select>
-                        </FloatLabelArrow>
-                        <FloatLabel label="Requested By" value={requestedBy}>
-                            <Input style={{ height: "48px" }} value={requestedBy} onChange={e => setRequestedBy(e.target.value)} />
-                        </FloatLabel>
-                        <FloatLabelArrow label="Status" value={selectStatusValue}>
-                            <Select
-                                showSearch
-                                style={{ width: "100%" }}
-                                onChange={value => setSelectStatusValue(value)}
-                                value={selectStatusValue}
-                                suffixIcon={null}
-                            >
-                                <Option value="In Review">In Review</Option>
-                                <Option value="Complete">Complete</Option>
-                                <Option value="On Hold">On Hold</Option>
-                                <Option value="In Progress">In Progress</Option>
-                                <Option value="In Signature">In Signature</Option>
-                            </Select>
-                        </FloatLabelArrow>
-                        <FloatLabelArrow label="Proiority" value={selectProiorityValue}    >
-                            <Select
-                                showSearch
-                                style={{ width: "100%" }}
-                                onChange={value => setSelectProiorityValue(value)}
-                                value={selectProiorityValue}
-                                suffixIcon={null}
-                            >
-                                <Option value="Critical">Critical</Option>
-                                <Option value="High">High</Option>
-                                <Option value="Medium">Medium</Option>
-                                <Option value="Low">Low</Option>
-                            </Select>
-                        </FloatLabelArrow>
-                        <FloatLabelArrow label="Assignee" value={selectAssigneeValue}>
-                            <Select
-                                showSearch
-                                style={{ width: "100%" }}
-                                onChange={value => setSelectAssigneeValue(value)}
-                                value={selectAssigneeValue}
-                                suffixIcon={null}
-                                mode="multiple"
-                            >
-                                <Option value="Ali">Ali</Option>
-                                <Option value="Haider">Haider</Option>
-                                <Option value="Hassan">Hassan</Option>
-                            </Select>
-                        </FloatLabelArrow>
+                        <div className="mb-5">
+                            <FloatLabel label="Title" value={ticketTitle}>
+                                <Input style={{ height: "48px" }} value={ticketTitle} onChange={e => setTicketTitle(e.target.value)} />
+                            </FloatLabel>
+                        </div>
+                        <div className="mb-5">
+                            <FloatLabelArrow label="Type" value={selectTypeValue}>
+                                <Select
+                                    showSearch
+                                    style={{ width: "100%" }}
+                                    onChange={value => setSelectTypeValue(value)}
+                                    value={selectTypeValue}
+                                    suffixIcon={null}
+                                >
+                                    <Option value="Request for Info">Request for Info</Option>
+                                    <Option value="Advice / Opinion">Advice / Opinion</Option>
+                                    <Option value="Doc. Management">Doc. Management</Option>
+                                    <Option value="Action">Action</Option>
+                                </Select>
+                            </FloatLabelArrow>
+                        </div>
+                        <div className="mb-5">
+                            <FloatLabel label="Requested By" value={requestedBy}>
+                                <Input style={{ height: "48px" }} value={requestedBy} onChange={e => setRequestedBy(e.target.value)} />
+                            </FloatLabel>
+                        </div>
+                        <div className="mb-5">
+                            <FloatLabelArrow label="Status" value={selectStatusValue}>
+                                <Select
+                                    showSearch
+                                    style={{ width: "100%" }}
+                                    onChange={value => setSelectStatusValue(value)}
+                                    value={selectStatusValue}
+                                    suffixIcon={null}
+                                >
+                                    <Option value="In Review">In Review</Option>
+                                    <Option value="Complete">Complete</Option>
+                                    <Option value="On Hold">On Hold</Option>
+                                    <Option value="In Progress">In Progress</Option>
+                                    <Option value="In Signature">In Signature</Option>
+                                </Select>
+                            </FloatLabelArrow>
+                        </div>
+                        <div className="mb-5">
+                            <FloatLabelArrow label="Proiority" value={selectProiorityValue}    >
+                                <Select
+                                    showSearch
+                                    style={{ width: "100%" }}
+                                    onChange={value => setSelectProiorityValue(value)}
+                                    value={selectProiorityValue}
+                                    suffixIcon={null}
+                                >
+                                    <Option value="Critical">Critical</Option>
+                                    <Option value="High">High</Option>
+                                    <Option value="Medium">Medium</Option>
+                                    <Option value="Low">Low</Option>
+                                </Select>
+                            </FloatLabelArrow>
+                        </div>
+                        <div className="mb-5">
+                            <FloatLabelArrow label="Assignee" value={selectAssigneeValue}>
+                                <Select
+                                    showSearch
+                                    style={{ width: "100%" }}
+                                    onChange={value => setSelectAssigneeValue(value)}
+                                    value={selectAssigneeValue}
+                                    suffixIcon={null}
+                                    mode="multiple"
+                                >
+                                    <Option value="Ali">Ali</Option>
+                                    <Option value="Haider">Haider</Option>
+                                    <Option value="Hassan">Hassan</Option>
+                                </Select>
+                            </FloatLabelArrow>
+                        </div>
                     </div>
                 </Drawer>
                 <Drawer
@@ -668,20 +680,22 @@ export default function TicketList() {
                     key="placement"
                     open={assigneeDrawer}
                 >
-                    <FloatLabelArrow label="Assignee" value={selectAssigneeValue}>
-                        <Select
-                            showSearch
-                            style={{ width: "100%" }}
-                            onChange={value => setSelectAssigneeValue(value)}
-                            value={selectAssigneeValue}
-                            suffixIcon={null}
-                            mode="multiple"
-                        >
-                            <Option value="Ali">Ali</Option>
-                            <Option value="Haider">Haider</Option>
-                            <Option value="Hassan">Hassan</Option>
-                        </Select>
-                    </FloatLabelArrow>
+                    <div className="mb-5">
+                        <FloatLabelArrow label="Assignee" value={selectAssigneeValue}>
+                            <Select
+                                showSearch
+                                style={{ width: "100%" }}
+                                onChange={value => setSelectAssigneeValue(value)}
+                                value={selectAssigneeValue}
+                                suffixIcon={null}
+                                mode="multiple"
+                            >
+                                <Option value="Ali">Ali</Option>
+                                <Option value="Haider">Haider</Option>
+                                <Option value="Hassan">Hassan</Option>
+                            </Select>
+                        </FloatLabelArrow>
+                    </div>
                 </Drawer>
             </Layout>
         </>
