@@ -19,30 +19,6 @@ const props = {
     },
 };
 
-const folderNameStyle = {
-    fontSize: '11px',
-    fontWeight: '600',
-    color: '#000000',
-    display: 'flex',
-    marginTop: '5px',
-    alignItems: 'center'
-};
-
-const cardTitleStyle2 = {
-    fontSize: '20px',
-    fontWeight: '600',
-    color: '#000000',
-    display: 'flex',
-};
-const comment2Style = {
-    fontSize: '11px',
-    fontWeight: '600',
-    color: '#000000',
-    display: 'flex',
-    marginTop: '-5px',
-    marginLeft: '1px',
-    width: '85%'
-};
 export default function ProjectDetail() {
     const [items, setItems] = useState<any>([])
     const [collaboratorDrawer, setCollaboratorDrawer] = useState(false)
@@ -66,19 +42,19 @@ export default function ProjectDetail() {
     const statusDropDown = [
         {
             key: "1",
-            label: (<div className={styles.lines}><Image style={{ marginRight: "5px" }} src={REDDOT} alt="..." /> <div>New</div></div>)
+            label: (<div className='flex'><Image style={{ marginRight: "5px" }} src={REDDOT} alt="..." /> <div>New</div></div>)
         },
         {
             key: "2",
-            label: (<div className={styles.lines}><Image style={{ marginRight: "5px" }} src={YELLOWDOT} alt="..." /> <div>In Review</div></div>)
+            label: (<div className='flex'><Image style={{ marginRight: "5px" }} src={YELLOWDOT} alt="..." /> <div>In Review</div></div>)
         },
         {
             key: "3",
-            label: (<div className={styles.lines}><Image style={{ marginRight: "5px" }} src={BLUEDOT} alt="..." /> <div>In Progress</div></div>)
+            label: (<div className='flex'><Image style={{ marginRight: "5px" }} src={BLUEDOT} alt="..." /> <div>In Progress</div></div>)
         },
         {
             key: "4",
-            label: (<div className={styles.lines}><Image height={16} width={16} style={{ marginRight: "5px" }} src={GREENDOT} alt="..." /> <div>Complete</div></div>)
+            label: (<div className='flex'><Image height={16} width={16} style={{ marginRight: "5px" }} src={GREENDOT} alt="..." /> <div>Complete</div></div>)
         },
     ];
 
@@ -94,6 +70,20 @@ export default function ProjectDetail() {
         {
             key: '3',
             label: "Legal 3"
+        }
+    ];
+    const commentsDropDown = [
+        {
+            key: '1',
+            label: "Comment 1"
+        },
+        {
+            key: '2',
+            label: "Comment 1"
+        },
+        {
+            key: '3',
+            label: "Comment 1"
         }
     ];
     const docDropDown = [
@@ -211,23 +201,20 @@ export default function ProjectDetail() {
                     </Flex>
                 </Flex>
             </Header>
-            <Flex className={styles.boxStyle} >
+            <Flex className={styles.boxStyle} align={"center"} justify="space-between" >
+                <MenuOutlined className={styles.collapseMenu} style={{ marginRight: "5px" }} />
+                <Flex className={styles.collapseTo} align={"center"} justify="space-between">
+                    <CustomDropDown className={styles.collapseTo} title={"Status"} dropDownItems={statusDropDown} />
+                    <Divider className={styles.divider} type='vertical' />
+                    <CustomDropDown className={styles.collapseTo} title={"Legal"} dropDownItems={legalDropDown} />
+                    <Divider className={styles.divider} type='vertical' />
+                </Flex>
 
-                <div style={{ alignItems: "center" }} className={styles.lines}>
-                    <CustomDropDown title={"Status"} dropDownItems={statusDropDown} />
-                    <Divider className={styles.divider} type='vertical' />
-                    <CustomDropDown title={"Legal"} dropDownItems={legalDropDown} />
-                    <Divider className={styles.divider} type='vertical' />
-                </div>
-                <div style={{ width: "250px" }} className={`${styles.lines} mr-4`}><Progress percent={50} showInfo={false} />6/12</div>
+                <div style={{ width: "200px" }} className={`flex mr-2`}><Progress percent={50} showInfo={false} />6/12</div>
             </Flex>
-
-
-
-
             <Layout style={{ height: '(100vh -120px)' }}>
-                <Row style={{ padding: "20px" }}>
-                    <Col xxl={16} lg={16} md={24} sm={24} xs={24} style={{ width: "100%", padding: "24px", backgroundColor: "#FAFAFA" }} className={styles.colStyle}>
+                <Row className={styles.mainRow}>
+                    <Col xxl={16} lg={16} md={24} sm={24} xs={24} className={`${styles.colStyle}`}>
                         <Row justify='space-between' style={{ marginBottom: "15px" }}>
                             <Title level={5}>Tasks(4)</Title>
                             <a onClick={(e) => {
@@ -242,9 +229,9 @@ export default function ProjectDetail() {
                         <Row className={styles.cardStyle}>
                             <Row style={{ width: "100%", backgroundColor: "#FFFFFF" }} >
                                 <Row className={styles.cardTitleStyle}> Final Structure Chart at Closing – Please update the structure chart, attached, with final ownership percentages </Row>
-                                <Row className={styles.cardSDetailStyle} justify={'space-between'} style={{ width: "100%" }}><Col>Task Load</Col><Col><Image src={RATING} alt='...' /></Col> </Row>
-                                <Row className={styles.cardSDetailStyle} justify={'space-between'} style={{ width: "100%" }}><Col>Date</Col><Col className={styles.lines} ><Image src={CALENDAR} alt='...' /> <div className='underline ml-2'>08/02/2023</div></Col> </Row>
-                                <Row className={styles.cardSDetailStyle} justify={'space-between'} style={{ width: "100%" }}><Col>File</Col><Col className={styles.lines}><Image src={FILEUPLOAD} alt='...' /> <div className='underline ml-2'>Upload File</div></Col> </Row>
+                                <Row className={styles.cardSDetailStyle} justify={'space-between'} style={{ width: "100%" }}><Col>Task Load</Col><Col className='flex'><Image src={RATING} alt='...' /></Col> </Row>
+                                <Row className={styles.cardSDetailStyle} justify={'space-between'} style={{ width: "100%" }}><Col>Date</Col><Col className='flex' ><Image className='mr-2' src={CALENDAR} alt='...' /> <div>08/02/2023</div></Col> </Row>
+                                <Row className={styles.cardSDetailStyle} justify={'space-between'} style={{ width: "100%" }}><Col>File</Col><Col className='flex'><Image className='underline mr-2' src={FILEUPLOAD} alt='...' /> <div>Upload File</div></Col> </Row>
                                 <Row className={styles.cardSDetailStyle} >
                                     <Avatar.Group>
                                         <Avatar src="https://xsgames.co/randomusers/avatar.php?g=pixel&key=1" />
@@ -268,9 +255,9 @@ export default function ProjectDetail() {
                         <Row className={styles.cardStyle}>
                             <Row style={{ width: "100%", backgroundColor: "#FFFFFF" }} >
                                 <Row className={styles.cardTitleStyle}> Final Structure Chart at Closing – Please update the structure chart, attached, with final ownership percentages </Row>
-                                <Row className={styles.cardSDetailStyle} justify={'space-between'} style={{ width: "100%" }}><Col>Task Load</Col><Col><Image src={RATING} alt='...' /></Col> </Row>
-                                <Row className={styles.cardSDetailStyle} justify={'space-between'} style={{ width: "100%" }}><Col>Date</Col><Col className={styles.lines} ><Image src={CALENDAR} alt='...' /> <div className='underline ml-2'>08/02/2023</div></Col> </Row>
-                                <Row className={styles.cardSDetailStyle} justify={'space-between'} style={{ width: "100%" }}><Col>File</Col><Col className={styles.lines}><Image src={FILEUPLOAD} alt='...' /> <div className='underline ml-2'>Upload File</div></Col> </Row>
+                                <Row className={styles.cardSDetailStyle} justify={'space-between'} style={{ width: "100%" }}><Col >Task Load</Col><Col><Image src={RATING} alt='...' /></Col> </Row>
+                                <Row className={styles.cardSDetailStyle} justify={'space-between'} style={{ width: "100%" }}><Col>Date</Col><Col className='flex'  ><Image className='underline mr-2' src={CALENDAR} alt='...' /> <div >08/02/2023</div></Col> </Row>
+                                <Row className={styles.cardSDetailStyle} justify={'space-between'} style={{ width: "100%" }}><Col>File</Col><Col className='flex'><Image className='underline mr-2' src={FILEUPLOAD} alt='...' /> <div >Upload File</div></Col> </Row>
                                 <Row className={styles.cardSDetailStyle} style={{ width: "100%" }}>
                                     <Avatar.Group>
                                         <Avatar src="https://xsgames.co/randomusers/avatar.php?g=pixel&key=1" />
@@ -305,9 +292,9 @@ export default function ProjectDetail() {
                                                             </a>
                                                         </Flex>
                                                         <div className='font-medium text-base'>Shareholder Agreements</div>
-                                                        <div className={styles.lines}><Avatar size={"small"} style={{ backgroundColor: '#f56a00' }}>K </Avatar>
-                                                            <div style={{ borderRight: "1px solid #BDBDBD", padding: "3px" }}></div>
-                                                            <Col className={styles.lines} ><Image className='ml-2' src={CALENDAR} alt='...' /> <div className='ml-2 text-gray-400' > 08/02/2023</div> </Col> </div>
+                                                        <div className='flex'><Avatar size={"small"} style={{ backgroundColor: '#f56a00' }}>K </Avatar>
+                                                            <div className='mr-2' style={{ borderRight: "1px solid #BDBDBD", padding: "3px" }}></div>
+                                                            <Col className='flex' ><Image className='mr-2' src={CALENDAR} alt='...' /> <div className=' text-gray-400' > 08/02/2023</div> </Col></div>
                                                     </>
                                                 ),
                                             },
@@ -329,8 +316,8 @@ export default function ProjectDetail() {
                                                             </a>
                                                         </Flex>
                                                         <div className='font-medium text-base'>Subscription Agreements</div>
-                                                        <div className={styles.lines}>
-                                                            <Col className={styles.lines} ><Image className='ml-2' src={CALENDAR} alt='...' /> <div className='ml-2 text-gray-400' > 08/02/2023</div> </Col> </div>
+                                                        <div className='flex'>
+                                                            <Col className='flex' ><Image className='mr-2' src={CALENDAR} alt='...' /> <div className='  text-gray-400' > 08/02/2023</div> </Col> </div>
                                                     </>
                                                 ),
                                             },
@@ -360,10 +347,10 @@ export default function ProjectDetail() {
                                                             </a>
                                                         </Flex>
                                                         <div className='font-medium text-base'>Credit Agreements</div>
-                                                        <div className={styles.lines}>
-                                                            <Col className={styles.lines} >
-                                                                <Image className='ml-2' src={CALENDAR} alt='...' />
-                                                                <div className='ml-2 text-gray-400 underline' >Select Date</div>
+                                                        <div className='flex'>
+                                                            <Col className='flex' >
+                                                                <Image className='mr-2' src={CALENDAR} alt='...' />
+                                                                <div className='text-gray-400 underline' >Select Date</div>
                                                             </Col>
                                                         </div>
                                                     </>
@@ -384,8 +371,8 @@ export default function ProjectDetail() {
                             <Row style={{ width: "100%", backgroundColor: "#FFFFFF" }} >
                                 <Row className={styles.cardTitleStyle}> FATCA/CRS Requirements: Please provide for all non coinvestors a complete and valid OECD Self-Certification Form, IRS Form W-9, W-8BEN, W-8BEN-E, W-8ECI, W-8EXP or W-8IMY, as applicable, and a certificate of information or equivalent</Row>
                                 <Row className={styles.cardSDetailStyle} justify={'space-between'} style={{ width: "100%" }}><Col>Task Load</Col><Col><Image src={RATING} alt='...' /></Col> </Row>
-                                <Row className={styles.cardSDetailStyle} justify={'space-between'} style={{ width: "100%" }}><Col>Date</Col><Col className={styles.lines} ><Image src={CALENDAR} alt='...' /> <div className='underline ml-2'>08/02/2023</div></Col> </Row>
-                                <Row className={styles.cardSDetailStyle} justify={'space-between'} style={{ width: "100%" }}><Col>File</Col><Col className={styles.lines}><Image src={FILEUPLOAD} alt='...' /> <div className='underline ml-2'>Upload File</div></Col> </Row>
+                                <Row className={styles.cardSDetailStyle} justify={'space-between'} style={{ width: "100%" }}><Col>Date</Col><Col className='flex'><Image className='underline mr-2' src={CALENDAR} alt='...' /> <div >08/02/2023</div></Col> </Row>
+                                <Row className={styles.cardSDetailStyle} justify={'space-between'} style={{ width: "100%" }}><Col>File</Col><Col className='flex'><Image className='underline mr-2' src={FILEUPLOAD} alt='...' /> <div >Upload File</div></Col> </Row>
 
                                 <Row className={styles.cardSDetailStyle} >
                                     <Avatar.Group>
@@ -408,30 +395,30 @@ export default function ProjectDetail() {
                             </Row>
                         </Row>
                     </Col>
-                    <Col xxl={8} lg={8} md={24} sm={24} xs={24} style={{ paddingRight: "24px" }} className={styles.colStyle}>
+                    <Col xxl={8} lg={8} md={24} sm={24} xs={24} style={{ paddingRight: "24px" }} className={styles.colStyle2}>
                         <Row className='mb-8'>
                             <Flex className={styles.cardStyle450px} vertical>
-                                <Title level={3}>Affiliated Entity Creation</Title>
-                                <Row style={{ color: "#54577A", fontWeight: "500", fontSize: "14px" }}> Created By: Anmol Sahai </Row>
+                                <Title className={styles.cardTitleStyle2}>Affiliated Entity Creation</Title>
+                                <Row style={{ color: "#54577A", fontWeight: "500", fontSize: "12px" }}> Created By: Anmol Sahai </Row>
                                 <Row className='my-2'>
                                     <Col><Avatar size={'large'} src="https://xsgames.co/randomusers/avatar.php?g=pixel&key=13" /></Col>
                                     <Col><Avatar size={'large'} src="https://xsgames.co/randomusers/avatar.php?g=pixel&key=12" /></Col>
                                     <Col><Avatar size={'large'} src="https://xsgames.co/randomusers/avatar.php?g=pixel&key=11" /></Col>
-                                    <Col><Avatar size={'large'} src="https://xsgames.co/randomusers/avatar.php?g=pixel&key=1" /></Col>
+                                    <Col><Avatar size={'large'} src="https://xsgames.co/randomusers/avatar.php?g=pixel&key=17" /></Col>
                                     <Avatar size={'large'} style={{ backgroundColor: '#f56a00' }}>+</Avatar>
                                 </Row>
                                 <Row className='my-2' >
-                                    <Col className={styles.lines}><Image className='mr-2' src={PROFILEUSERS} alt='...' /> 6 People Involved</Col>
-                                    <Col className={styles.lines}> <Image className='mx-2' src={CLOCK} alt='...' />Due at Aug 23,2023</Col>
+                                    <Col className='flex mr-2'><Image className='mr-2' src={PROFILEUSERS} alt='...' /> 6 People Involved</Col>
+                                    <Col className='flex'> <Image className='mr-2' src={CLOCK} alt='...' />Due at Aug 23,2023</Col>
                                 </Row>
                             </Flex>
                         </Row>
                         <Row className='mb-8'>
                             <Flex className={styles.cardStyle340px} vertical>
-                                <Row className={`${styles.lines} mb-6`} justify={'space-between'}>
-                                    <Title style={cardTitleStyle2}>Documents (7)</Title>
+                                <Row className="flex mb-6" justify={'space-between'}>
+                                    <Title className={styles.cardTitleStyle2} >Documents (7)</Title>
                                     <Flex>
-                                        <Button className={`${styles.lines} rounded-3xl text-sm text-gray-400`}>Internal <Image className='ml-2' src={ARROWDOWN} alt='...' height={20} />
+                                        <Button className={styles.internalButton}>Internal <Image className='ml-2' src={ARROWDOWN} alt='...' height={20} width={20} />
                                         </Button>&nbsp;
                                         <a
                                             onClick={(e) => {
@@ -446,11 +433,15 @@ export default function ProjectDetail() {
                                     </Flex>
                                 </Row>
                                 <Row className='mb-2' style={{ alignItems: 'baseline', justifyContent: 'space-between' }}>
-                                    <Title style={folderNameStyle}> <Image src={FOLDER} height={18} alt='' />&nbsp;Case_Lab_Report.pdf&nbsp;
-                                        <Tooltip title="Added on March 27, 2023. Last Modified on Marc 29,2023." placement="top">
-                                            < Image src={INFO} height={18} alt='...' />
+
+                                    <div className="d-flex align-center ">
+                                        <Image src={FOLDER} height={18} alt="" /> &nbsp;
+                                        <Tooltip title={'GroupProject.doc'} placement="top">
+                                            <div
+                                                className={styles.folderTitle}> GroupProject.doc
+                                            </div>
                                         </Tooltip>
-                                    </Title>
+                                    </div>
                                     <a
                                         onClick={(e) => {
                                             e.preventDefault();
@@ -464,11 +455,14 @@ export default function ProjectDetail() {
                                     </a>
                                 </Row>
                                 <Row className='mb-2' style={{ alignItems: 'baseline', justifyContent: 'space-between' }}>
-                                    <Title style={folderNameStyle}>  <Image src={FOLDER} height={18} alt='' />&nbsp;Investigation_Document.doc&nbsp;
-                                        <Tooltip title="Added on March 27, 2023. Last Modified on Marc 29,2023." placement="top">
-                                            < Image src={INFO} height={18} alt='...' />
+                                    <div className="d-flex align-center ">
+                                        <Image src={FOLDER} height={18} alt="" /> &nbsp;
+                                        <Tooltip title={'GroupProject.doc'} placement="top">
+                                            <div
+                                                className={styles.folderTitle}> GroupProject.doc
+                                            </div>
                                         </Tooltip>
-                                    </Title>
+                                    </div>
                                     <a
                                         onClick={(e) => {
                                             e.preventDefault();
@@ -482,11 +476,14 @@ export default function ProjectDetail() {
                                     </a>
                                 </Row>
                                 <Row className='mb-2' style={{ alignItems: 'baseline', justifyContent: 'space-between' }}>
-                                    <Title style={folderNameStyle}>  <Image src={FOLDER} height={18} alt='' />&nbsp;Medical_Results.xlsx&nbsp;
-                                        <Tooltip title="Added on March 27, 2023. Last Modified on Marc 29,2023." placement="top">
-                                            < Image src={INFO} height={18} alt='...' />
+                                    <div className="d-flex align-center ">
+                                        <Image src={FOLDER} height={18} alt="" /> &nbsp;
+                                        <Tooltip title={'GroupProject.doc'} placement="top">
+                                            <div
+                                                className={styles.folderTitle}> GroupProject.doc
+                                            </div>
                                         </Tooltip>
-                                    </Title>
+                                    </div>
                                     <a
                                         onClick={(e) => {
                                             e.preventDefault();
@@ -500,11 +497,14 @@ export default function ProjectDetail() {
                                     </a>
                                 </Row>
                                 <Row className='mb-2' style={{ alignItems: 'baseline', justifyContent: 'space-between' }}>
-                                    <Title style={folderNameStyle}>  <Image src={FOLDER} height={18} alt='' />&nbsp;GroupProject.doc&nbsp;
-                                        <Tooltip title="Added on March 27, 2023. Last Modified on Marc 29,2023." placement="top">
-                                            < Image src={INFO} height={18} alt='...' />
+                                    <div className="d-flex align-center ">
+                                        <Image src={FOLDER} height={18} alt="" /> &nbsp;
+                                        <Tooltip title={'GroupProject.doc'} placement="top">
+                                            <div
+                                                className={styles.folderTitle}> GroupProject.doc
+                                            </div>
                                         </Tooltip>
-                                    </Title>
+                                    </div>
                                     <a
                                         onClick={(e) => {
                                             e.preventDefault();
@@ -518,11 +518,14 @@ export default function ProjectDetail() {
                                     </a>
                                 </Row>
                                 <Row className='mb-2' style={{ alignItems: 'baseline', justifyContent: 'space-between' }}>
-                                    <Title style={folderNameStyle}>  <Image src={FOLDER} height={18} alt='' />&nbsp;Medical Notes.docx&nbsp;
-                                        <Tooltip title="Added on March 27, 2023. Last Modified on Marc 29,2023." placement="top">
-                                            < Image src={INFO} height={18} alt='...' />
+                                    <div className="d-flex align-center ">
+                                        <Image src={FOLDER} height={18} alt="" /> &nbsp;
+                                        <Tooltip title={'GroupProject.doc'} placement="top">
+                                            <div
+                                                className={styles.folderTitle}> GroupProject.doc
+                                            </div>
                                         </Tooltip>
-                                    </Title>
+                                    </div>
                                     <a
                                         onClick={(e) => {
                                             e.preventDefault();
@@ -535,11 +538,14 @@ export default function ProjectDetail() {
                                     </a>
                                 </Row>
                                 <Row className='mb-2' style={{ alignItems: 'baseline', justifyContent: 'space-between' }}>
-                                    <Title style={folderNameStyle}>  <Image src={FOLDER} height={18} alt='' />&nbsp;ListOfPeopleInvolved.pdf&nbsp;
-                                        <Tooltip title="Added on March 27, 2023. Last Modified on Marc 29,2023." placement="top">
-                                            < Image src={INFO} height={18} alt='...' />
+                                    <div className="d-flex align-center ">
+                                        <Image src={FOLDER} height={18} alt="" /> &nbsp;
+                                        <Tooltip title={'GroupProject.doc'} placement="top">
+                                            <div
+                                                className={styles.folderTitle}> GroupProject.doc
+                                            </div>
                                         </Tooltip>
-                                    </Title>
+                                    </div>
                                     <a
                                         onClick={(e) => {
                                             e.preventDefault();
@@ -553,7 +559,7 @@ export default function ProjectDetail() {
                                     </a>
                                 </Row>
                                 <Row >
-                                    <Flex style={{ paddingLeft: "20%" }}>
+                                    <Flex style={{ width: "100%", justifyContent: "center" }}>
                                         <Dragger  {...props} >
                                             <Row style={{ justifyContent: 'center' }}>
                                                 <InboxOutlined style={{ fontSize: '15px' }} /> &nbsp;Drag or browse from device
@@ -566,9 +572,9 @@ export default function ProjectDetail() {
                         </Row>
                         <Row>
                             <Flex className={styles.cardStyle340px} vertical>
-                                <Row className={`${styles.lines} mb-6`} justify={'space-between'}>
-                                    <Title style={cardTitleStyle2}>Commets (9)</Title>
-                                    <Button className={`${styles.lines} rounded-3xl text-sm text-gray-400`}>Internal <Image className='ml-2' src={ARROWDOWN} alt='...' height={20} /></Button>
+                                <Row className="flex mb-6" justify={'space-between'}>
+                                    <Title className={styles.cardTitleStyle2} >Commets (9)</Title>
+                                    <Button className={styles.internalButton} >Internal <Image className='ml-2' src={ARROWDOWN} alt='...' height={20} width={20} /></Button>
                                 </Row>
                                 <Row className='mb-2' style={{ alignItems: 'baseline', justifyContent: 'space-between' }}>
                                     <Flex style={{ width: '90%' }}>
@@ -577,17 +583,18 @@ export default function ProjectDetail() {
                                         </Flex>
                                         <Flex vertical style={{ marginLeft: '5px' }}>
                                             <Row>
-                                                <Title style={cardTitleStyle2}> Melissa Alwins</Title><Title className={styles.commentTS}>24/07/23 06:04PM</Title>
+                                                <Title className={styles.cardTitleStyle3} > Melissa Alwins</Title>
+                                                <Title className={styles.commentTS}>24/07/23 06:04PM</Title>
                                             </Row>
                                             <Row>
-                                                <Title style={comment2Style}> @Jim Carrey Progress is well!</Title>
+                                                <Title className={styles.comment2Style}> @Jim Carrey Progress is well!</Title>
                                             </Row>
                                         </Flex>
                                     </Flex>
                                     <a
                                         onClick={(e) => {
                                             e.preventDefault();
-                                            // setItems(commentsDropDown);
+                                            setItems(commentsDropDown);
                                         }}
                                     >
                                         <Dropdown menu={{ items }} placement='bottom' trigger={['click']} arrow={{ pointAtCenter: true }}>
@@ -595,6 +602,7 @@ export default function ProjectDetail() {
                                         </Dropdown>
                                     </a>
                                 </Row>
+
                                 <Row className='mb-2' style={{ alignItems: 'baseline', justifyContent: 'space-between', marginTop: '8px' }}>
                                     <Flex style={{ width: '90%' }}>
                                         <Flex>
@@ -602,42 +610,17 @@ export default function ProjectDetail() {
                                         </Flex>
                                         <Flex vertical style={{ marginLeft: '5px' }}>
                                             <Row>
-                                                <Title style={cardTitleStyle2}> Robert Fox</Title><Title className={styles.commentTS}>24/07/23 06:04PM</Title>
+                                                <Title className={styles.cardTitleStyle3} > Annette Black</Title><Title className={styles.commentTS}>24/07/23 06:04PM</Title>
                                             </Row>
                                             <Row>
-                                                <Title style={comment2Style}> Can you please tell me the status of case. Can you please call me after 6PM ?</Title>
+                                                <Title className={styles.comment2Style}>Please check all the documents before starting any work</Title>
                                             </Row>
                                         </Flex>
                                     </Flex>
                                     <a
                                         onClick={(e) => {
                                             e.preventDefault();
-                                            // setItems(commentsDropDown);
-                                        }}
-                                    >
-                                        <Dropdown menu={{ items }} placement='bottom' trigger={['click']} arrow={{ pointAtCenter: true }}>
-                                            <Image className='mt-1' src={MORE} height={18} alt='' />
-                                        </Dropdown>
-                                    </a>
-                                </Row>
-                                <Row className='mb-2' style={{ alignItems: 'baseline', justifyContent: 'space-between', marginTop: '8px' }}>
-                                    <Flex style={{ width: '90%' }}>
-                                        <Flex>
-                                            <Avatar icon={<UserOutlined />} />
-                                        </Flex>
-                                        <Flex vertical style={{ marginLeft: '5px' }}>
-                                            <Row>
-                                                <Title style={cardTitleStyle2}> Annette Black</Title><Title className={styles.commentTS}>24/07/23 06:04PM</Title>
-                                            </Row>
-                                            <Row>
-                                                <Title style={comment2Style}>Please check all the documents before starting any work</Title>
-                                            </Row>
-                                        </Flex>
-                                    </Flex>
-                                    <a
-                                        onClick={(e) => {
-                                            e.preventDefault();
-                                            // setItems(commentsDropDown);
+                                            setItems(commentsDropDown);
                                         }}
                                     >
                                         <Dropdown menu={{ items }} placement='bottom' trigger={['click']} arrow={{ pointAtCenter: true }}>
@@ -652,17 +635,17 @@ export default function ProjectDetail() {
                                         </Flex>
                                         <Flex vertical style={{ marginLeft: '5px' }}>
                                             <Row>
-                                                <Title style={cardTitleStyle2}> Melissa Alwins</Title><Title className={styles.commentTS}>24/07/23 06:04PM</Title>
+                                                <Title className={styles.cardTitleStyle3} > Melissa Alwins</Title><Title className={styles.commentTS}>24/07/23 06:04PM</Title>
                                             </Row>
                                             <Row>
-                                                <Title style={comment2Style}> @Jim Carrey Progress is well!</Title>
+                                                <Title className={styles.comment2Style}> @Jim Carrey Progress is well!</Title>
                                             </Row>
                                         </Flex>
                                     </Flex>
                                     <a
                                         onClick={(e) => {
                                             e.preventDefault();
-                                            // setItems(commentsDropDown);
+                                            setItems(commentsDropDown);
                                         }}
                                     >
                                         <Dropdown menu={{ items }} placement='bottom' trigger={['click']} arrow={{ pointAtCenter: true }}>
@@ -670,6 +653,7 @@ export default function ProjectDetail() {
                                         </Dropdown>
                                     </a>
                                 </Row>
+
                                 <Row className='mb-2' style={{ alignItems: 'baseline', justifyContent: 'space-between', marginTop: '8px' }}>
                                     <Flex style={{ width: '90%' }}>
                                         <Flex>
@@ -677,42 +661,17 @@ export default function ProjectDetail() {
                                         </Flex>
                                         <Flex vertical style={{ marginLeft: '5px' }}>
                                             <Row>
-                                                <Title style={cardTitleStyle2}> Robert Fox</Title><Title className={styles.commentTS}>24/07/23 06:04PM</Title>
+                                                <Title className={styles.cardTitleStyle3}> Annette Black</Title><Title className={styles.commentTS}>24/07/23 06:04PM</Title>
                                             </Row>
                                             <Row>
-                                                <Title style={comment2Style}> Can you please tell me the status of case. Can you please call me after 6PM ?</Title>
+                                                <Title className={styles.comment2Style}>Please check all the documents before starting any work</Title>
                                             </Row>
                                         </Flex>
                                     </Flex>
                                     <a
                                         onClick={(e) => {
                                             e.preventDefault();
-                                            // setItems(commentsDropDown);
-                                        }}
-                                    >
-                                        <Dropdown menu={{ items }} placement='bottom' trigger={['click']} arrow={{ pointAtCenter: true }}>
-                                            <Image className='mt-1' src={MORE} height={18} alt='' />
-                                        </Dropdown>
-                                    </a>
-                                </Row>
-                                <Row className='mb-2' style={{ alignItems: 'baseline', justifyContent: 'space-between', marginTop: '8px' }}>
-                                    <Flex style={{ width: '90%' }}>
-                                        <Flex>
-                                            <Avatar icon={<UserOutlined />} />
-                                        </Flex>
-                                        <Flex vertical style={{ marginLeft: '5px' }}>
-                                            <Row>
-                                                <Title style={cardTitleStyle2}> Annette Black</Title><Title className={styles.commentTS}>24/07/23 06:04PM</Title>
-                                            </Row>
-                                            <Row>
-                                                <Title style={comment2Style}>Please check all the documents before starting any work</Title>
-                                            </Row>
-                                        </Flex>
-                                    </Flex>
-                                    <a
-                                        onClick={(e) => {
-                                            e.preventDefault();
-                                            // setItems(commentsDropDown);
+                                            setItems(commentsDropDown);
                                         }}
                                     >
                                         <Dropdown menu={{ items }} placement='bottom' trigger={['click']} arrow={{ pointAtCenter: true }}>
@@ -727,17 +686,17 @@ export default function ProjectDetail() {
                                         </Flex>
                                         <Flex vertical style={{ marginLeft: '5px' }}>
                                             <Row>
-                                                <Title style={cardTitleStyle2}> Melissa Alwins</Title><Title className={styles.commentTS}>24/07/23 06:04PM</Title>
+                                                <Title className={styles.cardTitleStyle3}> Melissa Alwins</Title><Title className={styles.commentTS}>24/07/23 06:04PM</Title>
                                             </Row>
                                             <Row>
-                                                <Title style={comment2Style}> @Jim Carrey Progress is well!</Title>
+                                                <Title className={styles.comment2Style}> @Jim Carrey Progress is well!</Title>
                                             </Row>
                                         </Flex>
                                     </Flex>
                                     <a
                                         onClick={(e) => {
                                             e.preventDefault();
-                                            // setItems(commentsDropDown);
+                                            setItems(commentsDropDown);
                                         }}
                                     >
                                         <Dropdown menu={{ items }} placement='bottom' trigger={['click']} arrow={{ pointAtCenter: true }}>
@@ -745,6 +704,7 @@ export default function ProjectDetail() {
                                         </Dropdown>
                                     </a>
                                 </Row>
+
                                 <Row className='mb-2' style={{ alignItems: 'baseline', justifyContent: 'space-between', marginTop: '8px' }}>
                                     <Flex style={{ width: '90%' }}>
                                         <Flex>
@@ -752,42 +712,17 @@ export default function ProjectDetail() {
                                         </Flex>
                                         <Flex vertical style={{ marginLeft: '5px' }}>
                                             <Row>
-                                                <Title style={cardTitleStyle2}> Robert Fox</Title><Title className={styles.commentTS}>24/07/23 06:04PM</Title>
+                                                <Title className={styles.cardTitleStyle3}> Annette Black</Title><Title className={styles.commentTS}>24/07/23 06:04PM</Title>
                                             </Row>
                                             <Row>
-                                                <Title style={comment2Style}> Can you please tell me the status of case. Can you please call me after 6PM ?</Title>
+                                                <Title className={styles.comment2Style}>Please check all the documents before starting any work</Title>
                                             </Row>
                                         </Flex>
                                     </Flex>
                                     <a
                                         onClick={(e) => {
                                             e.preventDefault();
-                                            // setItems(commentsDropDown);
-                                        }}
-                                    >
-                                        <Dropdown menu={{ items }} placement='bottom' trigger={['click']} arrow={{ pointAtCenter: true }}>
-                                            <Image className='mt-1' src={MORE} height={18} alt='' />
-                                        </Dropdown>
-                                    </a>
-                                </Row>
-                                <Row className='mb-2' style={{ alignItems: 'baseline', justifyContent: 'space-between', marginTop: '8px' }}>
-                                    <Flex style={{ width: '90%' }}>
-                                        <Flex>
-                                            <Avatar icon={<UserOutlined />} />
-                                        </Flex>
-                                        <Flex vertical style={{ marginLeft: '5px' }}>
-                                            <Row>
-                                                <Title style={cardTitleStyle2}> Annette Black</Title><Title className={styles.commentTS}>24/07/23 06:04PM</Title>
-                                            </Row>
-                                            <Row>
-                                                <Title style={comment2Style}>Please check all the documents before starting any work</Title>
-                                            </Row>
-                                        </Flex>
-                                    </Flex>
-                                    <a
-                                        onClick={(e) => {
-                                            e.preventDefault();
-                                            // setItems(commentsDropDown);
+                                            setItems(commentsDropDown);
                                         }}
                                     >
                                         <Dropdown menu={{ items }} placement='bottom' trigger={['click']} arrow={{ pointAtCenter: true }}>
@@ -812,9 +747,6 @@ export default function ProjectDetail() {
                         </Row>
                     </Col>
                 </Row>
-
-
-
                 <Drawer
                     title={
                         <div style={{ display: 'flex', justifyContent: 'space-between' }}>
@@ -823,8 +755,7 @@ export default function ProjectDetail() {
                             <Button style={{ backgroundColor: "#7E81E8", width: "100px", color: "#fff" }}  >
                                 Save
                             </Button>
-                        </div>
-                    }
+                        </div>}
                     className={styles.customDrawerHeader}
                     placement="right"
                     closable={false}
