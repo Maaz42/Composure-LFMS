@@ -2,29 +2,23 @@ import React, { useState } from 'react'
 import Image from 'next/image';
 import styles from './styles.module.css'
 import type { MenuProps } from 'antd';
-import { Button, Col,  Dropdown, Flex,  Row,Typography, Layout  } from 'antd';
-import {MORE } from '@/constants/images';
-import {  MenuOutlined } from '@ant-design/icons';
+import { Button, Dropdown, Flex, Typography, Layout } from 'antd';
+import { MORE } from '@/constants/images';
+import { MenuOutlined } from '@ant-design/icons';
 import { DndProvider } from 'react-dnd'
 import { HTML5Backend } from 'react-dnd-html5-backend'
 import Container from './Container';
-
 
 const { Header } = Layout;
 const { Title } = Typography;
 
 export default function FormBuilderAdd() {
+    const [items, setItems] = useState<MenuProps['items']>([]);
+    
     const topBoxStyle = {
         width: '100%',
         height: '65px',
     };
-
-
-    const colStyle = {
-        padding: '8px'
-    };
-
-    const [items, setItems] = useState<MenuProps['items']>([]);
 
     const navDropDown = [
         {
@@ -34,14 +28,12 @@ export default function FormBuilderAdd() {
         {
             key: '2',
             label: " Nav 2nd menu item"
-
         },
         {
             key: '3',
             label: " Nav 3rd menu item"
         },
     ];
-
 
     return (
         <>
@@ -68,11 +60,9 @@ export default function FormBuilderAdd() {
                 height: 'calc(100vh - 120px)',
                 background: 'white'
             }}>
-               
-                    <DndProvider backend={HTML5Backend}>
-					<Container />
-				</DndProvider>
-                
+                <DndProvider backend={HTML5Backend}>
+                    <Container />
+                </DndProvider>
             </Layout>
         </>
     )
