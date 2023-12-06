@@ -76,6 +76,20 @@ export default function ProjectDetail() {
             label: "Legal 3"
         }
     ];
+    const commentsDropDown = [
+        {
+            key: '1',
+            label: "Comment 1"
+        },
+        {
+            key: '2',
+            label: "Comment 1"
+        },
+        {
+            key: '3',
+            label: "Comment 1"
+        }
+    ];
     const docDropDown = [
         {
             key: '1',
@@ -202,13 +216,9 @@ export default function ProjectDetail() {
 
                 <div style={{ width: "200px" }} className={`${styles.lines} mr-2`}><Progress percent={50} showInfo={false} />6/12</div>
             </Flex>
-
-
-
-
             <Layout style={{ height: '(100vh -120px)' }}>
                 <Row className={styles.mainRow}>
-                    <Col xxl={16} lg={16} md={24} sm={24} xs={24} className={styles.colStyle}>
+                    <Col xxl={16} lg={16} md={24} sm={24} xs={24} className={`${styles.colStyle}`}>
                         <Row justify='space-between' style={{ marginBottom: "15px" }}>
                             <Title level={5}>Tasks(4)</Title>
                             <a onClick={(e) => {
@@ -389,7 +399,7 @@ export default function ProjectDetail() {
                             </Row>
                         </Row>
                     </Col>
-                    <Col xxl={8} lg={8} md={24} sm={24} xs={24} style={{ paddingRight: "24px" }} className={styles.colStyle}>
+                    <Col xxl={8} lg={8} md={24} sm={24} xs={24} style={{ paddingRight: "24px" }} className={styles.colStyle2}>
                         <Row className='mb-8'>
                             <Flex className={styles.cardStyle450px} vertical>
                                 <Title className={styles.cardTitleStyle2}>Affiliated Entity Creation</Title>
@@ -412,7 +422,7 @@ export default function ProjectDetail() {
                                 <Row className={`${styles.lines} mb-6`} justify={'space-between'}>
                                     <Title className={styles.cardTitleStyle2} >Documents (7)</Title>
                                     <Flex>
-                                        <Button className={`flex rounded-3xl text-gray-400`}>Internal <Image className='ml-2' src={ARROWDOWN} alt='...' height={20} width={20} />
+                                        <Button className={styles.internalButton}>Internal <Image className='ml-2' src={ARROWDOWN} alt='...' height={20} width={20} />
                                         </Button>&nbsp;
                                         <a
                                             onClick={(e) => {
@@ -568,7 +578,7 @@ export default function ProjectDetail() {
                             <Flex className={styles.cardStyle340px} vertical>
                                 <Row className={`${styles.lines} mb-6`} justify={'space-between'}>
                                     <Title className={styles.cardTitleStyle2} >Commets (9)</Title>
-                                    <Button className={`${styles.lines} rounded-3xl text-sm text-gray-400`}>Internal <Image className='ml-2' src={ARROWDOWN} alt='...' height={20} width={20} /></Button>
+                                    <Button className={styles.internalButton} >Internal <Image className='ml-2' src={ARROWDOWN} alt='...' height={20} width={20} /></Button>
                                 </Row>
                                 <Row className='mb-2' style={{ alignItems: 'baseline', justifyContent: 'space-between' }}>
                                     <Flex style={{ width: '90%' }}>
@@ -588,7 +598,7 @@ export default function ProjectDetail() {
                                     <a
                                         onClick={(e) => {
                                             e.preventDefault();
-                                            // setItems(commentsDropDown);
+                                            setItems(commentsDropDown);
                                         }}
                                     >
                                         <Dropdown menu={{ items }} placement='bottom' trigger={['click']} arrow={{ pointAtCenter: true }}>
@@ -614,7 +624,7 @@ export default function ProjectDetail() {
                                     <a
                                         onClick={(e) => {
                                             e.preventDefault();
-                                            // setItems(commentsDropDown);
+                                            setItems(commentsDropDown);
                                         }}
                                     >
                                         <Dropdown menu={{ items }} placement='bottom' trigger={['click']} arrow={{ pointAtCenter: true }}>
@@ -639,7 +649,7 @@ export default function ProjectDetail() {
                                     <a
                                         onClick={(e) => {
                                             e.preventDefault();
-                                            // setItems(commentsDropDown);
+                                            setItems(commentsDropDown);
                                         }}
                                     >
                                         <Dropdown menu={{ items }} placement='bottom' trigger={['click']} arrow={{ pointAtCenter: true }}>
@@ -665,7 +675,7 @@ export default function ProjectDetail() {
                                     <a
                                         onClick={(e) => {
                                             e.preventDefault();
-                                            // setItems(commentsDropDown);
+                                            setItems(commentsDropDown);
                                         }}
                                     >
                                         <Dropdown menu={{ items }} placement='bottom' trigger={['click']} arrow={{ pointAtCenter: true }}>
@@ -690,7 +700,7 @@ export default function ProjectDetail() {
                                     <a
                                         onClick={(e) => {
                                             e.preventDefault();
-                                            // setItems(commentsDropDown);
+                                            setItems(commentsDropDown);
                                         }}
                                     >
                                         <Dropdown menu={{ items }} placement='bottom' trigger={['click']} arrow={{ pointAtCenter: true }}>
@@ -716,7 +726,7 @@ export default function ProjectDetail() {
                                     <a
                                         onClick={(e) => {
                                             e.preventDefault();
-                                            // setItems(commentsDropDown);
+                                            setItems(commentsDropDown);
                                         }}
                                     >
                                         <Dropdown menu={{ items }} placement='bottom' trigger={['click']} arrow={{ pointAtCenter: true }}>
@@ -741,9 +751,6 @@ export default function ProjectDetail() {
                         </Row>
                     </Col>
                 </Row>
-
-
-
                 <Drawer
                     title={
                         <div style={{ display: 'flex', justifyContent: 'space-between' }}>
@@ -752,8 +759,7 @@ export default function ProjectDetail() {
                             <Button style={{ backgroundColor: "#7E81E8", width: "100px", color: "#fff" }}  >
                                 Save
                             </Button>
-                        </div>
-                    }
+                        </div>}
                     className={styles.customDrawerHeader}
                     placement="right"
                     closable={false}
