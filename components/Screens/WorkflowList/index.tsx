@@ -15,7 +15,6 @@ import {
     Row,
     Col,
     Pagination,
-    Select,
     Modal,
 } from "antd";
 import {
@@ -23,34 +22,23 @@ import {
     SEARCH,
     NAVBARS,
     THREEDOTS,
-    EDIT,
-    CLOSE,
     ARROWUP,
-
 } from "@/constants/images";
 import workflowData from './workflowData.json'
 import { ColumnsType } from "antd/es/table";
 import { CustomTable } from "@/components/ReusableComponents/CustomTable";
 
 const { Header } = Layout;
-const { Option } = Select;
 const { Title } = Typography;
 
 export default function WorkflowList() {
     const [items, setItems] = useState<MenuProps['items']>([]);
     const [tableData, setTableData] = useState<any>(workflowData)
     const [pageSize, setPageSize] = useState(10)
-    const [open, setOpen] = useState(false);
-    const [assigneeDrawer, setAssigneeDrawer] = useState(false)
-
     const [isModalOpen, setIsModalOpen] = useState(false);
 
     const showModal = () => {
         setIsModalOpen(true);
-    };
-
-    const handleOk = () => {
-        setIsModalOpen(false);
     };
 
     const handleCancel = () => {
@@ -394,7 +382,6 @@ export default function WorkflowList() {
                     <div className={styles.formHeading} >Cease and Desist Copyright Infringement Letter</div>
                     <div className={styles.formDes} >Brooklyn Simmons</div>
                 </div>
-
             </Modal>
         </>
     );

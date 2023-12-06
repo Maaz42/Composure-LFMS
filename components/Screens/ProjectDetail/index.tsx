@@ -178,7 +178,6 @@ export default function ProjectDetail() {
     return (
         <>
             <Header className={styles.header}>
-
                 <Flex gap='middle' align={'start'} vertical className='mx-3'  >
                     <Flex className={styles.topBoxStyle}>
                         <Title level={4}>Project Details</Title>
@@ -294,7 +293,11 @@ export default function ProjectDetail() {
                                                         <div className='font-medium text-base'>Shareholder Agreements</div>
                                                         <div className='flex'><Avatar size={"small"} style={{ backgroundColor: '#f56a00' }}>K </Avatar>
                                                             <div className='mr-2' style={{ borderRight: "1px solid #BDBDBD", padding: "3px" }}></div>
-                                                            <Col className='flex' ><Image className='mr-2' src={CALENDAR} alt='...' /> <div className=' text-gray-400' > 08/02/2023</div> </Col></div>
+                                                            <Col className='flex' >
+                                                                <Image className='mr-2' src={CALENDAR} alt='...' />
+                                                                <div className=' text-gray-400' > 08/02/2023</div>
+                                                            </Col>
+                                                        </div>
                                                     </>
                                                 ),
                                             },
@@ -317,7 +320,10 @@ export default function ProjectDetail() {
                                                         </Flex>
                                                         <div className='font-medium text-base'>Subscription Agreements</div>
                                                         <div className='flex'>
-                                                            <Col className='flex' ><Image className='mr-2' src={CALENDAR} alt='...' /> <div className='  text-gray-400' > 08/02/2023</div> </Col> </div>
+                                                            <Col className='flex' >
+                                                                <Image className='mr-2' src={CALENDAR} alt='...' />
+                                                                <div className='  text-gray-400' > 08/02/2023</div> </Col>
+                                                        </div>
                                                     </>
                                                 ),
                                             },
@@ -373,7 +379,6 @@ export default function ProjectDetail() {
                                 <Row className={styles.cardSDetailStyle} justify={'space-between'} style={{ width: "100%" }}><Col>Task Load</Col><Col><Image src={RATING} alt='...' /></Col> </Row>
                                 <Row className={styles.cardSDetailStyle} justify={'space-between'} style={{ width: "100%" }}><Col>Date</Col><Col className='flex'><Image className='underline mr-2' src={CALENDAR} alt='...' /> <div >08/02/2023</div></Col> </Row>
                                 <Row className={styles.cardSDetailStyle} justify={'space-between'} style={{ width: "100%" }}><Col>File</Col><Col className='flex'><Image className='underline mr-2' src={FILEUPLOAD} alt='...' /> <div >Upload File</div></Col> </Row>
-
                                 <Row className={styles.cardSDetailStyle} >
                                     <Avatar.Group>
                                         <Avatar src="https://xsgames.co/randomusers/avatar.php?g=pixel&key=1" />
@@ -386,7 +391,8 @@ export default function ProjectDetail() {
                                         <Avatar style={{ border: "1px dashed gray", backgroundColor: "#ffff", display: 'flex', alignItems: 'center' }} >
                                             <Image src={EDIT} height={25} alt="..." />
                                         </Avatar>
-                                    </Avatar.Group></Row>
+                                    </Avatar.Group>
+                                </Row>
                             </Row>
                             <Row style={{ width: "100%", marginTop: "20px", backgroundColor: "#FAFAFA" }} justify={'space-between'} >
                                 <Button className={styles.infoButton}>
@@ -490,29 +496,7 @@ export default function ProjectDetail() {
                                             setItems(singleDocDropDown);
                                         }}
                                     >
-                                        <Dropdown menu={{ items }} placement='bottom' trigger={['click']} arrow={{ pointAtCenter: true }}
-                                        >
-                                            <Image className='mt-1' src={MORE} height={18} alt='' />
-                                        </Dropdown>
-                                    </a>
-                                </Row>
-                                <Row className='mb-2' style={{ alignItems: 'baseline', justifyContent: 'space-between' }}>
-                                    <div className="d-flex align-center ">
-                                        <Image src={FOLDER} height={18} alt="" /> &nbsp;
-                                        <Tooltip title={'GroupProject.doc'} placement="top">
-                                            <div
-                                                className={styles.folderTitle}> GroupProject.doc
-                                            </div>
-                                        </Tooltip>
-                                    </div>
-                                    <a
-                                        onClick={(e) => {
-                                            e.preventDefault();
-                                            setItems(singleDocDropDown);
-                                        }}
-                                    >
-                                        <Dropdown menu={{ items }} placement='bottom' trigger={['click']} arrow={{ pointAtCenter: true }}
-                                        >
+                                        <Dropdown menu={{ items }} placement='bottom' trigger={['click']} arrow={{ pointAtCenter: true }}>
                                             <Image className='mt-1' src={MORE} height={18} alt='' />
                                         </Dropdown>
                                     </a>
@@ -552,8 +536,27 @@ export default function ProjectDetail() {
                                             setItems(singleDocDropDown);
                                         }}
                                     >
-                                        <Dropdown menu={{ items }} placement='bottom' trigger={['click']} arrow={{ pointAtCenter: true }}
-                                        >
+                                        <Dropdown menu={{ items }} placement='bottom' trigger={['click']} arrow={{ pointAtCenter: true }}>
+                                            <Image className='mt-1' src={MORE} height={18} alt='' />
+                                        </Dropdown>
+                                    </a>
+                                </Row>
+                                <Row className='mb-2' style={{ alignItems: 'baseline', justifyContent: 'space-between' }}>
+                                    <div className="d-flex align-center ">
+                                        <Image src={FOLDER} height={18} alt="" /> &nbsp;
+                                        <Tooltip title={'GroupProject.doc'} placement="top">
+                                            <div
+                                                className={styles.folderTitle}> GroupProject.doc
+                                            </div>
+                                        </Tooltip>
+                                    </div>
+                                    <a
+                                        onClick={(e) => {
+                                            e.preventDefault();
+                                            setItems(singleDocDropDown);
+                                        }}
+                                    >
+                                        <Dropdown menu={{ items }} placement='bottom' trigger={['click']} arrow={{ pointAtCenter: true }}>
                                             <Image className='mt-1' src={MORE} height={18} alt='' />
                                         </Dropdown>
                                     </a>
@@ -567,7 +570,6 @@ export default function ProjectDetail() {
                                         </Dragger>
                                     </Flex>
                                 </Row>
-
                             </Flex>
                         </Row>
                         <Row>
@@ -602,7 +604,6 @@ export default function ProjectDetail() {
                                         </Dropdown>
                                     </a>
                                 </Row>
-
                                 <Row className='mb-2' style={{ alignItems: 'baseline', justifyContent: 'space-between', marginTop: '8px' }}>
                                     <Flex style={{ width: '90%' }}>
                                         <Flex>
@@ -704,7 +705,6 @@ export default function ProjectDetail() {
                                         </Dropdown>
                                     </a>
                                 </Row>
-
                                 <Row className='mb-2' style={{ alignItems: 'baseline', justifyContent: 'space-between', marginTop: '8px' }}>
                                     <Flex style={{ width: '90%' }}>
                                         <Flex>
@@ -782,5 +782,3 @@ export default function ProjectDetail() {
         </>
     )
 }
-
-
