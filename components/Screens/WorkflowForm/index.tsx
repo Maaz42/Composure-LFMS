@@ -2,11 +2,12 @@ import React, { useState } from 'react'
 import Image from 'next/image';
 import styles from './styles.module.css'
 import type { MenuProps } from 'antd';
-import { Avatar, Button, Col, Divider, Dropdown, Flex, Input, Row, Tooltip, Typography, Layout, Upload, Select } from 'antd';
-import { CALENDAR, EDIT, FILEUPLOAD, FOLDER, INFO, MORE, RATING, SEND } from '@/constants/images';
+import { Avatar, Button, Col, Dropdown, Timeline, Flex, Input, Row, Tooltip, Typography, Layout, Upload, message, Select } from 'antd';
+import { CALENDAR, ADDSUBTASK, REDCLOSECIRCLE, TRASH, REDCROSS, TICKCIRCLE, DOCUMENTUPLOAD, EDIT, FILEUPLOAD, FOLDER, INFO, MORE, WHITESTAR, BLACKSTAR, SEND, ARROWDOWN } from '@/constants/images';
 import { UserOutlined, InboxOutlined, MenuOutlined } from '@ant-design/icons';
 import FloatLabel from '@/components/ReusableComponents/FloatLabel';
 import FloatLabelArrow from '@/components/ReusableComponents/FloatLabelArrow';
+import type { UploadProps } from 'antd';
 
 const { Header } = Layout;
 const { Dragger } = Upload;
@@ -17,9 +18,28 @@ const props = {
     name: 'file',
     action: 'https://run.mocky.io/v3/435e224c-44fb-4773-9faf-380c5e6a2188',
     onDrop({ e }: any) {
+        https://ant.design/
         console.log('Dropped files', e.dataTransfer.files);
     },
 };
+const props2: UploadProps = {
+    name: 'file',
+    action: 'https://run.mocky.io/v3/435e224c-44fb-4773-9faf-380c5e6a2188',
+    headers: {
+        authorization: 'authorization-text',
+    },
+    onChange(info) {
+        if (info.file.status !== 'uploading') {
+            console.log(info.file, info.fileList);
+        }
+        if (info.file.status === 'done') {
+            message.success(`${info.file.name} file uploaded successfully`);
+        } else if (info.file.status === 'error') {
+            message.error(`${info.file.name} file upload failed.`);
+        }
+    },
+};
+
 
 export default function TicketDetail() {
     const [title, setTitle] = useState<string>("");
@@ -106,7 +126,7 @@ export default function TicketDetail() {
                         <Flex justify={'flex-end'} align={'center'}>
                             <MenuOutlined className={styles.collapseMenu} style={{ marginRight: "5px" }} />
                             <Button className={styles.collapseTo} style={{ color: 'white', background: '#C8473E' }}>Delete</Button>
-                            <Button className={styles.collapseTo} style={{ color: 'white', background: '#333793' }}>Assign Member</Button>
+                            <Button className={styles.collapseTo} style={{ color: 'white', background: '#333793' }}>Add</Button>
                             <Dropdown menu={{ items }} trigger={['click']}>
                                 <a onClick={(e) => {
                                     e.preventDefault()
@@ -167,6 +187,53 @@ export default function TicketDetail() {
                                                         className={styles.folderTitle}> GroupProject.doc
                                                     </div>
                                                 </Tooltip>
+                                                <Image src={INFO} height={18} alt="" /> &nbsp;
+                                            </div>
+                                            <a
+                                                onClick={(e) => {
+                                                    e.preventDefault();
+                                                    //setItems(singleDocDropDown);
+                                                }}
+                                            >
+                                                <Dropdown menu={{ items }} placement='bottom' trigger={['click']} arrow={{ pointAtCenter: true }}
+                                                >
+                                                    <Image className='mt-1' src={MORE} height={18} alt='' />
+                                                </Dropdown>
+                                            </a>
+                                        </Row>
+                                        <Row className='mb-2' style={{ alignItems: 'baseline', justifyContent: 'space-between' }}>
+
+                                            <div className="d-flex align-center ">
+                                                <Image src={FOLDER} height={18} alt="" /> &nbsp;
+                                                <Tooltip title={'GroupProject.doc'} placement="top">
+                                                    <div
+                                                        className={styles.folderTitle}> GroupProject.doc
+                                                    </div>
+                                                </Tooltip>
+                                                <Image src={INFO} height={18} alt="" /> &nbsp;
+                                            </div>
+                                            <a
+                                                onClick={(e) => {
+                                                    e.preventDefault();
+                                                    //setItems(singleDocDropDown);
+                                                }}
+                                            >
+                                                <Dropdown menu={{ items }} placement='bottom' trigger={['click']} arrow={{ pointAtCenter: true }}
+                                                >
+                                                    <Image className='mt-1' src={MORE} height={18} alt='' />
+                                                </Dropdown>
+                                            </a>
+                                        </Row>
+                                        <Row className='mb-2' style={{ alignItems: 'baseline', justifyContent: 'space-between' }}>
+
+                                            <div className="d-flex align-center ">
+                                                <Image src={FOLDER} height={18} alt="" /> &nbsp;
+                                                <Tooltip title={'GroupProject.doc'} placement="top">
+                                                    <div
+                                                        className={styles.folderTitle}> GroupProject.doc
+                                                    </div>
+                                                </Tooltip>
+                                                <Image src={INFO} height={18} alt="" /> &nbsp;
                                             </div>
                                             <a
                                                 onClick={(e) => {
@@ -203,7 +270,6 @@ export default function TicketDetail() {
                                             </a>
                                         </Row>
                                         <Row className='mb-2' style={{ alignItems: 'baseline', justifyContent: 'space-between' }}>
-
                                             <div className="d-flex align-center ">
                                                 <Image src={FOLDER} height={18} alt="" /> &nbsp;
                                                 <Tooltip title={'GroupProject.doc'} placement="top">
@@ -211,28 +277,7 @@ export default function TicketDetail() {
                                                         className={styles.folderTitle}> GroupProject.doc
                                                     </div>
                                                 </Tooltip>
-                                            </div>
-                                            <a
-                                                onClick={(e) => {
-                                                    e.preventDefault();
-                                                    //setItems(singleDocDropDown);
-                                                }}
-                                            >
-                                                <Dropdown menu={{ items }} placement='bottom' trigger={['click']} arrow={{ pointAtCenter: true }}
-                                                >
-                                                    <Image className='mt-1' src={MORE} height={18} alt='' />
-                                                </Dropdown>
-                                            </a>
-                                        </Row>
-                                        <Row className='mb-2' style={{ alignItems: 'baseline', justifyContent: 'space-between' }}>
-
-                                            <div className="d-flex align-center ">
-                                                <Image src={FOLDER} height={18} alt="" /> &nbsp;
-                                                <Tooltip title={'GroupProject.doc'} placement="top">
-                                                    <div
-                                                        className={styles.folderTitle}> GroupProject.doc
-                                                    </div>
-                                                </Tooltip>
+                                                <Image src={INFO} height={18} alt="" /> &nbsp;
                                             </div>
                                             <a
                                                 onClick={(e) => {
@@ -254,6 +299,7 @@ export default function TicketDetail() {
                                                         className={styles.folderTitle}> GroupProject.doc
                                                     </div>
                                                 </Tooltip>
+                                                <Image src={INFO} height={18} alt="" /> &nbsp;
                                             </div>
                                             <a
                                                 onClick={(e) => {
@@ -261,8 +307,7 @@ export default function TicketDetail() {
                                                     //setItems(singleDocDropDown);
                                                 }}
                                             >
-                                                <Dropdown menu={{ items }} placement='bottom' trigger={['click']} arrow={{ pointAtCenter: true }}
-                                                >
+                                                <Dropdown menu={{ items }} placement='bottom' trigger={['click']} arrow={{ pointAtCenter: true }}>
                                                     <Image className='mt-1' src={MORE} height={18} alt='' />
                                                 </Dropdown>
                                             </a>
@@ -275,6 +320,28 @@ export default function TicketDetail() {
                                                         className={styles.folderTitle}> GroupProject.doc
                                                     </div>
                                                 </Tooltip>
+                                                <Image src={INFO} height={18} alt="" /> &nbsp;
+                                            </div>
+                                            <a
+                                                onClick={(e) => {
+                                                    e.preventDefault();
+                                                    //setItems(singleDocDropDown);
+                                                }}
+                                            >
+                                                <Dropdown menu={{ items }} placement='bottom' trigger={['click']} arrow={{ pointAtCenter: true }}>
+                                                    <Image className='mt-1' src={MORE} height={18} alt='' />
+                                                </Dropdown>
+                                            </a>
+                                        </Row>
+                                        <Row className='mb-2' style={{ alignItems: 'baseline', justifyContent: 'space-between' }}>
+                                            <div className="d-flex align-center ">
+                                                <Image src={FOLDER} height={18} alt="" /> &nbsp;
+                                                <Tooltip title={'GroupProject.doc'} placement="top">
+                                                    <div
+                                                        className={styles.folderTitle}> GroupProject.doc
+                                                    </div>
+                                                </Tooltip>
+                                                <Image src={INFO} height={18} alt="" /> &nbsp;
                                             </div>
                                             <a
                                                 onClick={(e) => {
@@ -315,6 +382,7 @@ export default function TicketDetail() {
                                                         className={styles.folderTitle}> GroupProject.doc
                                                     </div>
                                                 </Tooltip>
+                                                <Image src={INFO} height={18} alt="" /> &nbsp;
                                             </div>
                                             <a
                                                 onClick={(e) => {
@@ -335,6 +403,7 @@ export default function TicketDetail() {
                                                         className={styles.folderTitle}> GroupProject.doc
                                                     </div>
                                                 </Tooltip>
+                                                <Image src={INFO} height={18} alt="" /> &nbsp;
                                             </div>
                                             <a
                                                 onClick={(e) => {
@@ -355,6 +424,7 @@ export default function TicketDetail() {
                                                         className={styles.folderTitle}> GroupProject.doc
                                                     </div>
                                                 </Tooltip>
+                                                <Image src={INFO} height={18} alt="" /> &nbsp;
                                             </div>
                                             <a
                                                 onClick={(e) => {
@@ -375,46 +445,7 @@ export default function TicketDetail() {
                                                         className={styles.folderTitle}> GroupProject.doc
                                                     </div>
                                                 </Tooltip>
-                                            </div>
-                                            <a
-                                                onClick={(e) => {
-                                                    e.preventDefault();
-                                                    //setItems(singleDocDropDown);
-                                                }}
-                                            >
-                                                <Dropdown menu={{ items }} placement='bottom' trigger={['click']} arrow={{ pointAtCenter: true }}>
-                                                    <Image className='mt-1' src={MORE} height={18} alt='' />
-                                                </Dropdown>
-                                            </a>
-                                        </Row>
-                                        <Row className='mb-2' style={{ alignItems: 'baseline', justifyContent: 'space-between' }}>
-                                            <div className="d-flex align-center ">
-                                                <Image src={FOLDER} height={18} alt="" /> &nbsp;
-                                                <Tooltip title={'GroupProject.doc'} placement="top">
-                                                    <div
-                                                        className={styles.folderTitle}> GroupProject.doc
-                                                    </div>
-                                                </Tooltip>
-                                            </div>
-                                            <a
-                                                onClick={(e) => {
-                                                    e.preventDefault();
-                                                    //setItems(singleDocDropDown);
-                                                }}
-                                            >
-                                                <Dropdown menu={{ items }} placement='bottom' trigger={['click']} arrow={{ pointAtCenter: true }}>
-                                                    <Image className='mt-1' src={MORE} height={18} alt='' />
-                                                </Dropdown>
-                                            </a>
-                                        </Row>
-                                        <Row className='mb-2' style={{ alignItems: 'baseline', justifyContent: 'space-between' }}>
-                                            <div className="d-flex align-center ">
-                                                <Image src={FOLDER} height={18} alt="" /> &nbsp;
-                                                <Tooltip title={'GroupProject.doc'} placement="top">
-                                                    <div
-                                                        className={styles.folderTitle}> GroupProject.doc
-                                                    </div>
-                                                </Tooltip>
+                                                <Image src={INFO} height={18} alt="" /> &nbsp;
                                             </div>
                                             <a
                                                 onClick={(e) => {
@@ -841,12 +872,112 @@ export default function TicketDetail() {
                     </Col>
                     <Col xxl={8} lg={8} md={24} sm={24} xs={24} style={colStyle} >
                         <Flex className={styles.detailsSection} vertical>
+                            <Title level={5}>Tasks(3)</Title>
+                            <Row className={styles.cardStyle3}>
+                                <Row className='flex w-full'> <div className='w-full m-0'>
+                                    <div className="mb-5" >
+                                        <FloatLabel label="Title" value={title}> <Input value={title} onChange={e => setTitle(e.target.value)} />
+                                        </FloatLabel>
+                                    </div>
+                                </div>
+                                </Row>
+                                <Row className='flex w-full'> <div className='mb-5' style={{ width: "100%", }}>
+                                    <Button
+                                        style={{ width: "100%", height: "48px", display: "flex", justifyContent: "space-between", alignItems: "center" }} onClick={() => {
+                                            myFile.click();
+                                        }}
+                                    >
+                                        <div>File</div>
+                                        <input type="file" id="myFile" name="filename" style={{ display: "none" }} />
+                                        <Image src={DOCUMENTUPLOAD} alt='...' />
+                                    </Button>
+
+                                </div>
+                                </Row>
+                                <Row className='flex w-full'> <div className='w-full m-0'>
+                                    <div className="mb-5">
+                                        <FloatLabelArrow label="Action" value={selectCollaboratorsValue}>
+                                            <Select
+                                                showSearch
+                                                style={{ width: "100%" }}
+                                                onChange={value => setSelectCollaboratorsValue(value)}
+                                                value={selectCollaboratorsValue}
+                                                suffixIcon={null}
+                                                mode="multiple"
+                                            >
+                                                <Option value="Ali">Ali</Option>
+                                                <Option value="Haider">Haider</Option>
+                                                <Option value="Hassan">Hassan</Option>
+                                            </Select>
+                                        </FloatLabelArrow>
+                                    </div>
+                                </div>
+                                </Row>
+                                <Row className='flex w-full'> <div className='w-full m-0'>
+                                    <div className="mb-5">
+                                        <FloatLabelArrow label="Sub Action" value={selectCollaboratorsValue}>
+                                            <Select
+                                                showSearch
+                                                style={{ width: "100%" }}
+                                                onChange={value => setSelectCollaboratorsValue(value)}
+                                                value={selectCollaboratorsValue}
+                                                suffixIcon={null}
+                                                mode="multiple"
+                                            >
+                                                <Option value="Ali">Ali</Option>
+                                                <Option value="Haider">Haider</Option>
+                                                <Option value="Hassan">Hassan</Option>
+                                            </Select>
+                                        </FloatLabelArrow>
+                                    </div>
+                                </div>
+                                </Row>
+                                <Row className='w-full'> <div className='w-full m-0'>
+                                    <div className="mb-5">
+                                        <FloatLabelArrow label="Collaborators" value={selectCollaboratorsValue}>
+                                            <Select
+                                                showSearch
+                                                style={{ width: "100%" }}
+                                                onChange={value => setSelectCollaboratorsValue(value)}
+                                                value={selectCollaboratorsValue}
+                                                suffixIcon={null}
+                                                mode="multiple"
+                                            >
+                                                <Option value="Ali">Ali</Option>
+                                                <Option value="Haider">Haider</Option>
+                                                <Option value="Hassan">Hassan</Option>
+                                            </Select>
+                                        </FloatLabelArrow>
+                                    </div>
+                                </div>
+                                </Row>
+                                <Row className='w-full' justify={'end'}>
+                                    <Button style={{ color: 'white', background: '#333793' }}>Add</Button>
+                                </Row>
+
+                            </Row>
                             <Row className={styles.cardStyle2}>
                                 <Row style={{ width: "100%", backgroundColor: "#FFFFFF", padding: '20px' }} >
-                                    <Row className={styles.cardTitleStyle}> FATCA/CRS Requirements: Please provide for all non coinvestors a complete and valid OECD Self-Certification Form, IRS Form W-9, W-8BEN, W-8BEN-E, W-8ECI, W-8EXP or W-8IMY, as applicable, and a certificate of information or equivalent</Row>
-                                    <Row className={styles.cardSDetailStyle} justify={'space-between'} style={{ width: "100%" }}><Col>Task Load</Col><Col><Image src={RATING} alt='...' /></Col> </Row>
-                                    <Row className={styles.cardSDetailStyle} justify={'space-between'} style={{ width: "100%" }}><Col>Date</Col><Col className='flex'><Image className='underline mr-2' src={CALENDAR} alt='...' /> <div >08/02/2023</div></Col> </Row>
-                                    <Row className={styles.cardSDetailStyle} justify={'space-between'} style={{ width: "100%" }}><Col>File</Col><Col className='flex'><Image className='underline mr-2' src={FILEUPLOAD} alt='...' /> <div >Upload File</div></Col> </Row>
+                                    <Row className='flex' justify={'space-between'} >
+                                        <div className={styles.cardTitleStyle}> FATCA/CRS Requirements: Please provide for all non coinvestors a complete and valid OECD Self-Certification Form, IRS Form W-9, W-8BEN, W-8BEN-E, W-8ECI, W-8EXP or W-8IMY, as applicable, and a certificate of information or equivalent
+                                        </div>
+                                        <Image src={TRASH} alt='...' />
+                                    </Row>
+                                    <Row className={styles.cardSDetailStyle}
+                                        justify={'space-between'} style={{ width: "100%" }}>
+                                        <Col>File</Col>
+                                        <Col className='flex'>
+                                            <Image className='mr-2' src={REDCLOSECIRCLE} alt='...' />
+                                            <div className='underline text-black' >Case_Lab_Report.pdf</div>
+                                        </Col>
+                                    </Row>
+                                    <Row className={styles.cardSDetailStyle} justify={'space-between'} style={{ width: "100%" }}>
+                                        <Col>Condition</Col><Col className='flex'>
+                                            <Image className='mr-2' height={15} width={15} src={ARROWDOWN} alt='...' />
+                                            <div className='underline text-black' >Case_Lab_Report.pdf</div></Col>
+                                    </Row>
+                                    <Row className={styles.cardSDetailStyle} justify={'space-between'} style={{ width: "100%" }}><Col>Action</Col><Col className='flex'><Image className='underline mr-2' src={FILEUPLOAD} alt='...' /> <div >Upload File</div></Col> </Row>
+                                    <Row className={styles.cardSDetailStyle} justify={'space-between'} style={{ width: "100%" }}><Col>Sub Action</Col><Col className='flex'><Image className='underline mr-2' src={FILEUPLOAD} alt='...' /> <div >Upload File</div></Col> </Row>
                                     <Row className={styles.cardSDetailStyle} >
                                         <Avatar.Group>
                                             <Avatar src="https://xsgames.co/randomusers/avatar.php?g=pixel&key=1" />
@@ -861,13 +992,37 @@ export default function TicketDetail() {
                                             </Avatar>
                                         </Avatar.Group>
                                     </Row>
+                                    <div className={styles.cardSDetailStyle} style={{ width: "100%" }}>
+                                        <Timeline
+                                            items={[
+                                                {
+                                                    dot: <Row> <Image src={ADDSUBTASK} height={20} width={20} alt="..." /></Row>,
+                                                    children: (
+                                                        <>
+                                                            <Flex style={{ width: "100%" }} justify={'space-between'}>
+                                                                <div style={{ color: "gray", fontSize: "12px" }}>
+                                                                    Add Sub Task
+                                                                </div>
+                                                            </Flex>
+                                                        </>
+                                                    ),
+                                                },
+
+
+                                            ]}
+                                        />
+                                    </div>
                                 </Row>
-        
+
                             </Row>
                             <Row className={styles.cardStyle2}>
                                 <Row style={{ width: "100%", backgroundColor: "#FFFFFF", padding: '20px' }} >
                                     <Row className={styles.cardTitleStyle}> FATCA/CRS Requirements: Please provide for all non coinvestors a complete and valid OECD Self-Certification Form, IRS Form W-9, W-8BEN, W-8BEN-E, W-8ECI, W-8EXP or W-8IMY, as applicable, and a certificate of information or equivalent</Row>
-                                    <Row className={styles.cardSDetailStyle} justify={'space-between'} style={{ width: "100%" }}><Col>Task Load</Col><Col><Image src={RATING} alt='...' /></Col> </Row>
+                                    <Row className={styles.cardSDetailStyle} justify={'space-between'} style={{ width: "100%" }}><Col>Task Load</Col><Row>
+                                        <Image src={BLACKSTAR} alt='...' />
+                                        <Image src={BLACKSTAR} alt='...' />
+                                        <Image src={BLACKSTAR} alt='...' />
+                                    </Row> </Row>
                                     <Row className={styles.cardSDetailStyle} justify={'space-between'} style={{ width: "100%" }}><Col>Date</Col><Col className='flex'><Image className='underline mr-2' src={CALENDAR} alt='...' /> <div >08/02/2023</div></Col> </Row>
                                     <Row className={styles.cardSDetailStyle} justify={'space-between'} style={{ width: "100%" }}><Col>File</Col><Col className='flex'><Image className='underline mr-2' src={FILEUPLOAD} alt='...' /> <div >Upload File</div></Col> </Row>
                                     <Row className={styles.cardSDetailStyle} >
@@ -884,13 +1039,72 @@ export default function TicketDetail() {
                                             </Avatar>
                                         </Avatar.Group>
                                     </Row>
+                                    <div className={styles.cardSDetailStyle} style={{ width: "100%" }}>
+                                        <Timeline
+                                            items={[
+                                                {
+                                                    dot: <Row> <Image src={TICKCIRCLE} height={18} width={18} alt="..." /></Row>,
+                                                    children: (
+                                                        <>
+                                                            <div className='flex' style={{ justifyContent: 'space-between' }}>
+                                                                <div>
+                                                                    <div className='font-medium text-base'>Mention All legal points</div>
+                                                                    <Col className='flex' >
+                                                                        <div className=' text-gray-400 mr-2' >Collaborator</div>
+                                                                        <Image src={ARROWDOWN} alt='...' />
+                                                                    </Col>
+                                                                </div>
+                                                                <Image src={REDCROSS} alt='...' />
+                                                            </div>
+                                                        </>
+                                                    ),
+                                                },
+                                                {
+                                                    dot: <Row> <Image src={TICKCIRCLE} height={18} width={18} alt="..." /></Row>,
+                                                    children: (
+                                                        <>
+                                                            <div className='flex' style={{ justifyContent: 'space-between' }}>
+                                                                <div>
+                                                                    <div className='font-medium text-base'>Mention All legal points</div>
+                                                                    <Col className='flex' >
+                                                                        <div className=' text-gray-400 mr-2' >Collaborator</div>
+                                                                        <Image src={ARROWDOWN} alt='...' />
+                                                                    </Col>
+                                                                </div>
+                                                                <Image src={REDCROSS} alt='...' />
+                                                            </div>
+                                                        </>
+                                                    ),
+                                                },
+                                                {
+                                                    dot: <Row> <Image src={ADDSUBTASK} height={20} width={20} alt="..." /></Row>,
+                                                    children: (
+                                                        <>
+                                                            <Flex style={{ width: "100%" }} justify={'space-between'}>
+                                                                <div style={{ color: "gray", fontSize: "12px" }}>
+                                                                    Add Sub Task
+                                                                </div>
+                                                            </Flex>
+                                                        </>
+                                                    ),
+                                                },
+
+
+                                            ]}
+                                        />
+                                    </div>
                                 </Row>
-        
+
                             </Row>
                             <Row className={styles.cardStyle2}>
                                 <Row style={{ width: "100%", backgroundColor: "#FFFFFF", padding: '20px' }} >
                                     <Row className={styles.cardTitleStyle}> FATCA/CRS Requirements: Please provide for all non coinvestors a complete and valid OECD Self-Certification Form, IRS Form W-9, W-8BEN, W-8BEN-E, W-8ECI, W-8EXP or W-8IMY, as applicable, and a certificate of information or equivalent</Row>
-                                    <Row className={styles.cardSDetailStyle} justify={'space-between'} style={{ width: "100%" }}><Col>Task Load</Col><Col><Image src={RATING} alt='...' /></Col> </Row>
+                                    <Row className={styles.cardSDetailStyle} justify={'space-between'} style={{ width: "100%" }}><Col>Task Load</Col><Row>
+                                        <Image src={BLACKSTAR} alt='...' />
+                                        <Image src={WHITESTAR} alt='...' />
+                                        <Image src={WHITESTAR} alt='...' />
+
+                                    </Row> </Row>
                                     <Row className={styles.cardSDetailStyle} justify={'space-between'} style={{ width: "100%" }}><Col>Date</Col><Col className='flex'><Image className='underline mr-2' src={CALENDAR} alt='...' /> <div >08/02/2023</div></Col> </Row>
                                     <Row className={styles.cardSDetailStyle} justify={'space-between'} style={{ width: "100%" }}><Col>File</Col><Col className='flex'><Image className='underline mr-2' src={FILEUPLOAD} alt='...' /> <div >Upload File</div></Col> </Row>
                                     <Row className={styles.cardSDetailStyle} >
@@ -907,36 +1121,67 @@ export default function TicketDetail() {
                                             </Avatar>
                                         </Avatar.Group>
                                     </Row>
+                                    <div className={styles.cardSDetailStyle} style={{ width: "100%" }}>
+                                        <Timeline
+                                            items={[
+                                                {
+                                                    dot: <Row> <Image src={TICKCIRCLE} height={18} width={18} alt="..." /></Row>,
+                                                    children: (
+                                                        <>
+                                                            <div className='flex' style={{ justifyContent: 'space-between' }}>
+                                                                <div>
+                                                                    <div className='font-medium text-base'>Mention All legal points</div>
+                                                                    <Col className='flex' >
+                                                                        <div className=' text-gray-400 mr-2' >Collaborator</div>
+                                                                        <Image src={ARROWDOWN} alt='...' />
+                                                                    </Col>
+                                                                </div>
+                                                                <Image src={REDCROSS} alt='...' />
+                                                            </div>
+                                                        </>
+                                                    ),
+                                                },
+                                                {
+                                                    dot: <Row> <Image src={TICKCIRCLE} height={18} width={18} alt="..." /></Row>,
+                                                    children: (
+                                                        <>
+                                                            <div className='flex' style={{ justifyContent: 'space-between' }}>
+                                                                <div>
+                                                                    <div className='font-medium text-base'>Mention All legal points</div>
+                                                                    <Col className='flex' >
+                                                                        <div className=' text-gray-400 mr-2' >Collaborator</div>
+                                                                        <Image src={ARROWDOWN} alt='...' />
+                                                                    </Col>
+                                                                </div>
+                                                                <Image src={REDCROSS} alt='...' />
+                                                            </div>
+                                                        </>
+                                                    ),
+                                                },
+                                                {
+                                                    dot: <Row> <Image src={ADDSUBTASK} height={20} width={20} alt="..." /></Row>,
+                                                    children: (
+                                                        <>
+                                                            <Flex style={{ width: "100%" }} justify={'space-between'}>
+                                                                <div style={{ color: "gray", fontSize: "12px" }}>
+                                                                    Add Sub Task
+                                                                </div>
+                                                            </Flex>
+                                                        </>
+                                                    ),
+                                                },
+
+
+                                            ]}
+                                        />
+                                    </div>
                                 </Row>
-        
-                            </Row>
-                            <Row className={styles.cardStyle2}>
-                                <Row style={{ width: "100%", backgroundColor: "#FFFFFF", padding: '20px' }} >
-                                    <Row className={styles.cardTitleStyle}> FATCA/CRS Requirements: Please provide for all non coinvestors a complete and valid OECD Self-Certification Form, IRS Form W-9, W-8BEN, W-8BEN-E, W-8ECI, W-8EXP or W-8IMY, as applicable, and a certificate of information or equivalent</Row>
-                                    <Row className={styles.cardSDetailStyle} justify={'space-between'} style={{ width: "100%" }}><Col>Task Load</Col><Col><Image src={RATING} alt='...' /></Col> </Row>
-                                    <Row className={styles.cardSDetailStyle} justify={'space-between'} style={{ width: "100%" }}><Col>Date</Col><Col className='flex'><Image className='underline mr-2' src={CALENDAR} alt='...' /> <div >08/02/2023</div></Col> </Row>
-                                    <Row className={styles.cardSDetailStyle} justify={'space-between'} style={{ width: "100%" }}><Col>File</Col><Col className='flex'><Image className='underline mr-2' src={FILEUPLOAD} alt='...' /> <div >Upload File</div></Col> </Row>
-                                    <Row className={styles.cardSDetailStyle} >
-                                        <Avatar.Group>
-                                            <Avatar src="https://xsgames.co/randomusers/avatar.php?g=pixel&key=1" />
-                                            <a href="https://ant.design">
-                                                <Avatar style={{ backgroundColor: '#f56a00' }}>K</Avatar>
-                                            </a>
-                                            <Tooltip title="Ant User" placement="top">
-                                                <Avatar style={{ backgroundColor: '#87d068' }} icon={<UserOutlined />} />
-                                            </Tooltip>
-                                            <Avatar style={{ border: "1px dashed gray", backgroundColor: "#ffff", display: 'flex', alignItems: 'center' }} >
-                                                <Image src={EDIT} height={25} alt="..." />
-                                            </Avatar>
-                                        </Avatar.Group>
-                                    </Row>
-                                </Row>
-        
+
                             </Row>
                         </Flex>
                     </Col>
                 </Row>
-            </Layout>
+            </Layout >
         </>
     )
 }

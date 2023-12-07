@@ -56,6 +56,11 @@
   margin-bottom: 20px;
 }
 
+.cardInnerStyle{
+  width: 100%;
+ 
+   padding:15px;
+}
 .cardTitleStyle {
   font-size: 14px;
   font-weight: 500;
@@ -141,6 +146,11 @@
   display: flex;
  
   overflow: auto;
+}
+.resButton{
+  font-size: 18px;
+  font-weight: 600;
+  border-radius: 1.5rem;
 }
 
 .cardStyle450px {
@@ -277,6 +287,9 @@
     text-overflow: ellipsis;
   }
 
+  .resButton{
+    font-size: 11px;
+  }
   .internalButton {
     display: flex;
     color: #9e9e9e;

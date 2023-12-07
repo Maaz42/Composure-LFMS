@@ -48,14 +48,21 @@
 
 .cardStyle2 {
   border: 1px solid rgb(223 223 223);
-  
   background-color: #fafafa;
   border-radius: 4px;
   margin-bottom: 20px;
 }
+.cardStyle3 {
+  border: 1px solid rgb(223 223 223);
+  padding:20px;
+  border-radius: 4px;
+  margin-bottom: 20px;
+  background-color: white !important;
+}
 
 .cardTitleStyle {
   font-size: 14px;
+  width:90%;
   font-weight: 500;
   color: #000000;
   border: none;
