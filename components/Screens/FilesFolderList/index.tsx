@@ -377,7 +377,7 @@ export default function FilesFolderList() {
                 <Row>
                     <Col xxl={6} lg={6} md={8} sm={12} xs={24}>
                         <div className={styles.innerBox}>
-                            <div className="d-flex align-center ">
+                            <div className="flex align-center ">
                                 <Image src={FOLDERBLUE} height={18} alt="" /> &nbsp;
                                 <Tooltip title={'Employement Litigation'} placement="top">
                                     <div
@@ -398,7 +398,7 @@ export default function FilesFolderList() {
                     </Col>
                     <Col xxl={6} lg={6} md={8} sm={12} xs={24}>
                         <div className={styles.innerBox}>
-                            <div className="d-flex align-center">
+                            <div className="flex align-center">
                                 <Image src={FOLDERBLUE} height={18} alt="" /> &nbsp;
                                 <Tooltip title={'Employement Litigation'} placement="top">
                                     <div
@@ -419,7 +419,7 @@ export default function FilesFolderList() {
                     </Col>
                     <Col xxl={6} lg={6} md={8} sm={12} xs={24}>
                         <div className={styles.innerBox}>
-                            <div className="d-flex align-center">
+                            <div className="flex align-center">
                                 <Image src={FOLDERBLUE} height={18} alt="" /> &nbsp;
                                 <Tooltip title={'Employement Litigation'} placement="top">
                                     <div
@@ -440,7 +440,7 @@ export default function FilesFolderList() {
                     </Col>
                     <Col xxl={6} lg={6} md={8} sm={12} xs={24}>
                         <div className={styles.innerBox}>
-                            <div className="d-flex align-center">
+                            <div className="flex align-center">
                                 <Image src={FOLDERBLUE} height={18} alt="" /> &nbsp;
                                 <Tooltip title={'Employement Litigation'} placement="top">
                                     <div

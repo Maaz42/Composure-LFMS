@@ -3,12 +3,13 @@
 @tailwind utilities;
 
 :where(.css-dev-only-do-not-override-1xrj0o4).ant-input-affix-wrapper:not(.ant-input-affix-wrapper-disabled):hover {
-    z-index: 0;
-    height: 48px;
+  z-index: 0;
+  height: 48px;
 }
+
 :where(.css-dev-only-do-not-override-1xrj0o4).ant-input-affix-wrapper:not(.ant-input-affix-wrapper-disabled) {
-    z-index: 0;
-    height: 48px;
+  z-index: 0;
+  height: 48px;
 }
 
 .float-label {
@@ -58,31 +59,59 @@
 
 .ant-drawer-header {
   background-color: #333793;
-  
 }
 
 .ant-drawer-title {
   color: #fff;
 }
 
-.arrow-down{
+.arrow-down {
   position: absolute;
   right: 0px;
   top: 6px;
 }
 
-.ant-menu-horizontal, .ant-menu-item::after, .ant-menu-submenu::after {
+.ant-menu-horizontal,
+.ant-menu-item::after,
+.ant-menu-submenu::after {
   background-color: #333793;
- }
+}
 
- .d-flex{
-  display: flex;
- }
-
- .align-center{
+.align-center {
   align-items: center;
- }
+}
 
- .space-between{
+.space-between {
   justify-content: space-between;
- }
+}
+
+*::-webkit-scrollbar {
+  width: 12px;
+}
+
+*::-webkit-scrollbar-track {
+  background: var(--primary);
+  border-radius: 5px;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: var(--secondary);
+  border-radius: 12px;
+  border: 2px solid var(--primary);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: var(--tertiary);
+}
+
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--secondary) var(--primary);
+}
+
+:root {
+  --primary: #f1f1f1;
+  --secondary: #b7b5b5;
+  --tertiary: #717171;
+}

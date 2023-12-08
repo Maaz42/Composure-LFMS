@@ -261,9 +261,10 @@ export default function ProjectList() {
                 <>
                     {progress.map((p) => {
                         return (
-                            <div key={p.key} className='d-flex'>
+                            <div key={p.key} className='flex'>
                                 <Progress percent={50} showInfo={false} />
-                                {p.gained}/{p.total}</div>
+                                {p.gained}/{p.total}
+                            </div>
                         );
                     })}
                 </>
@@ -334,19 +335,19 @@ export default function ProjectList() {
     const statusDropDown = [
         {
             key: "1",
-            label: (<div className='d-flex'><Image style={{ marginRight: "5px" }} src={REDDOT} alt="..." /> <div>New</div></div>)
+            label: (<div className='flex'><Image style={{ marginRight: "5px" }} src={REDDOT} alt="..." /> <div>New</div></div>)
         },
         {
             key: "2",
-            label: (<div className='d-flex'><Image style={{ marginRight: "5px" }} src={YELLOWDOT} alt="..." /> <div>In Review</div></div>)
+            label: (<div className='flex'><Image style={{ marginRight: "5px" }} src={YELLOWDOT} alt="..." /> <div>In Review</div></div>)
         },
         {
             key: "3",
-            label: (<div className='d-flex'><Image style={{ marginRight: "5px" }} src={BLUEDOT} alt="..." /> <div>In Progress</div></div>)
+            label: (<div className='flex'><Image style={{ marginRight: "5px" }} src={BLUEDOT} alt="..." /> <div>In Progress</div></div>)
         },
         {
             key: "4",
-            label: (<div className='d-flex'><Image height={16} width={16} style={{ marginRight: "5px" }} src={GREENDOT} alt="..." /> <div>Complete</div></div>)
+            label: (<div className='flex'><Image height={16} width={16} style={{ marginRight: "5px" }} src={GREENDOT} alt="..." /> <div>Complete</div></div>)
         },
     ];
 
