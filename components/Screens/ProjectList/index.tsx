@@ -40,7 +40,8 @@ import {
     THREEDOTS,
     EDIT,
     ADDCIRCLE,
-    ARROWUP
+    ARROWUP,
+    ADDCIRCLEWHITE
 } from "@/constants/images";
 import projectsData from './projectData.json'
 import FloatLabel from "../../ReusableComponents/FloatLabel";
@@ -137,7 +138,7 @@ export default function ProjectList() {
                                     <Button
                                         style={{ color: "#7E81E8", marginRight: "20px", border: "1px solid #7E81E8", borderRadius: "20px" }}
                                     >
-                                        <div style={{ display: "flex" }}><Image src={ADDCIRCLE} alt="..." style={{ marginRight: "5px" }} /> Add     Collaborators
+                                        <div style={{ display: "flex" }}><Image src={ADDCIRCLE} alt="..." style={{ marginRight: "5px" }} /> Add Collaborators
                                         </div>
                                     </Button>
                                     <Button
@@ -157,16 +158,17 @@ export default function ProjectList() {
     const columns: TableColumnsType<DataType> = [
         {
             title: (
-                <div style={{ display: "flex", justifyContent: "space-end" }}>
+                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
                     <div>
                         Title
                     </div>
                     <div>
-                        <Image src={ARROWUP} height={10} alt="" style={{ position: "absolute", top: "22px", right: "10px" }} />
+                        <Image src={ARROWUP} height={10} alt="" />
                     </div>
                 </div>
             ),
             dataIndex: 'title', key: 'title',
+
             render: (text, record: any) => (
                 <span
                     style={{ cursor: 'pointer' }}
@@ -175,27 +177,28 @@ export default function ProjectList() {
                     {text}
                 </span>
             ),
+
         },
         {
             title: (
-                <div style={{ display: "flex", justifyContent: "space-end" }}>
+                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
                     <div>
                         Due Date
                     </div>
                     <div>
-                        <Image src={ARROWUP} height={10} alt="" style={{ position: "absolute", top: "22px", right: "10px" }} />
+                        <Image src={ARROWUP} height={10} alt="" />
                     </div>
                 </div>
             ), dataIndex: 'due_date', key: 'due_date'
         },
         {
             title: (
-                <div style={{ display: "flex", justifyContent: "space-end" }}>
+                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
                     <div>
                         Stage
                     </div>
                     <div>
-                        <Image src={ARROWUP} height={10} alt="" style={{ position: "absolute", top: "22px", right: "10px" }} />
+                        <Image src={ARROWUP} height={10} alt="" />
                     </div>
                 </div>
             ), key: 'stage',
@@ -245,12 +248,12 @@ export default function ProjectList() {
         },
         {
             title: (
-                <div style={{ display: "flex", justifyContent: "space-end" }}>
+                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
                     <div>
                         Progress
                     </div>
                     <div>
-                        <Image src={ARROWUP} height={10} alt="" style={{ position: "absolute", top: "22px", right: "10px" }} />
+                        <Image src={ARROWUP} height={10} alt="" />
                     </div>
                 </div>
             ), key: 'progress',
@@ -268,12 +271,12 @@ export default function ProjectList() {
         },
         {
             title: (
-                <div style={{ display: "flex", justifyContent: "space-end" }}>
+                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
                     <div>
                         Collaboration
                     </div>
                     <div>
-                        <Image src={ARROWUP} height={10} alt="" style={{ position: "absolute", top: "22px", right: "10px" }} />
+                        <Image src={ARROWUP} height={10} alt="" />
                     </div>
                 </div>
             ), key: 'collaboration',
@@ -300,16 +303,7 @@ export default function ProjectList() {
             ),
         },
         {
-            title: (
-                <div style={{ display: "flex", justifyContent: "space-end" }}>
-                    <div>
-                        Action
-                    </div>
-                    <div>
-                        <Image src={ARROWUP} height={10} alt="" style={{ position: "absolute", top: "22px", right: "10px" }} />
-                    </div>
-                </div>
-            ), key: 'operation',
+            key: 'operation',
             render: () => (<Dropdown
                 menu={{ items }}
                 trigger={["click"]}
@@ -466,12 +460,14 @@ export default function ProjectList() {
                     <CustomDropDown title={"All Project"} dropDownItems={allProjectsDropDown} />
                 </Flex>
                 <Flex align={"center"} justify="space-between">
-                    <Button
-                        onClick={showDrawer}
-                        style={{ color: "white", background: "#333793", marginRight: "20px" }}
-                    >
-                        Add Projects
-                    </Button>
+                    <Tooltip title={"Add Project"}>
+                        <Button
+                            onClick={showDrawer}
+                            style={{ color: "white", background: "#333793", marginRight: "20px" }}
+                        >
+                            <Image src={ADDCIRCLEWHITE} alt="..." height={20} width={22} />
+                        </Button>
+                    </Tooltip>
                 </Flex>
             </Flex>
             <Layout

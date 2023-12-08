@@ -104,12 +104,12 @@ export default function TicketList() {
     const columns: ColumnsType<DataType> = [
         {
             title: (
-                <div style={{ display: "flex", justifyContent: "space-end" }}>
+                <div style={{ display: "flex", justifyContent: "space-between", alignItems:"center" }}>
                     <div>
                         Status
                     </div>
                     <div>
-                        <Image src={ARROWUP} height={10} alt="" style={{ position: "absolute", top: "22px", right: "10px" }} />
+                        <Image src={ARROWUP} height={10} alt=""   />
                     </div>
                 </div>
             ),
@@ -162,12 +162,12 @@ export default function TicketList() {
         },
         {
             title: (
-                <div style={{ display: "flex", justifyContent: "space-end" }}>
+                <div style={{ display: "flex",  justifyContent: "space-between", alignItems:"center" }}>
                     <div>
                         Priority
                     </div>
                     <div>
-                        <Image src={ARROWUP} height={10} alt="" style={{ position: "absolute", top: "22px", right: "10px" }} />
+                        <Image src={ARROWUP} height={10} alt=""   />
                     </div>
                 </div>
             ),
@@ -207,12 +207,12 @@ export default function TicketList() {
         },
         {
             title: (
-                <div style={{ display: "flex", justifyContent: "space-end" }}>
+                <div style={{ display: "flex",  justifyContent: "space-between", alignItems:"center" }}>
                     <div>
                         Ticket No.
                     </div>
                     <div>
-                        <Image src={ARROWUP} height={10} alt="" style={{ position: "absolute", top: "22px", right: "10px" }} />
+                        <Image src={ARROWUP} height={10} alt=""   />
                     </div>
                 </div>
             ),
@@ -221,12 +221,12 @@ export default function TicketList() {
         },
         {
             title: (
-                <div style={{ display: "flex", justifyContent: "space-end" }}>
+                <div style={{ display: "flex",  justifyContent: "space-between", alignItems:"center" }}>
                     <div>
                         Ticket
                     </div>
                     <div>
-                        <Image src={ARROWUP} height={10} alt="" style={{ position: "absolute", top: "22px", right: "10px" }} />
+                        <Image src={ARROWUP} height={10} alt=""   />
                     </div>
                 </div>
             ),
@@ -235,12 +235,12 @@ export default function TicketList() {
         },
         {
             title: (
-                <div style={{ display: "flex", justifyContent: "space-end" }}>
+                <div style={{ display: "flex",  justifyContent: "space-between", alignItems:"center" }}>
                     <div>
                         Type
                     </div>
                     <div>
-                        <Image src={ARROWUP} height={10} alt="" style={{ position: "absolute", top: "22px", right: "10px" }} />
+                        <Image src={ARROWUP} height={10} alt=""   />
                     </div>
                 </div>
             ),
@@ -249,12 +249,12 @@ export default function TicketList() {
         },
         {
             title: (
-                <div style={{ display: "flex", justifyContent: "space-end" }}>
+                <div style={{ display: "flex",  justifyContent: "space-between", alignItems:"center" }}>
                     <div>
                         Recieved
                     </div>
                     <div>
-                        <Image src={ARROWUP} height={10} alt="" style={{ position: "absolute", top: "22px", right: "10px" }} />
+                        <Image src={ARROWUP} height={10} alt=""   />
                     </div>
                 </div>
             ),
@@ -263,12 +263,12 @@ export default function TicketList() {
         },
         {
             title: (
-                <div style={{ display: "flex", justifyContent: "space-end" }}>
+                <div style={{ display: "flex",  justifyContent: "space-between", alignItems:"center" }}>
                     <div>
                         Assignee
                     </div>
                     <div>
-                        <Image src={ARROWUP} height={10} alt="" style={{ position: "absolute", top: "22px", right: "10px" }} />
+                        <Image src={ARROWUP} height={10} alt=""   />
                     </div>
                 </div>
             ),
