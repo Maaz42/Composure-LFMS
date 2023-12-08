@@ -65,3 +65,4 @@ export const REDCLOSECIRCLE = require("../img/red-close-circle.svg");
 export const TRASH = require("../img/trash.svg");
 export const WHITESTAR = require("../img/whiteStar.svg");
 export const BLACKSTAR = require("../img/blackStar.svg");
+export const ADDCIRCLEWHITE = require("../img/add-circle-white.svg");

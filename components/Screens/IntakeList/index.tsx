@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Image from "next/image";
+import Link from 'next/link'
 import styles from "./styles.module.css";
 import { MenuOutlined, InboxOutlined } from '@ant-design/icons';
 import type { ColumnsType } from 'antd/es/table';
@@ -19,7 +20,8 @@ import {
     Input,
     Select,
     Upload,
-    Radio
+    Radio,
+    Tooltip
 } from "antd";
 import {
     ARROW,
@@ -48,7 +50,8 @@ import {
     DROPBOX,
     ICERTIS,
     GOOGLEDRIVE,
-    THREEDOTS
+    THREEDOTS,
+    ADDCIRCLEWHITE
 } from "@/constants/images";
 import intakeData from './intakeData.json'
 import FloatLabel from "../../ReusableComponents/FloatLabel";
@@ -96,7 +99,14 @@ export default function IntakeList() {
     const [existingTask, setExistingTask] = useState(true);
     const [value, setValue] = useState("Public");
     const [showMore, setShowMore] = useState(false);
+    const [keyValue, setKeyValue] = useState<any>(0);
     const [viewTaskText, setViewTaskText] = useState("The app is a comprehensive resource that can help you stay up-to-date on everything that's happening at the company. You can find news article Lorem ipsum dolor sit ametSoluta You can find news article Lorem ipsum dolor sit ametSoluta thsi is vert akkjasf adfn  fa");
+
+
+    // Callback function to receive the value from the child
+    const handleValueFromChild = (value: Number) => {
+        setKeyValue(value);
+    };
 
     const onRadioChange = (e: RadioChangeEvent) => {
         setValue(e.target.value);
@@ -162,12 +172,12 @@ export default function IntakeList() {
     const columns: ColumnsType<DataType> = [
         {
             title: (
-                <div style={{ display: "flex", justifyContent: "space-end" }}>
+                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
                     <div>
                         Created by
                     </div>
                     <div>
-                        <Image src={ARROWUP} height={10} alt="" style={{ position: "absolute", top: "22px", right: "10px" }} />
+                        <Image src={ARROWUP} height={10} alt="..." />
                     </div>
                 </div>
             ),
@@ -176,26 +186,36 @@ export default function IntakeList() {
         },
         {
             title: (
-                <div style={{ display: "flex", justifyContent: "space-end" }}>
+                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
                     <div>
                         Title
                     </div>
                     <div>
-                        <Image src={ARROWUP} height={10} alt="aaa" style={{ position: "absolute", top: "22px", right: "10px" }} />
+                        <Image src={ARROWUP} height={10} alt="aaa" />
                     </div>
                 </div>
             ),
             dataIndex: "title",
             key: "title",
+            ellipsis: {
+                showTitle: false,
+            },
+            render: (title) => (
+                <Link href='/ticketDetail'>
+                    {title}
+
+                </Link>
+            ),
+            width: 500,
         },
         {
             title: (
-                <div style={{ display: "flex", justifyContent: "space-end" }}>
+                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
                     <div>
                         Status
                     </div>
                     <div>
-                        <Image src={ARROWUP} height={10} alt="" style={{ position: "absolute", top: "22px", right: "10px" }} />
+                        <Image src={ARROWUP} height={10} alt="" />
                     </div>
                 </div>
             ),
@@ -247,12 +267,12 @@ export default function IntakeList() {
         },
         {
             title: (
-                <div style={{ display: "flex", justifyContent: "space-end" }}>
+                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
                     <div>
                         Platform
                     </div>
                     <div>
-                        <Image src={ARROWUP} height={10} alt="" style={{ position: "absolute", top: "22px", right: "10px" }} />
+                        <Image src={ARROWUP} height={10} alt="..." />
                     </div>
                 </div>
             ),
@@ -311,22 +331,22 @@ export default function IntakeList() {
                 </div>
             ),
         },
-        {
-            title: " ",
-            dataIndex: "dropDown",
-            key: "dropDown",
-            render: () => (
-                <Dropdown
-                    menu={{ items }}
-                    trigger={["click"]}
-                >
-                    <Image src={THREEDOTS} alt="..." onClick={(e) => {
-                        e.preventDefault();
-                        setItems(ticketDropDown);
-                    }} style={{ maxWidth: "24px", width: "24px", height: "28px", cursor: "pointer" }} />
-                </Dropdown>
-            ),
-        },
+        // {
+        //     title: " ",
+        //     dataIndex: "dropDown",
+        //     key: "dropDown",
+        //     render: () => (
+        //         <Dropdown
+        //             menu={{ items }}
+        //             trigger={["click"]}
+        //         >
+        //             <Image src={THREEDOTS} alt="..." onClick={(e) => {
+        //                 e.preventDefault();
+        //                 setItems(ticketDropDown);
+        //             }} style={{ maxWidth: "24px", width: "24px", height: "28px", cursor: "pointer" }} />
+        //         </Dropdown>
+        //     ),
+        // },
     ];
     const platformDropDown = [
         {
@@ -535,6 +555,7 @@ export default function IntakeList() {
                     padding: 0,
                     background: "white",
                     borderBottom: "1px solid #eeeeee",
+
                 }}
             >
                 <Flex gap="middle" align="start" vertical className="mx-3">
@@ -594,43 +615,51 @@ export default function IntakeList() {
                     <Divider style={{ height: "50px", margin: "0" }} type="vertical" />
                 </Flex>
                 <Flex align={"center"} justify="space-between">
-                    <Button
+
+                    {keyValue >= 2 ? <Button
                         onClick={showMergeDrawer}
-                        style={{ color: "white", background: "#A3A5F6", marginRight: "20px" }}
+                        style={{ color: "white", background: "#A3A5F6", marginRight: "5px" }}
                     >
                         Merge
-                    </Button>
-                    <Dropdown menu={{ items }} trigger={['click']}>
+                    </Button> : <></>}
+
+                    {keyValue >= 1 ? <><Dropdown menu={{ items }} trigger={['click']}>
                         <a onClick={(e) => {
                             e.preventDefault()
                             setItems(createDropDown)
                         }}>
                             <Button
-                                style={{ color: "white", background: "#7E81E8", marginRight: "20px", display: 'flex' }}
+                                style={{ color: "white", background: "#7E81E8", marginRight: "5px", display: 'flex' }}
                             >
                                 Create <Image src={ARROWDOWNWHITE} height={12} style={{ marginLeft: '5px', marginTop: '5px' }} alt="" />
                             </Button>
                         </a>
-                    </Dropdown>
-                    <Dropdown menu={{ items }} trigger={['click']}>
-                        <a onClick={(e) => {
-                            e.preventDefault()
-                            setItems(resolveDropDown)
-                        }
-                        }>
-                            <Button
-                                style={{ color: "white", background: "#333793", marginRight: "20px", display: 'flex' }}
-                            >
-                                Resolve <Image src={ARROWDOWNWHITE} height={12} style={{ marginLeft: '5px', marginTop: '5px' }} alt="" />
-                            </Button>
-                        </a>
-                    </Dropdown>
-                    <Button
-                        onClick={showDrawer}
-                        style={{ color: "white", background: "#333793", marginRight: "20px" }}
-                    >
-                        Add Intake Manually
-                    </Button>
+                    </Dropdown></> : <></>}
+                    {keyValue >= 1 ? <>
+                        <Dropdown menu={{ items }} trigger={['click']}>
+                            <a onClick={(e) => {
+                                e.preventDefault()
+                                setItems(resolveDropDown)
+                            }
+                            }>
+                                <Button
+                                    style={{ color: "white", background: "#333793", marginRight: "5px", display: 'flex' }}
+                                >
+                                    Resolve <Image src={ARROWDOWNWHITE} height={12} style={{ marginLeft: '5px', marginTop: '5px' }} alt="" />
+                                </Button>
+                            </a>
+                        </Dropdown></> : <></>}
+
+
+
+                    {keyValue == 0 ? <Tooltip title={"Add Intake Manually"}>
+                        <Button
+                            onClick={showDrawer}
+                            style={{ color: "white", background: "#333793", marginRight: "20px" }}
+                        >
+                            <Image src={ADDCIRCLEWHITE} alt='...' />
+                        </Button>
+                    </Tooltip> : <></>}
                 </Flex>
             </Flex>
             <Layout
@@ -640,7 +669,8 @@ export default function IntakeList() {
                 }}>
                 <Row>
                     <Col span={24} >
-                        <CustomTable columns={columns} data={tableData} isChecked={1} />
+                        <CustomTable columns={columns} data={tableData} isChecked={1} scroll={{}} onValueChange={handleValueFromChild} />
+
                     </Col>
                 </Row>
                 <Row style={{ justifyContent: "end" }}>
@@ -1084,6 +1114,7 @@ export default function IntakeList() {
                                 e.preventDefault()
                                 setItems(createDropDown)
                             }}>
+
                                 <Button style={{ color: "white", background: "#7E81E8", display: 'flex' }}>
                                     Create <Image src={ARROWDOWNWHITE} height={12} style={{ marginLeft: '5px', marginTop: '5px' }} alt="" />
                                 </Button>
@@ -1205,7 +1236,7 @@ export default function IntakeList() {
                         </div>
                     </div>
                 </Drawer>
-            </Layout>
+            </Layout >
         </>
     );
 }

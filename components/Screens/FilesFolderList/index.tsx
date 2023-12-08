@@ -96,26 +96,36 @@ export default function FilesFolderList() {
     const columns: ColumnsType<DataType> = [
         {
             title: (
-                <div style={{ display: "flex", justifyContent: "space-end" }}>
+                <div style={{ display: "flex", justifyContent: "space-between",  alignItems:"center"}}>
                     <div>
                         Title
                     </div>
                     <div>
-                        <Image src={ARROWUP} height={10} alt="" style={{ position: "absolute", top: "22px", right: "10px" }} />
+                        <Image src={ARROWUP} height={10} alt=""   />
                     </div>
                 </div>
             ),
             dataIndex: "title",
             key: "title",
+            width: 350,
+            ellipsis: {
+                showTitle: false,
+            },
+            render: (title) => (
+                <Tooltip placement="topLeft" title={title}>
+                    {title}
+                </Tooltip>
+            ),
+
         },
         {
             title: (
-                <div style={{ display: "flex", justifyContent: "space-end" }}>
+                <div style={{ display: "flex",  justifyContent: "space-between", alignItems:"center" }}>
                     <div>
                         Added By
                     </div>
                     <div>
-                        <Image src={ARROWUP} height={10} alt="" style={{ position: "absolute", top: "22px", right: "10px" }} />
+                        <Image src={ARROWUP} height={10} alt=""   />
                     </div>
                 </div>
             ),
@@ -124,12 +134,12 @@ export default function FilesFolderList() {
         },
         {
             title: (
-                <div style={{ display: "flex", justifyContent: "space-end" }}>
+                <div style={{ display: "flex",  justifyContent: "space-between", alignItems:"center" }}>
                     <div>
                         Date Added
                     </div>
                     <div>
-                        <Image src={ARROWUP} height={10} alt="" style={{ position: "absolute", top: "22px", right: "10px" }} />
+                        <Image src={ARROWUP} height={10} alt=""   />
                     </div>
                 </div>
             ),
@@ -138,12 +148,12 @@ export default function FilesFolderList() {
         },
         {
             title: (
-                <div style={{ display: "flex", justifyContent: "space-end" }}>
+                <div style={{ display: "flex",  justifyContent: "space-between", alignItems:"center" }}>
                     <div>
                         Last Modified
                     </div>
                     <div>
-                        <Image src={ARROWUP} height={10} alt="" style={{ position: "absolute", top: "22px", right: "10px" }} />
+                        <Image src={ARROWUP} height={10} alt=""   />
                     </div>
                 </div>
             ),
@@ -152,12 +162,12 @@ export default function FilesFolderList() {
         },
         {
             title: (
-                <div style={{ display: "flex", justifyContent: "space-end" }}>
+                <div style={{ display: "flex",  justifyContent: "space-between", alignItems:"center" }}>
                     <div>
                         Revisions
                     </div>
                     <div>
-                        <Image src={ARROWUP} height={10} alt="" style={{ position: "absolute", top: "22px", right: "10px" }} />
+                        <Image src={ARROWUP} height={10} alt=""   />
                     </div>
                 </div>
             ),
