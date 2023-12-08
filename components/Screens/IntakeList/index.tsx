@@ -770,7 +770,7 @@ export default function IntakeList() {
                     key="mergeDrawer"
                     open={mergeDrawer}
                 >
-                    <div className="mb-">
+                    <div className="mb-5">
                         <FloatLabel label="Title" value={mergeIntakeTitle}>
                             <Input style={{ height: "48px" }} value={mergeIntakeTitle} onChange={e => setMergeIntakeTitle(e.target.value)} />
                         </FloatLabel>
