@@ -5,13 +5,11 @@ import Image from 'next/image';
 import Link from 'next/link';
 import styles from './styles.module.css'
 import { LOGO, PROJECT, TICKET, WORKFLOW, FILES, FORMBUILDER, INTAKE, SETTINGS, DASHBOARD } from '@/constants/images';
-import { useRouter } from 'next/router'
 import { usePathname } from 'next/navigation'
 
 const { Sider, Content } = Layout;
 
 export default function Nav({ children }: any) {
-    const router = useRouter();
     let pathname = usePathname();
     pathname = pathname.slice(1);
     pathname = pathname.toUpperCase()
