@@ -343,7 +343,7 @@ export default function WorkflowList() {
             </Layout>
             <Modal title="Form Template" open={isModalOpen} onCancel={handleCancel} footer={null}>
                 <Divider />
-                <div className='d-flex'
+                <div className='flex'
                     style={{
                         justifyContent: "space-between",
                         height: "40px",

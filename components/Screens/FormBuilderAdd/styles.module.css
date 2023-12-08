@@ -26,6 +26,14 @@
     margin-right: 10px;
 }
 
+.boxDrag{
+    border: 1px solid rgb(218 218 218);
+    background-color: white;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    display: flex;
+}
+
 @media (max-width: 800px) {
     .collapseTo {
         display: none;
