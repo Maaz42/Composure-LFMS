@@ -689,26 +689,32 @@ export default function IntakeList() {
                     open={open}
                     key="placement">
                     <div>
-                        <FloatLabel label="Title" value={intakeTitle}>
-                            <Input style={{ height: "48px" }} value={intakeTitle} onChange={e => setIntakeTitle(e.target.value)} />
-                        </FloatLabel>
-                        <FloatLabelArrow label="Created By" value={selectCreatedByValue}>
-                            <Select
-                                showSearch
-                                style={{ width: "100%" }}
-                                onChange={value => setSelectCreatedByValue(value)}
-                                value={selectCreatedByValue}
-                                suffixIcon={null}
-                            >
-                                <Option value="Ali">Ali</Option>
-                                <Option value="Haider">Haider</Option>
-                                <Option value=" Asad">Asad</Option>
-                                <Option value="Maaz">Maaz</Option>
-                            </Select>
-                        </FloatLabelArrow>
-                        <FloatLabel label="Description" value={description}>
-                            <TextArea rows={3} value={intakeTitle} onChange={e => setIntakeTitle(e.target.value)} />
-                        </FloatLabel>
+                        <div className="mb-5">
+                            <FloatLabel label="Title" value={intakeTitle}>
+                                <Input style={{ height: "48px" }} value={intakeTitle} onChange={e => setIntakeTitle(e.target.value)} />
+                            </FloatLabel>
+                        </div>
+                        <div className="mb-5">
+                            <FloatLabelArrow label="Created By" value={selectCreatedByValue}>
+                                <Select
+                                    showSearch
+                                    style={{ width: "100%" }}
+                                    onChange={value => setSelectCreatedByValue(value)}
+                                    value={selectCreatedByValue}
+                                    suffixIcon={null}
+                                >
+                                    <Option value="Ali">Ali</Option>
+                                    <Option value="Haider">Haider</Option>
+                                    <Option value=" Asad">Asad</Option>
+                                    <Option value="Maaz">Maaz</Option>
+                                </Select>
+                            </FloatLabelArrow>
+                        </div>
+                        <div className="mb-5">
+                            <FloatLabel label="Description" value={description}>
+                                <TextArea rows={3} value={intakeTitle} onChange={e => setIntakeTitle(e.target.value)} />
+                            </FloatLabel>
+                        </div>
                         <div style={{ marginTop: '55px' }}>
                             Add Documents
                         </div>
@@ -764,9 +770,11 @@ export default function IntakeList() {
                     key="mergeDrawer"
                     open={mergeDrawer}
                 >
-                    <FloatLabel label="Title" value={mergeIntakeTitle}>
-                        <Input style={{ height: "48px" }} value={mergeIntakeTitle} onChange={e => setMergeIntakeTitle(e.target.value)} />
-                    </FloatLabel>
+                    <div className="mb-">
+                        <FloatLabel label="Title" value={mergeIntakeTitle}>
+                            <Input style={{ height: "48px" }} value={mergeIntakeTitle} onChange={e => setMergeIntakeTitle(e.target.value)} />
+                        </FloatLabel>
+                    </div>
                 </Drawer>
                 <Drawer
                     title={
@@ -786,38 +794,44 @@ export default function IntakeList() {
                     key="projectDrawer"
                 >
                     <div className="example"  >
-                        <FloatLabel label="Title" value={projectTitle}>
-                            <Input style={{ height: "48px" }} value={projectTitle} onChange={e => setProjectTitle(e.target.value)} />
-                        </FloatLabel>
-                        <FloatLabelArrow label="Workflow" value={selectWorkFlowValue}>
-                            <Select
-                                showSearch
-                                style={{ width: "100%" }}
-                                onChange={value => setSelectWorkFlowValue(value)}
-                                value={selectWorkFlowValue}
-                                suffixIcon={null}
-                            >
-                                <Option value="In Review">In Review</Option>
-                                <Option value="Complete">Complete</Option>
-                                <Option value="On Hold">On Hold</Option>
-                                <Option value="In Progress">In Progress</Option>
-                                <Option value="In Signature">In Signature</Option>
-                            </Select>
-                        </FloatLabelArrow>
-                        <FloatLabelArrow label="Collaborators" value={selectCollaboratorsValue}>
-                            <Select
-                                showSearch
-                                style={{ width: "100%" }}
-                                onChange={value => setSelectCollaboratorsValue(value)}
-                                value={selectCollaboratorsValue}
-                                suffixIcon={null}
-                                mode="multiple"
-                            >
-                                <Option value="Ali">Ali</Option>
-                                <Option value="Haider">Haider</Option>
-                                <Option value="Hassan">Hassan</Option>
-                            </Select>
-                        </FloatLabelArrow>
+                        <div className="mb-5">
+                            <FloatLabel label="Title" value={projectTitle}>
+                                <Input style={{ height: "48px" }} value={projectTitle} onChange={e => setProjectTitle(e.target.value)} />
+                            </FloatLabel>
+                        </div>
+                        <div className="mb-5">
+                            <FloatLabelArrow label="Workflow" value={selectWorkFlowValue}>
+                                <Select
+                                    showSearch
+                                    style={{ width: "100%" }}
+                                    onChange={value => setSelectWorkFlowValue(value)}
+                                    value={selectWorkFlowValue}
+                                    suffixIcon={null}
+                                >
+                                    <Option value="In Review">In Review</Option>
+                                    <Option value="Complete">Complete</Option>
+                                    <Option value="On Hold">On Hold</Option>
+                                    <Option value="In Progress">In Progress</Option>
+                                    <Option value="In Signature">In Signature</Option>
+                                </Select>
+                            </FloatLabelArrow>
+                        </div>
+                        <div className="mb-5">
+                            <FloatLabelArrow label="Collaborators" value={selectCollaboratorsValue}>
+                                <Select
+                                    showSearch
+                                    style={{ width: "100%" }}
+                                    onChange={value => setSelectCollaboratorsValue(value)}
+                                    value={selectCollaboratorsValue}
+                                    suffixIcon={null}
+                                    mode="multiple"
+                                >
+                                    <Option value="Ali">Ali</Option>
+                                    <Option value="Haider">Haider</Option>
+                                    <Option value="Hassan">Hassan</Option>
+                                </Select>
+                            </FloatLabelArrow>
+                        </div>
                         <div style={{ color: "#9e9e9e", marginBottom: "10px", fontSize: "12px" }}>Project Privacy</div>
                         <Radio.Group onChange={onRadioChange} value={value} >
                             <Radio value={"Public"}>Public</Radio>
@@ -842,72 +856,85 @@ export default function IntakeList() {
                     open={ticketDrawer}
                     key="ticketDrawer"
                 >
-                    <div className="example">
-                        <FloatLabel label="Requested By" value={ticketRequestedBy}>
-                            <Input style={{ height: "48px" }} value={ticketRequestedBy} onChange={e => setTicketRequestedBy(e.target.value)} />
-                        </FloatLabel>
-                        <FloatLabel label="Title" value={ticketTitle}>
-                            <Input style={{ height: "48px" }} value={ticketTitle} onChange={e => setTicketTitle(e.target.value)} />
-                        </FloatLabel>
-                        <FloatLabelArrow label="Status" value={selectStatusValue}>
-                            <Select
-                                showSearch
-                                style={{ width: "100%" }}
-                                onChange={value => setSelectStatusValue(value)}
-                                value={selectStatusValue}
-                                suffixIcon={null}
-                            >
-                                <Option value="finalReview">
-                                    <div style={{ display: "flex", color: "#F44336" }}><Image src={REDDOT} height={10} alt="" style={{ width: 'auto', marginRight: "5px" }} />Final Review</div>
-                                </Option>
-                                <Option value="initailReview">
-                                    <div style={{ display: "flex", color: "#FF9800" }}><Image src={YELLOWDOT} height={10} alt="" style={{ width: 'auto', marginRight: "5px" }} />Intial Review</div>
-                                </Option>
+                    <div className="example"  >
+                        <div className='mb-5'>
+                            <FloatLabel label="Requested By" value={ticketRequestedBy}>
+                                <Input style={{ height: "48px" }} value={ticketRequestedBy} onChange={e => setTicketRequestedBy(e.target.value)} />
+                            </FloatLabel>
+                        </div>
+                        <div className='mb-5'>
+                            <FloatLabel label="Title" value={ticketTitle}>
+                                <Input style={{ height: "48px" }} value={ticketTitle} onChange={e => setTicketTitle(e.target.value)} />
+                            </FloatLabel>
+                        </div>
 
-                                <Option value="In Progress">
-                                    <div style={{ display: "flex", color: "#2196F3" }}><Image src={BLUEDOT} height={10} alt="" style={{ width: 'auto', marginRight: "5px" }} />In Progress</div>
-                                </Option>
-                                <Option value="complete">
-                                    <div style={{ display: "flex", color: "#4CAF50" }}><Image src={GREENDOT} height={10} alt="" style={{ width: 'auto', marginRight: "5px" }} />Complete</div>
-                                </Option>
-                            </Select>
-                        </FloatLabelArrow>
-                        <FloatLabelArrow label="Priority" value={selectPriorityValue}>
-                            <Select
-                                showSearch
-                                style={{ width: "100%" }}
-                                onChange={value => setSelectPriorityValue(value)}
-                                value={selectPriorityValue}
-                                suffixIcon={null}
-                            >
-                                <Option value="critical ">
-                                    <div style={{ display: "flex", color: "#F44336" }}><Image src={REDDOT} height={10} alt="" style={{ width: 'auto', marginRight: "5px" }} />Critical</div>
-                                </Option>
-                                <Option value="high ">
-                                    <div style={{ display: "flex", color: "#FF9800" }}><Image src={YELLOWDOT} height={10} alt="" style={{ width: 'auto', marginRight: "5px" }} />High</div>
-                                </Option>
-                                <Option value="medium">
-                                    <div style={{ display: "flex", color: "#2196F3" }}><Image src={BLUEDOT} height={10} alt="" style={{ width: 'auto', marginRight: "5px" }} />Medium</div>
-                                </Option>
-                                <Option value="low">
-                                    <div style={{ display: "flex", color: "#9E9E9E" }}><Image src={GRAYDOT} height={10} alt="" style={{ width: 'auto', marginRight: "5px" }} />Low</div>
-                                </Option>
-                            </Select>
-                        </FloatLabelArrow>
-                        <FloatLabelArrow label="Assignee" value={selectAssigneeValue}>
-                            <Select
-                                showSearch
-                                style={{ width: "100%" }}
-                                onChange={value => setSelectAssigneeValue(value)}
-                                value={selectAssigneeValue}
-                                suffixIcon={null}
-                                mode="multiple"
-                            >
-                                <Option value="Ali">Ali</Option>
-                                <Option value="Haider">Haider</Option>
-                                <Option value="Hassan">Hassan</Option>
-                            </Select>
-                        </FloatLabelArrow>
+                        <div className='mb-5'>
+
+                            <FloatLabelArrow label="Status" value={selectStatusValue}>
+                                <Select
+                                    showSearch
+                                    style={{ width: "100%" }}
+                                    onChange={value => setSelectStatusValue(value)}
+                                    value={selectStatusValue}
+                                    suffixIcon={null}
+                                >
+                                    <Option value="finalReview">
+                                        <div style={{ display: "flex", color: "#F44336" }}><Image src={REDDOT} height={10} alt="" style={{ width: 'auto', marginRight: "5px" }} />Final Review</div>
+                                    </Option>
+                                    <Option value="initailReview">
+                                        <div style={{ display: "flex", color: "#FF9800" }}><Image src={YELLOWDOT} height={10} alt="" style={{ width: 'auto', marginRight: "5px" }} />Intial Review</div>
+                                    </Option>
+
+                                    <Option value="In Progress">
+                                        <div style={{ display: "flex", color: "#2196F3" }}><Image src={BLUEDOT} height={10} alt="" style={{ width: 'auto', marginRight: "5px" }} />In Progress</div>
+                                    </Option>
+                                    <Option value="complete">
+                                        <div style={{ display: "flex", color: "#4CAF50" }}><Image src={GREENDOT} height={10} alt="" style={{ width: 'auto', marginRight: "5px" }} />Complete</div>
+                                    </Option>
+                                </Select>
+                            </FloatLabelArrow>
+                        </div>
+                        <div className="mb-5">
+                            <FloatLabelArrow label="Priority" value={selectPriorityValue}>
+                                <Select
+                                    showSearch
+                                    style={{ width: "100%" }}
+                                    onChange={value => setSelectPriorityValue(value)}
+                                    value={selectPriorityValue}
+                                    suffixIcon={null}
+                                >
+                                    <Option value="critical ">
+                                        <div style={{ display: "flex", color: "#F44336" }}><Image src={REDDOT} height={10} alt="" style={{ width: 'auto', marginRight: "5px" }} />Critical</div>
+                                    </Option>
+                                    <Option value="high ">
+                                        <div style={{ display: "flex", color: "#FF9800" }}><Image src={YELLOWDOT} height={10} alt="" style={{ width: 'auto', marginRight: "5px" }} />High</div>
+                                    </Option>
+                                    <Option value="medium">
+                                        <div style={{ display: "flex", color: "#2196F3" }}><Image src={BLUEDOT} height={10} alt="" style={{ width: 'auto', marginRight: "5px" }} />Medium</div>
+                                    </Option>
+                                    <Option value="low">
+                                        <div style={{ display: "flex", color: "#9E9E9E" }}><Image src={GRAYDOT} height={10} alt="" style={{ width: 'auto', marginRight: "5px" }} />Low</div>
+                                    </Option>
+                                </Select>
+                            </FloatLabelArrow>
+                        </div>
+
+                        <div className="mb-5">
+                            <FloatLabelArrow label="Assignee" value={selectAssigneeValue}>
+                                <Select
+                                    showSearch
+                                    style={{ width: "100%" }}
+                                    onChange={value => setSelectAssigneeValue(value)}
+                                    value={selectAssigneeValue}
+                                    suffixIcon={null}
+                                    mode="multiple"
+                                >
+                                    <Option value="Ali">Ali</Option>
+                                    <Option value="Haider">Haider</Option>
+                                    <Option value="Hassan">Hassan</Option>
+                                </Select>
+                            </FloatLabelArrow>
+                        </div>
                     </div>
                 </Drawer>
                 <Drawer
@@ -940,6 +967,52 @@ export default function IntakeList() {
                                 }}>
                                     New Project
                                 </Button>
+                                <div className="mb-5">
+                                    <FloatLabelArrow label="Task Title" value={selectTaskTitleValue}>
+                                        <Select
+                                            showSearch
+                                            style={{ width: "100%" }}
+                                            onChange={value => setSelectTaskTitleValue(value)}
+                                            value={selectTaskTitleValue}
+                                            suffixIcon={null}
+                                        >
+                                            <Option value="In Review">In Review</Option>
+                                            <Option value="Complete">Complete</Option>
+                                            <Option value="On Hold">On Hold</Option>
+                                            <Option value="In Progress">In Progress</Option>
+                                            <Option value="In Signature">In Signature</Option>
+                                        </Select>
+                                    </FloatLabelArrow>
+                                </div>
+                                <div className="mb-5">
+                                    <FloatLabelArrow label="Project Tittle" value={selectWorkFlowValue}>
+                                        <Select
+                                            showSearch
+                                            style={{ width: "100%" }}
+                                            onChange={value => setSelectWorkFlowValue(value)}
+                                            value={selectWorkFlowValue}
+                                            suffixIcon={null}
+                                        >
+                                            <Option value="In Review">In Review</Option>
+                                            <Option value="Complete">Complete</Option>
+                                            <Option value="On Hold">On Hold</Option>
+                                            <Option value="In Progress">In Progress</Option>
+                                            <Option value="In Signature">In Signature</Option>
+                                        </Select>
+                                    </FloatLabelArrow>
+                                </div>
+                            </>
+                        ) : (<>
+                            <Button onClick={(e) => {
+                                e.preventDefault();
+                                setExistingTask(true)
+                            }}>
+                                Existing Task
+                            </Button>
+                            <Button style={{ backgroundColor: "#7E81E8", color: "#fff", marginBottom: "10px" }}>
+                                New Project
+                            </Button>
+                            <div className="mb-5">
                                 <FloatLabelArrow label="Task Title" value={selectTaskTitleValue}>
                                     <Select
                                         showSearch
@@ -955,7 +1028,14 @@ export default function IntakeList() {
                                         <Option value="In Signature">In Signature</Option>
                                     </Select>
                                 </FloatLabelArrow>
-                                <FloatLabelArrow label="Project Tittle" value={selectWorkFlowValue}>
+                            </div>
+                            <div className="mb-5">
+                                <FloatLabel label="Projec Title" value={projectTitle}>
+                                    <Input style={{ height: "48px" }} value={projectTitle} onChange={e => setProjectTitle(e.target.value)} />
+                                </FloatLabel>
+                            </div>
+                            <div className="mb-5">
+                                <FloatLabelArrow label="Workflow" value={selectWorkFlowValue}>
                                     <Select
                                         showSearch
                                         style={{ width: "100%" }}
@@ -970,64 +1050,23 @@ export default function IntakeList() {
                                         <Option value="In Signature">In Signature</Option>
                                     </Select>
                                 </FloatLabelArrow>
-                            </>
-                        ) : (<>
-                            <Button onClick={(e) => {
-                                e.preventDefault();
-                                setExistingTask(true)
-                            }}>
-                                Existing Task
-                            </Button>
-                            <Button style={{ backgroundColor: "#7E81E8", color: "#fff", marginBottom: "10px" }}>
-                                New Project
-                            </Button>
-                            <FloatLabelArrow label="Task Title" value={selectTaskTitleValue}>
-                                <Select
-                                    showSearch
-                                    style={{ width: "100%" }}
-                                    onChange={value => setSelectTaskTitleValue(value)}
-                                    value={selectTaskTitleValue}
-                                    suffixIcon={null}
-                                >
-                                    <Option value="In Review">In Review</Option>
-                                    <Option value="Complete">Complete</Option>
-                                    <Option value="On Hold">On Hold</Option>
-                                    <Option value="In Progress">In Progress</Option>
-                                    <Option value="In Signature">In Signature</Option>
-                                </Select>
-                            </FloatLabelArrow>
-                            <FloatLabel label="Projec Title" value={projectTitle}>
-                                <Input style={{ height: "48px" }} value={projectTitle} onChange={e => setProjectTitle(e.target.value)} />
-                            </FloatLabel>
-                            <FloatLabelArrow label="Workflow" value={selectWorkFlowValue}>
-                                <Select
-                                    showSearch
-                                    style={{ width: "100%" }}
-                                    onChange={value => setSelectWorkFlowValue(value)}
-                                    value={selectWorkFlowValue}
-                                    suffixIcon={null}
-                                >
-                                    <Option value="In Review">In Review</Option>
-                                    <Option value="Complete">Complete</Option>
-                                    <Option value="On Hold">On Hold</Option>
-                                    <Option value="In Progress">In Progress</Option>
-                                    <Option value="In Signature">In Signature</Option>
-                                </Select>
-                            </FloatLabelArrow>
-                            <FloatLabelArrow label="Collaborators" value={selectCollaboratorsValue}>
-                                <Select
-                                    showSearch
-                                    style={{ width: "100%" }}
-                                    onChange={value => setSelectCollaboratorsValue(value)}
-                                    value={selectCollaboratorsValue}
-                                    suffixIcon={null}
-                                    mode="multiple"
-                                >
-                                    <Option value="Ali">Ali</Option>
-                                    <Option value="Haider">Haider</Option>
-                                    <Option value="Hassan">Hassan</Option>
-                                </Select>
-                            </FloatLabelArrow>
+                            </div>
+                            <div className="mb-5">
+                                <FloatLabelArrow label="Collaborators" value={selectCollaboratorsValue}>
+                                    <Select
+                                        showSearch
+                                        style={{ width: "100%" }}
+                                        onChange={value => setSelectCollaboratorsValue(value)}
+                                        value={selectCollaboratorsValue}
+                                        suffixIcon={null}
+                                        mode="multiple"
+                                    >
+                                        <Option value="Ali">Ali</Option>
+                                        <Option value="Haider">Haider</Option>
+                                        <Option value="Hassan">Hassan</Option>
+                                    </Select>
+                                </FloatLabelArrow>
+                            </div>
                         </>)}
                     </div>
                 </Drawer>

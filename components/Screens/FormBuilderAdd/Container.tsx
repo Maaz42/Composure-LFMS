@@ -16,7 +16,7 @@ export default function Container() {
 
   const [, drop] = useDrop(
     () => ({
-      accept:'box',
+      accept: 'box',
       drop: () => ({
         name: `${allowedDropEffect} Dustbin`,
         allowedDropEffect,
@@ -34,9 +34,11 @@ export default function Container() {
       <Col xxl={14} lg={14} md={24} sm={24} xs={24} style={colStyle}>
         <Flex className={styles.detailsSectionLeft} vertical>
           <div style={{ marginLeft: 5, marginRight: 5 }}>
-            <FloatLabel label="Project Title" value={projectTitle}>
-              <Input style={{ height: "48px" }} value={projectTitle} onChange={e => setproJectTitle(e.target.value)} />
-            </FloatLabel>
+            <div className="mb-5">
+              <FloatLabel label="Project Title" value={projectTitle}>
+                <Input style={{ height: "48px" }} value={projectTitle} onChange={e => setproJectTitle(e.target.value)} />
+              </FloatLabel>
+            </div>
           </div>
           <Row>
             <Col xxl={12} lg={12} md={24} sm={24} xs={24} style={{ paddingLeft: 5, paddingRight: 5 }}>

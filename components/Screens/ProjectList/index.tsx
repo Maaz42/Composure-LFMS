@@ -544,26 +544,32 @@ export default function ProjectList() {
                     key="projectDrawer"
                 >
                     <div>
-                        <FloatLabel label="Title" value={projectTitle}>
-                            <Input style={{ height: "48px" }} value={projectTitle} onChange={e => setproJectTitle(e.target.value)} />
-                        </FloatLabel>
-                        <FloatLabel label="Workflow" value={projectWorkflow}>
-                            <Input style={{ height: "48px" }} value={projectWorkflow} onChange={e => setprojectWorkflow(e.target.value)} />
-                        </FloatLabel>
-                        <FloatLabelArrow label="Collaborators" value={selectCollaboratorValue}>
-                            <Select
-                                showSearch
-                                style={{ width: "100%" }}
-                                onChange={value => setSelectCollaoratorValue(value)}
-                                value={selectCollaboratorValue}
-                                suffixIcon={null}
-                            >
-                                <Option value="Ali">Ali</Option>
-                                <Option value="Haider">Haider</Option>
-                                <Option value=" Asad">Asad</Option>
-                                <Option value="Maaz">Maaz</Option>
-                            </Select>
-                        </FloatLabelArrow>
+                        <div className="mb-5">
+                            <FloatLabel label="Title" value={projectTitle}>
+                                <Input style={{ height: "48px" }} value={projectTitle} onChange={e => setproJectTitle(e.target.value)} />
+                            </FloatLabel>
+                        </div>
+                        <div className="mb-5">
+                            <FloatLabel label="Workflow" value={projectWorkflow}>
+                                <Input style={{ height: "48px" }} value={projectWorkflow} onChange={e => setprojectWorkflow(e.target.value)} />
+                            </FloatLabel>
+                        </div>
+                        <div className="mb-5">
+                            <FloatLabelArrow label="Collaborators" value={selectCollaboratorValue}>
+                                <Select
+                                    showSearch
+                                    style={{ width: "100%" }}
+                                    onChange={value => setSelectCollaoratorValue(value)}
+                                    value={selectCollaboratorValue}
+                                    suffixIcon={null}
+                                >
+                                    <Option value="Ali">Ali</Option>
+                                    <Option value="Haider">Haider</Option>
+                                    <Option value=" Asad">Asad</Option>
+                                    <Option value="Maaz">Maaz</Option>
+                                </Select>
+                            </FloatLabelArrow>
+                        </div>
                         <div style={{ color: "#9e9e9e", marginBottom: "10px", fontSize: "12px" }}>Project Privacy</div>
                         <Radio.Group onChange={onRadioChange} value={value} >
                             <Radio value={"Public"}>Public</Radio>
@@ -588,20 +594,22 @@ export default function ProjectList() {
                     key="collaboratorDrawer"
                     open={collaoratorDrawer}
                 >
-                    <FloatLabelArrow label="Collaborators" value={selectCollaboratorValue}>
-                        <Select
-                            showSearch
-                            style={{ width: "100%" }}
-                            onChange={value => setSelectCollaoratorValue(value)}
-                            value={selectCollaboratorValue}
-                            suffixIcon={null}
-                            mode="multiple"
-                        >
-                            <Option value="Ali">Ali</Option>
-                            <Option value="Haider">Haider</Option>
-                            <Option value="Hassan">Hassan</Option>
-                        </Select>
-                    </FloatLabelArrow>
+                    <div className="mb-5">
+                        <FloatLabelArrow label="Collaborators" value={selectCollaboratorValue}>
+                            <Select
+                                showSearch
+                                style={{ width: "100%" }}
+                                onChange={value => setSelectCollaoratorValue(value)}
+                                value={selectCollaboratorValue}
+                                suffixIcon={null}
+                                mode="multiple"
+                            >
+                                <Option value="Ali">Ali</Option>
+                                <Option value="Haider">Haider</Option>
+                                <Option value="Hassan">Hassan</Option>
+                            </Select>
+                        </FloatLabelArrow>
+                    </div>
                 </Drawer>
             </Layout>
         </>

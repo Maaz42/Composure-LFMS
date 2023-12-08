@@ -3,7 +3,7 @@ import styles from './styles.module.css'
 import Image from 'next/image';
 import { Avatar, Layout, Typography, Flex, Button, Dropdown, Divider, Row, Col, Upload, Timeline, Tooltip, Progress, Drawer, Select } from 'antd';
 import { MenuOutlined, InboxOutlined, UserOutlined } from '@ant-design/icons';
-import { ARROWDOWN, BLUEDOT, CALENDAR, CHECKCIRCLE, CLOCK, CLOSE, EDIT, FILEUPLOAD, FOLDER, GREENDOT, INFO, MORE, PROFILEUSERS, RATING, REDDOT, SEND, TICKCOMPLETE, YELLOWDOT } from '@/constants/images'
+import { ARROWDOWN, BLACKSTAR, BLUEDOT, CALENDAR, CHECKCIRCLE, CLOCK, CLOSE, EDIT, FILEUPLOAD, FOLDER, GREENDOT, INFO, MORE, PROFILEUSERS, REDDOT, SEND, TICKCOMPLETE, WHITESTAR, YELLOWDOT } from '@/constants/images'
 import CustomDropDown from '@/components/ReusableComponents/DropDown';
 import FloatLabelArrow from '@/components/ReusableComponents/FloatLabelArrow';
 const { Header } = Layout;
@@ -226,9 +226,14 @@ export default function ProjectDetail() {
                             </a>
                         </Row>
                         <Row className={styles.cardStyle}>
-                            <Row style={{ width: "100%", backgroundColor: "#FFFFFF" }} >
+                            <Row className={styles.cardInnerStyle} >
                                 <Row className={styles.cardTitleStyle}> Final Structure Chart at Closing – Please update the structure chart, attached, with final ownership percentages </Row>
-                                <Row className={styles.cardSDetailStyle} justify={'space-between'} style={{ width: "100%" }}><Col>Task Load</Col><Col className='flex'><Image src={RATING} alt='...' /></Col> </Row>
+                                <Row className={styles.cardSDetailStyle} justify={'space-between'} align={'middle'} style={{ width: "100%" }}><div>Task Load</div>
+                                    <Row>
+                                        <Image src={BLACKSTAR} alt='...' />
+                                        <Image src={BLACKSTAR} alt='...' />
+                                        <Image src={WHITESTAR} alt='...' />
+                                    </Row></Row>
                                 <Row className={styles.cardSDetailStyle} justify={'space-between'} style={{ width: "100%" }}><Col>Date</Col><Col className='flex' ><Image className='mr-2' src={CALENDAR} alt='...' /> <div>08/02/2023</div></Col> </Row>
                                 <Row className={styles.cardSDetailStyle} justify={'space-between'} style={{ width: "100%" }}><Col>File</Col><Col className='flex'><Image className='underline mr-2' src={FILEUPLOAD} alt='...' /> <div>Upload File</div></Col> </Row>
                                 <Row className={styles.cardSDetailStyle} >
@@ -252,9 +257,13 @@ export default function ProjectDetail() {
                             </Row>
                         </Row>
                         <Row className={styles.cardStyle}>
-                            <Row style={{ width: "100%", backgroundColor: "#FFFFFF" }} >
+                            <Row className={styles.cardInnerStyle} >
                                 <Row className={styles.cardTitleStyle}> Final Structure Chart at Closing – Please update the structure chart, attached, with final ownership percentages </Row>
-                                <Row className={styles.cardSDetailStyle} justify={'space-between'} style={{ width: "100%" }}><Col >Task Load</Col><Col><Image src={RATING} alt='...' /></Col> </Row>
+                                <Row className={styles.cardSDetailStyle} justify={'space-between'} style={{ width: "100%" }}><Col >Task Load</Col><Row>
+                                    <Image src={BLACKSTAR} alt='...' />
+                                    <Image src={BLACKSTAR} alt='...' />
+                                    <Image src={BLACKSTAR} alt='...' />
+                                </Row> </Row>
                                 <Row className={styles.cardSDetailStyle} justify={'space-between'} style={{ width: "100%" }}><Col>Date</Col><Col className='flex'  ><Image className='underline mr-2' src={CALENDAR} alt='...' /> <div >08/02/2023</div></Col> </Row>
                                 <Row className={styles.cardSDetailStyle} justify={'space-between'} style={{ width: "100%" }}><Col>File</Col><Col className='flex'><Image className='underline mr-2' src={FILEUPLOAD} alt='...' /> <div >Upload File</div></Col> </Row>
                                 <Row className={styles.cardSDetailStyle} style={{ width: "100%" }}>
@@ -338,7 +347,7 @@ export default function ProjectDetail() {
                                                                 setItems(taskStatusDropDown);
                                                             }}>
                                                                 <Dropdown menu={{ items }} placement='bottom' trigger={['click']} arrow={{ pointAtCenter: true }}>
-                                                                    <Button className='rounded-3xl'>Mark as Completed?</Button>
+                                                                    <Button className={styles.resButton}>Mark as Completed?</Button>
                                                                 </Dropdown>
                                                             </a>
                                                             <a
@@ -374,9 +383,13 @@ export default function ProjectDetail() {
                             </Row>
                         </Row>
                         <Row className={styles.cardStyle}>
-                            <Row style={{ width: "100%", backgroundColor: "#FFFFFF" }} >
+                            <Row className={styles.cardInnerStyle} >
                                 <Row className={styles.cardTitleStyle}> FATCA/CRS Requirements: Please provide for all non coinvestors a complete and valid OECD Self-Certification Form, IRS Form W-9, W-8BEN, W-8BEN-E, W-8ECI, W-8EXP or W-8IMY, as applicable, and a certificate of information or equivalent</Row>
-                                <Row className={styles.cardSDetailStyle} justify={'space-between'} style={{ width: "100%" }}><Col>Task Load</Col><Col><Image src={RATING} alt='...' /></Col> </Row>
+                                <Row className={styles.cardSDetailStyle} justify={'space-between'} style={{ width: "100%" }}><Col>Task Load</Col><Row>
+                                    <Image src={BLACKSTAR} alt='...' />
+                                    <Image src={BLACKSTAR} alt='...' />
+                                    <Image src={BLACKSTAR} alt='...' />
+                                </Row></Row>
                                 <Row className={styles.cardSDetailStyle} justify={'space-between'} style={{ width: "100%" }}><Col>Date</Col><Col className='flex'><Image className='underline mr-2' src={CALENDAR} alt='...' /> <div >08/02/2023</div></Col> </Row>
                                 <Row className={styles.cardSDetailStyle} justify={'space-between'} style={{ width: "100%" }}><Col>File</Col><Col className='flex'><Image className='underline mr-2' src={FILEUPLOAD} alt='...' /> <div >Upload File</div></Col> </Row>
                                 <Row className={styles.cardSDetailStyle} >
@@ -438,132 +451,225 @@ export default function ProjectDetail() {
                                         </a>
                                     </Flex>
                                 </Row>
-                                <Row className='mb-2' style={{ alignItems: 'baseline', justifyContent: 'space-between' }}>
+                                <div style={{ height: "290px", overflow: "auto" }}>
+                                    <Row className='mb-2' style={{ alignItems: 'baseline', justifyContent: 'space-between' }}>
 
-                                    <div className="d-flex align-center ">
-                                        <Image src={FOLDER} height={18} alt="" /> &nbsp;
-                                        <Tooltip title={'GroupProject.doc'} placement="top">
-                                            <div
-                                                className={styles.folderTitle}> GroupProject.doc
-                                            </div>
-                                        </Tooltip>
-                                    </div>
-                                    <a
-                                        onClick={(e) => {
-                                            e.preventDefault();
-                                            setItems(singleDocDropDown);
-                                        }}
-                                    >
-                                        <Dropdown menu={{ items }} placement='bottom' trigger={['click']} arrow={{ pointAtCenter: true }}
+                                        <div className="d-flex align-center ">
+                                            <Image src={FOLDER} height={18} alt="" /> &nbsp;
+                                            <Tooltip title={'GroupProject.doc'} placement="top">
+                                                <div
+                                                    className={styles.folderTitle}> GroupProject.doc
+                                                </div>
+                                            </Tooltip>
+                                            <Image src={INFO} height={18} alt="" /> &nbsp;
+                                        </div>
+                                        <a
+                                            onClick={(e) => {
+                                                e.preventDefault();
+                                                setItems(singleDocDropDown);
+                                            }}
                                         >
-                                            <Image className='mt-1' src={MORE} height={18} alt='' />
-                                        </Dropdown>
-                                    </a>
-                                </Row>
-                                <Row className='mb-2' style={{ alignItems: 'baseline', justifyContent: 'space-between' }}>
-                                    <div className="d-flex align-center ">
-                                        <Image src={FOLDER} height={18} alt="" /> &nbsp;
-                                        <Tooltip title={'GroupProject.doc'} placement="top">
-                                            <div
-                                                className={styles.folderTitle}> GroupProject.doc
-                                            </div>
-                                        </Tooltip>
-                                    </div>
-                                    <a
-                                        onClick={(e) => {
-                                            e.preventDefault();
-                                            setItems(singleDocDropDown);
-                                        }}
-                                    >
-                                        <Dropdown menu={{ items }} placement='bottom' trigger={['click']} arrow={{ pointAtCenter: true }}
+                                            <Dropdown menu={{ items }} placement='bottom' trigger={['click']} arrow={{ pointAtCenter: true }}
+                                            >
+                                                <Image className='mt-1' src={MORE} height={18} alt='' />
+                                            </Dropdown>
+                                        </a>
+                                    </Row>
+                                    <Row className='mb-2' style={{ alignItems: 'baseline', justifyContent: 'space-between' }}>
+                                        <div className="d-flex align-center ">
+                                            <Image src={FOLDER} height={18} alt="" /> &nbsp;
+                                            <Tooltip title={'GroupProject.doc'} placement="top">
+                                                <div
+                                                    className={styles.folderTitle}> GroupProject.doc
+                                                </div>
+                                            </Tooltip>
+                                            <Image src={INFO} height={18} alt="" /> &nbsp;
+                                        </div>
+                                        <a
+                                            onClick={(e) => {
+                                                e.preventDefault();
+                                                setItems(singleDocDropDown);
+                                            }}
                                         >
-                                            <Image className='mt-1' src={MORE} height={18} alt='' />
-                                        </Dropdown>
-                                    </a>
-                                </Row>
-                                <Row className='mb-2' style={{ alignItems: 'baseline', justifyContent: 'space-between' }}>
-                                    <div className="d-flex align-center ">
-                                        <Image src={FOLDER} height={18} alt="" /> &nbsp;
-                                        <Tooltip title={'GroupProject.doc'} placement="top">
-                                            <div
-                                                className={styles.folderTitle}> GroupProject.doc
-                                            </div>
-                                        </Tooltip>
-                                    </div>
-                                    <a
-                                        onClick={(e) => {
-                                            e.preventDefault();
-                                            setItems(singleDocDropDown);
-                                        }}
-                                    >
-                                        <Dropdown menu={{ items }} placement='bottom' trigger={['click']} arrow={{ pointAtCenter: true }}>
-                                            <Image className='mt-1' src={MORE} height={18} alt='' />
-                                        </Dropdown>
-                                    </a>
-                                </Row>
-                                <Row className='mb-2' style={{ alignItems: 'baseline', justifyContent: 'space-between' }}>
-                                    <div className="d-flex align-center ">
-                                        <Image src={FOLDER} height={18} alt="" /> &nbsp;
-                                        <Tooltip title={'GroupProject.doc'} placement="top">
-                                            <div
-                                                className={styles.folderTitle}> GroupProject.doc
-                                            </div>
-                                        </Tooltip>
-                                    </div>
-                                    <a
-                                        onClick={(e) => {
-                                            e.preventDefault();
-                                            setItems(singleDocDropDown);
-                                        }}
-                                    >
-                                        <Dropdown menu={{ items }} placement='bottom' trigger={['click']} arrow={{ pointAtCenter: true }}>
-                                            <Image className='mt-1' src={MORE} height={18} alt='' />
-                                        </Dropdown>
-                                    </a>
-                                </Row>
-                                <Row className='mb-2' style={{ alignItems: 'baseline', justifyContent: 'space-between' }}>
-                                    <div className="d-flex align-center ">
-                                        <Image src={FOLDER} height={18} alt="" /> &nbsp;
-                                        <Tooltip title={'GroupProject.doc'} placement="top">
-                                            <div
-                                                className={styles.folderTitle}> GroupProject.doc
-                                            </div>
-                                        </Tooltip>
-                                    </div>
-                                    <a
-                                        onClick={(e) => {
-                                            e.preventDefault();
-                                            setItems(singleDocDropDown);
-                                        }}
-                                    >
-                                        <Dropdown menu={{ items }} placement='bottom' trigger={['click']} arrow={{ pointAtCenter: true }}>
-                                            <Image className='mt-1' src={MORE} height={18} alt='' />
-                                        </Dropdown>
-                                    </a>
-                                </Row>
-                                <Row className='mb-2' style={{ alignItems: 'baseline', justifyContent: 'space-between' }}>
-                                    <div className="d-flex align-center ">
-                                        <Image src={FOLDER} height={18} alt="" /> &nbsp;
-                                        <Tooltip title={'GroupProject.doc'} placement="top">
-                                            <div
-                                                className={styles.folderTitle}> GroupProject.doc
-                                            </div>
-                                        </Tooltip>
-                                    </div>
-                                    <a
-                                        onClick={(e) => {
-                                            e.preventDefault();
-                                            setItems(singleDocDropDown);
-                                        }}
-                                    >
-                                        <Dropdown menu={{ items }} placement='bottom' trigger={['click']} arrow={{ pointAtCenter: true }}>
-                                            <Image className='mt-1' src={MORE} height={18} alt='' />
-                                        </Dropdown>
-                                    </a>
-                                </Row>
+                                            <Dropdown menu={{ items }} placement='bottom' trigger={['click']} arrow={{ pointAtCenter: true }}
+                                            >
+                                                <Image className='mt-1' src={MORE} height={18} alt='' />
+                                            </Dropdown>
+                                        </a>
+                                    </Row>
+                                    <Row className='mb-2' style={{ alignItems: 'baseline', justifyContent: 'space-between' }}>
+                                        <div className="d-flex align-center ">
+                                            <Image src={FOLDER} height={18} alt="" /> &nbsp;
+                                            <Tooltip title={'GroupProject.doc'} placement="top">
+                                                <div
+                                                    className={styles.folderTitle}> GroupProject.doc
+                                                </div>
+                                            </Tooltip>
+                                            <Image src={INFO} height={18} alt="" /> &nbsp;
+                                        </div>
+                                        <a
+                                            onClick={(e) => {
+                                                e.preventDefault();
+                                                setItems(singleDocDropDown);
+                                            }}
+                                        >
+                                            <Dropdown menu={{ items }} placement='bottom' trigger={['click']} arrow={{ pointAtCenter: true }}>
+                                                <Image className='mt-1' src={MORE} height={18} alt='' />
+                                            </Dropdown>
+                                        </a>
+                                    </Row>
+                                    <Row className='mb-2' style={{ alignItems: 'baseline', justifyContent: 'space-between' }}>
+                                        <div className="d-flex align-center ">
+                                            <Image src={FOLDER} height={18} alt="" /> &nbsp;
+                                            <Tooltip title={'GroupProject.doc'} placement="top">
+                                                <div
+                                                    className={styles.folderTitle}> GroupProject.doc
+                                                </div>
+                                            </Tooltip>
+                                            <Image src={INFO} height={18} alt="" /> &nbsp;
+                                        </div>
+                                        <a
+                                            onClick={(e) => {
+                                                e.preventDefault();
+                                                setItems(singleDocDropDown);
+                                            }}
+                                        >
+                                            <Dropdown menu={{ items }} placement='bottom' trigger={['click']} arrow={{ pointAtCenter: true }}>
+                                                <Image className='mt-1' src={MORE} height={18} alt='' />
+                                            </Dropdown>
+                                        </a>
+                                    </Row>
+                                    <Row className='mb-2' style={{ alignItems: 'baseline', justifyContent: 'space-between' }}>
+                                        <div className="d-flex align-center ">
+                                            <Image src={FOLDER} height={18} alt="" /> &nbsp;
+                                            <Tooltip title={'GroupProject.doc'} placement="top">
+                                                <div
+                                                    className={styles.folderTitle}> GroupProject.doc
+                                                </div>
+                                            </Tooltip>
+                                            <Image src={INFO} height={18} alt="" /> &nbsp;
+                                        </div>
+                                        <a
+                                            onClick={(e) => {
+                                                e.preventDefault();
+                                                setItems(singleDocDropDown);
+                                            }}
+                                        >
+                                            <Dropdown menu={{ items }} placement='bottom' trigger={['click']} arrow={{ pointAtCenter: true }}>
+                                                <Image className='mt-1' src={MORE} height={18} alt='' />
+                                            </Dropdown>
+                                        </a>
+                                    </Row>
+                                    <Row className='mb-2' style={{ alignItems: 'baseline', justifyContent: 'space-between' }}>
+                                        <div className="d-flex align-center ">
+                                            <Image src={FOLDER} height={18} alt="" /> &nbsp;
+                                            <Tooltip title={'GroupProject.doc'} placement="top">
+                                                <div
+                                                    className={styles.folderTitle}> GroupProject.doc
+                                                </div>
+                                            </Tooltip>
+                                            <Image src={INFO} height={18} alt="" /> &nbsp;
+                                        </div>
+                                        <a
+                                            onClick={(e) => {
+                                                e.preventDefault();
+                                                setItems(singleDocDropDown);
+                                            }}
+                                        >
+                                            <Dropdown menu={{ items }} placement='bottom' trigger={['click']} arrow={{ pointAtCenter: true }}>
+                                                <Image className='mt-1' src={MORE} height={18} alt='' />
+                                            </Dropdown>
+                                        </a>
+                                    </Row>
+                                    <Row className='mb-2' style={{ alignItems: 'baseline', justifyContent: 'space-between' }}>
+                                        <div className="d-flex align-center ">
+                                            <Image src={FOLDER} height={18} alt="" /> &nbsp;
+                                            <Tooltip title={'GroupProject.doc'} placement="top">
+                                                <div
+                                                    className={styles.folderTitle}> GroupProject.doc
+                                                </div>
+                                            </Tooltip>
+                                            <Image src={INFO} height={18} alt="" /> &nbsp;
+                                        </div>
+                                        <a
+                                            onClick={(e) => {
+                                                e.preventDefault();
+                                                setItems(singleDocDropDown);
+                                            }}
+                                        >
+                                            <Dropdown menu={{ items }} placement='bottom' trigger={['click']} arrow={{ pointAtCenter: true }}>
+                                                <Image className='mt-1' src={MORE} height={18} alt='' />
+                                            </Dropdown>
+                                        </a>
+                                    </Row>
+                                    <Row className='mb-2' style={{ alignItems: 'baseline', justifyContent: 'space-between' }}>
+                                        <div className="d-flex align-center ">
+                                            <Image src={FOLDER} height={18} alt="" /> &nbsp;
+                                            <Tooltip title={'GroupProject.doc'} placement="top">
+                                                <div
+                                                    className={styles.folderTitle}> GroupProject.doc
+                                                </div>
+                                            </Tooltip>
+                                            <Image src={INFO} height={18} alt="" /> &nbsp;
+                                        </div>
+                                        <a
+                                            onClick={(e) => {
+                                                e.preventDefault();
+                                                setItems(singleDocDropDown);
+                                            }}
+                                        >
+                                            <Dropdown menu={{ items }} placement='bottom' trigger={['click']} arrow={{ pointAtCenter: true }}>
+                                                <Image className='mt-1' src={MORE} height={18} alt='' />
+                                            </Dropdown>
+                                        </a>
+                                    </Row>
+                                    <Row className='mb-2' style={{ alignItems: 'baseline', justifyContent: 'space-between' }}>
+                                        <div className="d-flex align-center ">
+                                            <Image src={FOLDER} height={18} alt="" /> &nbsp;
+                                            <Tooltip title={'GroupProject.doc'} placement="top">
+                                                <div
+                                                    className={styles.folderTitle}> GroupProject.doc
+                                                </div>
+                                            </Tooltip>
+                                            <Image src={INFO} height={18} alt="" /> &nbsp;
+                                        </div>
+                                        <a
+                                            onClick={(e) => {
+                                                e.preventDefault();
+                                                setItems(singleDocDropDown);
+                                            }}
+                                        >
+                                            <Dropdown menu={{ items }} placement='bottom' trigger={['click']} arrow={{ pointAtCenter: true }}>
+                                                <Image className='mt-1' src={MORE} height={18} alt='' />
+                                            </Dropdown>
+                                        </a>
+                                    </Row>
+                                    <Row className='mb-2' style={{ alignItems: 'baseline', justifyContent: 'space-between' }}>
+                                        <div className="d-flex align-center ">
+                                            <Image src={FOLDER} height={18} alt="" /> &nbsp;
+                                            <Tooltip title={'GroupProject.doc'} placement="top">
+                                                <div
+                                                    className={styles.folderTitle}> GroupProject.doc
+                                                </div>
+                                            </Tooltip>
+                                            <Image src={INFO} height={18} alt="" /> &nbsp;
+                                        </div>
+                                        <a
+                                            onClick={(e) => {
+                                                e.preventDefault();
+                                                setItems(singleDocDropDown);
+                                            }}
+                                        >
+                                            <Dropdown menu={{ items }} placement='bottom' trigger={['click']} arrow={{ pointAtCenter: true }}>
+                                                <Image className='mt-1' src={MORE} height={18} alt='' />
+                                            </Dropdown>
+                                        </a>
+                                    </Row>
+
+                                </div>
                                 <Row >
-                                    <Flex style={{ width: "100%", justifyContent: "center" }}>
-                                        <Dragger  {...props} >
+                                    <Flex style={{ width: "100%", justifyContent: "center", marginTop: "20px" }}>
+                                        <Dragger  {...props} className='w-full'>
                                             <Row style={{ justifyContent: 'center' }}>
                                                 <InboxOutlined style={{ fontSize: '15px' }} /> &nbsp;Drag or browse from device
                                             </Row>
@@ -575,7 +681,7 @@ export default function ProjectDetail() {
                         <Row>
                             <Flex className={styles.cardStyle340px} vertical>
                                 <Row className="flex mb-6" justify={'space-between'}>
-                                    <Title className={styles.cardTitleStyle2} >Commets (9)</Title>
+                                    <Title className={styles.cardTitleStyle2} >Comments (9)</Title>
                                     <Button className={styles.internalButton} >Internal <Image className='ml-2' src={ARROWDOWN} alt='...' height={20} width={20} /></Button>
                                 </Row>
                                 <Row className='mb-2' style={{ alignItems: 'baseline', justifyContent: 'space-between' }}>
@@ -763,20 +869,22 @@ export default function ProjectDetail() {
                     key="placement"
                     open={collaboratorDrawer}
                 >
-                    <FloatLabelArrow label="Collaborators" value={selectCollaboratorValue}>
-                        <Select
-                            showSearch
-                            style={{ width: "100%" }}
-                            onChange={value => setSelectCollaboratorValue(value)}
-                            value={selectCollaboratorValue}
-                            suffixIcon={null}
-                            mode="multiple"
-                        >
-                            <Option value="Ali">Ali</Option>
-                            <Option value="Haider">Haider</Option>
-                            <Option value="Hassan">Hassan</Option>
-                        </Select>
-                    </FloatLabelArrow>
+                    <div className="mb-5">
+                        <FloatLabelArrow label="Collaborators" value={selectCollaboratorValue}>
+                            <Select
+                                showSearch
+                                style={{ width: "100%" }}
+                                onChange={value => setSelectCollaboratorValue(value)}
+                                value={selectCollaboratorValue}
+                                suffixIcon={null}
+                                mode="multiple"
+                            >
+                                <Option value="Ali">Ali</Option>
+                                <Option value="Haider">Haider</Option>
+                                <Option value="Hassan">Hassan</Option>
+                            </Select>
+                        </FloatLabelArrow>
+                    </div>
                 </Drawer>
             </Layout >
         </>

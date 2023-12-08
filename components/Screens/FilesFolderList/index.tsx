@@ -483,20 +483,22 @@ export default function FilesFolderList() {
                                 </Row>
                             </Dragger>
                         </div>
-                        <FloatLabelArrow label="Folder" value={selectFolderValue}>
-                            <Select
-                                showSearch
-                                style={{ width: "100%" }}
-                                onChange={value => setSelectFolderValue(value)}
-                                value={selectFolderValue}
-                                suffixIcon={null}
-                            >
-                                <Option value="Ali">Ali</Option>
-                                <Option value="Haider">Haider</Option>
-                                <Option value=" Asad">Asad</Option>
-                                <Option value="Maaz">Maaz</Option>
-                            </Select>
-                        </FloatLabelArrow>
+                        <div className="mb-5">
+                            <FloatLabelArrow label="Folder" value={selectFolderValue}>
+                                <Select
+                                    showSearch
+                                    style={{ width: "100%" }}
+                                    onChange={value => setSelectFolderValue(value)}
+                                    value={selectFolderValue}
+                                    suffixIcon={null}
+                                >
+                                    <Option value="Ali">Ali</Option>
+                                    <Option value="Haider">Haider</Option>
+                                    <Option value=" Asad">Asad</Option>
+                                    <Option value="Maaz">Maaz</Option>
+                                </Select>
+                            </FloatLabelArrow>
+                        </div>
                     </div>
                 </Drawer>
                 <Drawer
@@ -516,38 +518,43 @@ export default function FilesFolderList() {
                     key="folderDrawer"
                     open={folderDrawer}
                 >
-                    <FloatLabel label="Title" value={title}>
-                        <Input style={{ height: "48px" }} value={title} onChange={e => setTitle(e.target.value)} />
-                    </FloatLabel>
-
-                    <FloatLabelArrow label="Link To Folder" value={selectLinkToFolderValue}>
-                        <Select
-                            showSearch
-                            style={{ width: "100%" }}
-                            onChange={value => setSelectLinkToFolderValue(value)}
-                            value={selectLinkToFolderValue}
-                            suffixIcon={null}
-                        >
-                            <Option value="Ali">Ali</Option>
-                            <Option value="Haider">Haider</Option>
-                            <Option value=" Asad">Asad</Option>
-                            <Option value="Maaz">Maaz</Option>
-                        </Select>
-                    </FloatLabelArrow>
-                    <FloatLabelArrow label="Link To Project" value={selectLinkToProjectValue}>
-                        <Select
-                            showSearch
-                            style={{ width: "100%" }}
-                            onChange={value => setSelectLinkToProjectValue(value)}
-                            value={selectLinkToProjectValue}
-                            suffixIcon={null}
-                        >
-                            <Option value="Ali">Ali</Option>
-                            <Option value="Haider">Haider</Option>
-                            <Option value=" Asad">Asad</Option>
-                            <Option value="Maaz">Maaz</Option>
-                        </Select>
-                    </FloatLabelArrow>
+                    <div className="mb-5">
+                        <FloatLabel label="Title" value={title}>
+                            <Input style={{ height: "48px" }} value={title} onChange={e => setTitle(e.target.value)} />
+                        </FloatLabel>
+                    </div>
+                    <div className="mb-5">
+                        <FloatLabelArrow label="Link To Folder" value={selectLinkToFolderValue}>
+                            <Select
+                                showSearch
+                                style={{ width: "100%" }}
+                                onChange={value => setSelectLinkToFolderValue(value)}
+                                value={selectLinkToFolderValue}
+                                suffixIcon={null}
+                            >
+                                <Option value="Ali">Ali</Option>
+                                <Option value="Haider">Haider</Option>
+                                <Option value=" Asad">Asad</Option>
+                                <Option value="Maaz">Maaz</Option>
+                            </Select>
+                        </FloatLabelArrow>
+                    </div>
+                    <div className="mb-5">
+                        <FloatLabelArrow label="Link To Project" value={selectLinkToProjectValue}>
+                            <Select
+                                showSearch
+                                style={{ width: "100%" }}
+                                onChange={value => setSelectLinkToProjectValue(value)}
+                                value={selectLinkToProjectValue}
+                                suffixIcon={null}
+                            >
+                                <Option value="Ali">Ali</Option>
+                                <Option value="Haider">Haider</Option>
+                                <Option value=" Asad">Asad</Option>
+                                <Option value="Maaz">Maaz</Option>
+                            </Select>
+                        </FloatLabelArrow>
+                    </div>
                 </Drawer>
             </Layout >
         </>

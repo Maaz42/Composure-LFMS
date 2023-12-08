@@ -366,23 +366,32 @@ export default function WorkflowList() {
                     />
                     <Image src={SEARCH} height={18} alt="" />
                 </div>
-                <div className={styles.formTemplate} >
-                    <div className={styles.formHeading} >Cease and Desist Copyright Infringement Letter</div>
-                    <div className={styles.formDes} >Brooklyn Simmons</div>
+                <div className={styles.formTemplate}>
+                    <Link href='/workflowForm'>
+                        <div className={styles.formHeading} >Cease and Desist Copyright Infringement Letter</div>
+                        <div className={styles.formDes} >Brooklyn Simmons</div>
+                    </Link>
                 </div>
-                <div className={styles.formTemplate} >
-                    <div className={styles.formHeading} >Cease and Desist Copyright Infringement Letter</div>
-                    <div className={styles.formDes} >Brooklyn Simmons</div>
+                <div className={styles.formTemplate}>
+                    <Link href='/workflowForm'>
+                        <div className={styles.formHeading} >Cease and Desist Copyright Infringement Letter</div>
+                        <div className={styles.formDes} >Brooklyn Simmons</div>
+                    </Link>
                 </div>
-                <div className={styles.formTemplate} >
-                    <div className={styles.formHeading} >Cease and Desist Copyright Infringement Letter</div>
-                    <div className={styles.formDes} >Brooklyn Simmons</div>
+                <div className={styles.formTemplate}>
+                    <Link href='/workflowForm'>
+                        <div className={styles.formHeading} >Cease and Desist Copyright Infringement Letter</div>
+                        <div className={styles.formDes} >Brooklyn Simmons</div>
+                    </Link>
                 </div>
-                <div className={styles.formTemplate} >
-                    <div className={styles.formHeading} >Cease and Desist Copyright Infringement Letter</div>
-                    <div className={styles.formDes} >Brooklyn Simmons</div>
+                <div className={styles.formTemplate}>
+                    <Link href='/workflowForm'>
+                        <div className={styles.formHeading} >Cease and Desist Copyright Infringement Letter</div>
+                        <div className={styles.formDes} >Brooklyn Simmons</div>
+                    </Link>
                 </div>
-            </Modal>
+
+            </Modal >
         </>
     );
 }
