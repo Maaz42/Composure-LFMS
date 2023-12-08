@@ -84,7 +84,7 @@ export default function Container() {
 
       <Col xxl={10} lg={10} md={24} sm={24} xs={24} style={colStyle} ref={drop}>
         <Flex className={styles.detailsSection} vertical>
-          <div style={{ height: '10px' }}>
+          <div>
             Drag & Drop the options here
           </div>
         </Flex>
