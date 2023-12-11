@@ -1,16 +1,13 @@
 import React, { useState } from "react";
 import { Table, ConfigProvider } from "antd";
 
-export const CustomTable = ({ columns, data, isChecked, onValueChange, expandable = null }: any) => {
+export const CustomTable = ({ columns, data, isChecked, onValueChange = () => { return }, expandable = null }: any) => {
   const [tableData, setTableData] = useState<any>(data)
   const [selectedRowKeys, setSelectedRowKeys] = useState<React.Key[]>([]);
-  const [keyValue, setKeyValue] = useState<Number>(0);
 
   const onSelectChange = (newSelectedRowKeys: React.Key[]) => {
-    console.log('selectedRowKeys  ', newSelectedRowKeys.length);
     setSelectedRowKeys(newSelectedRowKeys);
     onValueChange(newSelectedRowKeys.length)
-
   };
 
   const rowSelection = {
