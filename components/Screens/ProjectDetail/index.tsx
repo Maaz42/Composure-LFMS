@@ -371,7 +371,6 @@ export default function ProjectDetail() {
                                                     </>
                                                 ),
                                             },
-
                                         ]}
                                     />
                                 </div>
@@ -453,7 +452,6 @@ export default function ProjectDetail() {
                                 </Row>
                                 <div style={{ height: "290px", overflow: "auto" }}>
                                     <Row className='mb-2' style={{ alignItems: 'baseline', justifyContent: 'space-between' }}>
-
                                         <div className="flex align-center ">
                                             <Image src={FOLDER} height={18} alt="" /> &nbsp;
                                             <Tooltip title={'GroupProject.doc'} placement="top">

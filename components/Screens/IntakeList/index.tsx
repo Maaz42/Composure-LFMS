@@ -51,7 +51,9 @@ import {
     ICERTIS,
     GOOGLEDRIVE,
     THREEDOTS,
-    ADDCIRCLEWHITE
+    ADDCIRCLEWHITE,
+    FOLDER,
+    INFO
 } from "@/constants/images";
 import intakeData from './intakeData.json'
 import FloatLabel from "../../ReusableComponents/FloatLabel";
@@ -78,6 +80,7 @@ export default function IntakeList() {
     const [tableData, setTableData] = useState<any>(intakeData)
     const [pageSize, setPageSize] = useState(10)
     const [open, setOpen] = useState(false);
+    const [openDetail, setOpenDetail] = useState(false);
     const [mergeDrawer, setMergeDrawer] = useState(false)
     const [projectDrawer, setProjectDrawer] = useState(false)
     const [ticketDrawer, setTicketDrawer] = useState(false)
@@ -100,8 +103,7 @@ export default function IntakeList() {
     const [value, setValue] = useState("Public");
     const [showMore, setShowMore] = useState(false);
     const [keyValue, setKeyValue] = useState<any>(0);
-    const [viewTaskText, setViewTaskText] = useState("The app is a comprehensive resource that can help you stay up-to-date on everything that's happening at the company. You can find news article Lorem ipsum dolor sit ametSoluta You can find news article Lorem ipsum dolor sit ametSoluta thsi is vert akkjasf adfn  fa");
-
+    const [viewTaskText, setViewTaskText] = useState("The app is a comprehensive resource that can help you stay up-to-date on everything that's happening at the company. You can find news article Lorem ipsum dolor sit ametSoluta You can find news article Lorem ipsum dolor sit ametSoluta thsi is vert akkjasf adfn  fa")
 
     // Callback function to receive the value from the child
     const handleValueFromChild = (value: Number) => {
@@ -114,6 +116,9 @@ export default function IntakeList() {
 
     const showDrawer = () => {
         setOpen(true);
+    }
+    const showDetailDrawer = () => {
+        setOpenDetail(true);
     }
 
     const showMergeDrawer = () => {
@@ -143,6 +148,7 @@ export default function IntakeList() {
         setTicketDrawer(false);
         setTaskDrawer(false);
         setViewDrawer(false);
+        setOpenDetail(false);
     }
 
     const topBoxStyle = {
@@ -183,6 +189,9 @@ export default function IntakeList() {
             ),
             dataIndex: "createdBy",
             key: "createdBy",
+            ellipsis: {
+                showTitle: false,
+            },
         },
         {
             title: (
@@ -201,12 +210,10 @@ export default function IntakeList() {
                 showTitle: false,
             },
             render: (title) => (
-                <Link href='/ticketDetail'>
+                <a onClick={showDetailDrawer}>
                     {title}
-
-                </Link>
+                </a>
             ),
-            width: 500,
         },
         {
             title: (
@@ -233,32 +240,32 @@ export default function IntakeList() {
                                     border: "1px solid #E0E0E0",
                                     borderRadius: "65px",
                                     justifyContent: "space-evenly",
-                                    width: "100px",
+                                    padding: '0 10px 0 10px',
                                     color: color
                                 }}
                                 key={status}
                             >
                                 {status == "Pending" ? (
-                                    <Image src={PURPLEDOT} height={10} alt="aaa" />
+                                    <div className={styles.purple} style={{ height: '10px', width: '10px', borderRadius: '50%', marginTop: '5px' }}></div>
                                 ) : (
                                     status == "Complete" ? (
-                                        <Image src={GREENDOT} height={10} alt="" />
+                                        <div className={styles.green} style={{ height: '10px', width: '10px', borderRadius: '50%', marginTop: '5px' }}></div>
                                     ) : (
                                         status == "On Hold" ? (
-                                            <Image src={REDDOT} height={10} alt="" />
+                                            <div className={styles.red} style={{ height: '10px', width: '10px', borderRadius: '50%', marginTop: '5px' }}></div>
                                         ) : (
                                             status == "Signature" ? (
-                                                <Image src={YELLOWDOT} height={10} alt="" />
+                                                <div className={styles.yellow} style={{ height: '10px', width: '10px', borderRadius: '50%', marginTop: '5px' }}></div>
                                             ) : (
                                                 status == "To Projects" || "To Tickets" ? (
-                                                    <Image src={BLUEDOT} height={10} alt="" />
+                                                    <div className={styles.blue} style={{ height: '10px', width: '10px', borderRadius: '50%', marginTop: '5px' }}></div>
                                                 ) : (
                                                     <></>
                                                 )
                                             )
                                         )
                                     ))}
-                                {status}
+                                &nbsp; {status}
                             </Tag>
                         );
                     })}
@@ -560,7 +567,7 @@ export default function IntakeList() {
             >
                 <Flex gap="middle" align="start" vertical className="mx-3">
                     <Flex style={topBoxStyle} justify={"space-between"} align={"center"}>
-                        <Title level={4}>Intakes</Title>
+                        <Title level={4}>Intake</Title>
                         <Flex className={styles.collapseTo} justify={"flex-end"} align={"center"}>
                             <div
                                 style={{
@@ -670,7 +677,6 @@ export default function IntakeList() {
                 <Row>
                     <Col span={24} >
                         <CustomTable columns={columns} data={tableData} isChecked={1} scroll={{}} onValueChange={handleValueFromChild} />
-
                     </Col>
                 </Row>
                 <Row style={{ justifyContent: "end" }}>
@@ -702,6 +708,131 @@ export default function IntakeList() {
                     <Col>
                     </Col>
                 </Row>
+                <Drawer
+                    className={styles.customDrawerHeader}
+                    placement="right"
+                    closable={false}
+                    onClose={onClose}
+                    open={openDetail}
+                    key="placement">
+                    <div style={{ display: 'flex', justifyContent: 'end' }}>
+                        <Dropdown menu={{ items }} trigger={['click']}>
+                            <a onClick={(e) => {
+                                e.preventDefault()
+                                setItems(createDropDown)
+                            }}>
+                                <Button
+                                    style={{ color: "white", background: "#7E81E8", marginRight: "5px", display: 'flex' }}
+                                >
+                                    Create <Image src={ARROWDOWNWHITE} height={12} style={{ marginLeft: '5px', marginTop: '5px' }} alt="" />
+                                </Button>
+                            </a>
+                        </Dropdown>
+
+                        <Dropdown menu={{ items }} trigger={['click']}>
+                            <a onClick={(e) => {
+                                e.preventDefault()
+                                setItems(resolveDropDown)
+                            }
+                            }>
+                                <Button
+                                    style={{ color: "white", background: "#333793", marginRight: "5px", display: 'flex' }}
+                                >
+                                    Resolve <Image src={ARROWDOWNWHITE} height={12} style={{ marginLeft: '5px', marginTop: '5px' }} alt="" />
+                                </Button>
+                            </a>
+                        </Dropdown>
+                    </div>
+                    <div className="mt-2">
+
+                        <Title level={4}>
+                            Need legal advice on taxes applied on food chains in one state
+                        </Title>
+                        <p>
+                            The app is a comprehensive resource that can help you stay up-to-date on everything that's happening at the company. You can find news articl... Show More
+                        </p>
+                        <Divider></Divider>
+                        <Row className='mb-2' style={{ alignItems: 'baseline', justifyContent: 'space-between' }}>
+                            <div className={styles.titleClr}>
+                                Status
+                            </div>
+                            <div >
+                                Pending
+                            </div>
+                        </Row>
+                        <Row className='mb-2' style={{ alignItems: 'baseline', justifyContent: 'space-between' }}>
+                            <div className={styles.titleClr}>
+                                Source
+                            </div>
+                            <div className={styles.answer}>
+                                Slack
+                            </div>
+                        </Row>
+                        <Row className='mb-2' style={{ alignItems: 'baseline', justifyContent: 'space-between' }}>
+                            <div className={styles.titleClr}>
+                                Created By
+                            </div>
+                            <div >
+                                Alex Rose
+                            </div>
+                        </Row>
+                        <Row className='mb-2' style={{ alignItems: 'baseline', justifyContent: 'space-between' }}>
+                            <div className={styles.titleClr}>
+                                Created At
+                            </div>
+                            <div >
+                                3 days ago
+                            </div>
+                        </Row>
+                        <Row className='mb-2' style={{ alignItems: 'baseline', justifyContent: 'space-between' }}>
+                            <div className={styles.titleClr}>
+                                Linked Projects
+                            </div>
+                            <div >
+                                -                                </div>
+                        </Row>
+                        <Row className='mb-2' style={{ alignItems: 'baseline', justifyContent: 'space-between' }}>
+                            <div className={styles.titleClr}>
+                                Linked Tickets
+                            </div>
+                            <div >
+                                -                                </div>
+                        </Row>
+                        <Divider></Divider>
+
+
+                        <div>
+                            Documents
+                        </div>
+
+                        <div>
+                            <div style={{ display: "flex", justifyContent: "space-between", marginTop: '10px' }}>
+                                <div style={{ display: 'flex' }}>
+                                    <Image style={{ marginRight: "5px" }} src={WORD} height={25} alt="" />GroupProject.doc
+                                </div>
+                                <Image src={MORE} height={20} alt="" />
+                            </div>
+                            <div style={{ display: "flex", justifyContent: "space-between", marginTop: '10px' }}>
+                                <div style={{ display: 'flex' }}>
+                                    <Image style={{ marginRight: "5px" }} src={PDF} height={25} alt="" />Case_Lab_Report.pdf
+                                </div>
+                                <Image src={MORE} height={20} alt="" />
+                            </div>
+                            <div style={{ display: "flex", justifyContent: "space-between", marginTop: '10px' }}>
+                                <div style={{ display: 'flex' }}>
+                                    <Image style={{ marginRight: "5px" }} src={EXCEL} height={25} alt="" />Investigation_Document.xlx
+                                </div>
+                                <Image src={MORE} height={20} alt="" />
+                            </div>
+                            <div style={{ display: "flex", justifyContent: "space-between", marginTop: '10px' }}>
+                                <div style={{ display: 'flex' }}>
+                                    <Image style={{ marginRight: "5px" }} src={UNKNOWN} height={25} alt="" />Comapany_Draft.flv
+                                </div>
+                                <Image src={MORE} height={20} alt="" />
+                            </div>
+                        </div>
+                    </div>
+                </Drawer>
                 <Drawer
                     title={
                         <div style={{ display: 'flex', justifyContent: 'space-between' }}>
@@ -897,9 +1028,7 @@ export default function IntakeList() {
                                 <Input style={{ height: "48px" }} value={ticketTitle} onChange={e => setTicketTitle(e.target.value)} />
                             </FloatLabel>
                         </div>
-
                         <div className='mb-5'>
-
                             <FloatLabelArrow label="Status" value={selectStatusValue}>
                                 <Select
                                     showSearch
@@ -1114,7 +1243,6 @@ export default function IntakeList() {
                                 e.preventDefault()
                                 setItems(createDropDown)
                             }}>
-
                                 <Button style={{ color: "white", background: "#7E81E8", display: 'flex' }}>
                                     Create <Image src={ARROWDOWNWHITE} height={12} style={{ marginLeft: '5px', marginTop: '5px' }} alt="" />
                                 </Button>
@@ -1236,7 +1364,7 @@ export default function IntakeList() {
                         </div>
                     </div>
                 </Drawer>
-            </Layout >
+            </Layout>
         </>
     );
 }

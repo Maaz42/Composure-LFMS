@@ -879,9 +879,7 @@ export default function TicketDetail() {
                                 </Row>
                                 <Row className='flex w-full'> <div className='mb-5' style={{ width: "100%", }}>
                                     <Button
-                                        style={{ width: "100%", height: "48px", display: "flex", justifyContent: "space-between", alignItems: "center" }} onClick={() => {
-                                            myFile.click();
-                                        }}
+                                        style={{ width: "100%", height: "48px", display: "flex", justifyContent: "space-between", alignItems: "center" }} onClick={() => {}}
                                     >
                                         <div>File</div>
                                         <input type="file" id="myFile" name="filename" style={{ display: "none" }} />
