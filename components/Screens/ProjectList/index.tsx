@@ -177,7 +177,6 @@ export default function ProjectList() {
                     {text}
                 </span>
             ),
-
         },
         {
             title: (

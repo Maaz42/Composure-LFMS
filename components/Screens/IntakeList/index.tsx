@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import Image from "next/image";
-import Link from 'next/link'
 import styles from "./styles.module.css";
 import { MenuOutlined, InboxOutlined } from '@ant-design/icons';
 import type { ColumnsType } from 'antd/es/table';
@@ -28,7 +27,6 @@ import {
     SEARCH,
     NAVBARS,
     REDDOT,
-    PURPLEDOT,
     GREENDOT,
     BLUEDOT,
     YELLOWDOT,
@@ -50,10 +48,7 @@ import {
     DROPBOX,
     ICERTIS,
     GOOGLEDRIVE,
-    THREEDOTS,
     ADDCIRCLEWHITE,
-    FOLDER,
-    INFO
 } from "@/constants/images";
 import intakeData from './intakeData.json'
 import FloatLabel from "../../ReusableComponents/FloatLabel";

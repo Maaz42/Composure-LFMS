@@ -15,7 +15,6 @@ import {
     Space,
     Typography,
     Layout,
-    Table,
     Tag,
     Tooltip,
     Row,
@@ -29,12 +28,6 @@ import {
     ARROW,
     SEARCH,
     NAVBARS,
-    REDDOT,
-    PURPLEDOT,
-    GREENDOT,
-    BLUEDOT,
-    YELLOWDOT,
-    GRAYDOT,
     THREEDOTS,
     EDIT,
     CLOSE,
@@ -179,19 +172,16 @@ export default function TicketList() {
                         {priority == "critical" ? (
                             <>
                                  <div className={styles.red} style={{ height: '18px', width: '18px', borderRadius: '50%', marginTop: '5px' }}></div>
-                      
                             </>
                         ) : (
                             priority == "high" ? (
                                 <>
                                     <div className={styles.yellow} style={{ height: '18px', width: '18px', borderRadius: '50%', marginTop: '5px' }}></div>
-                      
                                 </>
                             ) : (
                                 priority == "medium" ? (
                                     <>
                                           <div className={styles.blue} style={{ height: '18px', width: '18px', borderRadius: '50%', marginTop: '5px' }}></div>
-                      
                                     </>
                                 ) : (
                                     priority == "low" ? (

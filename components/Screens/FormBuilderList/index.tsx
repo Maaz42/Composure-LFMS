@@ -21,11 +21,6 @@ import {
     SEARCH,
     NAVBARS,
     THREEDOTS,
-    PURPLEDOT,
-    GREENDOT,
-    REDDOT,
-    YELLOWDOT,
-    BLUEDOT,
     ARROWUP,
     ARROW
 } from "@/constants/images";
