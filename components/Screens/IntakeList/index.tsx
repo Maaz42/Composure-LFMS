@@ -24,11 +24,10 @@ import {
   Tooltip,
 } from "antd";
 import {
-  ARROW,
-  SEARCH,
-  NAVBARS,
-  REDDOT,
-  PURPLEDOT,
+    ARROW,
+    SEARCH,
+    NAVBARS,
+    REDDOT,
   GREENDOT,
   BLUEDOT,
   YELLOWDOT,
@@ -50,10 +49,7 @@ import {
   DROPBOX,
   ICERTIS,
   GOOGLEDRIVE,
-  THREEDOTS,
   ADDCIRCLEWHITE,
-  FOLDER,
-  INFO,
 } from "@/constants/images";
 import intakeData from "./intakeData.json";
 import FloatLabel from "../../ReusableComponents/FloatLabel";

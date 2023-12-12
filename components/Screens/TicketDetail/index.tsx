@@ -222,9 +222,6 @@ export default function TicketDetail() {
                 <CustomDropDown title={"Priority"} dropDownItems={priorityDropDown} />
                 <Divider style={{ height: '50px', margin: '0' }} type='vertical' />
             </Flex>
-
-
-
             
             <Layout style={{
                 height: 'calc(100vh - 120px)',

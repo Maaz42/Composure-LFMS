@@ -1,16 +1,11 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import styles from "./styles.module.css";
-import { MenuOutlined, InboxOutlined } from "@ant-design/icons";
-import type { ColumnsType } from "antd/es/table";
-import type { MenuProps, RadioChangeEvent } from "antd";
 
 import dynamic from "next/dynamic";
 
 import {
   Button,
-  Divider,
-  Dropdown,
   Flex,
   Typography,
   Layout,
@@ -18,53 +13,22 @@ import {
   Col,
   Space,
   Card,
-  Drawer,
-  Input,
-  Select,
-  Upload,
 } from "antd";
 import {
   SEARCH,
-  NAVBARS,
-  CLOSE,
-  THREEDOTS,
-  FOLDERBLUE,
   DASHBOARDICON,
   BUILDING,
   TODO,
   USERIMAGE,
 } from "@/constants/images";
-// import { Line } from "@ant-design/plots";
-import FloatLabel from "../../ReusableComponents/FloatLabel";
-import FloatLabelArrow from "../../ReusableComponents/FloatLabelArrow";
-import CustomDropDown from "@/components/ReusableComponents/DropDown";
-import { CustomTable } from "@/components/ReusableComponents/CustomTable";
 import { MoreOutlined } from "@ant-design/icons";
 import { Chart } from "react-google-charts";
 
 const { Header } = Layout;
-const { Option } = Select;
-const { Dragger } = Upload;
 const { Title } = Typography;
 
-const props = {
-  name: "file",
-  action: "https://run.mocky.io/v3/435e224c-44fb-4773-9faf-380c5e6a2188",
-  onDrop({ e }: any) {
-    console.log("Dropped files", e.dataTransfer.files);
-  },
-};
-
 export default function Dashboard() {
-  const [items, setItems] = useState<MenuProps["items"]>([]);
-  const [tableData, setTableData] = useState<any>([]);
-  const [open, setOpen] = useState(false);
-  const [folderDrawer, setFolderDrawer] = useState(false);
-  const [title, setTitle] = useState("Affiliated Entity Creation");
-  const [selectLinkToFolderValue, setSelectLinkToFolderValue] = useState<any>();
-  const [selectLinkToProjectValue, setSelectLinkToProjectValue] =
     useState<any>();
-  const [selectFolderValue, setSelectFolderValue] = useState<any>();
   const ReactApexChart = dynamic(() => import("react-apexcharts"), {
     ssr: false,
   });
@@ -77,89 +41,22 @@ export default function Dashboard() {
     ["2007", 1030, 540],
   ];
 
-  //   const options = {
-  //     maintainAspectRatio: false, // Allow chart to expand to container size
-  //     scales: {
-  //       x: {
-  //         grid: {
-  //           color: "grey", // X-axis grid color
-  //         },
-  //         ticks: {
-  //           color: "grey", // X-axis label color
-  //         },
-  //       },
-  //       y: {
-  //         grid: {
-  //           color: "grey", // Y-axis grid color
-  //         },
-  //         ticks: {
-  //           color: "grey", // Y-axis label color
-  //         },
-  //       },
-  //     },
-  //     plugins: {
-  //       legend: {
-  //         position: "bottom",
-  //       },
-  //     },
-  //   };
 
-  const config: any = {
-    data,
-    xField: "year",
-    yField: "gdp",
-    seriesField: "name",
-    yAxis: {
-      tickCount: 6,
-    },
-    legend: {
-      position: "top",
-    },
-    smooth: true,
-    animation: {
-      appear: {
-        animation: "path-in",
-        duration: 5000,
-      },
-    },
-  };
 
-  const showDrawer = () => {
-    setOpen(true);
-  };
 
-  const showfolderDrawer = () => {
-    setFolderDrawer(true);
-  };
 
-  const onClose = () => {
-    setOpen(false);
-    setFolderDrawer(false);
-  };
+
 
   const topBoxStyle = {
     width: "100%",
     height: "65px",
   };
 
-  const boxStyle = {
-    height: "50px",
-    borderBottom: "1px solid #eeeeee",
-  };
 
   const handleSearch = ({ event }: any) => {
     const searchTerm = event.target.value;
     console.log("Search term:", searchTerm);
   };
-
-  interface DataType {
-    key: React.Key;
-    title: string;
-    addedBy: string;
-    dateAdded: string[];
-    dateModified: string[];
-    revision: any;
-  }
 
   const projectsData = [
     { projectName: "Project A", number: 1 },
@@ -193,16 +90,6 @@ export default function Dashboard() {
     }, // Expand chart area
   };
 
-  // const dataBar = [
-  //   ["", ""],
-  //   ["Ircolad", 100],
-  //   ["Brightflag", 100],
-  //   ["Icertis", 110],
-  //   ["GDrive", 138],
-  //   ["Dropbox", 120],
-  //   ["Other", 120],
-  // ];
-
   const dataPie = [
     ["Task", "Hours per Day"],
     ["Jira", 11],
@@ -225,33 +112,8 @@ export default function Dashboard() {
     pieSliceText: "none",
     backgroundColor: "#f0f0f0",
   };
-  // const optionsBar = {
-  //   chart: {
-  //     backgroundColor: {
-  //       fill: "#F4F4F4", // Set the desired background color
-  //     },
-  //     title: "Intake Sent By Platform",
-  //   },
-  //   // hAxis: {
-  //   //   gridlines: { color: "transparent" }, // Make grid lines on the x-axis transparent
-  //   //   textPosition: "out", // Move x-axis labels outside
-  //   //   textStyle: { color: "grey" }, // Change color of x-axis labels to grey
-  //   // },
-  //   // vAxis: {
-  //   //   gridlines: { color: "transparent" }, // Make grid lines on the y-axis transparent
-  //   //   textStyle: { color: "grey" }, // Change color of y-axis labels to grey
-  //   // },
-  //   backgroundColor: "#f0f0f0",
-  //   chartArea: {
-  //     left: 50,
-  //     top: 20,
-  //     width: "100%",
-  //     height: "70%",
-  //   },
-  //   colors: ["#4285F4", "#0F9D58", "#F4B400", "#DB4437", "#3F51B5", "#FF5722"],
-  // };
 
-  const optionsBar = {
+  const optionsBar:any = {
     chart: {
       background: "#f0f0f0",
       foreColor: "#333", // Text color
@@ -433,7 +295,7 @@ export default function Dashboard() {
                       style={{ marginLeft: "10px", marginTop: "10px" }}
                       level={4}
                     >
-                      Law Firms{" "}
+                      Law Firms
                     </Title>
                     <Space
                       style={{
@@ -455,7 +317,6 @@ export default function Dashboard() {
                   <Layout
                     style={{
                       height: "100px",
-
                       position: "relative",
                       backgroundColor: "#BBBCF44D",
                     }}
@@ -486,7 +347,6 @@ export default function Dashboard() {
                   <Layout
                     style={{
                       height: "100px",
-
                       position: "relative",
                       backgroundColor: "#F8D1D04D",
                     }}
@@ -583,13 +443,6 @@ export default function Dashboard() {
                       marginTop: "20px",
                     }}
                   >
-                    {/* <Chart
-                    chartType="Bar"
-                    width="100%"
-                    height="330px"
-                    data={dataBar}
-                    options={optionsBar}
-                  /> */}
                     <ReactApexChart
                       options={optionsBar}
                       series={dataBar}
@@ -606,7 +459,6 @@ export default function Dashboard() {
                       padding: "20px",
                       background: "#f0f0f0", // Light grey background
                       borderRadius: "8px",
-
                       marginTop: "20px",
                     }}
                   >
@@ -634,7 +486,6 @@ export default function Dashboard() {
               <Title level={4} className="ml-2 mt-2">
                 Pending Tasks
               </Title>
-
               <Row>
                 {projectDetails.map((project) => (
                   <div style={{ margin: "8px 8px 8px 8px" }} key={project.text}>
@@ -673,7 +524,6 @@ export default function Dashboard() {
                           </a>
                         </div>
                       </div>
-
                       <div
                         style={{
                           backgroundColor: "lightgrey",

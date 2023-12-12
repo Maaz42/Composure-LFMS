@@ -1,5 +1,5 @@
-import DummyPage from '@/components/Screens/DummyPage'
+import Dashboard from "@/components/Screens/Dashboard";
 
-export default function HomePage() {
-  return <DummyPage title="Home Page" />
+export default function DashboardPage() {
+  return <Dashboard />;
 }

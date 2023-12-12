@@ -25,7 +25,9 @@ export default function Nav({ children }: any) {
             <Layout>
                 <Sider trigger={null} collapsible collapsed={true} className={styles.sliderStyle}>
                     <Link href={`/`}> <Image width={100} height={50} src={LOGO} alt='' /></Link>
-                    <Image width={100} height={50} src={DASHBOARD} alt='' />
+                    <Link href={`/`}>
+                        {pathname === '' ? <Image width={100} height={50} src={DASHBOARD} alt='aaa' style={{ backgroundColor: "#DBDBDB", borderLeft: "3px solid #333793" }} /> : <Image width={100} height={50} src={DASHBOARD} alt='aaa' />}
+                    </Link>
                     <Link href={`/intakeList`}>
                         {pathname === 'INTAKELIST' ? <Image width={100} height={50} src={INTAKE} alt='aaa' style={{ backgroundColor: "#DBDBDB", borderLeft: "3px solid #333793" }} /> : <Image width={100} height={50} src={INTAKE} alt='aaa' />}
                     </Link>
