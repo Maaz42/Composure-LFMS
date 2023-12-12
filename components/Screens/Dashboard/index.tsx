@@ -113,7 +113,7 @@ export default function Dashboard() {
     backgroundColor: "#f0f0f0",
   };
 
-  const optionsBar = {
+  const optionsBar:any = {
     chart: {
       background: "#f0f0f0",
       foreColor: "#333", // Text color
