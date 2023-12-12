@@ -353,7 +353,6 @@ export default function FilesFolderList() {
                     <Divider style={{ height: "50px", margin: "0" }} type="vertical" />
                 </Flex>
                 <Flex align={"center"} justify="space-between">
-
                     <Button
                         onClick={showfolderDrawer}
                         style={{ color: "white", background: "#333793", marginRight: "20px" }}
@@ -448,7 +447,6 @@ export default function FilesFolderList() {
                                     </div>
                                 </Tooltip>
                             </div>
-
                             <Dropdown
                                 menu={{ items }}
                                 trigger={["click"]}
@@ -467,7 +465,6 @@ export default function FilesFolderList() {
                         <CustomTable columns={columns} data={tableData} isChecked={0} />
                     </Col>
                 </Row>
-
                 <Drawer
                     title={
                         <div style={{ display: 'flex', justifyContent: 'space-between' }}>

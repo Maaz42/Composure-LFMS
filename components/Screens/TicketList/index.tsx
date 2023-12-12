@@ -104,12 +104,12 @@ export default function TicketList() {
     const columns: ColumnsType<DataType> = [
         {
             title: (
-                <div style={{ display: "flex", justifyContent: "space-between", alignItems:"center" }}>
+                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
                     <div>
                         Status
                     </div>
                     <div>
-                        <Image src={ARROWUP} height={10} alt=""   />
+                        <Image src={ARROWUP} height={10} alt="" />
                     </div>
                 </div>
             ),
@@ -128,32 +128,32 @@ export default function TicketList() {
                                     border: "1px solid #E0E0E0",
                                     borderRadius: "65px",
                                     justifyContent: "space-evenly",
-                                    width: "100px",
+                                    padding: '0 10px 0 10px',
                                     color: color
                                 }}
                                 key={status}
                             >
-                                {status == "In Review" ? (
-                                    <Image src={PURPLEDOT} height={10} style={{ width: 'auto' }} alt="aaa" />
+                                {status == "Pending" ? (
+                                    <div className={styles.purple} style={{ height: '10px', width: '10px', borderRadius: '50%', marginTop: '5px' }}></div>
                                 ) : (
                                     status == "Complete" ? (
-                                        <Image src={GREENDOT} height={10} alt="" style={{ width: 'auto' }} />
+                                        <div className={styles.green} style={{ height: '10px', width: '10px', borderRadius: '50%', marginTop: '5px' }}></div>
                                     ) : (
                                         status == "On Hold" ? (
-                                            <Image src={REDDOT} height={10} alt="" style={{ width: 'auto' }} />
+                                            <div className={styles.red} style={{ height: '10px', width: '10px', borderRadius: '50%', marginTop: '5px' }}></div>
                                         ) : (
                                             status == "Signature" ? (
-                                                <Image src={YELLOWDOT} height={10} alt="" style={{ width: 'auto' }} />
+                                                <div className={styles.yellow} style={{ height: '10px', width: '10px', borderRadius: '50%', marginTop: '5px' }}></div>
                                             ) : (
-                                                status == "In Progress" ? (
-                                                    <Image src={BLUEDOT} height={10} alt="" style={{ width: 'auto' }} />
+                                                status == "To Projects" || "To Tickets" ? (
+                                                    <div className={styles.blue} style={{ height: '10px', width: '10px', borderRadius: '50%', marginTop: '5px' }}></div>
                                                 ) : (
                                                     <></>
                                                 )
                                             )
                                         )
                                     ))}
-                                {status}
+                                &nbsp;  {status}
                             </Tag>
                         );
                     })}
@@ -162,12 +162,12 @@ export default function TicketList() {
         },
         {
             title: (
-                <div style={{ display: "flex",  justifyContent: "space-between", alignItems:"center" }}>
+                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
                     <div>
                         Priority
                     </div>
                     <div>
-                        <Image src={ARROWUP} height={10} alt=""   />
+                        <Image src={ARROWUP} height={10} alt="" />
                     </div>
                 </div>
             ),
@@ -178,22 +178,25 @@ export default function TicketList() {
                     <Space size="middle">
                         {priority == "critical" ? (
                             <>
-                                <Image src={REDDOT} height={18} alt="" />
+                                 <div className={styles.red} style={{ height: '18px', width: '18px', borderRadius: '50%', marginTop: '5px' }}></div>
+                      
                             </>
                         ) : (
                             priority == "high" ? (
                                 <>
-                                    <Image src={YELLOWDOT} height={18} alt="" />
+                                    <div className={styles.yellow} style={{ height: '18px', width: '18px', borderRadius: '50%', marginTop: '5px' }}></div>
+                      
                                 </>
                             ) : (
                                 priority == "medium" ? (
                                     <>
-                                        <Image src={BLUEDOT} height={18} alt="" />
+                                          <div className={styles.blue} style={{ height: '18px', width: '18px', borderRadius: '50%', marginTop: '5px' }}></div>
+                      
                                     </>
                                 ) : (
                                     priority == "low" ? (
                                         <>
-                                            <Image src={GRAYDOT} height={18} alt="" />
+                                              <div className={styles.grey} style={{ height: '18px', width: '18px', borderRadius: '50%', marginTop: '5px' }}></div>
                                         </>
                                     ) : (
                                         <></>
@@ -207,12 +210,12 @@ export default function TicketList() {
         },
         {
             title: (
-                <div style={{ display: "flex",  justifyContent: "space-between", alignItems:"center" }}>
+                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
                     <div>
                         Ticket No.
                     </div>
                     <div>
-                        <Image src={ARROWUP} height={10} alt=""   />
+                        <Image src={ARROWUP} height={10} alt="" />
                     </div>
                 </div>
             ),
@@ -221,12 +224,12 @@ export default function TicketList() {
         },
         {
             title: (
-                <div style={{ display: "flex",  justifyContent: "space-between", alignItems:"center" }}>
+                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
                     <div>
                         Ticket
                     </div>
                     <div>
-                        <Image src={ARROWUP} height={10} alt=""   />
+                        <Image src={ARROWUP} height={10} alt="" />
                     </div>
                 </div>
             ),
@@ -235,12 +238,12 @@ export default function TicketList() {
         },
         {
             title: (
-                <div style={{ display: "flex",  justifyContent: "space-between", alignItems:"center" }}>
+                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
                     <div>
                         Type
                     </div>
                     <div>
-                        <Image src={ARROWUP} height={10} alt=""   />
+                        <Image src={ARROWUP} height={10} alt="" />
                     </div>
                 </div>
             ),
@@ -249,12 +252,12 @@ export default function TicketList() {
         },
         {
             title: (
-                <div style={{ display: "flex",  justifyContent: "space-between", alignItems:"center" }}>
+                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
                     <div>
                         Recieved
                     </div>
                     <div>
-                        <Image src={ARROWUP} height={10} alt=""   />
+                        <Image src={ARROWUP} height={10} alt="" />
                     </div>
                 </div>
             ),
@@ -263,12 +266,12 @@ export default function TicketList() {
         },
         {
             title: (
-                <div style={{ display: "flex",  justifyContent: "space-between", alignItems:"center" }}>
+                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
                     <div>
                         Assignee
                     </div>
                     <div>
-                        <Image src={ARROWUP} height={10} alt=""   />
+                        <Image src={ARROWUP} height={10} alt="" />
                     </div>
                 </div>
             ),

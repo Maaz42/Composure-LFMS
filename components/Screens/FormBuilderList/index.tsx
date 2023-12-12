@@ -186,32 +186,32 @@ export default function FormBuilderList() {
                                     border: "1px solid #E0E0E0",
                                     borderRadius: "65px",
                                     justifyContent: "space-evenly",
-                                    width: "100px",
+                                    padding: '0 10px 0 10px',
                                     color: color
                                 }}
                                 key={status}
                             >
                                 {status == "Pending" ? (
-                                    <Image src={PURPLEDOT} height={10} alt="aaa" />
+                                    <div className={styles.purple} style={{ height: '10px', width: '10px', borderRadius: '50%', marginTop: '5px' }}></div>
                                 ) : (
                                     status == "Complete" ? (
-                                        <Image src={GREENDOT} height={10} alt="" />
+                                        <div className={styles.green} style={{ height: '10px', width: '10px', borderRadius: '50%', marginTop: '5px' }}></div>
                                     ) : (
                                         status == "On Hold" ? (
-                                            <Image src={REDDOT} height={10} alt="" />
+                                            <div className={styles.red} style={{ height: '10px', width: '10px', borderRadius: '50%', marginTop: '5px' }}></div>
                                         ) : (
                                             status == "Signature" ? (
-                                                <Image src={YELLOWDOT} height={10} alt="" />
+                                                <div className={styles.yellow} style={{ height: '10px', width: '10px', borderRadius: '50%', marginTop: '5px' }}></div>
                                             ) : (
                                                 status == "To Projects" || "To Tickets" ? (
-                                                    <Image src={BLUEDOT} height={10} alt="" />
+                                                    <div className={styles.blue} style={{ height: '10px', width: '10px', borderRadius: '50%', marginTop: '5px' }}></div>
                                                 ) : (
                                                     <></>
                                                 )
                                             )
                                         )
                                     ))}
-                                {status}
+                                &nbsp; {status}
                             </Tag>
                         );
                     })}
