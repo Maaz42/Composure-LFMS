@@ -24,10 +24,10 @@ import {
   Tooltip,
 } from "antd";
 import {
-    ARROW,
-    SEARCH,
-    NAVBARS,
-    REDDOT,
+  ARROW,
+  SEARCH,
+  NAVBARS,
+  REDDOT,
   GREENDOT,
   BLUEDOT,
   YELLOWDOT,
@@ -391,6 +391,7 @@ export default function IntakeList() {
           <a
             onClick={(e) => {
               e.preventDefault();
+              e.stopPropagation();
               setItems(addQuickActionDropDown);
             }}
           >
@@ -405,6 +406,7 @@ export default function IntakeList() {
           <a
             onClick={(e) => {
               e.preventDefault();
+              e.stopPropagation();
               setItems(tickQuickActionDropDown);
             }}
           >
@@ -419,6 +421,7 @@ export default function IntakeList() {
           <a
             onClick={(e) => {
               e.preventDefault();
+              e.stopPropagation();
               setItems(forwardQuickActionDropDown);
             }}
           >
@@ -501,7 +504,7 @@ export default function IntakeList() {
 
   const resolveDropDown = [
     {
-      label: "Document Send",
+      label: "Document Sent",
       key: "0",
     },
     {
@@ -911,7 +914,7 @@ export default function IntakeList() {
           closable={false}
           onClose={onClose}
           open={openDetail}
-          key="placement"
+          key="drawer"
         >
           <div style={{ display: "flex", justifyContent: "end" }}>
             <Dropdown menu={{ items }} trigger={["click"]}>
