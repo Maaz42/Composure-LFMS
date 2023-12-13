@@ -5,6 +5,7 @@ export const CustomTable = ({
   columns,
   data,
   isChecked,
+  onRow,
 
   onValueChange = () => {
     return;
@@ -59,9 +60,10 @@ export const CustomTable = ({
             rowSelection={rowSelection}
             columns={columns}
             dataSource={tableData}
-            style={{ overflowX: "auto" }}
+            style={{ overflowX: "auto", cursor: "pointer" }}
             pagination={false}
             scroll={scroll}
+            onRow={onRow}
           />
         ) : (
           //expandable table
