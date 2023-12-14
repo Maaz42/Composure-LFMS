@@ -3,8 +3,9 @@ import React, { useState } from "react";
 import type { DragSourceMonitor } from "react-dnd";
 import { useDrag } from "react-dnd";
 import Image from "next/image";
-import { Button, Modal } from "antd";
+import { Button, Modal,Input } from "antd";
 import styles from "./styles.module.css";
+import FloatLabel from "../../ReusableComponents/FloatLabel";
 
 export interface BoxProps {
   name: string;
@@ -19,6 +20,7 @@ interface DropResult {
 
 export const Box: FC<BoxProps> = ({ name, imagePath }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [nameform,setNameForm]=useState("")
 
   const showModal = () => {
     setIsModalOpen(true);
@@ -46,7 +48,7 @@ export const Box: FC<BoxProps> = ({ name, imagePath }) => {
           if (isDropAllowed) {
             const isCopyAction = dropResult.dropEffect === "copy";
             const actionName = isCopyAction ? "copied" : "moved";
-            alertMessage = `You are useless`;
+            setIsModalOpen(true);
           } else {
             alertMessage = `You cannot ${dropResult.dropEffect} an item into the ${dropResult.name}`;
           }
@@ -66,18 +68,22 @@ export const Box: FC<BoxProps> = ({ name, imagePath }) => {
         <Image src={imagePath} height={20} alt="" /> &nbsp;
         {name}
       </div>
-      <Button type="primary" onClick={showModal}>
-        Open Modal
-      </Button>
+     
       <Modal
-        title="Basic Modal"
+        title="Field Details"
         open={isModalOpen}
         onOk={handleOk}
         onCancel={handleCancel}
       >
-        <p>Some contents...</p>
-        <p>Some contents...</p>
-        <p>Some contents...</p>
+        <div className="mb-5">
+              <FloatLabel label="Title" value={nameform}>
+                <Input
+                  style={{ height: "48px" }}
+                  value={nameform}
+                  onChange={(e) => setNameForm(e.target.value)}
+                />
+              </FloatLabel>
+            </div>
       </Modal>
     </>
   );
