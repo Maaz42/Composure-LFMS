@@ -46,7 +46,7 @@ export const Box: FC<BoxProps> = ({ name, imagePath }) => {
           if (isDropAllowed) {
             const isCopyAction = dropResult.dropEffect === "copy";
             const actionName = isCopyAction ? "copied" : "moved";
-            alertMessage = `You are useless`;
+            alertMessage = `Dropped`;
           } else {
             alertMessage = `You cannot ${dropResult.dropEffect} an item into the ${dropResult.name}`;
           }
@@ -66,9 +66,7 @@ export const Box: FC<BoxProps> = ({ name, imagePath }) => {
         <Image src={imagePath} height={20} alt="" /> &nbsp;
         {name}
       </div>
-      <Button type="primary" onClick={showModal}>
-        Open Modal
-      </Button>
+     
       <Modal
         title="Basic Modal"
         open={isModalOpen}

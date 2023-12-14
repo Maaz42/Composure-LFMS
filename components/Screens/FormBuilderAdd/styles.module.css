@@ -15,6 +15,7 @@
     background-color: #FAFAFA;
     min-height: calc(100vh - 145px);
     max-height: calc(100vh - 145px);
+    overflow: auto;
 }
 
 .collapseMenu {
