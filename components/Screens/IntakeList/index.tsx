@@ -52,6 +52,7 @@ import {
   ADDCIRCLEWHITE,
 } from "@/constants/images";
 import intakeData from "./intakeData.json";
+import ShowMoreText from "react-show-more-text";
 import FloatLabel from "../../ReusableComponents/FloatLabel";
 import FloatLabelArrow from "../../ReusableComponents/FloatLabelArrow";
 import CustomDropDown from "@/components/ReusableComponents/DropDown";
@@ -87,6 +88,7 @@ export default function IntakeList() {
   const [mergeIntakeTitle, setMergeIntakeTitle] = useState(
     "Affiliated Entity Creation"
   );
+  
   const [ticketTitle, setTicketTitle] = useState("");
   const [ticketRequestedBy, setTicketRequestedBy] = useState("");
   const [description, setDescription] = useState("");
@@ -106,6 +108,18 @@ export default function IntakeList() {
     "The app is a comprehensive resource that can help you stay up-to-date on everything that's happening at the company. You can find news article Lorem ipsum dolor sit ametSoluta You can find news article Lorem ipsum dolor sit ametSoluta thsi is vert akkjasf adfn  fa"
   );
   const [selectedRecord, setSelectedRecord] = useState<DataType | null>(null);
+
+  const [sortOrder, setSortOrder] = useState<'ascend' | 'descend' | undefined>(undefined);
+  const [isExpanded, setIsExpanded] = useState(false);
+
+  const executeOnClick = (expanded: boolean) => {
+    setIsExpanded(expanded);
+    console.log(expanded);
+  };
+
+
+ 
+  
   interface DataType {
     createdBy: string;
     title: string;
@@ -226,7 +240,7 @@ export default function IntakeList() {
         showTitle: false,
       },
       width: "290px",
-
+      
       render: (title, record: DataType) => (
         <a
           onClick={() => showDetailDrawer(record)}
@@ -235,6 +249,7 @@ export default function IntakeList() {
           {title}
         </a>
       ),
+     
     },
     {
       title: (
@@ -512,7 +527,7 @@ export default function IntakeList() {
       key: "1",
     },
     {
-      label: "Task Done",
+      label: "Task Completed",
       key: "2",
     },
   ];
@@ -741,9 +756,7 @@ export default function IntakeList() {
                 src={NAVBARS}
                 height={18}
                 alt=""
-                onClick={({ e }: any) => {
-                  e.preventDefault();
-                }}
+                
               />
             </Title>
           </Dropdown>
@@ -973,11 +986,23 @@ export default function IntakeList() {
             <Title level={4}>
               Need legal advice on taxes applied on food chains in one state
             </Title>
-            <p>
-              The app is a comprehensive resource that can help you stay
-              up-to-date on everything that's happening at the company. You can
-              find news articl... Show More
-            </p>
+            <ShowMoreText
+              lines={3}
+              more="Show more"
+              less="Show less"
+              anchorClass="show-more-less-clickable"
+              onClick={executeOnClick}
+              expanded={isExpanded}
+              width={280}
+              truncatedEndingComponent={<span>... </span>}
+            >
+        <p>
+          The app is a comprehensive resource that can help you stay up-to-date
+          on everything that's happening at the company. You can find news
+          articles, updates, and important information. Lorem ipsum dolor sit
+          amet, consectetur adipiscing elit.
+        </p>
+      </ShowMoreText>
             <Divider></Divider>
             <Row
               className="mb-2"
