@@ -1,9 +1,9 @@
 [
     {
         "key": "1",
-        "status": [
+        "status": 
             "In Review"
-        ],
+        ,
         "priority": "critical",
         "ticketNo": "T-101",
         "ticket": "NDA Review",
@@ -13,9 +13,9 @@
     },
     {
         "key": "2",
-        "status": [
+        "status": 
             "In Review"
-        ],
+        ,
         "priority": "medium",
         "ticketNo": "T-102",
         "ticket": "Employee Matter",
@@ -25,9 +25,9 @@
     },
     {
         "key": "3",
-        "status": [
+        "status": 
             "Complete"
-        ],
+        ,
         "priority": "critical",
         "ticketNo": "T-103",
         "ticket": "Corp Governance",
@@ -37,9 +37,9 @@
     },
     {
         "key": "4",
-        "status": [
+        "status": 
             "On Hold"
-        ],
+        ,
         "priority": "medium",
         "ticketNo": "T-104",
         "ticket": "Corp Governance",
@@ -49,9 +49,9 @@
     },
     {
         "key": "5",
-        "status": [
+        "status": 
             "In Progress"
-        ],
+        ,
         "priority": "low",
         "ticketNo": "T-105",
         "ticket": "Corp Governance",
@@ -61,9 +61,9 @@
     },
     {
         "key": "6",
-        "status": [
+        "status": 
             "In Progress"
-        ],
+        ,
         "priority": "high",
         "ticketNo": "T-106",
         "ticket": "Corp Governance",
@@ -73,9 +73,9 @@
     },
     {
         "key": "7",
-        "status": [
+        "status": 
             "Signature"
-        ],
+        ,
         "priority": "low",
         "ticketNo": "T-107",
         "ticket": "Corp Governance",
@@ -85,9 +85,9 @@
     },
     {
         "key": "8",
-        "status": [
+        "status": 
             "Signature"
-        ],
+        ,
         "priority": "high",
         "ticketNo": "T-108",
         "ticket": "Corp Governance",
@@ -99,9 +99,9 @@
     },
     {
         "key": "9",
-        "status": [
+        "status": 
             "In Progress"
-        ],
+        ,
         "priority": "high",
         "ticketNo": "T-109",
         "ticket": "Corp Governance",
@@ -111,9 +111,9 @@
     },
     {
         "key": "10",
-        "status": [
+        "status": 
             "On Hold"
-        ],
+        ,
         "priority": "medium",
         "ticketNo": "T-110",
         "ticket": "Corp Governance",
