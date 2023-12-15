@@ -88,7 +88,7 @@ export default function IntakeList() {
   const [mergeIntakeTitle, setMergeIntakeTitle] = useState(
     "Affiliated Entity Creation"
   );
-  
+
   const [ticketTitle, setTicketTitle] = useState("");
   const [ticketRequestedBy, setTicketRequestedBy] = useState("");
   const [description, setDescription] = useState("");
@@ -117,9 +117,6 @@ export default function IntakeList() {
     console.log(expanded);
   };
 
-
- 
-  
   interface DataType {
     createdBy: string;
     title: string;
@@ -207,9 +204,6 @@ export default function IntakeList() {
           }}
         >
           <div>Created by</div>
-          <div>
-            <Image src={ARROWUP} height={10} alt="..." />
-          </div>
         </div>
       ),
       dataIndex: "createdBy",
@@ -217,6 +211,9 @@ export default function IntakeList() {
       ellipsis: {
         showTitle: false,
       },
+      sorter: (a, b) => a.createdBy.length - b.createdBy.length,
+
+
       width: "60px",
     },
     {
@@ -229,9 +226,6 @@ export default function IntakeList() {
           }}
         >
           <div>Title</div>
-          <div>
-            <Image src={ARROWUP} height={10} alt="aaa" />
-          </div>
         </div>
       ),
       dataIndex: "title",
@@ -239,8 +233,9 @@ export default function IntakeList() {
       ellipsis: {
         showTitle: false,
       },
+      sorter: (a, b) => a.createdBy.length - b.createdBy.length,
       width: "290px",
-      
+
       render: (title, record: DataType) => (
         <a
           onClick={() => showDetailDrawer(record)}
@@ -249,7 +244,6 @@ export default function IntakeList() {
           {title}
         </a>
       ),
-     
     },
     {
       title: (
@@ -261,14 +255,14 @@ export default function IntakeList() {
           }}
         >
           <div>Status</div>
-          <div>
-            <Image src={ARROWUP} height={10} alt="" />
-          </div>
+
         </div>
       ),
       key: "status",
       width: "60px",
       dataIndex: "status",
+      sorter: (a, b) => a.createdBy.length - b.createdBy.length,
+
       render: (_, { status }) => (
         <>
           {status.map((status) => {
@@ -276,14 +270,14 @@ export default function IntakeList() {
               status == "Pending"
                 ? "#7F7FEF"
                 : status == "Complete"
-                ? "#4CAF50"
-                : status == "On Hold"
-                ? "#D83A36"
-                : status == "Signature"
-                ? "#FF9800"
-                : status == "To Projects" || "To Tickets"
-                ? "#2196F3"
-                : "#000000";
+                  ? "#4CAF50"
+                  : status == "On Hold"
+                    ? "#D83A36"
+                    : status == "Signature"
+                      ? "#FF9800"
+                      : status == "To Projects" || "To Tickets"
+                        ? "#2196F3"
+                        : "#000000";
             return (
               <Tag
                 style={{
@@ -368,9 +362,6 @@ export default function IntakeList() {
         >
           <div>Platform</div>
 
-          <div>
-            <Image src={ARROWUP} height={10} alt="..." />
-          </div>
         </div>
       ),
       dataIndex: "platform",
@@ -745,21 +736,14 @@ export default function IntakeList() {
           align={"center"}
           justify="space-between"
         >
-          <Dropdown
-            menu={{ items }}
-            trigger={["click"]}
-            placement="bottom"
-            arrow={{ pointAtCenter: true }}
-          >
-            <Title className={styles.dropDownFilter}>
-              <Image
-                src={NAVBARS}
-                height={18}
-                alt=""
-                
-              />
-            </Title>
-          </Dropdown>
+          <Title className={styles.dropDownFilter}>
+            <Image
+              src={NAVBARS}
+              height={18}
+              alt=""
+            />
+          </Title>
+
           <Divider style={{ height: "50px", margin: "0" }} type="vertical" />
           <CustomDropDown title={"Platform"} dropDownItems={platformDropDown} />
           <Divider style={{ height: "50px", margin: "0" }} type="vertical" />
@@ -996,13 +980,13 @@ export default function IntakeList() {
               width={280}
               truncatedEndingComponent={<span>... </span>}
             >
-        <p>
-          The app is a comprehensive resource that can help you stay up-to-date
-          on everything that's happening at the company. You can find news
-          articles, updates, and important information. Lorem ipsum dolor sit
-          amet, consectetur adipiscing elit.
-        </p>
-      </ShowMoreText>
+              <p>
+                The app is a comprehensive resource that can help you stay up-to-date
+                on everything that's happening at the company. You can find news
+                articles, updates, and important information. Lorem ipsum dolor sit
+                amet, consectetur adipiscing elit.
+              </p>
+            </ShowMoreText>
             <Divider></Divider>
             <Row
               className="mb-2"
