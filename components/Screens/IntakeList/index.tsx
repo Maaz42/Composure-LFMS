@@ -109,7 +109,6 @@ export default function IntakeList() {
   );
   const [selectedRecord, setSelectedRecord] = useState<DataType | null>(null);
 
-  const [sortOrder, setSortOrder] = useState<'ascend' | 'descend' | undefined>(undefined);
   const [isExpanded, setIsExpanded] = useState(false);
 
   const executeOnClick = (expanded: boolean) => {
@@ -188,7 +187,7 @@ export default function IntakeList() {
     key: React.Key;
     createdBy: string;
     title: string;
-    status: string[];
+    status: string;
     platform: string[];
     dropDown: any;
   }
@@ -233,7 +232,7 @@ export default function IntakeList() {
       ellipsis: {
         showTitle: false,
       },
-      sorter: (a, b) => a.createdBy.length - b.createdBy.length,
+      sorter: (a, b) => a.title.length - b.title.length,
       width: "290px",
 
       render: (title, record: DataType) => (
@@ -261,95 +260,94 @@ export default function IntakeList() {
       key: "status",
       width: "60px",
       dataIndex: "status",
-      sorter: (a, b) => a.createdBy.length - b.createdBy.length,
-
-      render: (_, { status }) => (
-        <>
-          {status.map((status) => {
-            let color =
-              status == "Pending"
-                ? "#7F7FEF"
-                : status == "Complete"
-                  ? "#4CAF50"
-                  : status == "On Hold"
-                    ? "#D83A36"
-                    : status == "Signature"
-                      ? "#FF9800"
-                      : status == "To Projects" || "To Tickets"
-                        ? "#2196F3"
-                        : "#000000";
-            return (
-              <Tag
-                style={{
-                  backgroundColor: "#ffff",
-                  display: "inline-flex",
-                  border: "1px solid #E0E0E0",
-                  borderRadius: "65px",
-                  justifyContent: "space-evenly",
-                  padding: "0 10px 0 10px",
-                  color: color,
-                }}
-                key={status}
-              >
-                {status == "Pending" ? (
-                  <div
-                    className={styles.purple}
-                    style={{
-                      height: "10px",
-                      width: "10px",
-                      borderRadius: "50%",
-                      marginTop: "5px",
-                    }}
-                  ></div>
-                ) : status == "Complete" ? (
-                  <div
-                    className={styles.green}
-                    style={{
-                      height: "10px",
-                      width: "10px",
-                      borderRadius: "50%",
-                      marginTop: "5px",
-                    }}
-                  ></div>
-                ) : status == "On Hold" ? (
-                  <div
-                    className={styles.red}
-                    style={{
-                      height: "10px",
-                      width: "10px",
-                      borderRadius: "50%",
-                      marginTop: "5px",
-                    }}
-                  ></div>
-                ) : status == "Signature" ? (
-                  <div
-                    className={styles.yellow}
-                    style={{
-                      height: "10px",
-                      width: "10px",
-                      borderRadius: "50%",
-                      marginTop: "5px",
-                    }}
-                  ></div>
-                ) : status == "To Projects" || "To Tickets" ? (
-                  <div
-                    className={styles.blue}
-                    style={{
-                      height: "10px",
-                      width: "10px",
-                      borderRadius: "50%",
-                      marginTop: "5px",
-                    }}
-                  ></div>
-                ) : (
-                  <></>
-                )}
-                &nbsp; {status}
-              </Tag>
-            );
-          })}
-        </>
-      ),
+      sorter: (a, b) => a.status.length - b.status.length,
+      render: (_, { status }) => {
+        let color =
+          status === "Pending"
+            ? "#7F7FEF"
+            : status === "Complete"
+              ? "#4CAF50"
+              : status === "On Hold"
+                ? "#D83A36"
+                : status === "Signature"
+                  ? "#FF9800"
+                  : (status === "To Projects" || status === "To Tickets")
+                    ? "#2196F3"
+                    : "#000000";
+      
+        return (
+          <>
+            <Tag
+              style={{
+                backgroundColor: "#ffff",
+                display: "inline-flex",
+                border: "1px solid #E0E0E0",
+                borderRadius: "65px",
+                justifyContent: "space-evenly",
+                padding: "0 10px 0 10px",
+                color: color,
+              }}
+              key={status}
+            >
+              {status === "Pending" ? (
+                <div
+                  className={styles.purple}
+                  style={{
+                    height: "10px",
+                    width: "10px",
+                    borderRadius: "50%",
+                    marginTop: "5px",
+                  }}
+                ></div>
+              ) : status === "Complete" ? (
+                <div
+                  className={styles.green}
+                  style={{
+                    height: "10px",
+                    width: "10px",
+                    borderRadius: "50%",
+                    marginTop: "5px",
+                  }}
+                ></div>
+              ) : status === "On Hold" ? (
+                <div
+                  className={styles.red}
+                  style={{
+                    height: "10px",
+                    width: "10px",
+                    borderRadius: "50%",
+                    marginTop: "5px",
+                  }}
+                ></div>
+              ) : status === "Signature" ? (
+                <div
+                  className={styles.yellow}
+                  style={{
+                    height: "10px",
+                    width: "10px",
+                    borderRadius: "50%",
+                    marginTop: "5px",
+                  }}
+                ></div>
+              ) : (status === "To Projects" || status === "To Tickets") ? (
+                <div
+                  className={styles.blue}
+                  style={{
+                    height: "10px",
+                    width: "10px",
+                    borderRadius: "50%",
+                    marginTop: "5px",
+                  }}
+                ></div>
+              ) : (
+                <></>
+              )}
+              &nbsp; {status}
+            </Tag>
+          </>
+        );
+      }
+      
     },
     {
       title: (

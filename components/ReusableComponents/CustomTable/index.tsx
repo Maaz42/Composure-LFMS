@@ -70,10 +70,12 @@ export const CustomTable = ({
           <Table
             rowSelection={rowSelection}
             columns={columns}
+            style={{ cursor: "pointer" }}
             expandable={expandable}
             dataSource={tableData}
             pagination={false}
             scroll={{ y: 700 }}
+            onRow={onRow}
           />
         )}
       </ConfigProvider>
