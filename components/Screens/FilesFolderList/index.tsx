@@ -116,7 +116,7 @@ export default function FilesFolderList() {
       ellipsis: {
         showTitle: false,
       },
-      width: "780px",
+      width: "750px",
       render: (title) => (
         <Tooltip placement="topLeft" title={title}>
           {title}

@@ -85,14 +85,13 @@ export default function WorkflowList() {
       ellipsis: {
         showTitle: false,
       },
-      width: "900px",
+      width: "850px",
       render: (title) => (
         <Tooltip placement="topLeft" title={title}>
           {title}
         </Tooltip>
       ),
     },
-
     {
       title: (
         <div
