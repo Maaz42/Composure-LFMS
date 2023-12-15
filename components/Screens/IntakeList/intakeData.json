@@ -3,9 +3,9 @@
         "key": "1",
         "createdBy": "Jane Cooper",
         "title": "Need documents for company profile and services",
-        "status": [
+        "status": 
             "Pending"
-        ],
+        ,
         "platform": [
             "slack"
         ]
@@ -14,9 +14,9 @@
         "key": "2",
         "createdBy": "Kristin Waston",
         "title": "Legal Document Required",
-        "status": [
+        "status": 
             "Complete"
-        ],
+        ,
         "platform": [
             "slack"
         ]
@@ -25,9 +25,9 @@
         "key": "22",
         "createdBy": "Kristin Waston",
         "title": "Legal Document Required",
-        "status": [
+        "status": 
             "To Projects"
-        ],
+        ,
         "platform": [
             "slack"
         ]
@@ -36,9 +36,9 @@
         "key": "23",
         "createdBy": "Kristin Waston",
         "title": "Legal Document Required",
-        "status": [
+        "status": 
             "To Tickets"
-        ],
+        ,
         "platform": [
             "slack"
         ]
@@ -47,9 +47,9 @@
         "key": "24",
         "createdBy": "Kristin Waston",
         "title": "Legal Document Required",
-        "status": [
+        "status": 
             "On Hold"
-        ],
+        ,
         "platform": [
             "slack"
         ]
@@ -58,9 +58,9 @@
         "key": "25",
         "createdBy": "Kristin Waston",
         "title": "Legal Document Required",
-        "status": [
+        "status": 
             "Signature"
-        ],
+        ,
         "platform": [
             "slack"
         ]
@@ -69,9 +69,9 @@
         "key": "26",
         "createdBy": "Kristin Waston",
         "title": "Legal Document Required",
-        "status": [
+        "status": 
             "To Tickets"
-        ],
+        ,
         "platform": [
             "slack"
         ]
@@ -80,9 +80,9 @@
         "key": "27",
         "createdBy": "Kristin Waston",
         "title": "Legal Document Required",
-        "status": [
+        "status": 
             "Complete"
-        ],
+        ,
         "platform": [
             "slack"
         ]
@@ -91,9 +91,9 @@
         "key": "28",
         "createdBy": "Kristin Waston",
         "title": "Legal Document Required",
-        "status": [
+        "status": 
             "To Projects"
-        ],
+        ,
         "platform": [
             "slack"
         ]
@@ -102,9 +102,9 @@
         "key": "52",
         "createdBy": "Kristin Waston",
         "title": "Legal Document Required",
-        "status": [
+        "status": 
             "Complete"
-        ],
+        ,
         "platform": [
             "slack"
         ]

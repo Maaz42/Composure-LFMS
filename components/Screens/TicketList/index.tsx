@@ -24,6 +24,8 @@ import {
   Input,
   Select,
 } from "antd";
+import { useRouter } from 'next/router'
+
 import {
   ARROW,
   SEARCH,
@@ -54,7 +56,7 @@ export default function TicketList() {
   const [selectProiorityValue, setSelectProiorityValue] = useState<any>();
   const [selectAssigneeValue, setSelectAssigneeValue] = useState<any>();
   const [requestedBy, setRequestedBy] = useState("");
-
+  const router=useRouter();
   const showDrawer = () => {
     setOpen(true);
   };
@@ -84,10 +86,10 @@ export default function TicketList() {
   };
 
   interface DataType {
-    status: string[];
+    status: string;
     priority: string;
-    ticketNo: string;
-    ticket: number;
+    ticketNo: any;
+    ticket: string;
     type: string;
     received: string;
     assignee: any[];
@@ -105,18 +107,15 @@ export default function TicketList() {
           }}
         >
           <div>Status</div>
-          <div>
-            <Image src={ARROWUP} height={10} alt="" />
-          </div>
+         
         </div>
       ),
       key: "status",
       dataIndex: "status",
+      sorter: (a, b) => a.status.length - b.status.length,
       width: "100px",
-      render: (_, { status }) => (
-        <>
-          {status.map((status) => {
-            let color =
+      render: (_, { status }) => {
+          let color =
               status == "In Review"
                 ? "#7F7FEF"
                 : status == "Complete"
@@ -129,6 +128,8 @@ export default function TicketList() {
                 ? "#2196F3"
                 : "#000000";
             return (
+
+              <>
               <Tag
                 style={{
                   backgroundColor: "#ffff",
@@ -196,10 +197,11 @@ export default function TicketList() {
                 )}
                 &nbsp; {status}
               </Tag>
+              </>
             );
-          })}
-        </>
-      ),
+          }
+        
+      
     },
     {
       title: (
@@ -211,14 +213,13 @@ export default function TicketList() {
           }}
         >
           <div>Priority</div>
-          <div>
-            <Image src={ARROWUP} height={10} alt="" />
-          </div>
+          
         </div>
       ),
       dataIndex: "priority",
       key: "priority",
       width: "70px",
+      sorter: (a, b) => a.priority.length - b.priority.length,
       render: (priority) => (
         <>
           <div
@@ -294,14 +295,13 @@ export default function TicketList() {
           }}
         >
           <div>Ticket No.</div>
-          <div>
-            <Image src={ARROWUP} height={10} alt="" />
-          </div>
+          
         </div>
       ),
       dataIndex: "ticketNo",
       key: "ticketNo",
       width: "100px",
+      sorter: (a, b) => a.ticketNo.length - b.ticketNo.length,
     },
     {
       title: (
@@ -313,14 +313,13 @@ export default function TicketList() {
           }}
         >
           <div>Ticket</div>
-          <div>
-            <Image src={ARROWUP} height={10} alt="" />
-          </div>
+          
         </div>
       ),
       dataIndex: "ticket",
       key: "ticket",
       width: "400px",
+      sorter: (a, b) => a.ticket.length - b.ticket.length,
     },
     {
       title: (
@@ -332,14 +331,13 @@ export default function TicketList() {
           }}
         >
           <div>Type</div>
-          <div>
-            <Image src={ARROWUP} height={10} alt="" />
-          </div>
+          
         </div>
       ),
       dataIndex: "type",
       key: "type",
       width: "150px",
+      sorter: (a, b) => a.type.length - b.type.length,
     },
     {
       title: (
@@ -351,13 +349,20 @@ export default function TicketList() {
           }}
         >
           <div>Recieved</div>
-          <div>
-            <Image src={ARROWUP} height={10} alt="" />
-          </div>
+          
         </div>
       ),
       dataIndex: "received",
       key: "received",
+      sorter: (a, b) => a.type.length - b.type.length,
+      // sorter: (a, b) => {
+      //   const getNumericValue = (received: string) => parseInt(received.match(/\d+/)[0]);
+    
+      //   const numericA = getNumericValue(a.received);
+      //   const numericB = getNumericValue(b.received);
+    
+      //   return numericA - numericB;
+      // },
       width: "130px",
     },
     {
@@ -370,14 +375,13 @@ export default function TicketList() {
           }}
         >
           <div>Assignee</div>
-          <div>
-            <Image src={ARROWUP} height={10} alt="" />
-          </div>
+         
         </div>
       ),
       dataIndex: "assignee",
       key: "assignee",
       width: "140px",
+      
       render: (_, { assignee }) => (
         <>
           <Avatar.Group>
@@ -427,6 +431,7 @@ export default function TicketList() {
             src={THREEDOTS}
             alt="..."
             onClick={(e) => {
+              e.stopPropagation();
               e.preventDefault();
               setItems(ticketDropDown);
             }}
@@ -458,10 +463,7 @@ export default function TicketList() {
   ];
 
   const ticketDropDown = [
-    {
-      key: "1",
-      label: <Link href={`/ticketDetail`}>View</Link>,
-    },
+   
     {
       key: "2",
       label: "Move to Project",
@@ -676,7 +678,13 @@ export default function TicketList() {
       >
         <Row>
           <Col span={24}>
-            <CustomTable columns={columns} data={tableData} isChecked={0} />
+            <CustomTable columns={columns} onRow={() => ({
+                onClick: () => {
+                  
+                  router.push("/ticketDetail")
+                  
+                }})}
+                 data={tableData} isChecked={1} />
           </Col>
         </Row>
         <Row style={{ justifyContent: "end" }}>

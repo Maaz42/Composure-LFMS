@@ -4,6 +4,7 @@ import Link from "next/link";
 import styles from "./styles.module.css";
 import { MenuOutlined } from "@ant-design/icons";
 import type { MenuProps, RadioChangeEvent } from "antd";
+import { useRouter } from 'next/router'
 
 import {
   Button,
@@ -57,7 +58,7 @@ interface DataType {
   key: React.Key;
   title: string;
   due_date: string;
-  stage: string[];
+  stage: string;
   progress: any[];
   collaboration: any[];
   rowData: any[];
@@ -73,7 +74,7 @@ export default function ProjectList() {
   const [projectWorkflow, setprojectWorkflow] = useState("");
   const [selectCollaboratorValue, setSelectCollaoratorValue] = useState<any>();
   const [value, setValue] = useState("Public");
-
+  const router=useRouter();
   const [expandedRowKeys, setExpandedRowKeys] = useState<string[]>([]);
 
   const handleRowClick = (key: any) => {
@@ -115,10 +116,7 @@ export default function ProjectList() {
   };
 
   const projectActinDropDown = [
-    {
-      key: "1",
-      label: <Link href="/projectDetail">View</Link>,
-    },
+    
     {
       key: "2",
       label: <a>Delete</a>,
@@ -195,13 +193,12 @@ export default function ProjectList() {
           }}
         >
           <div>Title</div>
-          <div>
-            <Image src={ARROWUP} height={10} alt="" />
-          </div>
+        
         </div>
       ),
       dataIndex: "title",
       key: "title",
+      sorter: (a, b) => a.title.length - b.title.length,
       width: "500px",
 
       render: (text, record: any) => (
@@ -223,13 +220,14 @@ export default function ProjectList() {
           }}
         >
           <div>Due Date</div>
-          <div>
-            <Image src={ARROWUP} height={10} alt="" />
-          </div>
+         
         </div>
       ),
       dataIndex: "due_date",
       key: "due_date",
+      sorter: (a, b) => new Date(a.due_date as string).getTime() - new Date(b.due_date as string).getTime(),
+
+    
       width: "110px",
     },
     {
@@ -242,29 +240,27 @@ export default function ProjectList() {
           }}
         >
           <div>Stage</div>
-          <div>
-            <Image src={ARROWUP} height={10} alt="" />
-          </div>
+         
         </div>
       ),
       key: "stage",
+      sorter: (a, b) => a.stage.length - b.stage.length,
       width: "130px",
-      render: (_, { stage }) => (
-        <>
-          {stage.map((status) => {
+      render: (_, { stage }) => {
             let color =
-              status == "Pending"
+              stage === "In Progress"
                 ? "#7F7FEF"
-                : status == "Complete"
+                : stage === "Complete"
                 ? "#4CAF50"
-                : status == "On Hold"
+                : stage === "New"
                 ? "#D83A36"
-                : status == "Signature"
+                : stage === "Signature"
                 ? "#FF9800"
-                : status == "To Projects" || "To Tickets"
+                : stage === "To Projects" || "To Tickets"
                 ? "#2196F3"
                 : "#000000";
             return (
+              <>
               <Tag
                 style={{
                   backgroundColor: "#ffff",
@@ -275,27 +271,26 @@ export default function ProjectList() {
                   width: "100px",
                   color: color,
                 }}
-                key={status}
+                key={stage}
               >
-                {status == "Pending" ? (
+                {stage == "In Progress" ? (
                   <Image src={PURPLEDOT} height={10} alt="aaa" />
-                ) : status == "Complete" ? (
+                ) : stage == "Complete" ? (
                   <Image src={GREENDOT} height={10} alt="" />
-                ) : status == "On Hold" ? (
+                ) : stage == "New" ? (
                   <Image src={REDDOT} height={10} alt="" />
-                ) : status == "Signature" ? (
+                ) : stage == "Signature" ? (
                   <Image src={YELLOWDOT} height={10} alt="" />
-                ) : status == "To Projects" || "To Tickets" ? (
+                ) : stage == "To Projects" || "To Tickets" ? (
                   <Image src={BLUEDOT} height={10} alt="" />
                 ) : (
                   <></>
                 )}
-                {status}
+                {stage}
               </Tag>
+              </>
             );
-          })}
-        </>
-      ),
+                }
     },
     {
       title: (
@@ -307,9 +302,7 @@ export default function ProjectList() {
           }}
         >
           <div>Progress</div>
-          <div>
-            <Image src={ARROWUP} height={10} alt="" />
-          </div>
+          
         </div>
       ),
       key: "progress",
@@ -337,9 +330,7 @@ export default function ProjectList() {
           }}
         >
           <div>Collaboration</div>
-          <div>
-            <Image src={ARROWUP} height={10} alt="" />
-          </div>
+          
         </div>
       ),
       key: "collaboration",
@@ -384,6 +375,7 @@ export default function ProjectList() {
     },
     {
       key: "operation",
+      
       width: "60px",
       render: () => (
         <Dropdown menu={{ items }} trigger={["click"]}>
@@ -391,6 +383,7 @@ export default function ProjectList() {
             src={THREEDOTS}
             alt="..."
             onClick={(e) => {
+              e.stopPropagation();
               e.preventDefault();
               setItems(projectActinDropDown);
             }}
@@ -615,21 +608,31 @@ export default function ProjectList() {
           background: "white",
         }}
       >
+         
         <Row>
           <Col span={24}>
             <CustomTable
               columns={columns}
               data={tableData}
               isChecked={2}
-              expandable={{
-                expandedRowRender,
-                rowExpandable: () => true,
-                expandedRowKeys,
-                onExpand: (record: any) => {
-                  handleRowClick(record.key);
-                },
-                expandIcon: () => <></>,
-              }}
+              onRow={() => ({
+                onClick: () => {
+                  console.log("new one")
+                  router.push("/projectDetail")
+                  
+                }
+                
+              })}
+              // expandable={{
+              //   expandedRowRender,
+              //   rowExpandable: () => true,
+              //   expandedRowKeys,
+              //   onExpand: (record: any) => {
+              //     handleRowClick(record.key);
+              //   },
+              //   expandIcon: () => <></>,
+              // }}
+              
             />
           </Col>
         </Row>

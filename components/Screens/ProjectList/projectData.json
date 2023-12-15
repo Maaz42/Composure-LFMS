@@ -2,10 +2,10 @@
     {
         "key": "1",
         "title": "1",
-        "due_date": "12/12/23",
-        "stage": [
-            "In Review"
-        ],
+        "due_date": "02/12/23",
+        "stage": 
+            "Complete"
+        ,
         "collaboration": [
             {
                 "img": "https://xsgames.co/randomusers/avatar.php?g=pixel&key=2",
@@ -35,9 +35,9 @@
         "key": "2",
         "title": "2",
         "due_date": "12/12/23",
-        "stage": [
-            "In Review"
-        ],
+        "stage": 
+            "In Progress"
+        ,
         "collaboration": [
             {
                 "img": "https://xsgames.co/randomusers/avatar.php?g=pixel&key=2",
@@ -66,9 +66,9 @@
         "key": "13",
         "title": "13",
         "due_date": "12/12/23",
-        "stage": [
-            "In Review"
-        ],
+        "stage": 
+            "New"
+        ,
         "collaboration": [
             {
                 "img": "https://xsgames.co/randomusers/avatar.php?g=pixel&key=2",
@@ -96,9 +96,9 @@
         "key": "14",
         "title": "14",
         "due_date": "12/12/23",
-        "stage": [
-            "In Review"
-        ],
+        "stage": 
+            "Complete"
+        ,
         "collaboration": [
             {
                 "img": "https://xsgames.co/randomusers/avatar.php?g=pixel&key=2",
@@ -126,9 +126,9 @@
         "key": "15",
         "title": "15",
         "due_date": "12/12/23",
-        "stage": [
+        "stage": 
             "In Review"
-        ],
+        ,
         "collaboration": [
             {
                 "img": "https://xsgames.co/randomusers/avatar.php?g=pixel&key=2",
