@@ -71,3 +71,6 @@ export const BUILDING = require("../img/buliding.svg");
 export const TODO = require("../img/task.svg");
 export const USERIMAGE = require("../img/user.svg");
 export const PLUS_SOLID = require("../img/plus-solid.svg");
+export const ARROW_UP = require("../img/arrow-up-solid.svg");
+export const ARROW_RIGHT = require("../img/arrow-right-solid.svg");
+export const LIGHT_BULB=require("../img/lightbulb-solid.svg")

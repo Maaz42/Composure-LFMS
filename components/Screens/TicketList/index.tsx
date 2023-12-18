@@ -34,6 +34,10 @@ import {
   EDIT,
   CLOSE,
   ARROWUP,
+  PLUS_SOLID,
+  ARROW_RIGHT,
+  ARROW_UP,
+  ADDSQUARE
 } from "@/constants/images";
 import ticketsData from "./ticketsData.json";
 import FloatLabel from "../../ReusableComponents/FloatLabel";
@@ -56,6 +60,7 @@ export default function TicketList() {
   const [selectProiorityValue, setSelectProiorityValue] = useState<any>();
   const [selectAssigneeValue, setSelectAssigneeValue] = useState<any>();
   const [requestedBy, setRequestedBy] = useState("");
+  
   const router=useRouter();
   const showDrawer = () => {
     setOpen(true);
@@ -412,7 +417,9 @@ export default function TicketList() {
                   src={EDIT}
                   height={25}
                   alt="..."
-                  onClick={showAssingeeDrawer}
+                  onClick={(e)=>{
+                    e.stopPropagation();
+                    showAssingeeDrawer();}}
                 />
               </Tooltip>
             </Avatar>
@@ -445,6 +452,72 @@ export default function TicketList() {
         </Dropdown>
       ),
     },
+    {
+      title: "Quick Actions",
+      dataIndex: "quickActions",
+      key: "quickActions",
+      width: "100px",
+
+      render: () => (
+        <div style={{ display: "flex" }}>
+          <a
+            onClick={(e) => {
+              e.preventDefault();
+              e.stopPropagation();
+              
+            }}
+          >
+            
+              <Image
+                src={PLUS_SOLID}
+                alt="..."
+                style={{ width: "20px", height: "20px", marginRight: "15px" ,border: "1px", borderRadius: "7px" }}
+              />
+            
+          </a>
+          <a
+            onClick={(e) => {
+              e.preventDefault();
+              e.stopPropagation();
+              setItems(addQuickActionDropDown)
+              
+            }}
+          >
+            <Dropdown menu={{ items }} trigger={["click"]}>
+              <Image
+                src={ARROW_RIGHT}
+                alt="..."
+                style={{ width: "20px", height: "20px", marginRight: "15px" ,border: "1px", borderRadius: "7px" }}
+              />
+            </Dropdown>
+          </a>
+          <a
+            onClick={(e) => {
+              e.preventDefault();
+              e.stopPropagation();
+              
+            }}
+          >
+            
+              <Image
+                src={ARROW_UP}
+                alt="..."
+                style={{ width: "20px", height: "20px", marginRight: "15px" ,border: "1px", borderRadius: "7px" }}
+              />
+           
+          </a>
+        </div>
+      ),
+    },
+    
+  ];
+
+  const addQuickActionDropDown = [
+    {
+      label: "Status",
+      key: "0",
+    },
+  
   ];
 
   const allDropDown = [
