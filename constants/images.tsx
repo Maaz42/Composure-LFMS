@@ -70,3 +70,4 @@ export const DASHBOARDICON = require("../img/cards.svg");
 export const BUILDING = require("../img/buliding.svg");
 export const TODO = require("../img/task.svg");
 export const USERIMAGE = require("../img/user.svg");
+export const PLUS_SOLID = require("../img/plus-solid.svg");

@@ -3,9 +3,12 @@ import Image from 'next/image';
 import styles from './styles.module.css'
 import type { MenuProps } from 'antd';
 import { Avatar, Button, Col, Divider, Dropdown, Flex, Input, Row, Space, Typography, Layout, Upload } from 'antd';
-import { CLOCK, FOLDER, INFO, MORE, PROFILE, SEND } from '@/constants/images';
+import { CLOCK, FOLDER, INFO, MORE, PROFILE, SEND,PLUS_SOLID } from '@/constants/images';
 import { UserOutlined, InboxOutlined, MenuOutlined } from '@ant-design/icons';
 import CustomDropDown from '@/components/ReusableComponents/DropDown';
+
+
+
 
 const { Header } = Layout;
 const { Dragger } = Upload;
@@ -101,17 +104,15 @@ export default function TicketDetail() {
     const navDropDown = [
         {
             key: '1',
-            label: " Nav  1st menu item"
+            label: "Mark As Non-Urgent"
         },
         {
             key: '2',
-            label: " Nav 2nd menu item"
+            label: "Delete"
+            
 
         },
-        {
-            key: '3',
-            label: " Nav 3rd menu item"
-        },
+        
     ];
 
     const statusDropDown = [
@@ -197,8 +198,7 @@ export default function TicketDetail() {
                         <Title level={4}>Ticket Details</Title>
                         <Flex justify={'flex-end'} align={'center'}>
                             <MenuOutlined className={styles.collapseMenu} style={{ marginRight: "5px" }} />
-                            <Button className={styles.collapseTo} style={{ color: 'white', background: '#C8473E' }}>Delete</Button>
-                            <Button className={styles.collapseTo} style={{ color: 'white', background: '#7E81E8' }}>Mark As Non-Urgent</Button>
+                            
                             <Button className={styles.collapseTo} style={{ color: 'white', background: '#7E81E8' }}>Move to Project</Button>
                             <Button className={styles.collapseTo} style={{ color: 'white', background: '#333793' }}>Assign Member</Button>
                             <Dropdown menu={{ items }} trigger={['click']}>
@@ -238,7 +238,20 @@ export default function TicketDetail() {
                             <Space wrap size={5} style={{ marginTop: '10px' }}>
                                 <Avatar icon={<UserOutlined />} />
                                 <Avatar icon={<UserOutlined />} />
-                                <Avatar icon={<UserOutlined />} />
+                                {/* <Avatar icon={<UserOutlined />} /> */}
+                                <Avatar style={{
+                border: "1px dashed gray",
+                backgroundColor: "#ffff",
+                display: "flex",
+                alignItems: "center",
+              }} > 
+                                    <Image
+                                        src={PLUS_SOLID}
+                                        height={25}
+                                        alt="..."
+                                        
+                                        /></Avatar>
+
                             </Space>
                             <Row>
                                 <Title style={cardTitleSmall2Style} className='mr-3'><Image src={PROFILE} height={15} alt='' />&nbsp;2 people Invloved</Title>
