@@ -74,7 +74,7 @@ export default function ProjectList() {
   const [projectWorkflow, setprojectWorkflow] = useState("");
   const [selectCollaboratorValue, setSelectCollaoratorValue] = useState<any>();
   const [value, setValue] = useState("Public");
-  const router=useRouter();
+  const router = useRouter();
   const [expandedRowKeys, setExpandedRowKeys] = useState<string[]>([]);
 
   const handleRowClick = (key: any) => {
@@ -116,7 +116,7 @@ export default function ProjectList() {
   };
 
   const projectActinDropDown = [
-    
+
     {
       key: "2",
       label: <a>Delete</a>,
@@ -193,7 +193,7 @@ export default function ProjectList() {
           }}
         >
           <div>Title</div>
-        
+
         </div>
       ),
       dataIndex: "title",
@@ -220,14 +220,14 @@ export default function ProjectList() {
           }}
         >
           <div>Due Date</div>
-         
+
         </div>
       ),
       dataIndex: "due_date",
       key: "due_date",
       sorter: (a, b) => new Date(a.due_date as string).getTime() - new Date(b.due_date as string).getTime(),
 
-    
+
       width: "110px",
     },
     {
@@ -240,57 +240,56 @@ export default function ProjectList() {
           }}
         >
           <div>Stage</div>
-         
+
         </div>
       ),
       key: "stage",
       sorter: (a, b) => a.stage.length - b.stage.length,
       width: "130px",
       render: (_, { stage }) => {
-            let color =
-              stage === "In Progress"
-                ? "#7F7FEF"
-                : stage === "Complete"
-                ? "#4CAF50"
-                : stage === "New"
+        let color =
+          stage === "In Progress"
+            ? "#7F7FEF"
+            : stage === "Complete"
+              ? "#4CAF50"
+              : stage === "New"
                 ? "#D83A36"
                 : stage === "Signature"
-                ? "#FF9800"
-                : stage === "To Projects" || "To Tickets"
-                ? "#2196F3"
-                : "#000000";
-            return (
-              <>
-              <Tag
-                style={{
-                  backgroundColor: "#ffff",
-                  display: "inline-flex",
-                  border: "1px solid #E0E0E0",
-                  borderRadius: "65px",
-                  justifyContent: "space-evenly",
-                  width: "100px",
-                  color: color,
-                }}
-                key={stage}
-              >
-                {stage == "In Progress" ? (
-                  <Image src={PURPLEDOT} height={10} alt="aaa" />
-                ) : stage == "Complete" ? (
-                  <Image src={GREENDOT} height={10} alt="" />
-                ) : stage == "New" ? (
-                  <Image src={REDDOT} height={10} alt="" />
-                ) : stage == "Signature" ? (
-                  <Image src={YELLOWDOT} height={10} alt="" />
-                ) : stage == "To Projects" || "To Tickets" ? (
-                  <Image src={BLUEDOT} height={10} alt="" />
-                ) : (
-                  <></>
-                )}
-                {stage}
-              </Tag>
-              </>
-            );
-                }
+                  ? "#FF9800"
+                  : stage === "To Projects" || "To Tickets"
+                    ? "#2196F3"
+                    : "#000000";
+        return (
+          <>
+            <Tag
+              style={{
+                backgroundColor: "#ffff",
+                display: "inline-flex",
+                border: "1px solid #E0E0E0",
+                borderRadius: "65px",
+                justifyContent: "space-evenly",
+                color: color,
+              }}
+              key={stage}
+            >
+              {stage == "In Progress" ? (
+                <Image src={PURPLEDOT} height={10} alt="aaa" />
+              ) : stage == "Complete" ? (
+                <Image src={GREENDOT} height={10} alt="" />
+              ) : stage == "New" ? (
+                <Image src={REDDOT} height={10} alt="" />
+              ) : stage == "Signature" ? (
+                <Image src={YELLOWDOT} height={10} alt="" />
+              ) : stage == "To Projects" || "To Tickets" ? (
+                <Image src={BLUEDOT} height={10} alt="" />
+              ) : (
+                <></>
+              )}
+              &nbsp;{stage}
+            </Tag>
+          </>
+        );
+      }
     },
     {
       title: (
@@ -302,7 +301,7 @@ export default function ProjectList() {
           }}
         >
           <div>Progress</div>
-          
+
         </div>
       ),
       key: "progress",
@@ -330,7 +329,7 @@ export default function ProjectList() {
           }}
         >
           <div>Collaboration</div>
-          
+
         </div>
       ),
       key: "collaboration",
@@ -375,7 +374,7 @@ export default function ProjectList() {
     },
     {
       key: "operation",
-      
+
       width: "60px",
       render: () => (
         <Dropdown menu={{ items }} trigger={["click"]}>
@@ -571,7 +570,7 @@ export default function ProjectList() {
                 src={NAVBARS}
                 height={18}
                 alt=""
-                onClick={({ e }: any) => {}}
+                onClick={({ e }: any) => { }}
               />
             </Title>
           </Dropdown>
@@ -608,7 +607,7 @@ export default function ProjectList() {
           background: "white",
         }}
       >
-         
+
         <Row>
           <Col span={24}>
             <CustomTable
@@ -619,20 +618,20 @@ export default function ProjectList() {
                 onClick: () => {
                   console.log("new one")
                   router.push("/projectDetail")
-                  
+
                 }
-                
+
               })}
-              // expandable={{
-              //   expandedRowRender,
-              //   rowExpandable: () => true,
-              //   expandedRowKeys,
-              //   onExpand: (record: any) => {
-              //     handleRowClick(record.key);
-              //   },
-              //   expandIcon: () => <></>,
-              // }}
-              
+            // expandable={{
+            //   expandedRowRender,
+            //   rowExpandable: () => true,
+            //   expandedRowKeys,
+            //   onExpand: (record: any) => {
+            //     handleRowClick(record.key);
+            //   },
+            //   expandIcon: () => <></>,
+            // }}
+
             />
           </Col>
         </Row>
