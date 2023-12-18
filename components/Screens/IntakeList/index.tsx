@@ -50,6 +50,7 @@ import {
   ICERTIS,
   GOOGLEDRIVE,
   ADDCIRCLEWHITE,
+  LIGHT_BULB,
 } from "@/constants/images";
 import intakeData from "./intakeData.json";
 import ShowMoreText from "react-show-more-text";
@@ -237,7 +238,9 @@ export default function IntakeList() {
 
       render: (title, record: DataType) => (
         <a
-          onClick={() => showDetailDrawer(record)}
+          onClick={(e) => {
+            
+            showDetailDrawer(record)}}
           style={{ textDecoration: "none", color: "black" }}
         >
           {title}
@@ -258,7 +261,7 @@ export default function IntakeList() {
         </div>
       ),
       key: "status",
-      width: "60px",
+      width: "100px",
       dataIndex: "status",
       sorter: (a, b) => a.status.length - b.status.length,
       render: (_, { status }) => {
@@ -277,19 +280,20 @@ export default function IntakeList() {
       
         return (
           <>
+          <div className="flex">
             <Tag
               style={{
                 backgroundColor: "#ffff",
                 display: "inline-flex",
                 border: "1px solid #E0E0E0",
                 borderRadius: "65px",
-                justifyContent: "space-evenly",
                 padding: "0 10px 0 10px",
                 color: color,
               }}
               key={status}
             >
               {status === "Pending" ? (
+                <>
                 <div
                   className={styles.purple}
                   style={{
@@ -299,6 +303,8 @@ export default function IntakeList() {
                     marginTop: "5px",
                   }}
                 ></div>
+                
+                </>
               ) : status === "Complete" ? (
                 <div
                   className={styles.green}
@@ -344,6 +350,12 @@ export default function IntakeList() {
               )}
               &nbsp; {status}
             </Tag>
+            {status==="Pending" ?
+            (<div style={{marginRight:"10px"}}><Image
+            alt="bulb"
+                src={LIGHT_BULB}
+                style={{height:"26px", width:'25px', marginTop:'-3px'}}/></div>):<></>}
+                </div>
           </>
         );
       }

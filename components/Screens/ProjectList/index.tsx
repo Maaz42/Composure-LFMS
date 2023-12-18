@@ -43,6 +43,7 @@ import {
   ADDCIRCLE,
   ARROWUP,
   ADDCIRCLEWHITE,
+  LIGHT_BULB,
 } from "@/constants/images";
 import projectsData from "./projectData.json";
 import FloatLabel from "../../ReusableComponents/FloatLabel";
