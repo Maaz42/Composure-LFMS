@@ -115,3 +115,7 @@
   --secondary: #b7b5b5;
   --tertiary: #717171;
 }
+
+.show-more-less-clickable {
+  cursor: pointer;
+}
