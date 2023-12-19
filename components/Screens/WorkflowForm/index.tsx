@@ -89,30 +89,30 @@ export default function TicketDetail() {
 
     const docsDropDown = [
         {
-            key: '1',
+            key: '11',
             label: "Docs 1st menu item"
         },
         {
-            key: '2',
+            key: '22',
             label: "Docs 2nd menu item"
         },
         {
-            key: '3',
+            key: '33',
             label: "Docs 3rd menu item"
         },
     ];
 
     const commentsDropDown = [
         {
-            key: '1',
+            key: '1st',
             label: "Comments 1st menu item"
         },
         {
-            key: '2',
+            key: '2nd',
             label: "Comments 2nd menu item"
         },
         {
-            key: '3',
+            key: '3rd',
             label: " Comments  3rd menu item"
         },
     ];

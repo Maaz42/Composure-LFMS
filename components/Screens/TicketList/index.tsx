@@ -23,6 +23,9 @@ import {
   Drawer,
   Input,
   Select,
+  Menu,
+  Checkbox
+  
 } from "antd";
 import { useRouter } from 'next/router'
 
@@ -37,7 +40,10 @@ import {
   PLUS_SOLID,
   ARROW_RIGHT,
   ARROW_UP,
-  ADDSQUARE
+  USER_ADD,
+  Forward_Square,
+  WARNING,
+  FORWARDSQUARE
 } from "@/constants/images";
 import ticketsData from "./ticketsData.json";
 import FloatLabel from "../../ReusableComponents/FloatLabel";
@@ -90,6 +96,10 @@ export default function TicketList() {
     console.log("Search term:", searchTerm);
   };
 
+  interface StatusItem {
+    key: string;
+    label: string;
+  }
   interface DataType {
     status: string;
     priority: string;
@@ -100,7 +110,25 @@ export default function TicketList() {
     assignee: any[];
     dropDown: any;
   }
-
+ 
+ 
+  
+  const statusDropDown = [
+    {
+      key: "1",
+      label: " Pending",
+    },
+    {
+      key: "2",
+      label: "Complete",
+    },
+    {
+      key: "3",
+      label: "New",
+    },
+  ];
+ 
+  
   const columns: ColumnsType<DataType> = [
     {
       title: (
@@ -392,7 +420,7 @@ export default function TicketList() {
           <Avatar.Group>
             {assignee.map((assignee) => {
               return (
-                <Space size="middle" key={assignee.key}>
+                <Space size="middle" key={assignee}>
                   <Tooltip title={assignee.name} placement="bottom">
                     <Avatar
                       size="small"
@@ -403,7 +431,7 @@ export default function TicketList() {
                 </Space>
               );
             })}
-            <Avatar
+            {/* <Avatar
               size="small"
               style={{
                 border: "1px dashed gray",
@@ -422,36 +450,12 @@ export default function TicketList() {
                     showAssingeeDrawer();}}
                 />
               </Tooltip>
-            </Avatar>
+            </Avatar> */}
           </Avatar.Group>
         </>
       ),
     },
-    {
-      title: " ",
-      dataIndex: "dropDown",
-      key: "dropDown",
-      width: "40px",
-      render: () => (
-        <Dropdown menu={{ items }} trigger={["click"]}>
-          <Image
-            src={THREEDOTS}
-            alt="..."
-            onClick={(e) => {
-              e.stopPropagation();
-              e.preventDefault();
-              setItems(ticketDropDown);
-            }}
-            style={{
-              maxWidth: "24px",
-              width: "15px",
-              height: "20px",
-              cursor: "pointer",
-            }}
-          />
-        </Dropdown>
-      ),
-    },
+  
     {
       title: "Quick Actions",
       dataIndex: "quickActions",
@@ -469,9 +473,12 @@ export default function TicketList() {
           >
             
               <Image
-                src={PLUS_SOLID}
+                src={USER_ADD}
                 alt="..."
-                style={{ width: "20px", height: "20px", marginRight: "15px" ,border: "1px", borderRadius: "7px" }}
+                style={{ width: "auto", height: "auto", marginRight: "15px" ,border: "1px", borderRadius: "7px" }}
+                onClick={(e)=>{
+                  e.stopPropagation();
+                  showAssingeeDrawer();}}
               />
             
           </a>
@@ -479,15 +486,28 @@ export default function TicketList() {
             onClick={(e) => {
               e.preventDefault();
               e.stopPropagation();
-              setItems(addQuickActionDropDown)
+              
               
             }}
           >
-            <Dropdown menu={{ items }} trigger={["click"]}>
+            <Dropdown
+                trigger={["click"]}
+                
+                
+                dropdownRender={(status) => (
+                      <Menu>
+            {statusDropDown.map((item) => (
+              <Menu.Item key={item.key}>
+                <Checkbox checked={status === item.label}>{item.label}</Checkbox>
+              </Menu.Item>
+            ))}
+          </Menu>
+                   
+                )}>
               <Image
-                src={ARROW_RIGHT}
+                src={WARNING}
                 alt="..."
-                style={{ width: "20px", height: "20px", marginRight: "15px" ,border: "1px", borderRadius: "7px" }}
+                style={{ width: "auto", height: "auto", marginRight: "15px" ,border: "1px", borderRadius: "7px" }}
               />
             </Dropdown>
           </a>
@@ -500,9 +520,9 @@ export default function TicketList() {
           >
             
               <Image
-                src={ARROW_UP}
+                src={FORWARDSQUARE}
                 alt="..."
-                style={{ width: "20px", height: "20px", marginRight: "15px" ,border: "1px", borderRadius: "7px" }}
+                style={{ width: "auto", height: "auto", marginRight: "15px" ,border: "1px", borderRadius: "7px" }}
               />
            
           </a>
@@ -512,13 +532,10 @@ export default function TicketList() {
     
   ];
 
-  const addQuickActionDropDown = [
-    {
-      label: "Status",
-      key: "0",
-    },
+ 
   
-  ];
+
+ 
 
   const allDropDown = [
     {
@@ -565,20 +582,7 @@ export default function TicketList() {
       label: " User 3rd menu item",
     },
   ];
-  const statusDropDown = [
-    {
-      key: "1",
-      label: " Status 1st menu item",
-    },
-    {
-      key: "2",
-      label: "Status 2nd menu item",
-    },
-    {
-      key: "3",
-      label: " Status 3rd menu item",
-    },
-  ];
+  
   const typeDropDown = [
     {
       key: "2",
@@ -793,7 +797,7 @@ export default function TicketList() {
         <Drawer
           title={
             <div style={{ display: "flex", justifyContent: "space-between" }}>
-              <Image src={CLOSE} height={18} alt="..." onClick={onClose} />
+              <Image src={CLOSE} style={{height:"auto"}} alt="..." onClick={onClose} />
               <h2
                 style={{
                   color: "#fff",
