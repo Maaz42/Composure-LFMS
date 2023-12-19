@@ -74,3 +74,6 @@ export const PLUS_SOLID = require("../img/plus-solid.svg");
 export const ARROW_UP = require("../img/arrow-up-solid.svg");
 export const ARROW_RIGHT = require("../img/arrow-right-solid.svg");
 export const LIGHT_BULB=require("../img/lightbulb-solid.svg")
+export const Forward_Square=require("../img/forward-square.svg");
+export const USER_ADD=require("../img/user-add.svg");
+export const WARNING=require("../img/warning-2.svg")

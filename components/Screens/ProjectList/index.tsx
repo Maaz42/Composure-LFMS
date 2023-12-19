@@ -274,7 +274,7 @@ export default function ProjectList() {
               key={stage}
             >
               {stage == "In Progress" ? (
-                <Image src={PURPLEDOT} height={10} alt="aaa" />
+                <Image src={PURPLEDOT} height={10}  alt="aaa" />
               ) : stage == "Complete" ? (
                 <Image src={GREENDOT} height={10} alt="" />
               ) : stage == "New" ? (
@@ -311,7 +311,7 @@ export default function ProjectList() {
         <>
           {progress.map((p) => {
             return (
-              <div key={p.key} className="flex">
+              <div key={p} className="flex">
                 <Progress size="small" percent={60} showInfo={false} />
                 {p.gained}/{p.total}
               </div>
@@ -340,7 +340,7 @@ export default function ProjectList() {
           <Avatar.Group>
             {collaboration.map((collaboration) => {
               return (
-                <Space size="middle" key={collaboration.key}>
+                <Space size="middle" key={collaboration}>
                   <Tooltip title={collaboration.name} placement="bottom">
                     <Avatar
                       size="small"
@@ -597,7 +597,7 @@ export default function ProjectList() {
                 marginRight: "20px",
               }}
             >
-              <Image src={ADDCIRCLEWHITE} alt="..." height={20} width={22} />
+              <Image src={ADDCIRCLEWHITE} alt="..." style={{width:"auto" ,height:"auto"}} />
             </Button>
           </Tooltip>
         </Flex>

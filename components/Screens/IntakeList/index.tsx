@@ -292,7 +292,7 @@ export default function IntakeList() {
               }}
               key={status}
             >
-              {status === "Pending" ? (
+              {status === "Pending 💡" ? (
                 <>
                 <div
                   className={styles.purple}
@@ -305,7 +305,7 @@ export default function IntakeList() {
                 ></div>
                 
                 </>
-              ) : status === "Complete" ? (
+              ) : status === "Complete ⚡️" ? (
                 <div
                   className={styles.green}
                   style={{
@@ -350,11 +350,11 @@ export default function IntakeList() {
               )}
               &nbsp; {status}
             </Tag>
-            {status==="Pending" ?
+            {/* {status==="Pending 💡" ?
             (<div style={{marginRight:"10px"}}><Image
             alt="bulb"
                 src={LIGHT_BULB}
-                style={{height:"26px", width:'25px', marginTop:'-3px'}}/></div>):<></>}
+                style={{height:"26px", width:'25px', marginTop:'-3px'}}/></div>):<></>} */}
                 </div>
           </>
         );
@@ -380,21 +380,20 @@ export default function IntakeList() {
 
       render: (_, { platform }) => (
         <>
-          {platform.map((platform) => {
-            return (
-              <>
-                {platform == "slack" ? (
-                  <div style={{ display: "flex", justifyContent: "center" }}>
-                    <Image src={SLACK} height={20} alt="" />
-                  </div>
-                ) : (
-                  <> </>
-                )}
-              </>
-            );
-          })}
+          {platform.map((platform, index) => (
+            <React.Fragment key={index}>
+              {platform === "slack" ? (
+                <div style={{ display: "flex", justifyContent: "center" }}>
+                  <Image src={SLACK} height={20} alt="" />
+                </div>
+              ) : (
+                <> </>
+              )}
+            </React.Fragment>
+          ))}
         </>
       ),
+      
     },
     {
       title: "Quick Actions",
@@ -415,7 +414,7 @@ export default function IntakeList() {
               <Image
                 src={ADDSQUARE}
                 alt="..."
-                style={{ width: "24px", height: "24px", marginRight: "15px" }}
+                style={{ width: "auto", height: "auto", marginRight: "15px" }}
               />
             </Dropdown>
           </a>
@@ -430,7 +429,7 @@ export default function IntakeList() {
               <Image
                 src={TICKSQAURE}
                 alt="..."
-                style={{ width: "24px", height: "24px", marginRight: "15px" }}
+                style={{ width: "auto", height: "auto", marginRight: "15px" }}
               />
             </Dropdown>
           </a>
@@ -445,7 +444,7 @@ export default function IntakeList() {
               <Image
                 src={FORWARDSQUARE}
                 alt="..."
-                style={{ width: "24px", height: "24px", marginRight: "15px" }}
+                style={{ width: "auto", height: "auto", marginRight: "15px" }}
               />
             </Dropdown>
           </a>
