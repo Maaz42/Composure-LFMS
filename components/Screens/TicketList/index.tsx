@@ -126,6 +126,22 @@ export default function TicketList() {
       key: "3",
       label: "New",
     },
+    {
+      key: "4",
+      label: "In Progress",
+    },
+    {
+      key: "5",
+      label: "On Hold",
+    },
+    {
+      key: "6",
+      label: "Signature",
+    },
+    {
+      key: "7",
+      label: "In Review",
+    },
   ];
  
   
@@ -462,10 +478,11 @@ export default function TicketList() {
       key: "quickActions",
       width: "100px",
 
-      render: () => (
+      render: (_, { status }) => (
         <div style={{ display: "flex" }}>
           <a
             onClick={(e) => {
+              console.log(status,"status value")
               e.preventDefault();
               e.stopPropagation();
               
@@ -484,26 +501,33 @@ export default function TicketList() {
           </a>
           <a
             onClick={(e) => {
+              console.log(status,"status value")
               e.preventDefault();
               e.stopPropagation();
+              setItems(statusDropDown)
               
               
             }}
           >
+            
             <Dropdown
-                trigger={["click"]}
-                
-                
-                dropdownRender={(status) => (
-                      <Menu>
-            {statusDropDown.map((item) => (
-              <Menu.Item key={item.key}>
-                <Checkbox checked={status === item.label}>{item.label}</Checkbox>
-              </Menu.Item>
-            ))}
-          </Menu>
+  trigger={["click"]}
+  menu={{ items }}
+  dropdownRender={() => {
+    console.log("Dropdown status:", status); // Add this line
+
+    return (
+      <Menu>
+        {statusDropDown.map((item) => (
+          <Menu.Item key={item.key}>
+            <Checkbox checked={status === item.label}>{item.label}</Checkbox>
+          </Menu.Item>
+        ))}
+      </Menu>
+   
+
                    
-                )}>
+                )}}>
               <Image
                 src={WARNING}
                 alt="..."
