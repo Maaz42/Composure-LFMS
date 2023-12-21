@@ -10,7 +10,11 @@ import FloatLabel from "../../ReusableComponents/FloatLabel";
 export interface BoxProps {
   name: string;
   imagePath: string;
+  onUpdateNameForm: (value: string) => void;
 }
+
+
+
 
 interface DropResult {
   allowedDropEffect: string;
@@ -18,7 +22,7 @@ interface DropResult {
   name: string;
 }
 
-export const Box: FC<BoxProps> = ({ name, imagePath }) => {
+export const Box: FC<BoxProps> = ({ name, imagePath ,onUpdateNameForm}) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [nameform,setNameForm]=useState("")
 
@@ -27,8 +31,11 @@ export const Box: FC<BoxProps> = ({ name, imagePath }) => {
   };
 
   const handleOk = () => {
+    onUpdateNameForm(nameform); // Notify the Container component about the nameform value
     setIsModalOpen(false);
   };
+
+
 
   const handleCancel = () => {
     setIsModalOpen(false);

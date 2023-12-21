@@ -22,6 +22,7 @@ export default function Container() {
 
   const [allowedDropEffect, setAllowedDropEffect] = useState("move");
   const [projectTitle, setproJectTitle] = useState("");
+  const [formTitle, setFormTitle] = useState("");
 
   const [, drop] = useDrop(
     () => ({
@@ -37,6 +38,11 @@ export default function Container() {
     }),
     [allowedDropEffect]
   );
+
+  const updateNameForm = (value: string) => {
+    setFormTitle(value);
+
+  };
 
   return (
     <Row>
@@ -63,7 +69,7 @@ export default function Container() {
               xs={24}
               style={{ paddingLeft: 5, paddingRight: 5 }}
             >
-              <Box name="Text Input" imagePath={CHECK} />
+              <Box name="Text Input" imagePath={CHECK} onUpdateNameForm={updateNameForm} />
             </Col>
             <Col
               xxl={12}
@@ -73,7 +79,7 @@ export default function Container() {
               xs={24}
               style={{ paddingLeft: 5, paddingRight: 5 }}
             >
-              <Box name="Text Area" imagePath={DOCUMENTTXT} />
+              <Box name="Text Area" imagePath={DOCUMENTTXT} onUpdateNameForm={updateNameForm}/>
             </Col>
             <Col
               xxl={12}
@@ -83,7 +89,7 @@ export default function Container() {
               xs={24}
               style={{ paddingLeft: 5, paddingRight: 5 }}
             >
-              <Box name="Dropdown Menu" imagePath={DOCUMENT} />
+              <Box name="Dropdown Menu" imagePath={DOCUMENT} onUpdateNameForm={updateNameForm}/>
             </Col>
             <Col
               xxl={12}
@@ -93,7 +99,7 @@ export default function Container() {
               xs={24}
               style={{ paddingLeft: 5, paddingRight: 5 }}
             >
-              <Box name="Check Box" imagePath={TICKSQUARE} />
+              <Box name="Check Box" imagePath={TICKSQUARE} onUpdateNameForm={updateNameForm}/>
             </Col>
             <Col
               xxl={12}
@@ -103,7 +109,7 @@ export default function Container() {
               xs={24}
               style={{ paddingLeft: 5, paddingRight: 5 }}
             >
-              <Box name="Radio Button" imagePath={RECORD} />
+              <Box name="Radio Button" imagePath={RECORD} onUpdateNameForm={updateNameForm} />
             </Col>
             <Col
               xxl={12}
@@ -113,7 +119,7 @@ export default function Container() {
               xs={24}
               style={{ paddingLeft: 5, paddingRight: 5 }}
             >
-              <Box name="Date Picker" imagePath={CALENDER} />
+              <Box name="Date Picker" imagePath={CALENDER} onUpdateNameForm={updateNameForm} />
             </Col>
             <Col
               xxl={12}
@@ -123,7 +129,7 @@ export default function Container() {
               xs={24}
               style={{ paddingLeft: 5, paddingRight: 5 }}
             >
-              <Box name="File Upload" imagePath={DOCUMENTUPLOAD} />
+              <Box name="File Upload" imagePath={DOCUMENTUPLOAD} onUpdateNameForm={updateNameForm} />
             </Col>
             <Col
               xxl={12}
@@ -133,7 +139,7 @@ export default function Container() {
               xs={24}
               style={{ paddingLeft: 5, paddingRight: 5 }}
             >
-              <Box name="Email Input" imagePath={CHECK} />
+              <Box name="Email Input" imagePath={CHECK} onUpdateNameForm={updateNameForm}/>
             </Col>
             <Col
               xxl={12}
@@ -143,7 +149,7 @@ export default function Container() {
               xs={24}
               style={{ paddingLeft: 5, paddingRight: 5 }}
             >
-              <Box name="Number Input" imagePath={CHECK} />
+              <Box name="Number Input" imagePath={CHECK} onUpdateNameForm={updateNameForm} />
             </Col>
             <Col
               xxl={12}
@@ -153,7 +159,7 @@ export default function Container() {
               xs={24}
               style={{ paddingLeft: 5, paddingRight: 5 }}
             >
-              <Box name="Password Input" imagePath={CHECK} />
+              <Box name="Password Input" imagePath={CHECK} onUpdateNameForm={updateNameForm}/>
             </Col>
             <Col
               xxl={12}
@@ -163,7 +169,7 @@ export default function Container() {
               xs={24}
               style={{ paddingLeft: 5, paddingRight: 5 }}
             >
-              <Box name="Phone Number Input" imagePath={CHECK} />
+              <Box name="Phone Number Input" imagePath={CHECK} onUpdateNameForm={updateNameForm} />
             </Col>
             <Col
               xxl={12}
@@ -173,7 +179,7 @@ export default function Container() {
               xs={24}
               style={{ paddingLeft: 5, paddingRight: 5 }}
             >
-              <Box name="URL Input" imagePath={CHECK} />
+              <Box name="URL Input" imagePath={CHECK} onUpdateNameForm={updateNameForm} />
             </Col>
             <Col
               xxl={12}
@@ -183,7 +189,7 @@ export default function Container() {
               xs={24}
               style={{ paddingLeft: 5, paddingRight: 5 }}
             >
-              <Box name="Button" imagePath={KEYBOARD} />
+              <Box name="Button" imagePath={KEYBOARD} onUpdateNameForm={updateNameForm} />
             </Col>
           </Row>
         </Flex>
@@ -191,8 +197,21 @@ export default function Container() {
 
       <Col xxl={10} lg={10} md={24} sm={24} xs={24} style={colStyle} ref={drop}>
         <Flex className={styles.detailsSection} vertical>
+        <div>
+      <h1> {formTitle}</h1>
+                <Input
+                  style={{ height: "48px" }}
+                  
+                  
+                />
+              
+      </div>
           <div>Drag & Drop the options here</div>
+          
         </Flex>
+      </Col>
+      <Col>
+     
       </Col>
     </Row>
   );
