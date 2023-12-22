@@ -1,0 +1,74 @@
+[
+    {
+        "key": "1",
+        "title": "Final Structure Chart at Closing...",
+        "due_date": "02/12/23",
+        "status":"Task Completed"
+       
+    },
+    {
+        "key": "2",
+        "title": "FATCA/CRS Requirements: Provide a comple...",
+        "due_date": "12/12/23",
+        "status":"Task Completed"
+        
+    },
+    {
+        "key": "3",
+        "title": "Photo Licensing Agreement",
+        "due_date": "12/12/23",
+        "status":"Task Completed"
+       
+    },
+    {
+        "key": "4",
+        "title": "Cease and Desist Letter",
+        "due_date": "12/12/23",
+        "status":"Task Completed"
+        
+    
+    },
+    {
+        "key": "5",
+        "title": "Hold Harmless (Indemnity) Agreement",
+        "due_date": "12/12/23",
+        "status":"Task incomplete"
+      
+    },
+    {
+        "key": "6",
+        "title": "Final Structure Chart at Closing...",
+        "due_date": "02/12/23",
+        "status":"Task Completed"
+       
+    },
+    {
+        "key": "7",
+        "title": "FATCA/CRS Requirements: Provide a comple...",
+        "due_date": "12/12/23",
+        "status":"Task Completed"
+        
+    },
+    {
+        "key": "8",
+        "title": "Photo Licensing Agreement",
+        "due_date": "12/12/23",
+        "status":"Task Completed"
+       
+    },
+    {
+        "key": "9",
+        "title": "Cease and Desist Letter",
+        "due_date": "12/12/23",
+        "status":"Task Completed"
+        
+    
+    },
+    {
+        "key": "10",
+        "title": "Hold Harmless (Indemnity) Agreement",
+        "due_date": "12/12/23",
+        "status":"Task incomplete"
+      
+    }
+]

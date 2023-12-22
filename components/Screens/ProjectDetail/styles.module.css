@@ -109,6 +109,12 @@
   display: flex;
   border-radius: 65px;
 }
+.taskButton {
+  background-color: #e0e0e0;
+  color: #000000;
+  display: flex;
+  border-radius: 65px;
+}
 
 .commentBox {
   bottom: 5px;
