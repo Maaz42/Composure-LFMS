@@ -643,7 +643,7 @@ export default function ProjectDetail() {
                                     </Row>
                                     <Row style={{ flexDirection: "column", alignItems: "flex-start" }}>
 
-                                        <Row>
+                                        <Row style={{width:'100%'}}>
                                             <Col span={24}>
                                                 <Button
                                                     style={{ backgroundColor: "#333793", color: "white", display: "flex", alignItems: "center" }}
