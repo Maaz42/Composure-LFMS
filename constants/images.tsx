@@ -84,4 +84,6 @@ export const ARROW_DOWN_BUTTON=require("../img/arrow-down2.svg");
 export const DOTS_VERTICAL=require("../img/dots_vertical.svg");
 export const SWITCH=require("../img/MasterSwitch.svg");
 export const tick_button=require("../img/task_complete.svg");
-export const NOTES=require("../img/note-text.svg")
+export const NOTES=require("../img/note-text.svg");
+export const CLOSE_RED=require("../img/close_red.svg");
+export const NOTE_DOCS=require("../img/note_docs.svg");
