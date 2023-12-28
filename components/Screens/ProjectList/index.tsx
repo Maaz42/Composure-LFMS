@@ -87,22 +87,22 @@ export default function ProjectList() {
   const [value, setValue] = useState("Public");
   const router = useRouter();
   const [expandedRowKeys, setExpandedRowKeys] = useState<string[]>([]);
-  const[expandedRows,setExpandedRows]=useState<any[]>([]);
+  const [expandedRows, setExpandedRows] = useState<any[]>([]);
   const [isModalVisible, setModalVisible] = useState(false);
 
 
 
-  
+
   const handleRowClick = (key: any) => {
     const keys = expandedRowKeys.includes(key)
       ? expandedRowKeys.filter((k) => k !== key)
       : [...expandedRowKeys, key];
     setExpandedRowKeys(keys);
     const isExpanded = expandedRows.includes(key);
-  const updatedRows = isExpanded
-    ? expandedRows.filter((k) => k !== key)
-    : [...expandedRows, key];
-  setExpandedRows(updatedRows);
+    const updatedRows = isExpanded
+      ? expandedRows.filter((k) => k !== key)
+      : [...expandedRows, key];
+    setExpandedRows(updatedRows);
 
   };
   const onRadioChange = (e: RadioChangeEvent) => {
@@ -221,29 +221,29 @@ export default function ProjectList() {
 
   const exportDropDown = [
     {
-        key: '1',
-        label: "PDF"
+      key: '1',
+      label: "PDF"
     },
     {
-        key: '2',
-        label: "CSV"
+      key: '2',
+      label: "CSV"
     },
     {
-        key: '3',
-        label: "Excel"
+      key: '3',
+      label: "Excel"
     },
-];
+  ];
 
-const threedotdropdown = [
-  {
+  const threedotdropdown = [
+    {
       key: '1',
       label: "Manage Fields",
       onClick: () => setModalVisible(true),
-  },
-  
-];
+    },
 
-const hideModal = () => setModalVisible(false);
+  ];
+
+  const hideModal = () => setModalVisible(false);
   const columns: TableColumnsType<DataType> = [
     {
       title: (
@@ -261,7 +261,7 @@ const hideModal = () => setModalVisible(false);
       dataIndex: "title",
       key: "title",
       sorter: (a, b) => a.title.length - b.title.length,
-      width: "500px",
+      width: "480px",
 
       render: (text, record: any) => (
         <span
@@ -335,7 +335,7 @@ const hideModal = () => setModalVisible(false);
               key={stage}
             >
               {stage == "In Progress" ? (
-                <Image src={PURPLEDOT} height={10}  alt="aaa" />
+                <Image src={PURPLEDOT} height={10} alt="aaa" />
               ) : stage == "Complete" ? (
                 <Image src={GREENDOT} height={10} alt="" />
               ) : stage == "New" ? (
@@ -434,73 +434,74 @@ const hideModal = () => setModalVisible(false);
         </>
       ),
     },
-   
+
     {
       title: "Quick Actions",
       dataIndex: "quickActions",
       key: "quickActions",
-      width: "100px",
+      width: "120px",
 
-      render: (_,record) => (
+      render: (_, record) => (
         <div style={{ display: "flex" }}>
           <a
             onClick={(e) => {
-              
+
               e.preventDefault();
               e.stopPropagation();
-              
+
             }}
           >
-            
-              <Image
-                src={USER_ADD}
-                alt="..."
-                style={{ width: "auto", height: "auto", marginRight: "15px" ,border: "1px", borderRadius: "7px" }}
-                onClick={(e)=>{
-                  e.stopPropagation();
-                  showAssingeeDrawer();}}
-              />
-            
+
+            <Image
+              src={USER_ADD}
+              alt="..."
+              style={{ width: "auto", height: "auto", marginRight: "15px", border: "1px", borderRadius: "7px" }}
+              onClick={(e) => {
+                e.stopPropagation();
+                showAssingeeDrawer();
+              }}
+            />
+
           </a>
           <a
             onClick={(e) => {
-              
+
               e.preventDefault();
               e.stopPropagation();
               setItems(statusDropDown)
-              
-              
+
+
             }}
           >
-            
+
             <Dropdown
               trigger={["click"]}
               menu={{ items }}>
-                <Image
+              <Image
                 src={TICK_SQUARE}
                 alt="..."
-                style={{ width: "auto", height: "auto", marginRight: "15px" ,border: "1px", borderRadius: "7px" }}
+                style={{ width: "auto", height: "auto", marginRight: "15px", border: "1px", borderRadius: "7px" }}
               />
             </Dropdown>
           </a>
-          
+
           <a
             onClick={(e) => {
               e.preventDefault();
               e.stopPropagation();
               handleRowClick(record.key);
-              
-              
+
+
             }}
           >
-            
-              <Image
-              
-                src={expandedRows.includes(record.key) ? ARROW_DOWN_2 : ARROW_DOWN}
-                alt="..."
-                style={{ width: "auto", height: "auto", marginRight: "15px" ,border: "1px", borderRadius: "7px" }}
-              />
-           
+
+            <Image
+
+              src={expandedRows.includes(record.key) ? ARROW_DOWN_2 : ARROW_DOWN}
+              alt="..."
+              style={{ width: "auto", height: "auto", marginRight: "15px", border: "1px", borderRadius: "7px" }}
+            />
+
           </a>
         </div>
       ),
@@ -616,7 +617,7 @@ const hideModal = () => setModalVisible(false);
     {
       key: "5",
       label: "Collaborators",
-      
+
     },
     {
       key: "6",
@@ -724,31 +725,31 @@ const hideModal = () => setModalVisible(false);
           />
         </Flex>
         <Flex align={"center"} justify="space-between">
-        <Dropdown menu={{ items }} trigger={['click']}>
-                                <a onClick={(e) => {
-                                    e.preventDefault()
-                                    setItems(exportDropDown)
-                                }
-                                }>
+          <Dropdown menu={{ items }} trigger={['click']}>
+            <a onClick={(e) => {
+              e.preventDefault()
+              setItems(exportDropDown)
+            }
+            }>
 
 
-                                  
-        <Button
-  
-  style={{
-    color: "white",
-    background: "#333793",
-    marginRight: "20px",
-    display: "flex",
-    alignItems: "center", 
-  }}
->
-  <span style={{ marginRight: "5px" }}>Export</span>
-  <Image alt="export button" src={ARROW_DOWN_BUTTON} />
-</Button>
-  
-  </a>
-  </Dropdown>
+
+              <Button
+
+                style={{
+                  color: "white",
+                  background: "#333793",
+                  marginRight: "20px",
+                  display: "flex",
+                  alignItems: "center",
+                }}
+              >
+                <span style={{ marginRight: "5px" }}>Export</span>
+                <Image alt="export button" src={ARROW_DOWN_BUTTON} />
+              </Button>
+
+            </a>
+          </Dropdown>
           <Tooltip title={"Add Project"}>
             <Button
               onClick={showDrawer}
@@ -759,28 +760,28 @@ const hideModal = () => setModalVisible(false);
               }}
             >
               Add Workflow
-              
+
             </Button>
-           
+
           </Tooltip>
           <Dropdown menu={{ items }} trigger={['click']}>
-                                <a onClick={(e) => {
-                                    e.preventDefault()
-                                    setItems(threedotdropdown)
-                                }
-                                }>
-                                  
-                                  
-            <Image 
-            style={{marginRight:"3px"}}alt="3" src={DOTS_VERTICAL}/>
-            
-           
-          
-                                </a>
-                                </Dropdown>
-          
-    
-    
+            <a onClick={(e) => {
+              e.preventDefault()
+              setItems(threedotdropdown)
+            }
+            }>
+
+
+              <Image
+                style={{ marginRight: "3px" }} alt="3" src={DOTS_VERTICAL} />
+
+
+
+            </a>
+          </Dropdown>
+
+
+
         </Flex>
       </Flex>
       <Layout
@@ -804,15 +805,15 @@ const hideModal = () => setModalVisible(false);
                 }
 
               })}
-            expandable={{
-              expandedRowRender,
-              rowExpandable: () => true,
-              expandedRowKeys,
-              onExpand: (record: any) => {
-                handleRowClick(record.key);
-              },
-              expandIcon: () => <></>,
-            }}
+              expandable={{
+                expandedRowRender,
+                rowExpandable: () => true,
+                expandedRowKeys,
+                onExpand: (record: any) => {
+                  handleRowClick(record.key);
+                },
+                expandIcon: () => <></>,
+              }}
 
             />
           </Col>
@@ -984,24 +985,20 @@ const hideModal = () => setModalVisible(false);
           </div>
         </Drawer>
       </Layout>
-      
+
       <Modal visible={isModalVisible} onCancel={hideModal}>
-      <div style={{backgroundColor:"#FAFAFA"}}>
-        <Title level={5}>Mange Fields</Title>
+        <div style={{ backgroundColor: "#FAFAFA" }}>
+          <Title level={5}>Mange Fields</Title>
         </div>
-      
-        {ManageFieldsData.map((data)=>{
+
+        {ManageFieldsData.map((data) => {
           return (
-            
-       <Row style={{display:"flex",justifyContent:"space-between",backgroundColor:"#FAFAFA",borderRadius:"1px solid #FAFAFA",marginTop:"20px"}}>
-        
-        
-        <h1 style={{marginLeft:"10px"}}>{data.label}</h1>
-        <Button><Image alt="swicth" src={SWITCH}/></Button>
-        
-       </Row>)})}
-        
-        
+            <Row key={data.label} style={{ display: "flex", justifyContent: "space-between", backgroundColor: "#FAFAFA", borderRadius: "1px solid #FAFAFA", marginTop: "20px" }}>
+              <h1 style={{ marginLeft: "10px" }}>{data.label}</h1>
+              <Button><Image alt="swicth" src={SWITCH} /></Button>
+            </Row>)
+        })}
+
       </Modal>
     </>
   );

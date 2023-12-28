@@ -3,7 +3,7 @@ import styles from './styles.module.css'
 import Image from 'next/image';
 import { Avatar, Layout, Typography, Flex, Button, Dropdown, Input, Collapse, Divider, Checkbox, List, Row, Col, Upload, Timeline, Tooltip, Progress, Drawer, Select, TableColumnsType, Space } from 'antd';
 import { MenuOutlined, InboxOutlined, UserOutlined } from '@ant-design/icons';
-import { ARROWDOWN, BLACKSTAR, BLUEDOT, NOTES, CALENDAR, CHECKCIRCLE, CLOCK, CLOSE, EDIT, FILEUPLOAD, FOLDER, GREENDOT, INFO, MORE, PROFILEUSERS, REDDOT, SEND, TICKCOMPLETE, WHITESTAR, YELLOWDOT, tick_button, ADDCIRCLE, CALENDER, BRIGHTFLAG, CLOSE_RED, NOTE_DOCS } from '@/constants/images'
+import { ARROWDOWN, BLACKSTAR, BLUEDOT, NOTES, CALENDAR, EXCEL_ICON, WORD_ICON, CLOCK, CLOSE, EDIT, FILEUPLOAD, FOLDER, GREENDOT, INFO, MORE, PROFILEUSERS, REDDOT, SEND, TICKCOMPLETE, WHITESTAR, YELLOWDOT, tick_button, ADDCIRCLE, CALENDER, BRIGHTFLAG, CLOSE_RED, NOTE_DOCS, PDF_ICON } from '@/constants/images'
 import CustomDropDown from '@/components/ReusableComponents/DropDown';
 import FloatLabelArrow from '@/components/ReusableComponents/FloatLabelArrow';
 import { CustomTable } from '@/components/ReusableComponents/CustomTable';
@@ -107,21 +107,21 @@ export default function ProjectDetail() {
                 return (
                     <>
                         <div style={{ display: "flex", justifyContent: "space-between" }}>
-                            {status && status === "Task incomplete" ? (
+                            {status && status === "Task incom   plete" ? (
                                 <Dropdown menu={{ items }} trigger={['click']}>
                                     <a onClick={(e) => {
                                         e.preventDefault()
                                         setItems(markAsDropDown)
                                     }}>
                                         <Button style={{}} className={styles.infoButton}>
-                                            <Image src={INFO} alt="..." /> Mark As?
+                                            <Image src={INFO} style={{ marginLeft: "-8px" }} alt="..." /> Mark As?
                                         </Button>
                                     </a>
                                 </Dropdown>
 
                             ) : (
                                 <Button style={{}} className={styles.taskCompleted}>
-                                    <Image src={tick_button} alt="..." /> Task Completed!
+                                    <Image src={tick_button} style={{ marginLeft: "-10px", marginTop: "2px" }} alt="..." /> Task Completed!
                                 </Button>
                             )}
 
@@ -281,19 +281,23 @@ export default function ProjectDetail() {
         {
             key: '1',
             label: "View Variations",
+            src: WORD_ICON
         },
         {
             key: '2',
             label: "Upload Another Variation",
+            src: EXCEL_ICON
 
         },
         {
             key: "3",
-            label: "Download"
+            label: "Download",
+            src: PDF_ICON
         },
         {
             key: "4",
-            label: "Delete"
+            label: "Delete",
+            src: WORD_ICON
         }
     ]
 
@@ -301,47 +305,41 @@ export default function ProjectDetail() {
         {
             key: '1',
             label: "Document 1.docs",
-            details: "Added on March 21  \n Last Notified Yesterday \n  2 Reviews"
+            details: "Added on March 21  \n Last Notified Yesterday \n  2 Reviews",
+            src: WORD_ICON
+
         },
         {
             key: "2",
             label: "Document 2.docs",
-            details: "Added on March 21  \n Last Notified Yesterday \n  2 Reviews"
+            details: "Added on March 21  \n Last Notified Yesterday \n  2 Reviews",
+            src: EXCEL_ICON
         },
         {
             key: "3",
             label: "Case Lab Report",
-            details: "Added on March 21  \n Last Notified Yesterday \n  2 Reviews"
+            details: "Added on March 21  \n Last Notified Yesterday \n  2 Reviews",
+            src: PDF_ICON
         },
         {
-            key: '1',
+            key: '4',
             label: "Document 1.docs",
-            details: "Added on March 21  \n Last Notified Yesterday \n  2 Reviews"
+            details: "Added on March 21  \n Last Notified Yesterday \n  2 Reviews",
+            src: EXCEL_ICON
         },
         {
-            key: "2",
+            key: "5",
             label: "Document 2.docs",
-            details: "Added on March 21  \n Last Notified Yesterday \n  2 Reviews"
+            details: "Added on March 21  \n Last Notified Yesterday \n  2 Reviews",
+            src: EXCEL_ICON
         },
         {
-            key: "3",
+            key: "6",
             label: "Case Lab Report",
-            details: "Added on March 21  \n Last Notified Yesterday \n  2 Reviews"
+            details: "Added on March 21  \n Last Notified Yesterday \n  2 Reviews",
+            src: PDF_ICON
         },
-        {
-            key: '1',
-            label: "Document 1.docs",
-            details: "Added on March 21  \n Last Notified Yesterday \n  2 Reviews"
-        },
-        {
-            key: "2",
-            label: "Document 2.docs",
-            details: "Added on March 21  \n Last Notified Yesterday \n  2 Reviews"
-        },
-        {
-            key: "3",
-            label: "Case Lab Report"
-        }
+
     ]
 
     const dataSubtasks = [
@@ -425,7 +423,7 @@ export default function ProjectDetail() {
                                 setItems(allDropDown);
                             }} >
                                 <Dropdown menu={{ items }} placement='bottom' trigger={['click']} arrow={{ pointAtCenter: true }}>
-                                    <Button style={{ borderRadius: "65px", display: "flex" }}>All <Image className='mt-1' src={ARROWDOWN} width={15} height={15} alt='...' /></Button>
+                                    <Button style={{ borderRadius: "65px", display: "flex", }}><Typography style={{ marginRight: "3px", color: "#9E9E9E" }}>All </Typography><Image className='mt-1' src={ARROWDOWN} width={15} height={15} alt='...' /></Button>
                                 </Dropdown>
                             </a>
 
@@ -677,11 +675,9 @@ export default function ProjectDetail() {
                             <Row className='mb-8'>
                                 <Col xs={24} md={24} lg={24} xl={24}>
                                     <Flex className={styles.cardStyle340px} vertical>
-                                        <Row className="flex mb-6" justify={'space-between'}>
-                                            <Title className={styles.cardTitleStyle2} >Documents (7)</Title>
+                                        <Row className="flex mb-3" justify={'space-between'}>
+                                            <Title className={styles.cardTitleStyle2} >Documents</Title>
                                             <Flex>
-
-
                                                 <a
                                                     onClick={(e) => {
                                                         e.preventDefault();
@@ -689,18 +685,21 @@ export default function ProjectDetail() {
                                                     }}
                                                 >
                                                     <Dropdown menu={{ items }} placement='bottom' trigger={['click']} arrow={{ pointAtCenter: true }}>
-                                                        <Image className='mt-2' src={MORE} height={18} alt='' />
+                                                        <Button className={styles.internalButton} >Internal <Image className='ml-2' src={ARROWDOWN} alt='...' height={20} width={20} /></Button>
+
                                                     </Dropdown>
+
                                                 </a>
+                                                <Image className='mb-1' src={MORE} height={18} alt='' />
 
                                             </Flex>
                                         </Row>
-                                        <div style={{ height: "290px", overflow: "auto" }}>
+                                        <div style={{ marginBottom: "30px", overflow: "auto" }}>
                                             {documentsData.map((data) => {
                                                 return (
                                                     <Row key={data.key} className='mb-2' style={{ alignItems: 'baseline', justifyContent: 'space-between' }}>
                                                         <div className="flex align-center ">
-                                                            <Image src={FOLDER} height={18} alt="" /> &nbsp;
+                                                            <Image src={data.src} height={18} alt="" /> &nbsp;
                                                             <div
                                                                 className={styles.folderTitle}> {data?.label}
                                                             </div>
@@ -743,7 +742,7 @@ export default function ProjectDetail() {
 
                                         </div>
                                         <Row >
-                                            <Flex style={{ width: "100%", justifyContent: "center", marginTop: "20px" }}>
+                                            <Flex style={{ width: "100%", justifyContent: "center" }}>
                                                 <Dragger  {...props} className='w-full'>
                                                     <Row style={{ justifyContent: 'center' }}>
                                                         <InboxOutlined style={{ fontSize: '15px' }} /> &nbsp;Drag or browse from device
@@ -767,7 +766,7 @@ export default function ProjectDetail() {
                                             </Flex>
                                             <Flex vertical style={{ marginLeft: '5px' }}>
                                                 <Row>
-                                                    <Title className={styles.cardTitleStyle3} > Melissa Alwins</Title>
+                                                    <Title className={styles.cardTitleStyle5} > Melissa Alwins</Title>
                                                     <Title className={styles.commentTS}>24/07/23 06:04PM</Title>
                                                 </Row>
                                                 <Row>
@@ -793,7 +792,7 @@ export default function ProjectDetail() {
                                             </Flex>
                                             <Flex vertical style={{ marginLeft: '5px' }}>
                                                 <Row>
-                                                    <Title className={styles.cardTitleStyle3} > Annette Black</Title><Title className={styles.commentTS}>24/07/23 06:04PM</Title>
+                                                    <Title className={styles.cardTitleStyle5} > Annette Black</Title><Title className={styles.commentTS}>24/07/23 06:04PM</Title>
                                                 </Row>
                                                 <Row>
                                                     <Title className={styles.comment2Style}>Please check all the documents before starting any work</Title>
@@ -818,7 +817,7 @@ export default function ProjectDetail() {
                                             </Flex>
                                             <Flex vertical style={{ marginLeft: '5px' }}>
                                                 <Row>
-                                                    <Title className={styles.cardTitleStyle3} > Melissa Alwins</Title><Title className={styles.commentTS}>24/07/23 06:04PM</Title>
+                                                    <Title className={styles.cardTitleStyle5} > Melissa Alwins</Title><Title className={styles.commentTS}>24/07/23 06:04PM</Title>
                                                 </Row>
                                                 <Row>
                                                     <Title className={styles.comment2Style}> @Jim Carrey Progress is well!</Title>
@@ -844,7 +843,7 @@ export default function ProjectDetail() {
                                             </Flex>
                                             <Flex vertical style={{ marginLeft: '5px' }}>
                                                 <Row>
-                                                    <Title className={styles.cardTitleStyle3}> Annette Black</Title><Title className={styles.commentTS}>24/07/23 06:04PM</Title>
+                                                    <Title className={styles.cardTitleStyle5}> Annette Black</Title><Title className={styles.commentTS}>24/07/23 06:04PM</Title>
                                                 </Row>
                                                 <Row>
                                                     <Title className={styles.comment2Style}>Please check all the documents before starting any work</Title>
@@ -869,7 +868,7 @@ export default function ProjectDetail() {
                                             </Flex>
                                             <Flex vertical style={{ marginLeft: '5px' }}>
                                                 <Row>
-                                                    <Title className={styles.cardTitleStyle3}> Melissa Alwins</Title><Title className={styles.commentTS}>24/07/23 06:04PM</Title>
+                                                    <Title className={styles.cardTitleStyle5}> Melissa Alwins</Title><Title className={styles.commentTS}>24/07/23 06:04PM</Title>
                                                 </Row>
                                                 <Row>
                                                     <Title className={styles.comment2Style}> @Jim Carrey Progress is well!</Title>
@@ -894,7 +893,7 @@ export default function ProjectDetail() {
                                             </Flex>
                                             <Flex vertical style={{ marginLeft: '5px' }}>
                                                 <Row>
-                                                    <Title className={styles.cardTitleStyle3}> Annette Black</Title><Title className={styles.commentTS}>24/07/23 06:04PM</Title>
+                                                    <Title className={styles.cardTitleStyle5}> Annette Black</Title><Title className={styles.commentTS}>24/07/23 06:04PM</Title>
                                                 </Row>
                                                 <Row>
                                                     <Title className={styles.comment2Style}>Please check all the documents before starting any work</Title>
@@ -934,7 +933,7 @@ export default function ProjectDetail() {
                                 <Image src={CLOSE_RED} onClick={() => { setRowDetail(false) }} alt="CLOSE" />
                                 <div style={{ display: "flex", justifyContent: 'right' }}>
                                     <Button className={styles.infoButton}>
-                                        <Image src={INFO} alt="..." /> Mark As?
+                                        <Image style={{ marginLeft: "-8px" }} src={INFO} alt="..." /> Mark As?
                                     </Button>
                                     <a
                                         onClick={(e) => {
@@ -983,19 +982,19 @@ export default function ProjectDetail() {
                             <Divider></Divider>
                             <Row className='mb-8'>
                                 <Flex className={styles.cardStyle340px} vertical>
-                                    <Row className="flex mb-6" justify={'space-between'}>
+                                    <Row className="flex mb-3" justify={'space-between'}>
                                         <Title className={styles.cardTitleStyle2} >Documents</Title>
                                         <Flex>
 
-                                            <Image width={30} style={{ marginBottom: "10px" }} className='ml-2' src={ADDCIRCLE} alt='...' />
+                                            <Image width={20} style={{ marginBottom: "10px" }} className='ml-2' src={ADDCIRCLE} alt='...' />
                                         </Flex>
                                     </Row>
-                                    <div style={{ height: "290px", overflow: "auto" }}>
+                                    <div style={{ marginBottom: "30px", overflow: "auto" }}>
                                         {documentsData.map((data) => {
                                             return (
                                                 <Row key={data.key} className='mb-2' style={{ alignItems: 'baseline', justifyContent: 'space-between' }}>
                                                     <div className="flex align-center ">
-                                                        <Image src={FOLDER} height={18} alt="" /> &nbsp;
+                                                        <Image src={data.src} height={18} alt="" /> &nbsp;
                                                         <div
                                                             className={styles.folderTitle}> {data?.label}
                                                         </div>
