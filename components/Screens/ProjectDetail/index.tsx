@@ -3,7 +3,7 @@ import styles from './styles.module.css'
 import Image from 'next/image';
 import { Avatar, Layout, Typography, Flex, Button, Dropdown, Input, Collapse, Divider, Checkbox, List, Row, Col, Upload, Timeline, Tooltip, Progress, Drawer, Select, TableColumnsType, Space } from 'antd';
 import { MenuOutlined, InboxOutlined, UserOutlined } from '@ant-design/icons';
-import { ARROWDOWN, BLACKSTAR, BLUEDOT, NOTES, CALENDAR, EXCEL_ICON, WORD_ICON, CLOCK, CLOSE, EDIT, FILEUPLOAD, FOLDER, GREENDOT, INFO, MORE, PROFILEUSERS, REDDOT, SEND, TICKCOMPLETE, WHITESTAR, YELLOWDOT, tick_button, ADDCIRCLE, CALENDER, BRIGHTFLAG, CLOSE_RED, NOTE_DOCS, PDF_ICON } from '@/constants/images'
+import { ARROWDOWN, BLACKSTAR, BLUEDOT, NOTES, CALENDAR, EXCEL_ICON, WORD_ICON, CLOCK, CLOSE, EDIT, FILEUPLOAD, FOLDER, GREENDOT, INFO, MORE, PROFILEUSERS, REDDOT, SEND, TICKCOMPLETE, WHITESTAR, YELLOWDOT, tick_button, ADDCIRCLE, CALENDER, BRIGHTFLAG, CLOSE_RED, NOTE_DOCS, PDF_ICON, CLOSE_CIRCLE, CHECKCIRCLE, MARK_ICON, TASKCOMPLETE, downArrow } from '@/constants/images'
 import CustomDropDown from '@/components/ReusableComponents/DropDown';
 import FloatLabelArrow from '@/components/ReusableComponents/FloatLabelArrow';
 import { CustomTable } from '@/components/ReusableComponents/CustomTable';
@@ -39,6 +39,18 @@ export default function ProjectDetail() {
     const [tableData, setTableData] = useState<any>(projectDetailData);
     const [notesVisible, setNotesVisible] = useState(false);
     const [rowDetail, setRowDetail] = useState(false);
+    const [expandedRowKeys, setExpandedRowKeys] = useState<any[]>([]);
+    const [expandedRows, setExpandedRows] = useState<any[]>([]);
+
+    const handleRowClick = (key: any) => {
+        const keys = expandedRowKeys.includes(key) ?
+            expandedRowKeys.filter((k) => k !== key) : [...expandedRowKeys, key];
+        setExpandedRowKeys(keys);
+        const isExpanded = expandedRows.includes(key);
+        const updatedRows = isExpanded ? expandedRows.filter((k) => k !== key)
+            : [...expandedRows, key];
+        setExpandedRows(updatedRows);
+    }
 
     const handleShowNotes = () => {
         setNotesVisible(!notesVisible);
@@ -103,27 +115,37 @@ export default function ProjectDetail() {
             </div>),
             dataIndex: "status",
             key: "status",
-            render: (status) => {
+            render: (status, record) => {
                 return (
                     <>
                         <div style={{ display: "flex", justifyContent: "space-between" }}>
-                            {status && status === "Task incom   plete" ? (
-                                <Dropdown menu={{ items }} trigger={['click']}>
-                                    <a onClick={(e) => {
-                                        e.preventDefault()
-                                        setItems(markAsDropDown)
-                                    }}>
-                                        <Button style={{}} className={styles.infoButton}>
-                                            <Image src={INFO} style={{ marginLeft: "-8px" }} alt="..." /> Mark As?
-                                        </Button>
-                                    </a>
-                                </Dropdown>
+                            {status && status === "Task incomplete" ? (
+                                // <Dropdown menu={{ items }} trigger={['click']}>
+                                <a onClick={(e) => {
+                                    handleRowClick(record.key);
+                                    e.preventDefault()
+                                    setItems(markAsDropDown)
+                                }}>
+                                    <Button style={{}} className={styles.infoButton}>
+                                        <Image src={INFO} style={{ marginLeft: "-10px", marginTop: "2px", marginRight: "2px" }} alt="..." /> Mark As?
+                                    </Button>
+                                </a>
+                                // </Dropdown>
+
 
                             ) : (
-                                <Button style={{}} className={styles.taskCompleted}>
-                                    <Image src={tick_button} style={{ marginLeft: "-10px", marginTop: "2px" }} alt="..." /> Task Completed!
-                                </Button>
-                            )}
+                                <a onClick={(e) => {
+                                    handleRowClick(record.key);
+                                    e.preventDefault()
+                                    setItems(markAsDropDown)
+                                }}>
+                                    <Button style={{}} className={styles.taskCompleted}>
+                                        <Image src={tick_button} style={{ marginLeft: "-10px", marginTop: "2px", marginRight: "2px" }} alt="..." /> Task Completed!
+                                    </Button>
+                                </a>
+                            )
+
+                            }
 
                         </div>
 
@@ -376,6 +398,238 @@ export default function ProjectDetail() {
 
     ];
 
+    const dataSubTasks = [
+        {
+            taskName: 'Shareholder Agreements ',
+            assignedTo: 'John Doe',
+            assignedDate: '24/07/23 06:04PM',
+            status: "Complete"
+        },
+        {
+            taskName: 'Credit Agreements',
+            assignedTo: 'Jane Smith',
+            assignedDate: '24/07/23 06:04PM',
+            status: "Complete"
+        },
+        {
+            taskName: 'Submit the final documentation in the legal office ',
+            assignedTo: 'John Doe',
+            assignedDate: '24/07/23 06:04PM',
+            status: "Complete"
+        },
+        {
+            taskName: 'Submit the final documentation in the legal office',
+            assignedTo: 'Jane Smith',
+            assignedDate: '24/07/23 06:04PM',
+            status: "Incomplete"
+        },
+        {
+            taskName: 'Credit Agreements ',
+            assignedTo: 'John Doe',
+            assignedDate: '24/07/23 06:04PM',
+            status: "Incomplete"
+        },
+        {
+            taskName: 'Credit Agreements',
+            assignedTo: 'Jane Smith',
+            assignedDate: '24/07/23 06:04PM',
+            status: "Incomplete"
+        }
+
+    ];
+
+    const expandedRowRender = (rowData: any) => {
+        return (
+
+            <>
+
+                <div className={styles.cardSDetailStyle} style={{ width: "100%" }}>
+                    <Row className="flex mb-4" justify={'space-between'}>
+                        <Row className={styles.cardSDetailStyle1} justify={'space-between'} style={{ width: "100%" }}><Col>Task Load</Col><Row>
+                            <Image src={BLACKSTAR} alt='...' />
+                            <Image src={BLACKSTAR} alt='...' />
+                            <Image src={BLACKSTAR} alt='...' />
+                        </Row></Row>
+                        <Row className={styles.cardSDetailStyle1} justify={'space-between'} style={{ width: "100%" }}>
+                            <Col>Date</Col>
+                            <Col className='flex'><Image className='underline mr-2' src={CALENDAR} alt='...' /> <div className={styles.detailExpandableDate} >08/02/2023</div></Col> </Row>
+                        <Row className={styles.cardSDetailStyle1} justify={'space-between'} style={{ width: "100%" }}>
+                            <Col>File</Col><Col className='flex'><Image className='underline mr-2' src={CLOSE_CIRCLE} alt='...' /><Typography className={styles.detailExpandable}>
+                                Case_Lab_Report</Typography>
+                            </Col> </Row>
+                        <Row className={styles.cardSDetailStyle1} >
+                            <Avatar.Group>
+                                <Avatar size="small" src="https://xsgames.co/randomusers/avatar.php?g=pixel&key=1" />
+                                <a href="https://ant.design">
+                                    <Avatar size="small" style={{ backgroundColor: '#f56a00' }}>K</Avatar>
+                                </a>
+                                <Tooltip title="Ant User" placement="top">
+                                    <Avatar size="small" style={{ backgroundColor: '#87d068' }} icon={<UserOutlined />} />
+                                </Tooltip>
+                                <Avatar size="small" style={{ border: "1px dashed gray", backgroundColor: "#ffff", display: 'flex', alignItems: 'center' }} >
+                                    <Image src={EDIT} height={25} alt="..." />
+                                </Avatar>
+                            </Avatar.Group>
+                        </Row>
+                    </Row>
+
+                    <div style={{ marginTop: "28px" }}>
+
+                        <Timeline
+                            items={[
+                                {
+                                    dot: <div style={{ backgroundColor: "#fafafa" }}><Image src={CHECKCIRCLE} height={15} width={15} alt="..." /></div>,
+                                    color: "#fafafa",
+                                    children: (
+                                        <>
+                                            <Flex style={{ width: "100%" }} justify={'space-between'}>
+                                                <Button style={{ height: "25px" }} className={styles.taskCompletedSmall}>Completed</Button>
+                                                <a
+                                                    onClick={(e) => {
+                                                        e.preventDefault();
+                                                        setItems(taskDropDown);
+                                                    }}
+                                                >
+                                                    <Dropdown menu={{ items }} placement='bottom' trigger={['click']} arrow={{ pointAtCenter: true }}>
+                                                        <Image className='mt-2' src={MORE} height={18} alt='' />
+                                                    </Dropdown>
+                                                </a>
+                                            </Flex>
+                                            <div className='mt-2 font-medium text-base'>Shareholder Agreements</div>
+                                            <div className='flex mt-2'><Avatar size={"small"} style={{ backgroundColor: '#f56a00' }}>K </Avatar>
+                                                <div className='mr-2' style={{ borderRight: "1px solid #BDBDBD", padding: "3px" }}></div>
+                                                <Col className='flex' >
+                                                    <Image className='mr-2' src={CALENDAR} alt='...' />
+                                                    <div className=' text-gray-400' > 08/02/2023</div>
+                                                </Col>
+                                            </div>
+                                        </>
+                                    ),
+                                },
+                                {
+                                    dot: <Image src={CHECKCIRCLE} height={15} width={15} alt="..." />,
+                                    children: (
+                                        <>
+                                            <Flex style={{ width: "100%" }} justify={'space-between'}>
+                                                <Button style={{ height: "25px" }} className={styles.taskCompletedSmall}>Completed</Button>
+                                                <a
+                                                    onClick={(e) => {
+                                                        e.preventDefault();
+                                                        setItems(taskDropDown);
+                                                    }}
+                                                >
+                                                    <Dropdown menu={{ items }} placement='bottom' trigger={['click']} arrow={{ pointAtCenter: true }}>
+                                                        <Image className='mt-2' src={MORE} height={18} alt='' />
+                                                    </Dropdown>
+                                                </a>
+                                            </Flex>
+                                            <div className='mt-2 font-medium text-base'>Subscription Agreements</div>
+                                            <div className='flex mt-2'>
+                                                <Col className='flex' >
+                                                    <Image className='mr-2' src={CALENDAR} alt='...' />
+                                                    <div className='  text-gray-400' > 08/02/2023</div> </Col>
+                                            </div>
+                                        </>
+                                    ),
+                                },
+                                {
+                                    dot: <Image src={INFO} alt="..." />,
+                                    color: 'gray',
+                                    children: (
+                                        <>
+                                            <Flex style={{ width: "100%" }} justify={'space-between'}>
+                                                <a onClick={(e) => {
+                                                    e.preventDefault();
+                                                    setItems(taskStatusDropDown);
+                                                }}>
+                                                    <Dropdown menu={{ items }} placement='bottom' trigger={['click']} arrow={{ pointAtCenter: true }}>
+                                                        <Button style={{ height: "25px" }} className={styles.markButton}>Mark as Completed?</Button>
+                                                    </Dropdown>
+                                                </a>
+                                                <a
+                                                    onClick={(e) => {
+                                                        e.preventDefault();
+                                                        setItems(taskDropDown);
+                                                    }}
+                                                >
+                                                    <Dropdown menu={{ items }} placement='bottom' trigger={['click']} arrow={{ pointAtCenter: true }}>
+                                                        <Image className='mt-2' src={MORE} height={18} alt='' />
+                                                    </Dropdown>
+                                                </a>
+                                            </Flex>
+                                            <div className='mt-2 font-medium text-base'>Credit Agreements</div>
+                                            <div className='flex mt-2'>
+                                                <Col className='flex' >
+                                                    <Image className='mr-2' src={CALENDAR} alt='...' />
+                                                    <div className='text-gray-400 underline' >Select Date</div>
+                                                </Col>
+                                            </div>
+                                        </>
+                                    ),
+                                },
+                            ]}
+                        />
+                    </div>
+                </div>
+
+                {/* <Row style={{ marginTop: "3px", marginLeft: "-3px" }}>
+                                        {data.status === "Complete" ? <>
+                                            <Image className='underline mr-2' src={CHECKCIRCLE} alt='...' />
+                                            <Button size="small" style={{}} className={styles.taskCompletedSmall}>
+                                                Completed
+                                            </Button></> : <><Image className='underline mr-2' src={MARK_ICON} alt='...' />
+                                            <Button size="small" style={{}} className={styles.markButton}>
+                                                Mark As Complete?
+                                            </Button> </>}
+
+                                    </Row> */}
+
+
+                {/* <Row key={index} className='mb-2 mt-4 flex' style={{ alignItems: 'center', justifyContent: 'space-between' }}>
+
+                                        <Flex style={{ display: "flow", width: '90%' }}>
+
+
+                                            <Flex style={{ display: "flex", justifyContent: "space-between" }}>
+
+                                                <Title className={styles.subTasksTitle} > {data.taskName}</Title>
+                                                <a
+                                                    onClick={(e) => {
+                                                        e.preventDefault();
+                                                        setItems(commentsDropDown);
+                                                    }}
+                                                >
+                                                    <Dropdown menu={{ items }} placement='bottom' trigger={['click']} arrow={{ pointAtCenter: true }}>
+                                                        <Image className='mt-1' src={MORE} height={18} alt='' />
+                                                    </Dropdown>
+                                                </a>
+
+                                            </Flex>
+                                            <Flex style={{ display: "flex", alignItems: "center" }}>
+
+                                                <Avatar size="small" src={"https://images.pexels.com/photos/610294/pexels-photo-610294.jpeg?auto=compress&cs=tinysrgb&w=600"} />
+                                                <Divider style={{ height: "20px", marginLeft: "10px" }} type="vertical" />
+                                                <Image style={{ height: "20px", marginBottom: "6px" }} src={CALENDER} alt="doc" />
+                                                <Title className={styles.commentTS1}>{data.assignedDate}</Title>
+
+
+                                            </Flex>
+                                        </Flex>
+
+                                    </Row > */}
+
+
+
+
+
+
+
+            </>
+        );
+    }
+
+
+
     return (
         <>
             <Header className={styles.header}>
@@ -438,6 +692,15 @@ export default function ProjectDetail() {
                                     setRowDetail(true);
                                 }
                             })}
+                            expandable={{
+                                expandedRowRender,
+                                rowExpandable: () => true,
+                                expandedRowKeys,
+                                onExpand: (record: any) => {
+                                    handleRowClick(record.key);
+                                },
+                                expandIcon: () => <></>,
+                            }}
                         />
                         {/* <Row className={styles.cardStyle}>
                             <Row className={styles.cardInnerStyle} >
@@ -933,7 +1196,7 @@ export default function ProjectDetail() {
                                 <Image src={CLOSE_RED} onClick={() => { setRowDetail(false) }} alt="CLOSE" />
                                 <div style={{ display: "flex", justifyContent: 'right' }}>
                                     <Button className={styles.infoButton}>
-                                        <Image style={{ marginLeft: "-8px" }} src={INFO} alt="..." /> Mark As?
+                                        <Image style={{ marginLeft: "-10px", marginRight: "2px" }} src={INFO} alt="..." /> Mark As?
                                     </Button>
                                     <a
                                         onClick={(e) => {
@@ -950,30 +1213,31 @@ export default function ProjectDetail() {
                             </Row>
 
 
-                            <Flex className={styles.cardStyle340px} vertical>
+                            <Flex className={styles.cardStyle350px} vertical>
                                 <Row className="flex mb-6" justify={'space-between'}>
 
                                     <Row className={styles.cardTitleStyle}> FATCA/CRS Requirements: Please provide for all non coinvestors a complete and valid OECD Self-Certification Form, IRS Form W-9, W-8BEN, W-8BEN-E, W-8ECI, W-8EXP or W-8IMY, as applicable, and a certificate of information or equivalent</Row>
-                                    <Row className={styles.cardSDetailStyle} justify={'space-between'} style={{ width: "100%" }}><Col>Task Load</Col><Row>
+                                    <Divider></Divider>
+                                    <Row className={styles.cardSDetailStyle1} justify={'space-between'} style={{ width: "100%" }}><Col>Task Load</Col><Row>
                                         <Image src={BLACKSTAR} alt='...' />
                                         <Image src={BLACKSTAR} alt='...' />
                                         <Image src={BLACKSTAR} alt='...' />
                                     </Row></Row>
-                                    <Row className={styles.cardSDetailStyle} justify={'space-between'} style={{ width: "100%" }}><Col>Date</Col><Col className='flex'><Image className='underline mr-2' src={CALENDAR} alt='...' /> <div >08/02/2023</div></Col> </Row>
-                                    <Row className={styles.cardSDetailStyle} justify={'space-between'} style={{ width: "100%" }}><Col>File</Col><Col className='flex'><Image className='underline mr-2' src={FILEUPLOAD} alt='...' /> <div >Upload File</div></Col> </Row>
-                                    <Row className={styles.cardSDetailStyle} >
-                                        <Avatar.Group>
-                                            <Avatar src="https://xsgames.co/randomusers/avatar.php?g=pixel&key=1" />
-                                            <a href="https://ant.design">
-                                                <Avatar style={{ backgroundColor: '#f56a00' }}>K</Avatar>
-                                            </a>
-                                            <Tooltip title="Ant User" placement="top">
-                                                <Avatar style={{ backgroundColor: '#87d068' }} icon={<UserOutlined />} />
-                                            </Tooltip>
-                                            <Avatar style={{ border: "1px dashed gray", backgroundColor: "#ffff", display: 'flex', alignItems: 'center' }} >
-                                                <Image src={EDIT} height={25} alt="..." />
-                                            </Avatar>
-                                        </Avatar.Group>
+                                    <Row className={styles.cardSDetailStyle1} justify={'space-between'} style={{ width: "100%" }}><Col>Date</Col><Col className='flex'><Image className='underline mr-2' src={CALENDAR} alt='...' /> <div >08/02/2023</div></Col> </Row>
+                                    <Row className={styles.cardSDetailStyle1} justify={'space-between'} style={{ width: "100%" }}><Col>Collaborators</Col><Col className='flex'> <Avatar.Group>
+                                        <Avatar size="small" src="https://xsgames.co/randomusers/avatar.php?g=pixel&key=1" />
+                                        <a href="https://ant.design">
+                                            <Avatar size="small" style={{ backgroundColor: '#f56a00' }}>K</Avatar>
+                                        </a>
+                                        <Tooltip title="Ant User" placement="top">
+                                            <Avatar size="small" style={{ backgroundColor: '#87d068' }} icon={<UserOutlined />} />
+                                        </Tooltip>
+                                        <Avatar size="small" style={{ border: "1px dashed gray", backgroundColor: "#ffff", display: 'flex', alignItems: 'center' }} >
+                                            <Image src={EDIT} height={25} alt="..." />
+                                        </Avatar>
+                                    </Avatar.Group></Col> </Row>
+                                    <Row className={styles.cardSDetailStyle1} >
+
                                     </Row>
                                 </Row>
                             </Flex>
@@ -981,7 +1245,7 @@ export default function ProjectDetail() {
 
                             <Divider></Divider>
                             <Row className='mb-8'>
-                                <Flex className={styles.cardStyle340px} vertical>
+                                <Flex className={styles.cardStyle350px} vertical>
                                     <Row className="flex mb-3" justify={'space-between'}>
                                         <Title className={styles.cardTitleStyle2} >Documents</Title>
                                         <Flex>
@@ -1033,22 +1297,14 @@ export default function ProjectDetail() {
 
 
                                     </div>
-                                    <Row >
-                                        <Flex style={{ width: "100%", justifyContent: "center", marginTop: "20px" }}>
-                                            <Dragger  {...props} className='w-full'>
-                                                <Row style={{ justifyContent: 'center' }}>
-                                                    <InboxOutlined style={{ fontSize: '15px' }} /> &nbsp;Drag or browse from device
-                                                </Row>
-                                            </Dragger>
-                                        </Flex>
-                                    </Row>
+
                                 </Flex>
                             </Row>
                             <Divider></Divider>
                             <Row>
-                                <Flex className={styles.cardStyle340px} vertical>
+                                <Flex className={styles.cardStyle350px} vertical>
                                     <Row className="flex mb-6" justify={'space-between'}>
-                                        <Title className={styles.cardTitleStyle2} >Sub Tasks</Title>
+                                        <Title className={styles.cardTitleStyle3} >Sub Tasks</Title>
                                         <Image width={30} className='ml-2' src={ADDCIRCLE} alt='...' />
                                     </Row>
                                     {dataSubtasks.map((data, index) => {

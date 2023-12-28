@@ -86,9 +86,10 @@ export default function ProjectList() {
   const [selectCollaboratorValue, setSelectCollaoratorValue] = useState<any>();
   const [value, setValue] = useState("Public");
   const router = useRouter();
+  const [isModalVisible, setModalVisible] = useState(false);
   const [expandedRowKeys, setExpandedRowKeys] = useState<string[]>([]);
   const [expandedRows, setExpandedRows] = useState<any[]>([]);
-  const [isModalVisible, setModalVisible] = useState(false);
+
 
 
 
