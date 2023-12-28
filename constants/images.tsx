@@ -93,5 +93,6 @@ export const PDF_ICON = require("../img/mc-file-pdf.svg");
 export const CLOSE_CIRCLE = require("../img/close-circle.svg");
 export const MARK_ICON = require("../img/Icon.svg");
 export const TASKCOMPLETE = require("../img/Vector.svg");
-export const downArrow = require("../img/Table var.svg");
+export const downArrow = require("../img/arrow-downer.svg");
 export const downArrow2 = require("../img/Table var (1).svg");
+export const Arrow_Up = require("../img/arrow-down (1).svg");

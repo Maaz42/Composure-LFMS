@@ -3,7 +3,7 @@ import styles from './styles.module.css'
 import Image from 'next/image';
 import { Avatar, Layout, Typography, Flex, Button, Dropdown, Input, Collapse, Divider, Checkbox, List, Row, Col, Upload, Timeline, Tooltip, Progress, Drawer, Select, TableColumnsType, Space } from 'antd';
 import { MenuOutlined, InboxOutlined, UserOutlined } from '@ant-design/icons';
-import { ARROWDOWN, BLACKSTAR, BLUEDOT, NOTES, CALENDAR, EXCEL_ICON, WORD_ICON, CLOCK, CLOSE, EDIT, FILEUPLOAD, FOLDER, GREENDOT, INFO, MORE, PROFILEUSERS, REDDOT, SEND, TICKCOMPLETE, WHITESTAR, YELLOWDOT, tick_button, ADDCIRCLE, CALENDER, BRIGHTFLAG, CLOSE_RED, NOTE_DOCS, PDF_ICON, CLOSE_CIRCLE, CHECKCIRCLE, MARK_ICON, TASKCOMPLETE, downArrow } from '@/constants/images'
+import { ARROWDOWN, BLACKSTAR, BLUEDOT, NOTES, CALENDAR, EXCEL_ICON, WORD_ICON, CLOCK, CLOSE, EDIT, FILEUPLOAD, FOLDER, GREENDOT, INFO, MORE, PROFILEUSERS, REDDOT, SEND, TICKCOMPLETE, WHITESTAR, YELLOWDOT, tick_button, ADDCIRCLE, CALENDER, BRIGHTFLAG, CLOSE_RED, NOTE_DOCS, PDF_ICON, CLOSE_CIRCLE, CHECKCIRCLE, MARK_ICON, TASKCOMPLETE, downArrow, ARROW_DOWN_2, ARROW_DOWN, downArrow2, ARROW_DOWN_BUTTON, ARROWDOWNWHITE, ARROWUP, Arrow_Up } from '@/constants/images'
 import CustomDropDown from '@/components/ReusableComponents/DropDown';
 import FloatLabelArrow from '@/components/ReusableComponents/FloatLabelArrow';
 import { CustomTable } from '@/components/ReusableComponents/CustomTable';
@@ -121,28 +121,39 @@ export default function ProjectDetail() {
                         <div style={{ display: "flex", justifyContent: "space-between" }}>
                             {status && status === "Task incomplete" ? (
                                 // <Dropdown menu={{ items }} trigger={['click']}>
-                                <a onClick={(e) => {
-                                    handleRowClick(record.key);
-                                    e.preventDefault()
-                                    setItems(markAsDropDown)
-                                }}>
-                                    <Button style={{}} className={styles.infoButton}>
-                                        <Image src={INFO} style={{ marginLeft: "-10px", marginTop: "2px", marginRight: "2px" }} alt="..." /> Mark As?
-                                    </Button>
-                                </a>
+                                <>
+                                    <a onClick={(e) => {
+                                        handleRowClick(record.key);
+                                        e.preventDefault()
+                                        setItems(markAsDropDown)
+                                    }}>
+                                        <Button style={{}} className={styles.infoButton}>
+                                            <Image src={INFO} style={{ marginLeft: "-10px", marginTop: "2px", marginRight: "2px" }} alt="..." /> Mark As?
+                                        </Button>
+                                    </a>
+
+                                    <Image onClick={(e) => { e.preventDefault(), handleRowClick(record.key) }} src={expandedRows.includes(record.key) ? Arrow_Up : downArrow} style={{ marginLeft: "-10px", marginTop: "2px", marginRight: "2px" }} alt="..." />
+
+                                </>
+
                                 // </Dropdown>
 
 
                             ) : (
-                                <a onClick={(e) => {
-                                    handleRowClick(record.key);
-                                    e.preventDefault()
-                                    setItems(markAsDropDown)
-                                }}>
-                                    <Button style={{}} className={styles.taskCompleted}>
-                                        <Image src={tick_button} style={{ marginLeft: "-10px", marginTop: "2px", marginRight: "2px" }} alt="..." /> Task Completed!
-                                    </Button>
-                                </a>
+                                <>
+                                    <a onClick={(e) => {
+                                        handleRowClick(record.key);
+                                        e.preventDefault()
+                                        setItems(markAsDropDown)
+                                    }}>
+                                        <Button style={{}} className={styles.taskCompleted}>
+                                            <Image src={tick_button} style={{ marginLeft: "-10px", marginTop: "2px", marginRight: "2px" }} alt="..." /> Task Completed!
+                                        </Button>
+                                    </a>
+
+                                    <Image onClick={(e) => { e.preventDefault(), handleRowClick(record.key) }} src={expandedRows.includes(record.key) ? Arrow_Up : downArrow} style={{ marginLeft: "-10px", marginTop: "2px", marginRight: "2px" }} alt="..." />
+
+                                </>
                             )
 
                             }
