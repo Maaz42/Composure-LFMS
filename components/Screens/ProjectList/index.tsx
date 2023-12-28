@@ -993,16 +993,11 @@ export default function ProjectList() {
 
         {ManageFieldsData.map((data) => {
           return (
-
-            <Row style={{ display: "flex", justifyContent: "space-between", backgroundColor: "#FAFAFA", borderRadius: "1px solid #FAFAFA", marginTop: "20px" }}>
-
-
+            <Row key={data.label} style={{ display: "flex", justifyContent: "space-between", backgroundColor: "#FAFAFA", borderRadius: "1px solid #FAFAFA", marginTop: "20px" }}>
               <h1 style={{ marginLeft: "10px" }}>{data.label}</h1>
               <Button><Image alt="swicth" src={SWITCH} /></Button>
-
             </Row>)
         })}
-
 
       </Modal>
     </>
