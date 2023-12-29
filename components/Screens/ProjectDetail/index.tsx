@@ -20,6 +20,7 @@ const props = {
         console.log('Dropped files', e.dataTransfer.files);
     },
 };
+
 interface DataType {
     key: React.Key;
     title: string;
@@ -55,6 +56,7 @@ export default function ProjectDetail() {
     const handleShowNotes = () => {
         setNotesVisible(!notesVisible);
     };
+
     const onClose = () => {
         setCollaboratorDrawer(false);
     }
@@ -64,7 +66,6 @@ export default function ProjectDetail() {
     }
 
     const markAsDropDown = [
-
         {
             key: "1",
             label: (
@@ -91,6 +92,7 @@ export default function ProjectDetail() {
             ),
         },
     ];
+
     const navDropDown = [
         {
             key: "1",
@@ -98,23 +100,19 @@ export default function ProjectDetail() {
         },
 
     ];
+
     const columns: TableColumnsType<DataType> = [
         {
-            title: (
-                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-                    <div>Title</div>
-                </div>
-            ),
+            title: "Title",
             dataIndex: "title",
-            key: "title"
-
+            key: "title",
+            width: "500px"
         },
         {
-            title: (<div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-                <div>   Status</div>
-            </div>),
+            title: "Status",
             dataIndex: "status",
             key: "status",
+            width: "250px",
             render: (status, record) => {
                 return (
                     <>
@@ -147,10 +145,9 @@ export default function ProjectDetail() {
                                         setItems(markAsDropDown)
                                     }}>
                                         <Button style={{}} className={styles.taskCompleted}>
-                                            <Image src={tick_button} style={{ marginLeft: "-10px", marginTop: "2px", marginRight: "2px" }} alt="..." /> Task Completed!
+                                            <Image src={tick_button} style={{ marginLeft: "-10px", }} alt="..." /> Task Completed!
                                         </Button>
                                     </a>
-
                                     <Image onClick={(e) => { e.preventDefault(), handleRowClick(record.key) }} src={expandedRows.includes(record.key) ? Arrow_Up : downArrow} style={{ marginLeft: "-10px", marginTop: "2px", marginRight: "2px" }} alt="..." />
                                 </div>
 
@@ -164,11 +161,10 @@ export default function ProjectDetail() {
 
                     </>
                 )
-
-
             }
         }
     ]
+
     const statusDropDown = [
         {
             key: "1",
@@ -202,6 +198,7 @@ export default function ProjectDetail() {
             label: "Legal 3"
         }
     ];
+
     const commentsDropDown = [
         {
             key: '1',
@@ -216,6 +213,7 @@ export default function ProjectDetail() {
             label: "Delete"
         }
     ];
+
     const taskdetailDropDown = [
         {
             key: '1',
@@ -227,6 +225,7 @@ export default function ProjectDetail() {
         },
 
     ];
+
     const docDropDown = [
         {
             key: '1',
@@ -241,6 +240,7 @@ export default function ProjectDetail() {
             label: "Export  to Sharepoint"
         }
     ];
+
     const singleDocDropDown = [
         {
             key: '1',
@@ -255,6 +255,7 @@ export default function ProjectDetail() {
             label: "Delete"
         },
     ]
+
     const taskDropDown = [
         {
             key: '1',
@@ -273,6 +274,7 @@ export default function ProjectDetail() {
             label: "Delete"
         }
     ];
+
     const taskStatusDropDown = [
         {
             key: '1',
@@ -290,8 +292,8 @@ export default function ProjectDetail() {
                 </>
             )
         },
-
     ];
+
     const allDropDown = [
         {
             key: '1',
@@ -309,8 +311,8 @@ export default function ProjectDetail() {
                 </>
             )
         },
-
     ];
+
     const docNoteDropDown = [
         {
             key: '1',
@@ -373,7 +375,6 @@ export default function ProjectDetail() {
             details: "Added on March 21  \n Last Notified Yesterday \n  2 Reviews",
             src: PDF_ICON
         },
-
     ]
 
     const dataSubtasks = [
@@ -454,9 +455,7 @@ export default function ProjectDetail() {
 
     const expandedRowRender = (rowData: any) => {
         return (
-
             <>
-
                 <div className={styles.cardSDetailStyle} style={{ width: "100%" }}>
                     <Row className="flex mb-4" justify={'space-between'}>
                         <Row className={styles.cardSDetailStyle1} justify={'space-between'} style={{ width: "100%" }}><Col>Task Load</Col><Row>
@@ -631,18 +630,9 @@ export default function ProjectDetail() {
                                         </Flex>
 
                                     </Row > */}
-
-
-
-
-
-
-
             </>
         );
     }
-
-
 
     return (
         <>
@@ -677,7 +667,6 @@ export default function ProjectDetail() {
                     <CustomDropDown className={styles.collapseTo} title={"Legal"} dropDownItems={legalDropDown} />
                     <Divider className={styles.divider} type='vertical' />
                 </Flex>
-
                 <div style={{ width: "200px" }} className={`flex mr-2`}><Progress percent={50} showInfo={false} />6/12</div>
             </Flex>
             <Layout style={{ height: '(100vh -120px)' }}>
@@ -694,7 +683,6 @@ export default function ProjectDetail() {
                                     <Button style={{ borderRadius: "65px", display: "flex", }}><Typography style={{ marginRight: "3px", color: "#9E9E9E" }}>All </Typography><Image className='mt-1' src={ARROWDOWN} width={15} height={15} alt='...' /></Button>
                                 </Dropdown>
                             </a>
-
                         </Row>
                         <CustomTable
                             columns={columns}
@@ -1436,14 +1424,11 @@ export default function ProjectDetail() {
 
                                                     </Flex>
                                                     <Flex style={{ display: "flex", alignItems: "center", marginLeft: "30px" }}>
-
                                                         <Avatar src={"https://images.pexels.com/photos/610294/pexels-photo-610294.jpeg?auto=compress&cs=tinysrgb&w=600"} />
                                                         <Title className={styles.subTasksName}>{data.assignedTo}</Title>
                                                         <Divider style={{ height: "20px", marginLeft: "10px" }} type="vertical" />
                                                         <Image style={{ height: "20px", marginBottom: "6px" }} src={CALENDER} alt="doc" />
                                                         <Title className={styles.commentTS1}>{data.assignedDate}</Title>
-
-
                                                     </Flex>
                                                 </Flex>
                                                 <a
@@ -1459,13 +1444,10 @@ export default function ProjectDetail() {
                                             </Row>
                                         )
                                     })}
-
                                 </Flex>
-
                             </Row>
                         </Col> */}
                 </Row>
-
                 <Drawer
                     title={
                         <div style={{ display: 'flex', justifyContent: 'space-between' }}>
