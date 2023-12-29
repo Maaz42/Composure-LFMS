@@ -450,6 +450,8 @@ export default function ProjectDetail() {
 
     ];
 
+
+
     const expandedRowRender = (rowData: any) => {
         return (
 
@@ -947,8 +949,8 @@ export default function ProjectDetail() {
                         </Row>
                         <Row className='mb-8'>
                             <Col xs={24} md={24} lg={24} xl={24}>
-                                <Flex className={styles.cardStyle340px} vertical>
-                                    <Row className="flex mb-3" justify={'space-between'}>
+
+                                {/* <Row className="flex mb-3" justify={'space-between'}>
                                         <Title className={styles.cardTitleStyle2} >Documents</Title>
                                         <Flex>
                                             <a
@@ -966,8 +968,92 @@ export default function ProjectDetail() {
                                             <Image className='mb-1' src={MORE} height={18} alt='' />
 
                                         </Flex>
-                                    </Row>
-                                    <div style={{ marginBottom: "30px", overflow: "auto" }}>
+                                    </Row> */}
+                                <Collapse items={[
+                                    {
+                                        key: 1,
+                                        label: (
+                                            <Row className="flex mb-3" justify={'space-between'}>
+                                                <Title className={styles.cardTitleStyle2} >Documents</Title>
+                                                <Flex>
+                                                    <a
+                                                        onClick={(e) => {
+                                                            e.preventDefault();
+                                                            setItems(docDropDown);
+                                                        }}
+                                                    >
+                                                        <Dropdown menu={{ items }} placement='bottom' trigger={['click']} arrow={{ pointAtCenter: true }}>
+                                                            <Button className={styles.internalButton} >Internal <Image className='ml-2' src={ARROWDOWN} alt='...' height={20} width={20} /></Button>
+
+                                                        </Dropdown>
+
+                                                    </a>
+                                                    <Image className='mb-1' src={MORE} height={18} alt='' />
+
+                                                </Flex>
+                                            </Row>
+
+                                        ),
+
+                                        children: <><div style={{ marginBottom: "30px", overflow: "auto" }}>
+                                            {documentsData.map((data) => {
+                                                return (
+                                                    <Row key={data.key} className='mb-2' style={{ alignItems: 'baseline', justifyContent: 'space-between' }}>
+                                                        <div className="flex align-center ">
+                                                            <Image src={data.src} height={18} alt="" /> &nbsp;
+                                                            <div
+                                                                className={styles.folderTitle}> {data?.label}
+                                                            </div>
+                                                            <div
+                                                                className={styles.folderTitle}>
+                                                                <a
+                                                                    onClick={(e) => {
+                                                                        e.preventDefault();
+                                                                        setItems(docNoteDropDown);
+                                                                    }}
+                                                                >
+                                                                    <Dropdown menu={{ items }} placement='bottom' trigger={['click']} arrow={{ pointAtCenter: true }}>
+                                                                        <Image className='ml-2' src={NOTE_DOCS} height={18} alt='' />
+                                                                    </Dropdown>
+                                                                </a>
+
+                                                            </div>
+                                                            <Tooltip title={data?.details} placement="top">
+                                                                <Image src={INFO} height={18} alt="" />
+                                                            </Tooltip>
+
+
+
+                                                        </div>
+                                                        <a
+                                                            onClick={(e) => {
+                                                                e.preventDefault();
+                                                                setItems(singleDocDropDown);
+                                                            }}
+                                                        >
+                                                            <Dropdown menu={{ items }} placement='bottom' trigger={['click']} arrow={{ pointAtCenter: true }}
+                                                            >
+                                                                <Image className='mt-1' src={MORE} height={18} alt='' />
+                                                            </Dropdown>
+                                                        </a>
+                                                    </Row>
+                                                )
+                                            })}
+
+
+                                        </div>
+                                            <Row >
+                                                <Flex style={{ width: "100%", justifyContent: "center" }}>
+                                                    <Dragger  {...props} className='w-full'>
+                                                        <Row style={{ justifyContent: 'center' }}>
+                                                            <InboxOutlined style={{ fontSize: '15px' }} /> &nbsp;Drag or browse from device
+                                                        </Row>
+                                                    </Dragger>
+                                                </Flex>
+                                            </Row></>
+                                    }
+                                ]} />
+                                {/* <div style={{ marginBottom: "30px", overflow: "auto" }}>
                                         {documentsData.map((data) => {
                                             return (
                                                 <Row key={data.key} className='mb-2' style={{ alignItems: 'baseline', justifyContent: 'space-between' }}>
@@ -1022,170 +1108,191 @@ export default function ProjectDetail() {
                                                 </Row>
                                             </Dragger>
                                         </Flex>
-                                    </Row>
-                                </Flex>
+                                    </Row> */}
+
                             </Col>
                         </Row>
                         <Row>
-                            <Flex className={styles.cardStyle340px} vertical>
-                                <Row className="flex mb-6" justify={'space-between'}>
-                                    <Title className={styles.cardTitleStyle2} >Comments (9)</Title>
-                                    <Button className={styles.internalButton} >Internal <Image className='ml-2' src={ARROWDOWN} alt='...' height={20} width={20} /></Button>
-                                </Row>
-                                <Row className='mb-2' style={{ alignItems: 'baseline', justifyContent: 'space-between' }}>
-                                    <Flex style={{ width: '90%' }}>
-                                        <Flex>
-                                            <Avatar icon={<UserOutlined />} />
-                                        </Flex>
-                                        <Flex vertical style={{ marginLeft: '5px' }}>
-                                            <Row>
-                                                <Title className={styles.cardTitleStyle5} > Melissa Alwins</Title>
-                                                <Title className={styles.commentTS}>24/07/23 06:04PM</Title>
+                            <Col xs={24} md={24} lg={24} xl={24}>
+                                <Collapse items={[
+                                    {
+                                        key: "1",
+                                        label: <Row className="flex mb-6" justify={'space-between'}>
+                                            <Title className={styles.cardTitleStyle2} >Comments (9)</Title>
+                                            <Button className={styles.internalButton} >Internal <Image className='ml-2' src={ARROWDOWN} alt='...' height={20} width={20} /></Button>
+                                        </Row>,
+                                        children: <><Row className='mb-2' style={{ alignItems: 'baseline', justifyContent: 'space-between' }}>
+                                            <Flex style={{ width: '90%' }}>
+                                                <Flex>
+                                                    <Avatar icon={<UserOutlined />} />
+                                                </Flex>
+                                                <Flex vertical style={{ marginLeft: '5px' }}>
+                                                    <Row>
+                                                        <Title className={styles.cardTitleStyle5} > Melissa Alwins</Title>
+                                                        <Title className={styles.commentTS}>24/07/23 06:04PM</Title>
+                                                    </Row>
+                                                    <Row>
+                                                        <Title className={styles.comment2Style}> @Jim Carrey Progress is well!</Title>
+                                                    </Row>
+                                                </Flex>
+                                            </Flex>
+                                            <a
+                                                onClick={(e) => {
+                                                    e.preventDefault();
+                                                    setItems(commentsDropDown);
+                                                }}
+                                            >
+                                                <Dropdown menu={{ items }} placement='bottom' trigger={['click']} arrow={{ pointAtCenter: true }}>
+                                                    <Image className='mt-1' src={MORE} height={18} alt='' />
+                                                </Dropdown>
+                                            </a>
+                                        </Row>
+                                            <Row className='mb-2' style={{ alignItems: 'baseline', justifyContent: 'space-between', marginTop: '8px' }}>
+                                                <Flex style={{ width: '90%' }}>
+                                                    <Flex>
+                                                        <Avatar icon={<UserOutlined />} />
+                                                    </Flex>
+                                                    <Flex vertical style={{ marginLeft: '5px' }}>
+                                                        <Row>
+                                                            <Title className={styles.cardTitleStyle5} > Annette Black</Title><Title className={styles.commentTS}>24/07/23 06:04PM</Title>
+                                                        </Row>
+                                                        <Row>
+                                                            <Title className={styles.comment2Style}>Please check all the documents before starting any work</Title>
+                                                        </Row>
+                                                    </Flex>
+                                                </Flex>
+                                                <a
+                                                    onClick={(e) => {
+                                                        e.preventDefault();
+                                                        setItems(commentsDropDown);
+                                                    }}
+                                                >
+                                                    <Dropdown menu={{ items }} placement='bottom' trigger={['click']} arrow={{ pointAtCenter: true }}>
+                                                        <Image className='mt-1' src={MORE} height={18} alt='' />
+                                                    </Dropdown>
+                                                </a>
                                             </Row>
-                                            <Row>
-                                                <Title className={styles.comment2Style}> @Jim Carrey Progress is well!</Title>
+                                            <Row className='mb-2' style={{ alignItems: 'baseline', justifyContent: 'space-between' }}>
+                                                <Flex style={{ width: '90%' }}>
+                                                    <Flex>
+                                                        <Avatar icon={<UserOutlined />} />
+                                                    </Flex>
+                                                    <Flex vertical style={{ marginLeft: '5px' }}>
+                                                        <Row>
+                                                            <Title className={styles.cardTitleStyle5} > Melissa Alwins</Title><Title className={styles.commentTS}>24/07/23 06:04PM</Title>
+                                                        </Row>
+                                                        <Row>
+                                                            <Title className={styles.comment2Style}> @Jim Carrey Progress is well!</Title>
+                                                        </Row>
+                                                    </Flex>
+                                                </Flex>
+                                                <a
+                                                    onClick={(e) => {
+                                                        e.preventDefault();
+                                                        setItems(commentsDropDown);
+                                                    }}
+                                                >
+                                                    <Dropdown menu={{ items }} placement='bottom' trigger={['click']} arrow={{ pointAtCenter: true }}>
+                                                        <Image className='mt-1' src={MORE} height={18} alt='' />
+                                                    </Dropdown>
+                                                </a>
                                             </Row>
-                                        </Flex>
-                                    </Flex>
-                                    <a
-                                        onClick={(e) => {
-                                            e.preventDefault();
-                                            setItems(commentsDropDown);
-                                        }}
-                                    >
-                                        <Dropdown menu={{ items }} placement='bottom' trigger={['click']} arrow={{ pointAtCenter: true }}>
-                                            <Image className='mt-1' src={MORE} height={18} alt='' />
-                                        </Dropdown>
-                                    </a>
-                                </Row>
-                                <Row className='mb-2' style={{ alignItems: 'baseline', justifyContent: 'space-between', marginTop: '8px' }}>
-                                    <Flex style={{ width: '90%' }}>
-                                        <Flex>
-                                            <Avatar icon={<UserOutlined />} />
-                                        </Flex>
-                                        <Flex vertical style={{ marginLeft: '5px' }}>
-                                            <Row>
-                                                <Title className={styles.cardTitleStyle5} > Annette Black</Title><Title className={styles.commentTS}>24/07/23 06:04PM</Title>
-                                            </Row>
-                                            <Row>
-                                                <Title className={styles.comment2Style}>Please check all the documents before starting any work</Title>
-                                            </Row>
-                                        </Flex>
-                                    </Flex>
-                                    <a
-                                        onClick={(e) => {
-                                            e.preventDefault();
-                                            setItems(commentsDropDown);
-                                        }}
-                                    >
-                                        <Dropdown menu={{ items }} placement='bottom' trigger={['click']} arrow={{ pointAtCenter: true }}>
-                                            <Image className='mt-1' src={MORE} height={18} alt='' />
-                                        </Dropdown>
-                                    </a>
-                                </Row>
-                                <Row className='mb-2' style={{ alignItems: 'baseline', justifyContent: 'space-between' }}>
-                                    <Flex style={{ width: '90%' }}>
-                                        <Flex>
-                                            <Avatar icon={<UserOutlined />} />
-                                        </Flex>
-                                        <Flex vertical style={{ marginLeft: '5px' }}>
-                                            <Row>
-                                                <Title className={styles.cardTitleStyle5} > Melissa Alwins</Title><Title className={styles.commentTS}>24/07/23 06:04PM</Title>
-                                            </Row>
-                                            <Row>
-                                                <Title className={styles.comment2Style}> @Jim Carrey Progress is well!</Title>
-                                            </Row>
-                                        </Flex>
-                                    </Flex>
-                                    <a
-                                        onClick={(e) => {
-                                            e.preventDefault();
-                                            setItems(commentsDropDown);
-                                        }}
-                                    >
-                                        <Dropdown menu={{ items }} placement='bottom' trigger={['click']} arrow={{ pointAtCenter: true }}>
-                                            <Image className='mt-1' src={MORE} height={18} alt='' />
-                                        </Dropdown>
-                                    </a>
-                                </Row>
 
-                                <Row className='mb-2' style={{ alignItems: 'baseline', justifyContent: 'space-between', marginTop: '8px' }}>
-                                    <Flex style={{ width: '90%' }}>
-                                        <Flex>
-                                            <Avatar icon={<UserOutlined />} />
-                                        </Flex>
-                                        <Flex vertical style={{ marginLeft: '5px' }}>
-                                            <Row>
-                                                <Title className={styles.cardTitleStyle5}> Annette Black</Title><Title className={styles.commentTS}>24/07/23 06:04PM</Title>
+                                            <Row className='mb-2' style={{ alignItems: 'baseline', justifyContent: 'space-between', marginTop: '8px' }}>
+                                                <Flex style={{ width: '90%' }}>
+                                                    <Flex>
+                                                        <Avatar icon={<UserOutlined />} />
+                                                    </Flex>
+                                                    <Flex vertical style={{ marginLeft: '5px' }}>
+                                                        <Row>
+                                                            <Title className={styles.cardTitleStyle5}> Annette Black</Title><Title className={styles.commentTS}>24/07/23 06:04PM</Title>
+                                                        </Row>
+                                                        <Row>
+                                                            <Title className={styles.comment2Style}>Please check all the documents before starting any work</Title>
+                                                        </Row>
+                                                    </Flex>
+                                                </Flex>
+                                                <a
+                                                    onClick={(e) => {
+                                                        e.preventDefault();
+                                                        setItems(commentsDropDown);
+                                                    }}
+                                                >
+                                                    <Dropdown menu={{ items }} placement='bottom' trigger={['click']} arrow={{ pointAtCenter: true }}>
+                                                        <Image className='mt-1' src={MORE} height={18} alt='' />
+                                                    </Dropdown>
+                                                </a>
                                             </Row>
-                                            <Row>
-                                                <Title className={styles.comment2Style}>Please check all the documents before starting any work</Title>
+                                            <Row className='mb-2' style={{ alignItems: 'baseline', justifyContent: 'space-between' }}>
+                                                <Flex style={{ width: '90%' }}>
+                                                    <Flex>
+                                                        <Avatar icon={<UserOutlined />} />
+                                                    </Flex>
+                                                    <Flex vertical style={{ marginLeft: '5px' }}>
+                                                        <Row>
+                                                            <Title className={styles.cardTitleStyle5}> Melissa Alwins</Title><Title className={styles.commentTS}>24/07/23 06:04PM</Title>
+                                                        </Row>
+                                                        <Row>
+                                                            <Title className={styles.comment2Style}> @Jim Carrey Progress is well!</Title>
+                                                        </Row>
+                                                    </Flex>
+                                                </Flex>
+                                                <a
+                                                    onClick={(e) => {
+                                                        e.preventDefault();
+                                                        setItems(commentsDropDown);
+                                                    }}
+                                                >
+                                                    <Dropdown menu={{ items }} placement='bottom' trigger={['click']} arrow={{ pointAtCenter: true }}>
+                                                        <Image className='mt-1' src={MORE} height={18} alt='' />
+                                                    </Dropdown>
+                                                </a>
                                             </Row>
-                                        </Flex>
-                                    </Flex>
-                                    <a
-                                        onClick={(e) => {
-                                            e.preventDefault();
-                                            setItems(commentsDropDown);
-                                        }}
-                                    >
-                                        <Dropdown menu={{ items }} placement='bottom' trigger={['click']} arrow={{ pointAtCenter: true }}>
-                                            <Image className='mt-1' src={MORE} height={18} alt='' />
-                                        </Dropdown>
-                                    </a>
-                                </Row>
-                                <Row className='mb-2' style={{ alignItems: 'baseline', justifyContent: 'space-between' }}>
-                                    <Flex style={{ width: '90%' }}>
-                                        <Flex>
-                                            <Avatar icon={<UserOutlined />} />
-                                        </Flex>
-                                        <Flex vertical style={{ marginLeft: '5px' }}>
-                                            <Row>
-                                                <Title className={styles.cardTitleStyle5}> Melissa Alwins</Title><Title className={styles.commentTS}>24/07/23 06:04PM</Title>
+                                            <Row className='mb-2' style={{ alignItems: 'baseline', justifyContent: 'space-between', marginTop: '8px' }}>
+                                                <Flex style={{ width: '90%' }}>
+                                                    <Flex>
+                                                        <Avatar icon={<UserOutlined />} />
+                                                    </Flex>
+                                                    <Flex vertical style={{ marginLeft: '5px' }}>
+                                                        <Row>
+                                                            <Title className={styles.cardTitleStyle5}> Annette Black</Title><Title className={styles.commentTS}>24/07/23 06:04PM</Title>
+                                                        </Row>
+                                                        <Row>
+                                                            <Title className={styles.comment2Style}>Please check all the documents before starting any work</Title>
+                                                        </Row>
+                                                    </Flex>
+                                                </Flex>
+                                                <a
+                                                    onClick={(e) => {
+                                                        e.preventDefault();
+                                                        setItems(commentsDropDown);
+                                                    }}
+                                                >
+                                                    <Dropdown menu={{ items }} placement='bottom' trigger={['click']} arrow={{ pointAtCenter: true }}>
+                                                        <Image className='mt-1' src={MORE} height={18} alt='' />
+                                                    </Dropdown>
+                                                </a>
                                             </Row>
-                                            <Row>
-                                                <Title className={styles.comment2Style}> @Jim Carrey Progress is well!</Title>
+                                            <Row className={styles.commentBox}>
+                                                <Flex style={{
+                                                    width: '90%',
+                                                    justifyContent: 'center',
+                                                    background: 'white',
+                                                    height: '38px',
+                                                    margin: 'auto',
+                                                    borderRadius: '5px'
+                                                }}>
+                                                    <input placeholder='Comment Now' style={{ border: 'none', width: "90%" }} />
+                                                    <Image src={SEND} height={18} alt='' style={{ marginRight: '5px' }} />
+                                                </Flex>
                                             </Row>
-                                        </Flex>
-                                    </Flex>
-                                    <a
-                                        onClick={(e) => {
-                                            e.preventDefault();
-                                            setItems(commentsDropDown);
-                                        }}
-                                    >
-                                        <Dropdown menu={{ items }} placement='bottom' trigger={['click']} arrow={{ pointAtCenter: true }}>
-                                            <Image className='mt-1' src={MORE} height={18} alt='' />
-                                        </Dropdown>
-                                    </a>
-                                </Row>
-                                <Row className='mb-2' style={{ alignItems: 'baseline', justifyContent: 'space-between', marginTop: '8px' }}>
-                                    <Flex style={{ width: '90%' }}>
-                                        <Flex>
-                                            <Avatar icon={<UserOutlined />} />
-                                        </Flex>
-                                        <Flex vertical style={{ marginLeft: '5px' }}>
-                                            <Row>
-                                                <Title className={styles.cardTitleStyle5}> Annette Black</Title><Title className={styles.commentTS}>24/07/23 06:04PM</Title>
-                                            </Row>
-                                            <Row>
-                                                <Title className={styles.comment2Style}>Please check all the documents before starting any work</Title>
-                                            </Row>
-                                        </Flex>
-                                    </Flex>
-                                    <a
-                                        onClick={(e) => {
-                                            e.preventDefault();
-                                            setItems(commentsDropDown);
-                                        }}
-                                    >
-                                        <Dropdown menu={{ items }} placement='bottom' trigger={['click']} arrow={{ pointAtCenter: true }}>
-                                            <Image className='mt-1' src={MORE} height={18} alt='' />
-                                        </Dropdown>
-                                    </a>
-                                </Row>
-                            </Flex>
-                            <Row className={styles.commentBox}>
+                                        </>
+                                    }
+                                ]} />
+
+
+
+                                {/* <Row className={styles.commentBox}>
                                 <Flex style={{
                                     width: '90%',
                                     justifyContent: 'center',
@@ -1197,7 +1304,8 @@ export default function ProjectDetail() {
                                     <input placeholder='Comment Now' style={{ border: 'none', width: "90%" }} />
                                     <Image src={SEND} height={18} alt='' style={{ marginRight: '5px' }} />
                                 </Flex>
-                            </Row>
+                            </Row> */}
+                                git pull</Col>
                         </Row>
                     </Col>
                     {/*                         
