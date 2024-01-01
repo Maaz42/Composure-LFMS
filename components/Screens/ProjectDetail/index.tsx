@@ -58,7 +58,6 @@ export default function ProjectDetail() {
         setNotesVisible(!notesVisible);
     };
 
-
     const onClose = () => {
         setCollaboratorDrawer(false);
     }
@@ -313,7 +312,6 @@ export default function ProjectDetail() {
             key: '2',
             label: "Upload Another Variation",
             src: EXCEL_ICON
-
         },
         {
             key: "3",
@@ -477,7 +475,6 @@ export default function ProjectDetail() {
                     </Row>
 
                     <div style={{ marginTop: "28px" }}>
-
                         <Timeline
                             items={[
                                 {

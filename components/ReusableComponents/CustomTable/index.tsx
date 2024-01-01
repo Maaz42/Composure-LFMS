@@ -52,7 +52,6 @@ export const CustomTable = ({
             style={{ overflowX: "auto", cursor: "pointer" }}
             pagination={false}
             expandable={expandable}
-            scroll={{ y: 700 }}
             onRow={onRow}
           />
         ) : isChecked == 1 ? (

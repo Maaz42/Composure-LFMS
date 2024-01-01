@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import Image from "next/image";
-import Link from "next/link";
 import styles from "./styles.module.css";
 import { MenuOutlined } from "@ant-design/icons";
 import type { MenuProps, RadioChangeEvent } from "antd";
@@ -920,7 +919,7 @@ export default function ProjectList() {
         <Drawer
           title={
             <div style={{ display: "flex", justifyContent: "space-between" }}>
-              <Image src={CLOSE} height={18} alt="..." onClick={onClose} />
+              <Image style={{ cursor: "pointer" }} src={CLOSE} height={18} alt="..." onClick={onClose} />
               <h2
                 style={{
                   color: "#fff",
@@ -972,7 +971,7 @@ export default function ProjectList() {
         <Drawer
           title={
             <div style={{ display: "flex", justifyContent: "space-between" }}>
-              <Image src={CLOSE} height={18} alt="..." onClick={onCloseSubTaks} />
+              <Image style={{ cursor: "pointer" }} src={CLOSE} height={18} alt="..." onClick={onCloseSubTaks} />
               <h2
                 style={{
                   color: "#fff",
