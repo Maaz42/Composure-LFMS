@@ -80,7 +80,8 @@ export default function ProjectList() {
   const [tableData, setTableData] = useState<any>(projectsData);
   const [pageSize, setPageSize] = useState(10);
   const [open, setOpen] = useState(false);
-  const [collaoratorDrawer, setCollaoratorDrawer] = useState(false);
+  const [collaboratorDrawer, setCollaoratorDrawer] = useState(false);
+  const [subTasksDrawer, setSubTasksDrawer] = useState(false);
   const [projectTitle, setproJectTitle] = useState("");
   const [projectWorkflow, setprojectWorkflow] = useState("");
   const [selectCollaboratorValue, setSelectCollaoratorValue] = useState<any>();
@@ -137,6 +138,12 @@ export default function ProjectList() {
   const showAssingeeDrawer = () => {
     setCollaoratorDrawer(true);
   };
+  const onCloseSubTaks = () => {
+    setSubTasksDrawer(false);
+  }
+  const showSubTasksDrawer = () => {
+    setSubTasksDrawer(true);
+  }
 
   const topBoxStyle = {
     width: "100%",
@@ -184,6 +191,11 @@ export default function ProjectList() {
                       border: "1px solid #7E81E8",
                       borderRadius: "20px",
                     }}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      e.stopPropagation();
+                      showAssingeeDrawer();
+                    }}
                   >
                     <div style={{ display: "flex" }}>
                       <Image
@@ -200,6 +212,11 @@ export default function ProjectList() {
                       marginRight: "20px",
                       border: "1px solid #7E81E8",
                       borderRadius: "20px",
+                    }}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      e.stopPropagation();
+                      showSubTasksDrawer();
                     }}
                   >
                     <div style={{ display: "flex" }}>
@@ -267,7 +284,7 @@ export default function ProjectList() {
       render: (text, record: any) => (
         <span
           style={{ cursor: "pointer" }}
-          onClick={() => handleRowClick(record.key)}
+
         >
           {text}
         </span>
@@ -391,7 +408,7 @@ export default function ProjectList() {
             alignItems: "center",
           }}
         >
-          <div>Collaboration</div>
+          <div>Collaboraters</div>
 
         </div>
       ),
@@ -413,24 +430,7 @@ export default function ProjectList() {
                 </Space>
               );
             })}
-            <Avatar
-              size="small"
-              style={{
-                border: "1px dashed gray",
-                backgroundColor: "#ffff",
-                display: "flex",
-                alignItems: "center",
-              }}
-            >
-              <Tooltip title="Edit Assignee" placement="bottom">
-                <Image
-                  src={EDIT}
-                  height={25}
-                  alt="..."
-                  onClick={showAssingeeDrawer}
-                />
-              </Tooltip>
-            </Avatar>
+
           </Avatar.Group>
         </>
       ),
@@ -653,7 +653,7 @@ export default function ProjectList() {
       >
         <Flex gap="middle" align="start" vertical className="mx-3">
           <Flex style={topBoxStyle} justify={"space-between"} align={"center"}>
-            <Title level={4}>Projects</Title>
+            <Title level={4}>Workflows</Title>
             <Flex
               className={styles.collapseTo}
               justify={"flex-end"}
@@ -732,11 +732,7 @@ export default function ProjectList() {
               setItems(exportDropDown)
             }
             }>
-
-
-
               <Button
-
                 style={{
                   color: "white",
                   background: "#333793",
@@ -761,9 +757,7 @@ export default function ProjectList() {
               }}
             >
               Add Workflow
-
             </Button>
-
           </Tooltip>
           <Dropdown menu={{ items }} trigger={['click']}>
             <a onClick={(e) => {
@@ -771,18 +765,10 @@ export default function ProjectList() {
               setItems(threedotdropdown)
             }
             }>
-
-
               <Image
                 style={{ marginRight: "3px" }} alt="3" src={DOTS_VERTICAL} />
-
-
-
             </a>
           </Dropdown>
-
-
-
         </Flex>
       </Flex>
       <Layout
@@ -791,7 +777,6 @@ export default function ProjectList() {
           background: "white",
         }}
       >
-
         <Row>
           <Col span={24}>
             <CustomTable
@@ -804,7 +789,6 @@ export default function ProjectList() {
                   router.push("/projectDetail")
 
                 }
-
               })}
               expandable={{
                 expandedRowRender,
@@ -963,7 +947,7 @@ export default function ProjectList() {
           closable={false}
           onClose={onClose}
           key="collaboratorDrawer"
-          open={collaoratorDrawer}
+          open={collaboratorDrawer}
         >
           <div className="mb-5">
             <FloatLabelArrow
@@ -985,7 +969,49 @@ export default function ProjectList() {
             </FloatLabelArrow>
           </div>
         </Drawer>
-      </Layout>
+        <Drawer
+          title={
+            <div style={{ display: "flex", justifyContent: "space-between" }}>
+              <Image src={CLOSE} height={18} alt="..." onClick={onCloseSubTaks} />
+              <h2
+                style={{
+                  color: "#fff",
+                  marginRight: "33px",
+                  marginTop: "6px",
+                  fontSize: "14px",
+                }}
+              >
+                Add Subtasks
+              </h2>
+              <Button
+                style={{
+                  backgroundColor: "#7E81E8",
+                  width: "100px",
+                  color: "#fff",
+                }}
+              >
+                Add
+              </Button>
+            </div>
+          }
+          className={styles.customDrawerHeader}
+          placement="right"
+          closable={false}
+          onClose={onCloseSubTaks}
+          key="subTasksDrawer"
+          open={subTasksDrawer}
+        >
+          <div className="mb-5">
+            <FloatLabel
+              label="Sub Task"
+              value={selectCollaboratorValue}
+            >
+              <Input />
+            </FloatLabel>
+          </div>
+        </Drawer>
+
+      </Layout >
 
       <Modal visible={isModalVisible} onCancel={hideModal}>
         <div style={{ backgroundColor: "#FAFAFA" }}>

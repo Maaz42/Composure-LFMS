@@ -239,8 +239,9 @@ export default function IntakeList() {
       render: (title, record: DataType) => (
         <a
           onClick={(e) => {
-            
-            showDetailDrawer(record)}}
+
+            showDetailDrawer(record)
+          }}
           style={{ textDecoration: "none", color: "black" }}
         >
           {title}
@@ -277,89 +278,89 @@ export default function IntakeList() {
                   : (status === "To Projects" || status === "To Tickets")
                     ? "#2196F3"
                     : "#000000";
-      
+
         return (
           <>
-          <div className="flex">
-            <Tag
-              style={{
-                backgroundColor: "#ffff",
-                display: "inline-flex",
-                border: "1px solid #E0E0E0",
-                borderRadius: "65px",
-                padding: "0 10px 0 10px",
-                color: color,
-              }}
-              key={status}
-            >
-              {status === "Pending 💡" ? (
-                <>
-                <div
-                  className={styles.purple}
-                  style={{
-                    height: "10px",
-                    width: "10px",
-                    borderRadius: "50%",
-                    marginTop: "5px",
-                  }}
-                ></div>
-                
-                </>
-              ) : status === "Complete ⚡️" ? (
-                <div
-                  className={styles.green}
-                  style={{
-                    height: "10px",
-                    width: "10px",
-                    borderRadius: "50%",
-                    marginTop: "5px",
-                  }}
-                ></div>
-              ) : status === "On Hold" ? (
-                <div
-                  className={styles.red}
-                  style={{
-                    height: "10px",
-                    width: "10px",
-                    borderRadius: "50%",
-                    marginTop: "5px",
-                  }}
-                ></div>
-              ) : status === "Signature" ? (
-                <div
-                  className={styles.yellow}
-                  style={{
-                    height: "10px",
-                    width: "10px",
-                    borderRadius: "50%",
-                    marginTop: "5px",
-                  }}
-                ></div>
-              ) : (status === "To Projects" || status === "To Tickets") ? (
-                <div
-                  className={styles.blue}
-                  style={{
-                    height: "10px",
-                    width: "10px",
-                    borderRadius: "50%",
-                    marginTop: "5px",
-                  }}
-                ></div>
-              ) : (
-                <></>
-              )}
-              &nbsp; {status}
-            </Tag>
-            {/* {status==="Pending 💡" ?
+            <div className="flex">
+              <Tag
+                style={{
+                  backgroundColor: "#ffff",
+                  display: "inline-flex",
+                  border: "1px solid #E0E0E0",
+                  borderRadius: "65px",
+                  padding: "0 10px 0 10px",
+                  color: color,
+                }}
+                key={status}
+              >
+                {status === "Pending 💡" ? (
+                  <>
+                    <div
+                      className={styles.purple}
+                      style={{
+                        height: "10px",
+                        width: "10px",
+                        borderRadius: "50%",
+                        marginTop: "5px",
+                      }}
+                    ></div>
+
+                  </>
+                ) : status === "Complete ⚡️" ? (
+                  <div
+                    className={styles.green}
+                    style={{
+                      height: "10px",
+                      width: "10px",
+                      borderRadius: "50%",
+                      marginTop: "5px",
+                    }}
+                  ></div>
+                ) : status === "On Hold" ? (
+                  <div
+                    className={styles.red}
+                    style={{
+                      height: "10px",
+                      width: "10px",
+                      borderRadius: "50%",
+                      marginTop: "5px",
+                    }}
+                  ></div>
+                ) : status === "Signature" ? (
+                  <div
+                    className={styles.yellow}
+                    style={{
+                      height: "10px",
+                      width: "10px",
+                      borderRadius: "50%",
+                      marginTop: "5px",
+                    }}
+                  ></div>
+                ) : (status === "To Projects" || status === "To Tickets") ? (
+                  <div
+                    className={styles.blue}
+                    style={{
+                      height: "10px",
+                      width: "10px",
+                      borderRadius: "50%",
+                      marginTop: "5px",
+                    }}
+                  ></div>
+                ) : (
+                  <></>
+                )}
+                &nbsp; {status}
+              </Tag>
+              {/* {status==="Pending 💡" ?
             (<div style={{marginRight:"10px"}}><Image
             alt="bulb"
                 src={LIGHT_BULB}
                 style={{height:"26px", width:'25px', marginTop:'-3px'}}/></div>):<></>} */}
-                </div>
+            </div>
           </>
         );
       }
-      
+
     },
     {
       title: (
@@ -393,13 +394,13 @@ export default function IntakeList() {
           ))}
         </>
       ),
-      
+
     },
     {
       title: "Quick Actions",
       dataIndex: "quickActions",
       key: "quickActions",
-      width: "50px",
+      width: "70px",
 
       render: () => (
         <div style={{ display: "flex" }}>
@@ -982,6 +983,7 @@ export default function IntakeList() {
             <ShowMoreText
               lines={3}
               more="Show more"
+
               less="Show less"
               anchorClass="show-more-less-clickable"
               onClick={executeOnClick}

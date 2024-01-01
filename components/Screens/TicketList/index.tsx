@@ -25,7 +25,7 @@ import {
   Select,
   Menu,
   Checkbox
-  
+
 } from "antd";
 import { useRouter } from 'next/router'
 
@@ -66,8 +66,8 @@ export default function TicketList() {
   const [selectProiorityValue, setSelectProiorityValue] = useState<any>();
   const [selectAssigneeValue, setSelectAssigneeValue] = useState<any>();
   const [requestedBy, setRequestedBy] = useState("");
-  
-  const router=useRouter();
+
+  const router = useRouter();
   const showDrawer = () => {
     setOpen(true);
   };
@@ -110,9 +110,9 @@ export default function TicketList() {
     assignee: any[];
     dropDown: any;
   }
- 
- 
-  
+
+
+
   const statusDropDown = [
     {
       key: "1",
@@ -143,8 +143,8 @@ export default function TicketList() {
       label: "In Review",
     },
   ];
- 
-  
+
+
   const columns: ColumnsType<DataType> = [
     {
       title: (
@@ -156,7 +156,7 @@ export default function TicketList() {
           }}
         >
           <div>Status</div>
-         
+
         </div>
       ),
       key: "status",
@@ -164,93 +164,93 @@ export default function TicketList() {
       sorter: (a, b) => a.status.length - b.status.length,
       width: "100px",
       render: (_, { status }) => {
-          let color =
-              status == "In Review"
-                ? "#7F7FEF"
-                : status == "Complete"
-                ? "#4CAF50"
-                : status == "On Hold"
+        let color =
+          status == "In Review"
+            ? "#7F7FEF"
+            : status == "Complete"
+              ? "#4CAF50"
+              : status == "On Hold"
                 ? "#D83A36"
                 : status == "Signature"
-                ? "#FF9800"
-                : status == "In Progress"
-                ? "#2196F3"
-                : "#000000";
-            return (
+                  ? "#FF9800"
+                  : status == "In Progress"
+                    ? "#2196F3"
+                    : "#000000";
+        return (
 
-              <>
-              <Tag
-                style={{
-                  backgroundColor: "#ffff",
-                  display: "inline-flex",
-                  border: "1px solid #E0E0E0",
-                  borderRadius: "65px",
-                  justifyContent: "space-evenly",
-                  padding: "0 10px 0 10px",
-                  color: color,
-                }}
-                key={status}
-              >
-                {status == "Pending" ? (
-                  <div
-                    className={styles.purple}
-                    style={{
-                      height: "10px",
-                      width: "10px",
-                      borderRadius: "50%",
-                      marginTop: "5px",
-                    }}
-                  ></div>
-                ) : status == "Complete" ? (
-                  <div
-                    className={styles.green}
-                    style={{
-                      height: "10px",
-                      width: "10px",
-                      borderRadius: "50%",
-                      marginTop: "5px",
-                    }}
-                  ></div>
-                ) : status == "On Hold" ? (
-                  <div
-                    className={styles.red}
-                    style={{
-                      height: "10px",
-                      width: "10px",
-                      borderRadius: "50%",
-                      marginTop: "5px",
-                    }}
-                  ></div>
-                ) : status == "Signature" ? (
-                  <div
-                    className={styles.yellow}
-                    style={{
-                      height: "10px",
-                      width: "10px",
-                      borderRadius: "50%",
-                      marginTop: "5px",
-                    }}
-                  ></div>
-                ) : status == "To Projects" || "To Tickets" ? (
-                  <div
-                    className={styles.blue}
-                    style={{
-                      height: "10px",
-                      width: "10px",
-                      borderRadius: "50%",
-                      marginTop: "5px",
-                    }}
-                  ></div>
-                ) : (
-                  <></>
-                )}
-                &nbsp; {status}
-              </Tag>
-              </>
-            );
-          }
-        
-      
+          <>
+            <Tag
+              style={{
+                backgroundColor: "#ffff",
+                display: "inline-flex",
+                border: "1px solid #E0E0E0",
+                borderRadius: "65px",
+                justifyContent: "space-evenly",
+                padding: "0 10px 0 10px",
+                color: color,
+              }}
+              key={status}
+            >
+              {status == "Pending" ? (
+                <div
+                  className={styles.purple}
+                  style={{
+                    height: "10px",
+                    width: "10px",
+                    borderRadius: "50%",
+                    marginTop: "5px",
+                  }}
+                ></div>
+              ) : status == "Complete" ? (
+                <div
+                  className={styles.green}
+                  style={{
+                    height: "10px",
+                    width: "10px",
+                    borderRadius: "50%",
+                    marginTop: "5px",
+                  }}
+                ></div>
+              ) : status == "On Hold" ? (
+                <div
+                  className={styles.red}
+                  style={{
+                    height: "10px",
+                    width: "10px",
+                    borderRadius: "50%",
+                    marginTop: "5px",
+                  }}
+                ></div>
+              ) : status == "Signature" ? (
+                <div
+                  className={styles.yellow}
+                  style={{
+                    height: "10px",
+                    width: "10px",
+                    borderRadius: "50%",
+                    marginTop: "5px",
+                  }}
+                ></div>
+              ) : status == "To Projects" || "To Tickets" ? (
+                <div
+                  className={styles.blue}
+                  style={{
+                    height: "10px",
+                    width: "10px",
+                    borderRadius: "50%",
+                    marginTop: "5px",
+                  }}
+                ></div>
+              ) : (
+                <></>
+              )}
+              &nbsp; {status}
+            </Tag>
+          </>
+        );
+      }
+
+
     },
     {
       title: (
@@ -262,12 +262,12 @@ export default function TicketList() {
           }}
         >
           <div>Priority</div>
-          
+
         </div>
       ),
       dataIndex: "priority",
       key: "priority",
-      width: "70px",
+      width: "90px",
       sorter: (a, b) => a.priority.length - b.priority.length,
       render: (priority) => (
         <>
@@ -344,12 +344,12 @@ export default function TicketList() {
           }}
         >
           <div>Ticket No.</div>
-          
+
         </div>
       ),
       dataIndex: "ticketNo",
       key: "ticketNo",
-      width: "100px",
+      width: "120px",
       sorter: (a, b) => a.ticketNo.length - b.ticketNo.length,
     },
     {
@@ -362,7 +362,7 @@ export default function TicketList() {
           }}
         >
           <div>Ticket</div>
-          
+
         </div>
       ),
       dataIndex: "ticket",
@@ -380,7 +380,7 @@ export default function TicketList() {
           }}
         >
           <div>Type</div>
-          
+
         </div>
       ),
       dataIndex: "type",
@@ -398,7 +398,7 @@ export default function TicketList() {
           }}
         >
           <div>Recieved</div>
-          
+
         </div>
       ),
       dataIndex: "received",
@@ -406,10 +406,10 @@ export default function TicketList() {
       sorter: (a, b) => a.type.length - b.type.length,
       // sorter: (a, b) => {
       //   const getNumericValue = (received: string) => parseInt(received.match(/\d+/)[0]);
-    
+
       //   const numericA = getNumericValue(a.received);
       //   const numericB = getNumericValue(b.received);
-    
+
       //   return numericA - numericB;
       // },
       width: "130px",
@@ -424,13 +424,13 @@ export default function TicketList() {
           }}
         >
           <div>Assignee</div>
-         
+
         </div>
       ),
       dataIndex: "assignee",
       key: "assignee",
       width: "140px",
-      
+
       render: (_, { assignee }) => (
         <>
           <Avatar.Group>
@@ -471,67 +471,69 @@ export default function TicketList() {
         </>
       ),
     },
-  
+
     {
       title: "Quick Actions",
       dataIndex: "quickActions",
       key: "quickActions",
-      width: "100px",
+      width: "120px",
 
       render: (_, { status }) => (
         <div style={{ display: "flex" }}>
           <a
             onClick={(e) => {
-              console.log(status,"status value")
+              console.log(status, "status value")
               e.preventDefault();
               e.stopPropagation();
-              
+
             }}
           >
-            
-              <Image
-                src={USER_ADD}
-                alt="..."
-                style={{ width: "auto", height: "auto", marginRight: "15px" ,border: "1px", borderRadius: "7px" }}
-                onClick={(e)=>{
-                  e.stopPropagation();
-                  showAssingeeDrawer();}}
-              />
-            
+
+            <Image
+              src={USER_ADD}
+              alt="..."
+              style={{ width: "auto", height: "auto", marginRight: "15px", border: "1px", borderRadius: "7px" }}
+              onClick={(e) => {
+                e.stopPropagation();
+                showAssingeeDrawer();
+              }}
+            />
+
           </a>
           <a
             onClick={(e) => {
-              console.log(status,"status value")
+              console.log(status, "status value")
               e.preventDefault();
               e.stopPropagation();
               setItems(statusDropDown)
-              
-              
+
+
             }}
           >
-            
+
             <Dropdown
-  trigger={["click"]}
-  menu={{ items }}
-  dropdownRender={() => {
-    console.log("Dropdown status:", status); // Add this line
+              trigger={["click"]}
+              menu={{ items }}
+              dropdownRender={() => {
+                console.log("Dropdown status:", status); // Add this line
 
-    return (
-      <Menu>
-        {statusDropDown.map((item) => (
-          <Menu.Item key={item.key}>
-            <Checkbox checked={status === item.label}>{item.label}</Checkbox>
-          </Menu.Item>
-        ))}
-      </Menu>
-   
+                return (
+                  <Menu>
+                    {statusDropDown.map((item) => (
+                      <Menu.Item key={item.key}>
+                        <Checkbox checked={status === item.label}>{item.label}</Checkbox>
+                      </Menu.Item>
+                    ))}
+                  </Menu>
 
-                   
-                )}}>
+
+
+                )
+              }}>
               <Image
                 src={WARNING}
                 alt="..."
-                style={{ width: "auto", height: "auto", marginRight: "15px" ,border: "1px", borderRadius: "7px" }}
+                style={{ width: "auto", height: "auto", marginRight: "15px", border: "1px", borderRadius: "7px" }}
               />
             </Dropdown>
           </a>
@@ -539,27 +541,27 @@ export default function TicketList() {
             onClick={(e) => {
               e.preventDefault();
               e.stopPropagation();
-              
+
             }}
           >
-            
-              <Image
-                src={FORWARDSQUARE}
-                alt="..."
-                style={{ width: "auto", height: "auto", marginRight: "15px" ,border: "1px", borderRadius: "7px" }}
-              />
-           
+
+            <Image
+              src={FORWARDSQUARE}
+              alt="..."
+              style={{ width: "auto", height: "auto", marginRight: "15px", border: "1px", borderRadius: "7px" }}
+            />
+
           </a>
         </div>
       ),
     },
-    
+
   ];
 
- 
-  
 
- 
+
+
+
 
   const allDropDown = [
     {
@@ -577,7 +579,7 @@ export default function TicketList() {
   ];
 
   const ticketDropDown = [
-   
+
     {
       key: "2",
       label: "Move to Project",
@@ -606,7 +608,7 @@ export default function TicketList() {
       label: " User 3rd menu item",
     },
   ];
-  
+
   const typeDropDown = [
     {
       key: "2",
@@ -780,12 +782,13 @@ export default function TicketList() {
         <Row>
           <Col span={24}>
             <CustomTable columns={columns} onRow={() => ({
-                onClick: () => {
-                  
-                  router.push("/ticketDetail")
-                  
-                }})}
-                 data={tableData} isChecked={1} />
+              onClick: () => {
+
+                router.push("/ticketDetail")
+
+              }
+            })}
+              data={tableData} isChecked={1} />
           </Col>
         </Row>
         <Row style={{ justifyContent: "end" }}>
@@ -821,7 +824,7 @@ export default function TicketList() {
         <Drawer
           title={
             <div style={{ display: "flex", justifyContent: "space-between" }}>
-              <Image src={CLOSE} style={{height:"auto"}} alt="..." onClick={onClose} />
+              <Image src={CLOSE} style={{ height: "auto" }} alt="..." onClick={onClose} />
               <h2
                 style={{
                   color: "#fff",
