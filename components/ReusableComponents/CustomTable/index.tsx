@@ -6,7 +6,6 @@ export const CustomTable = ({
   data,
   isChecked,
   onRow,
-
   onValueChange = () => {
     return;
   },
@@ -52,6 +51,7 @@ export const CustomTable = ({
             dataSource={tableData}
             style={{ overflowX: "auto" }}
             pagination={false}
+            expandable={expandable}
             scroll={{ y: 700 }}
           />
         ) : isChecked == 1 ? (
