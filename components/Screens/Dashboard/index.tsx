@@ -13,6 +13,7 @@ import {
   Col,
   Space,
   Card,
+  Dropdown,
 } from "antd";
 import {
   SEARCH,
@@ -20,6 +21,9 @@ import {
   BUILDING,
   TODO,
   USERIMAGE,
+  GREENDOT,
+  YELLOWDOT,
+  INFO,
 } from "@/constants/images";
 import { MoreOutlined } from "@ant-design/icons";
 import { Chart } from "react-google-charts";
@@ -29,9 +33,37 @@ const { Title } = Typography;
 
 export default function Dashboard() {
   useState<any>();
+  const [items, setItems] = useState<any>([])
   const ReactApexChart = dynamic(() => import("react-apexcharts"), {
     ssr: false,
   });
+
+  const markAsDropDown = [
+    {
+      key: "1",
+      label: (
+        <div className="flex">
+          <Image style={{ marginRight: "5px" }} src={YELLOWDOT} alt="..." />{" "}
+          <div>Not Required</div>
+        </div>
+      ),
+    },
+    {
+      key: "2",
+      label: (
+        <div className="flex">
+          <Image
+            height={16}
+            width={16}
+            style={{ marginRight: "5px" }}
+            src={GREENDOT}
+            alt="..."
+          />{" "}
+          <div>Complete</div>
+        </div>
+      ),
+    },
+  ];
 
   const data = [
     ["Year", "Sales", "Expenses"],
@@ -40,12 +72,6 @@ export default function Dashboard() {
     ["2006", 660, 1120],
     ["2007", 1030, 540],
   ];
-
-
-
-
-
-
 
   const topBoxStyle = {
     width: "100%",
@@ -286,7 +312,6 @@ export default function Dashboard() {
                   <Layout
                     style={{
                       height: "100px",
-
                       position: "relative",
                       backgroundColor: "#F8D1D04D",
                     }}
@@ -439,7 +464,6 @@ export default function Dashboard() {
                       padding: "20px",
                       background: "#F7F9FB",
                       borderRadius: "8px",
-
                       marginTop: "20px",
                     }}
                   >
@@ -480,7 +504,7 @@ export default function Dashboard() {
             md={24}
             lg={5}
             xl={5}
-            style={{ borderLeft: "1px solid grey" }}
+            style={{ borderLeft: "1px solid #EEEEEE" }}
           >
             <Row>
               <Title level={4} className="ml-2 mt-2">
@@ -488,57 +512,64 @@ export default function Dashboard() {
               </Title>
               <Row>
                 {projectDetails.map((project) => (
-                  <div style={{ margin: "8px 8px 8px 8px" }} key={project.text}>
-                    <Card
+                  <div style={{ margin: "8px", border: '1px solid #dbdbdb', borderRadius: "2%", width: '100%' }} key={project.text}>
+                    <div style={{padding:'20px'}}>
+                    <Typography.Text
+                      style={{ fontSize: "13px", color: "#2C2543" }}
+                    >
+                      {project.text}
+                    </Typography.Text>
+                    <div
                       style={{
-                        borderRadius: "2%",
                         width: "100%",
-                        display: "flex",
+                        marginTop: "10px",
+                        marginRight: "10px",
+                        // padding: "10px",
+                        fontSize: "13px",
                       }}
                     >
-                      <Typography.Text
-                        style={{ fontSize: "13px", color: "#2C2543" }}
-                      >
-                        {project.text}
+                      <Typography.Text style={{ color: "9E9E9E" }}>
+                        Project
                       </Typography.Text>
-                      <div
-                        style={{
-                          width: "100%",
-                          marginTop: "10px",
-                          marginRight: "10px",
-                          // padding: "10px",
-                          fontSize: "13px",
-                        }}
-                      >
-                        <Typography.Text style={{ color: "9E9E9E" }}>
-                          Project
-                        </Typography.Text>
-                        <div>
-                          <a
-                            href="your-link-url"
-                            style={{
-                              textDecoration: "underline",
-                            }}
-                          >
-                            Technology Acquisition
-                          </a>
+                      <div>
+                        <a
+                          href="your-link-url"
+                          style={{
+                            textDecoration: "underline",
+                          }}
+                        >
+                          Technology Acquisition
+                        </a>
+                      </div>
+                    </div>
+                    </div>
+                    <div
+                      style={{
+                        backgroundColor: "#FAFAFA",
+                        width: "100%",
+                        display: "flex",
+                        justifyContent: "space-between",
+                        alignItems: "center",
+                        padding: "10px",
+                      }}
+                    >
+                      <>
+                        <div style={{ display: "flex", justifyContent: "space-between" }}>
+                          <Dropdown menu={{ items }} trigger={['click']}>
+                            <a onClick={(e) => {
+                              e.preventDefault()
+                              setItems(markAsDropDown)
+                            }}>
+                              <Button className={styles.infoButton}>
+                                <Image style={{ marginLeft: "-10px", marginRight: "2px" }} src={INFO} alt="..." /> Mark As?
+                              </Button>
+                            </a>
+                          </Dropdown>
                         </div>
-                      </div>
-                      <div
-                        style={{
-                          backgroundColor: "lightgrey",
-                          width: "100%",
-                          marginTop: "10px",
-                          display: "flex",
-                          justifyContent: "space-between",
-                          alignItems: "center",
-                          padding: "10px",
-                        }}
-                      >
-                        <span>Mark As:</span>
-                        <Button icon={<MoreOutlined />} />
-                      </div>
-                    </Card>
+                      </>
+                      <Button icon={<MoreOutlined />} />
+                    </div>
+
                   </div>
                 ))}
               </Row>
