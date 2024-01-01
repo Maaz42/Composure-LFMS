@@ -42,12 +42,15 @@
   padding: 24px;
   background-color: #fafafa;
   border: 1px solid rgb(223 223 223);
+  height: 78vh;
+  overflow: auto;
 }
 
 .colStyle2 {
   width: 100%;
   padding: 0 24px 0 24px;
-  
+  height: 78vh;
+  overflow: auto;
 }
 
 .cardStyle {
