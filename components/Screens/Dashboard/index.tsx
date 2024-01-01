@@ -161,6 +161,7 @@ export default function Dashboard() {
     plotOptions: {
       bar: {
         horizontal: false,
+        distributed: true,
       },
     },
     dataLabels: {
@@ -187,14 +188,33 @@ export default function Dashboard() {
           colors: "#333", // Y-axis label color
         },
       },
+
     },
-    colors: ["#4285F4", "#0F9D58", "#F4B400", "#DB4437", "#3F51B5", "#FF5722"],
+
   };
 
-  const dataBar = [
+  const seriesData = [
     {
-      data: [100, 100, 110, 138, 120, 120],
+      name: "Ircolad",
+      data: [
+        { x: "Ircolad", y: 10, color: "#4285F4" },
+        { x: "Brightflag", y: 20, color: "#0F9D58" },
+        { x: "Icertis", y: 15, color: "#F4B400" },
+        { x: "GDrive", y: 25, color: "#DB4437" },
+        { x: "Dropbox", y: 30, color: "#3F51B5" },
+        { x: "Other", y: 18, color: "#FF5722" },
+      ],
     },
+
+  ];
+
+  const dataBar = [
+
+    {
+      name: "Progress",
+      data: [100, 100, 110, 138, 120, 120],
+      colors: ["#4285F4", "#0F9D58", "#F4B400", "#DB4437", "#3F51B5", "#FF5722"],
+    }
   ];
   interface ProjectDetail {
     text: string;
@@ -469,10 +489,11 @@ export default function Dashboard() {
                   >
                     <ReactApexChart
                       options={optionsBar}
-                      series={dataBar}
+                      series={seriesData}
                       type="bar"
                       width="100%"
                       height="320px"
+                      colors={["#4285F4", "#0F9D58", "#F4B400", "#DB4437", "#3F51B5", "#FF5722"]}
                     />
                   </div>
                 </Col>
@@ -513,35 +534,35 @@ export default function Dashboard() {
               <Row>
                 {projectDetails.map((project) => (
                   <div style={{ margin: "8px", border: '1px solid #dbdbdb', borderRadius: "2%", width: '100%' }} key={project.text}>
-                    <div style={{padding:'20px'}}>
-                    <Typography.Text
-                      style={{ fontSize: "13px", color: "#2C2543" }}
-                    >
-                      {project.text}
-                    </Typography.Text>
-                    <div
-                      style={{
-                        width: "100%",
-                        marginTop: "10px",
-                        marginRight: "10px",
-                        // padding: "10px",
-                        fontSize: "13px",
-                      }}
-                    >
-                      <Typography.Text style={{ color: "9E9E9E" }}>
-                        Project
+                    <div style={{ padding: '20px' }}>
+                      <Typography.Text
+                        style={{ fontSize: "13px", color: "#2C2543" }}
+                      >
+                        {project.text}
                       </Typography.Text>
-                      <div>
-                        <a
-                          href="your-link-url"
-                          style={{
-                            textDecoration: "underline",
-                          }}
-                        >
-                          Technology Acquisition
-                        </a>
+                      <div
+                        style={{
+                          width: "100%",
+                          marginTop: "10px",
+                          marginRight: "10px",
+                          // padding: "10px",
+                          fontSize: "13px",
+                        }}
+                      >
+                        <Typography.Text style={{ color: "9E9E9E" }}>
+                          Project
+                        </Typography.Text>
+                        <div>
+                          <a
+                            href="your-link-url"
+                            style={{
+                              textDecoration: "underline",
+                            }}
+                          >
+                            Technology Acquisition
+                          </a>
+                        </div>
                       </div>
-                    </div>
                     </div>
                     <div
                       style={{
