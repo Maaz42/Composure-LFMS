@@ -36,6 +36,7 @@ const { TextArea } = Input;
 export default function ProjectDetail() {
     const [items, setItems] = useState<any>([])
     const [collaboratorDrawer, setCollaboratorDrawer] = useState(false)
+
     const [selectCollaboratorValue, setSelectCollaboratorValue] = useState<any>();
     const [tableData, setTableData] = useState<any>(projectDetailData);
     const [notesVisible, setNotesVisible] = useState(false);
@@ -57,6 +58,7 @@ export default function ProjectDetail() {
         setNotesVisible(!notesVisible);
     };
 
+
     const onClose = () => {
         setCollaboratorDrawer(false);
     }
@@ -64,6 +66,7 @@ export default function ProjectDetail() {
     const showCollaboratorDrawer = () => {
         setCollaboratorDrawer(true);
     }
+
 
     const markAsDropDown = [
         {
@@ -119,7 +122,8 @@ export default function ProjectDetail() {
                                 <div style={{ display: "flex", justifyContent: "space-between" }}>
                                     <Dropdown menu={{ items }} trigger={['click']}>
                                         <a onClick={(e) => {
-                                            e.preventDefault()
+                                            e.preventDefault();
+                                            e.stopPropagation();
                                             setItems(markAsDropDown)
                                         }}>
                                             <Button className={styles.infoButton}>
@@ -127,7 +131,7 @@ export default function ProjectDetail() {
                                             </Button>
                                         </a>
                                     </Dropdown>
-                                    <Image onClick={(e) => { e.preventDefault(), handleRowClick(record.key) }} src={expandedRows.includes(record.key) ? Arrow_Up : downArrow} style={{ marginLeft: "-10px", marginTop: "2px", marginRight: "2px" }} alt="..." />
+
                                 </div>
                             </>
                         ) : (
@@ -141,7 +145,7 @@ export default function ProjectDetail() {
                                             <Image src={tick_button} style={{ marginLeft: "-10px", }} alt="..." /> Task Completed!
                                         </Button>
                                     </a>
-                                    <Image onClick={(e) => { e.preventDefault(), handleRowClick(record.key) }} src={expandedRows.includes(record.key) ? Arrow_Up : downArrow} style={{ marginLeft: "-10px", marginTop: "2px", marginRight: "2px" }} alt="..." />
+
                                 </div>
                             </>
                         )}
@@ -619,7 +623,7 @@ export default function ProjectDetail() {
             </>
         );
     }
-    
+
     return (
         <>
             <Header className={styles.header}>
@@ -627,7 +631,7 @@ export default function ProjectDetail() {
                     <Flex className={styles.topBoxStyle}>
                         <Title level={4}>Project Details</Title>
                         <Flex justify={'flex-end'} align={'center'}>
-                            <MenuOutlined className={styles.collapseMenu} style={{ marginRight: "5px" }} />
+                            <MenuOutlined className={styles.collapseMenu} style={{ marginLeft: "5px" }} />
                             <Button className={styles.collapseTo} style={{ backgroundColor: "#7E81E8", color: "#fff" }}>Add Task</Button>
                             <Button onClick={(e) => {
                                 e.preventDefault();
@@ -676,8 +680,11 @@ export default function ProjectDetail() {
                             isChecked={0}
                             onRow={(record: DataType) => ({
                                 onClick: () => {
-                                }
+                                    handleRowClick(record.key);
+
+                                },
                             })}
+
                             expandable={{
                                 expandedRowRender,
                                 rowExpandable: () => true,
@@ -1466,6 +1473,7 @@ export default function ProjectDetail() {
                         </FloatLabelArrow>
                     </div>
                 </Drawer>
+
 
             </Layout >
         </>
