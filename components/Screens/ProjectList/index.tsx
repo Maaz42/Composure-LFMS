@@ -653,7 +653,7 @@ export default function ProjectList() {
       >
         <Flex gap="middle" align="start" vertical className="mx-3">
           <Flex style={topBoxStyle} justify={"space-between"} align={"center"}>
-            <Title level={4}>Projects</Title>
+            <Title level={4}>Workflows</Title>
             <Flex
               className={styles.collapseTo}
               justify={"flex-end"}
@@ -732,11 +732,7 @@ export default function ProjectList() {
               setItems(exportDropDown)
             }
             }>
-
-
-
               <Button
-
                 style={{
                   color: "white",
                   background: "#333793",
@@ -761,9 +757,7 @@ export default function ProjectList() {
               }}
             >
               Add Workflow
-
             </Button>
-
           </Tooltip>
           <Dropdown menu={{ items }} trigger={['click']}>
             <a onClick={(e) => {
@@ -771,18 +765,10 @@ export default function ProjectList() {
               setItems(threedotdropdown)
             }
             }>
-
-
               <Image
                 style={{ marginRight: "3px" }} alt="3" src={DOTS_VERTICAL} />
-
-
-
             </a>
           </Dropdown>
-
-
-
         </Flex>
       </Flex>
       <Layout
@@ -791,7 +777,6 @@ export default function ProjectList() {
           background: "white",
         }}
       >
-
         <Row>
           <Col span={24}>
             <CustomTable
@@ -804,7 +789,6 @@ export default function ProjectList() {
                   router.push("/projectDetail")
 
                 }
-
               })}
               expandable={{
                 expandedRowRender,

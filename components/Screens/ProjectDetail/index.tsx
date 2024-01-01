@@ -75,7 +75,6 @@ export default function ProjectDetail() {
                 </div>
             ),
         },
-
         {
             key: "2",
             label: (
@@ -98,7 +97,6 @@ export default function ProjectDetail() {
             key: "1",
             label: "Delete"
         },
-
     ];
 
     const columns: TableColumnsType<DataType> = [
@@ -116,24 +114,19 @@ export default function ProjectDetail() {
             render: (status, record) => {
                 return (
                     <>
-
                         {status && status === "Task incomplete" ? (
-
                             <>
                                 <div style={{ display: "flex", justifyContent: "space-between" }}>
                                     <Dropdown menu={{ items }} trigger={['click']}>
                                         <a onClick={(e) => {
-
                                             e.preventDefault()
                                             setItems(markAsDropDown)
                                         }}>
-
                                             <Button className={styles.infoButton}>
                                                 <Image style={{ marginLeft: "-10px", marginRight: "2px" }} src={INFO} alt="..." /> Mark As?
                                             </Button>
                                         </a>
                                     </Dropdown>
-
                                     <Image onClick={(e) => { e.preventDefault(), handleRowClick(record.key) }} src={expandedRows.includes(record.key) ? Arrow_Up : downArrow} style={{ marginLeft: "-10px", marginTop: "2px", marginRight: "2px" }} alt="..." />
                                 </div>
                             </>
@@ -150,15 +143,8 @@ export default function ProjectDetail() {
                                     </a>
                                     <Image onClick={(e) => { e.preventDefault(), handleRowClick(record.key) }} src={expandedRows.includes(record.key) ? Arrow_Up : downArrow} style={{ marginLeft: "-10px", marginTop: "2px", marginRight: "2px" }} alt="..." />
                                 </div>
-
                             </>
-                        )
-
-                        }
-
-
-
-
+                        )}
                     </>
                 )
             }
@@ -633,7 +619,7 @@ export default function ProjectDetail() {
             </>
         );
     }
-
+    
     return (
         <>
             <Header className={styles.header}>
@@ -687,7 +673,7 @@ export default function ProjectDetail() {
                         <CustomTable
                             columns={columns}
                             data={tableData}
-                            isChecked={2}
+                            isChecked={0}
                             onRow={(record: DataType) => ({
                                 onClick: () => {
                                 }
@@ -918,7 +904,6 @@ export default function ProjectDetail() {
                                                 <Image style={{ marginRight: "10px" }} alt="notes" src={NOTES} />
                                                 {notesVisible === false ?
                                                     " Show Notes " : "Hide Notes"}
-
                                             </Button>
                                         </Col>
                                         {notesVisible && (
@@ -961,7 +946,7 @@ export default function ProjectDetail() {
                                     {
                                         key: 1,
                                         label: (
-                                            <Row className="flex mb-3" justify={'space-between'}>
+                                            <Row className="flex" justify={'space-between'}>
                                                 <Title className={styles.cardTitleStyle2} >Documents</Title>
                                                 <Flex>
                                                     <a
@@ -1105,7 +1090,7 @@ export default function ProjectDetail() {
                                 <Collapse items={[
                                     {
                                         key: "1",
-                                        label: <Row className="flex mb-6" justify={'space-between'}>
+                                        label: <Row className="flex" justify={'space-between'}>
                                             <Title className={styles.cardTitleStyle2} >Comments (9)</Title>
                                             <Button className={styles.internalButton} >Internal <Image className='ml-2' src={ARROWDOWN} alt='...' height={20} width={20} /></Button>
                                         </Row>,
