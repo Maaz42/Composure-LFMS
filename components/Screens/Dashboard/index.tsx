@@ -28,7 +28,7 @@ const { Header } = Layout;
 const { Title } = Typography;
 
 export default function Dashboard() {
-    useState<any>();
+  useState<any>();
   const ReactApexChart = dynamic(() => import("react-apexcharts"), {
     ssr: false,
   });
@@ -69,7 +69,7 @@ export default function Dashboard() {
   ];
 
   const options = {
-    title: "Total Projects Total Tasks Total Spend | &bull;This year",
+    title: "Total Projects Total Tasks Total Spend | This year",
     curveType: "function",
     legend: { position: "bottom" },
     hAxis: {
@@ -81,7 +81,7 @@ export default function Dashboard() {
       gridlines: { color: "transparent" }, // Make grid lines on the y-axis transparent
       textStyle: { color: "grey" }, // Change color of y-axis labels to grey
     },
-    backgroundColor: "#f0f0f0",
+    backgroundColor: "#F7F9FB",
     chartArea: {
       left: 50,
       top: 20,
@@ -110,12 +110,12 @@ export default function Dashboard() {
       { color: "#B1E3FF" },
     ],
     pieSliceText: "none",
-    backgroundColor: "#f0f0f0",
+    backgroundColor: "#F7F9FB",
   };
 
-  const optionsBar:any = {
+  const optionsBar: any = {
     chart: {
-      background: "#f0f0f0",
+      background: "#F7F9FB",
       foreColor: "#333", // Text color
       toolbar: {
         show: false, // Hide toolbar if not needed
@@ -396,7 +396,7 @@ export default function Dashboard() {
                     style={{
                       width: "100%",
                       padding: "20px",
-                      background: "#f0f0f0",
+                      background: "#F7F9FB",
                       borderRadius: "4px",
                       marginTop: "10px",
                       // overflow: "auto",
@@ -437,7 +437,7 @@ export default function Dashboard() {
                     style={{
                       width: "100%",
                       padding: "20px",
-                      background: "#f0f0f0", // Light grey background
+                      background: "#F7F9FB",
                       borderRadius: "8px",
 
                       marginTop: "20px",
@@ -457,7 +457,7 @@ export default function Dashboard() {
                     style={{
                       width: "100%",
                       padding: "20px",
-                      background: "#f0f0f0", // Light grey background
+                      background: "#F7F9FB",
                       borderRadius: "8px",
                       marginTop: "20px",
                     }}

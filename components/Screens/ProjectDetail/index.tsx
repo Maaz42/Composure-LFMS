@@ -1293,7 +1293,7 @@ export default function ProjectDetail() {
                                     <Image src={SEND} height={18} alt='' style={{ marginRight: '5px' }} />
                                 </Flex>
                             </Row> */}
-                                git pull</Col>
+                            </Col>
                         </Row>
                     </Col>
                     {/*                         
