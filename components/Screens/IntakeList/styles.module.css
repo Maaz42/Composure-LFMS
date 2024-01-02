@@ -18,7 +18,6 @@
   margin-top: 8px;
 }
 
-
 .dropDownFilter {
   padding: 17px;
   color: #9e9e9e !important;
@@ -27,7 +26,6 @@
   background-color: #7e81e8 !important;
   margin-bottom: 0 !important;
 }
-
 
 .collapseMenu {
   display: none;
@@ -71,7 +69,6 @@
 .answer{
   font-size: 12px;
 }
-
 
 @media (max-width: 1000px) {
   .collapseTo {

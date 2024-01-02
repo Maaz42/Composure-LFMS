@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import styles from "./styles.module.css";
-
 import dynamic from "next/dynamic";
+import { MoreOutlined } from "@ant-design/icons";
+import { Chart } from "react-google-charts";
 
 import {
   Button,
@@ -12,21 +13,17 @@ import {
   Row,
   Col,
   Space,
-  Card,
   Dropdown,
 } from "antd";
+
 import {
   SEARCH,
   DASHBOARDICON,
   BUILDING,
   TODO,
   USERIMAGE,
-  GREENDOT,
-  YELLOWDOT,
   INFO,
 } from "@/constants/images";
-import { MoreOutlined } from "@ant-design/icons";
-import { Chart } from "react-google-charts";
 
 const { Header } = Layout;
 const { Title } = Typography;
@@ -42,8 +39,16 @@ export default function Dashboard() {
     {
       key: "1",
       label: (
-        <div className="flex">
-          <Image style={{ marginRight: "5px" }} src={YELLOWDOT} alt="..." />{" "}
+        <div className="flex items-center">
+          <div
+            className={styles.yellow}
+            style={{
+              height: "10px",
+              width: "10px",
+              borderRadius: "50%",
+              marginRight: "5px",
+            }}
+          ></div>
           <div>Not Required</div>
         </div>
       ),
@@ -51,14 +56,16 @@ export default function Dashboard() {
     {
       key: "2",
       label: (
-        <div className="flex">
-          <Image
-            height={16}
-            width={16}
-            style={{ marginRight: "5px" }}
-            src={GREENDOT}
-            alt="..."
-          />{" "}
+        <div className="flex items-center">
+          <div
+            className={styles.green}
+            style={{
+              height: "10px",
+              width: "10px",
+              borderRadius: "50%",
+              marginRight: "5px",
+            }}
+          ></div>
           <div>Complete</div>
         </div>
       ),
@@ -72,12 +79,6 @@ export default function Dashboard() {
     ["2006", 660, 1120],
     ["2007", 1030, 540],
   ];
-
-  const topBoxStyle = {
-    width: "100%",
-    height: "65px",
-  };
-
 
   const handleSearch = ({ event }: any) => {
     const searchTerm = event.target.value;
@@ -188,9 +189,7 @@ export default function Dashboard() {
           colors: "#333", // Y-axis label color
         },
       },
-
     },
-
   };
 
   const seriesData = [
@@ -205,25 +204,14 @@ export default function Dashboard() {
         { x: "Other", y: 18, color: "#FF5722" },
       ],
     },
-
   ];
 
-  const dataBar = [
-
-    {
-      name: "Progress",
-      data: [100, 100, 110, 138, 120, 120],
-      colors: ["#4285F4", "#0F9D58", "#F4B400", "#DB4437", "#3F51B5", "#FF5722"],
-    }
-  ];
   interface ProjectDetail {
     text: string;
   }
 
   const projectDetails: ProjectDetail[] = [
-    {
-      text: "FATCA/CRS Requirements: Please provide for all non-coinvestors a complete and valid OECD Self-Certification Form, IRS Form W-9, W-8BEN, W-8BEN-E, W-8ECI, W-8EXP or W-8IMY, as applicable, and a certificate of information or equivalent",
-    },
+    { text: "FATCA/CRS Requirements: Please provide for all non-coinvestors a complete and valid OECD Self-Certification Form, IRS Form W-9, W-8BEN, W-8BEN-E, W-8ECI, W-8EXP or W-8IMY, as applicable, and a certificate of information or equivalent" },
     { text: "Structure Chart" },
     { text: "Logo Licensing Agreement" },
     { text: "Draft Handbook" },
@@ -248,7 +236,7 @@ export default function Dashboard() {
             >
               <Flex gap="middle" align="start" vertical className="mx-3">
                 <Flex
-                  style={topBoxStyle}
+                  className={styles.topBoxStyle}
                   justify={"space-between"}
                   align={"center"}
                 >
@@ -290,6 +278,8 @@ export default function Dashboard() {
             <Layout
               style={{
                 background: "white",
+                height: 'calc(100vh - 65px)',
+                overflow: 'auto'
               }}
             >
               <Row gutter={[16, 16]} style={{ margin: "30px 3px" }}>
@@ -525,7 +515,7 @@ export default function Dashboard() {
             md={24}
             lg={5}
             xl={5}
-            style={{ borderLeft: "1px solid #EEEEEE" }}
+            style={{ borderLeft: "1px solid #EEEEEE", height: 'calc(100vh - 0px)', overflow: 'auto' }}
           >
             <Row>
               <Title level={4} className="ml-2 mt-2">
@@ -590,7 +580,6 @@ export default function Dashboard() {
                       </>
                       <Button icon={<MoreOutlined />} />
                     </div>
-
                   </div>
                 ))}
               </Row>

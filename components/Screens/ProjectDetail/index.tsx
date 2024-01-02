@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
 import styles from './styles.module.css'
 import Image from 'next/image';
-import { Avatar, Layout, Typography, Flex, Button, Dropdown, Input, Collapse, Divider, Checkbox, List, Row, Col, Upload, Timeline, Tooltip, Progress, Drawer, Select, TableColumnsType, Space } from 'antd';
+import { Avatar, Layout, Typography, Flex, Button, Dropdown, Input, Collapse, Divider, Row, Col, Upload, Timeline, Tooltip, Progress, Drawer, Select, TableColumnsType } from 'antd';
 import { MenuOutlined, InboxOutlined, UserOutlined } from '@ant-design/icons';
-import { ARROWDOWN, BLACKSTAR, BLUEDOT, NOTES, CALENDAR, EXCEL_ICON, WORD_ICON, CLOCK, CLOSE, EDIT, FILEUPLOAD, FOLDER, GREENDOT, INFO, MORE, PROFILEUSERS, REDDOT, SEND, TICKCOMPLETE, WHITESTAR, YELLOWDOT, tick_button, ADDCIRCLE, CALENDER, BRIGHTFLAG, CLOSE_RED, NOTE_DOCS, PDF_ICON, CLOSE_CIRCLE, CHECKCIRCLE, MARK_ICON, TASKCOMPLETE, downArrow, ARROW_DOWN_2, ARROW_DOWN, downArrow2, ARROW_DOWN_BUTTON, ARROWDOWNWHITE, ARROWUP, Arrow_Up } from '@/constants/images'
+import { ARROWDOWN, BLACKSTAR, BLUEDOT, NOTES, CALENDAR, EXCEL_ICON, WORD_ICON, CLOCK, CLOSE, EDIT, GREENDOT, INFO, MORE, PROFILEUSERS, REDDOT, SEND, YELLOWDOT, tick_button, NOTE_DOCS, PDF_ICON, CLOSE_CIRCLE, CHECKCIRCLE } from '@/constants/images'
 import CustomDropDown from '@/components/ReusableComponents/DropDown';
 import FloatLabelArrow from '@/components/ReusableComponents/FloatLabelArrow';
 import { CustomTable } from '@/components/ReusableComponents/CustomTable';
@@ -12,7 +12,6 @@ const { Header } = Layout;
 const { Title } = Typography;
 const { Dragger } = Upload;
 const { Option } = Select;
-const { Text } = Typography;
 const props = {
     name: 'file',
     action: 'https://run.mocky.io/v3/435e224c-44fb-4773-9faf-380c5e6a2188',
@@ -66,13 +65,12 @@ export default function ProjectDetail() {
         setCollaboratorDrawer(true);
     }
 
-
     const markAsDropDown = [
         {
             key: "1",
             label: (
                 <div className="flex">
-                    <Image style={{ marginRight: "5px" }} src={YELLOWDOT} alt="..." />{" "}
+                    <Image style={{ marginRight: "5px" }} src={YELLOWDOT} alt="..." />
                     <div>Not Required</div>
                 </div>
             ),
@@ -87,7 +85,7 @@ export default function ProjectDetail() {
                         style={{ marginRight: "5px" }}
                         src={GREENDOT}
                         alt="..."
-                    />{" "}
+                    />
                     <div>Complete</div>
                 </div>
             ),
@@ -286,19 +284,11 @@ export default function ProjectDetail() {
     const allDropDown = [
         {
             key: '1',
-            label: (
-                <>
-                    <div>All</div>
-                </>
-            )
+            label: "All"
         },
         {
             key: '2',
-            label: (
-                <>
-                    <div>My Task</div>
-                </>
-            )
+            label: "My Task"
         },
     ];
 
@@ -331,7 +321,6 @@ export default function ProjectDetail() {
             label: "Document 1.docs",
             details: "Added on March 21  \n Last Notified Yesterday \n  2 Reviews",
             src: WORD_ICON
-
         },
         {
             key: "2",
@@ -436,10 +425,7 @@ export default function ProjectDetail() {
             assignedDate: '24/07/23 06:04PM',
             status: "Incomplete"
         }
-
     ];
-
-
 
     const expandedRowRender = (rowData: any) => {
         return (
@@ -678,7 +664,6 @@ export default function ProjectDetail() {
                             onRow={(record: DataType) => ({
                                 onClick: () => {
                                     handleRowClick(record.key);
-
                                 },
                             })}
 
@@ -898,7 +883,6 @@ export default function ProjectDetail() {
                                     <Col className='flex'> <Image className='mr-2' src={CLOCK} alt='...' />Due at Aug 23,2023</Col>
                                 </Row>
                                 <Row style={{ flexDirection: "column", alignItems: "flex-start" }}>
-
                                     <Row style={{ width: '100%' }}>
                                         <Col span={24}>
                                             <Button
@@ -963,13 +947,11 @@ export default function ProjectDetail() {
                                                             <Button className={styles.internalButton} >Internal <Image className='ml-2' src={ARROWDOWN} alt='...' height={20} width={20} /></Button>
 
                                                         </Dropdown>
-
                                                     </a>
                                                     <Image className='mb-1' src={MORE} height={18} alt='' />
 
                                                 </Flex>
                                             </Row>
-
                                         ),
 
                                         children: <><div style={{ marginBottom: "30px", overflow: "auto" }}>
@@ -993,14 +975,10 @@ export default function ProjectDetail() {
                                                                         <Image className='ml-2' src={NOTE_DOCS} height={18} alt='' />
                                                                     </Dropdown>
                                                                 </a>
-
                                                             </div>
                                                             <Tooltip title={data?.details} placement="top">
                                                                 <Image src={INFO} height={18} alt="" />
                                                             </Tooltip>
-
-
-
                                                         </div>
                                                         <a
                                                             onClick={(e) => {
@@ -1016,10 +994,8 @@ export default function ProjectDetail() {
                                                     </Row>
                                                 )
                                             })}
-
-
                                         </div>
-                                            <Row >
+                                            <Row>
                                                 <Flex style={{ width: "100%", justifyContent: "center" }}>
                                                     <Dragger  {...props} className='w-full'>
                                                         <Row style={{ justifyContent: 'center' }}>
@@ -1027,7 +1003,8 @@ export default function ProjectDetail() {
                                                         </Row>
                                                     </Dragger>
                                                 </Flex>
-                                            </Row></>
+                                            </Row>
+                                        </>
                                     }
                                 ]} />
                                 {/* <div style={{ marginBottom: "30px", overflow: "auto" }}>
@@ -1056,9 +1033,6 @@ export default function ProjectDetail() {
                                                         <Tooltip title={data?.details} placement="top">
                                                             <Image src={INFO} height={18} alt="" />
                                                         </Tooltip>
-
-
-
                                                     </div>
                                                     <a
                                                         onClick={(e) => {
@@ -1074,8 +1048,6 @@ export default function ProjectDetail() {
                                                 </Row>
                                             )
                                         })}
-
-
                                     </div>
                                     <Row >
                                         <Flex style={{ width: "100%", justifyContent: "center" }}>
@@ -1086,7 +1058,6 @@ export default function ProjectDetail() {
                                             </Dragger>
                                         </Flex>
                                     </Row> */}
-
                             </Col>
                         </Row>
                         <Row>
@@ -1267,8 +1238,6 @@ export default function ProjectDetail() {
                                     }
                                 ]} />
 
-
-
                                 {/* <Row className={styles.commentBox}>
                                 <Flex style={{
                                     width: '90%',
@@ -1337,14 +1306,12 @@ export default function ProjectDetail() {
                                 </Row>
                             </Flex>
 
-
                             <Divider></Divider>
                             <Row className='mb-8'>
                                 <Flex className={styles.cardStyle350px} vertical>
                                     <Row className="flex mb-3" justify={'space-between'}>
                                         <Title className={styles.cardTitleStyle2} >Documents</Title>
                                         <Flex>
-
                                             <Image width={20} style={{ marginBottom: "10px" }} className='ml-2' src={ADDCIRCLE} alt='...' />
                                         </Flex>
                                     </Row>
@@ -1373,7 +1340,6 @@ export default function ProjectDetail() {
                                                         <Tooltip title={data?.details} placement="top">
                                                             <Image src={INFO} height={18} alt="" />
                                                         </Tooltip>
-
                                                     </div>
                                                     <a
                                                         onClick={(e) => {
@@ -1389,10 +1355,7 @@ export default function ProjectDetail() {
                                                 </Row>
                                             )
                                         })}
-
-
                                     </div>
-
                                 </Flex>
                             </Row>
                             <Divider></Divider>
@@ -1470,8 +1433,6 @@ export default function ProjectDetail() {
                         </FloatLabelArrow>
                     </div>
                 </Drawer>
-
-
             </Layout >
         </>
     )
