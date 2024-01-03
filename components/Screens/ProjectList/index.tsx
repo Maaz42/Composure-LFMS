@@ -201,7 +201,7 @@ export default function ProjectList() {
                         src={ADDCIRCLE}
                         alt="..."
                         style={{ marginRight: "5px" }}
-                      />{" "}
+                      />
                       Add Collaborators
                     </div>
                   </Button>
@@ -223,8 +223,8 @@ export default function ProjectList() {
                         src={ADDCIRCLE}
                         alt="..."
                         style={{ marginRight: "5px" }}
-                      />{" "}
-                      Add Subtask{" "}
+                      />
+                      Add Subtask
                     </div>
                   </Button>
                 </div>
@@ -528,7 +528,7 @@ export default function ProjectList() {
       key: "1",
       label: (
         <div className="flex">
-          <Image style={{ marginRight: "5px" }} src={REDDOT} alt="..." />{" "}
+          <Image style={{ marginRight: "5px" }} src={REDDOT} alt="..." />
           <div>New</div>
         </div>
       ),
@@ -537,7 +537,7 @@ export default function ProjectList() {
       key: "2",
       label: (
         <div className="flex">
-          <Image style={{ marginRight: "5px" }} src={YELLOWDOT} alt="..." />{" "}
+          <Image style={{ marginRight: "5px" }} src={YELLOWDOT} alt="..." />
           <div>In Review</div>
         </div>
       ),
@@ -546,7 +546,7 @@ export default function ProjectList() {
       key: "3",
       label: (
         <div className="flex">
-          <Image style={{ marginRight: "5px" }} src={BLUEDOT} alt="..." />{" "}
+          <Image style={{ marginRight: "5px" }} src={BLUEDOT} alt="..." />
           <div>In Progress</div>
         </div>
       ),
@@ -561,7 +561,7 @@ export default function ProjectList() {
             style={{ marginRight: "5px" }}
             src={GREENDOT}
             alt="..."
-          />{" "}
+          />
           <div>Complete</div>
         </div>
       ),
@@ -773,6 +773,7 @@ export default function ProjectList() {
       <Layout
         style={{
           height: "calc(100vh - 120px)",
+          overflow:'auto',
           background: "white",
         }}
       >
@@ -817,7 +818,7 @@ export default function ProjectList() {
                 arrow={{ pointAtCenter: true }}
               >
                 <Title className={styles.paginationdropDownField}>
-                  Rows Per Page: {pageSize}{" "}
+                  Rows Per Page: {pageSize}
                   <Image src={ARROW} height={18} alt="^" />
                 </Title>
               </Dropdown>
@@ -843,7 +844,7 @@ export default function ProjectList() {
                   marginTop: "3px",
                 }}
               >
-                Add Workflow{" "}
+                Add Workflow
               </h2>
               <Button
                 style={{
@@ -1009,8 +1010,7 @@ export default function ProjectList() {
             </FloatLabel>
           </div>
         </Drawer>
-
-      </Layout >
+      </Layout>
 
       <Modal visible={isModalVisible} onCancel={hideModal}>
         <div style={{ backgroundColor: "#FAFAFA" }}>
@@ -1024,7 +1024,6 @@ export default function ProjectList() {
               <Button><Image alt="swicth" src={SWITCH} /></Button>
             </Row>)
         })}
-
       </Modal>
     </>
   );

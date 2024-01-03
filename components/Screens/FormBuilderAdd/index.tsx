@@ -15,11 +15,6 @@ const { Title } = Typography;
 export default function FormBuilderAdd() {
   const [items, setItems] = useState<MenuProps["items"]>([]);
 
-  const topBoxStyle = {
-    width: "100%",
-    height: "65px",
-  };
-
   const navDropDown = [
     {
       key: "1",
@@ -45,7 +40,7 @@ export default function FormBuilderAdd() {
         }}
       >
         <Flex gap="middle" align="start" vertical className="mx-3">
-          <Flex style={topBoxStyle} justify={"space-between"} align={"center"}>
+          <Flex className={styles.topBoxStyle} justify={"space-between"} align={"center"}>
             <Title level={4}>Add Form Builder</Title>
             <Flex justify={"flex-end"} align={"center"}>
               <MenuOutlined

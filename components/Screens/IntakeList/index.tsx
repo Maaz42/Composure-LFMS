@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import Image from "next/image";
-import Link from "next/link";
 import styles from "./styles.module.css";
 import { MenuOutlined, InboxOutlined } from "@ant-design/icons";
 import type { ColumnsType } from "antd/es/table";
@@ -37,7 +36,6 @@ import {
   TICKSQAURE,
   FORWARDSQUARE,
   SLACK,
-  ARROWUP,
   WORD,
   PDF,
   EXCEL,
@@ -50,7 +48,6 @@ import {
   ICERTIS,
   GOOGLEDRIVE,
   ADDCIRCLEWHITE,
-  LIGHT_BULB,
 } from "@/constants/images";
 import intakeData from "./intakeData.json";
 import ShowMoreText from "react-show-more-text";
@@ -76,6 +73,7 @@ const props = {
 export default function IntakeList() {
   const [items, setItems] = useState<MenuProps["items"]>([]);
   const [tableData, setTableData] = useState<any>(intakeData);
+  const [currentPage, setCurrentPage] = useState(1);
   const [pageSize, setPageSize] = useState(10);
   const [open, setOpen] = useState(false);
   const [openDetail, setOpenDetail] = useState(false);
@@ -86,10 +84,7 @@ export default function IntakeList() {
   const [viewDrawer, setViewDrawer] = useState(false);
   const [intakeTitle, setIntakeTitle] = useState("");
   const [projectTitle, setProjectTitle] = useState("");
-  const [mergeIntakeTitle, setMergeIntakeTitle] = useState(
-    "Affiliated Entity Creation"
-  );
-
+  const [mergeIntakeTitle, setMergeIntakeTitle] = useState("Affiliated Entity Creation");
   const [ticketTitle, setTicketTitle] = useState("");
   const [ticketRequestedBy, setTicketRequestedBy] = useState("");
   const [description, setDescription] = useState("");
@@ -98,18 +93,14 @@ export default function IntakeList() {
   const [selectTaskTitleValue, setSelectTaskTitleValue] = useState<any>();
   const [selectStatusValue, setSelectStatusValue] = useState<any>();
   const [selectPriorityValue, setSelectPriorityValue] = useState<any>();
-  const [selectCollaboratorsValue, setSelectCollaboratorsValue] =
-    useState<any>();
+  const [selectCollaboratorsValue, setSelectCollaboratorsValue] = useState<any>();
   const [selectAssigneeValue, setSelectAssigneeValue] = useState<any>();
   const [existingTask, setExistingTask] = useState(true);
   const [value, setValue] = useState("Public");
   const [showMore, setShowMore] = useState(false);
   const [keyValue, setKeyValue] = useState<any>(0);
-  const [viewTaskText, setViewTaskText] = useState(
-    "The app is a comprehensive resource that can help you stay up-to-date on everything that's happening at the company. You can find news article Lorem ipsum dolor sit ametSoluta You can find news article Lorem ipsum dolor sit ametSoluta thsi is vert akkjasf adfn  fa"
-  );
+  const [viewTaskText, setViewTaskText] = useState("The app is a comprehensive resource that can help you stay up-to-date on everything that's happening at the company. You can find news article Lorem ipsum dolor sit ametSoluta You can find news article Lorem ipsum dolor sit ametSoluta thsi is vert akkjasf adfn  fa");
   const [selectedRecord, setSelectedRecord] = useState<DataType | null>(null);
-
   const [isExpanded, setIsExpanded] = useState(false);
 
   const executeOnClick = (expanded: boolean) => {
@@ -120,9 +111,8 @@ export default function IntakeList() {
   interface DataType {
     createdBy: string;
     title: string;
-    // Add more properties as needed
   }
-  // Callback function to receive the value from the child
+
   const handleValueFromChild = (value: Number) => {
     setKeyValue(value);
   };
@@ -134,6 +124,7 @@ export default function IntakeList() {
   const showDrawer = () => {
     setOpen(true);
   };
+
   const showDetailDrawer = (record: DataType) => {
     setSelectedRecord(record);
     setOpenDetail(true);
@@ -195,39 +186,17 @@ export default function IntakeList() {
 
   const columns: ColumnsType<DataType> = [
     {
-      title: (
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "center",
-          }}
-        >
-          <div>Created by</div>
-        </div>
-      ),
+      title: "Created by",
       dataIndex: "createdBy",
       key: "createdBy",
       ellipsis: {
         showTitle: false,
       },
       sorter: (a, b) => a.createdBy.length - b.createdBy.length,
-
-
       width: "60px",
     },
     {
-      title: (
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "center",
-          }}
-        >
-          <div>Title</div>
-        </div>
-      ),
+      title: "Title",
       dataIndex: "title",
       key: "title",
       ellipsis: {
@@ -235,7 +204,6 @@ export default function IntakeList() {
       },
       sorter: (a, b) => a.title.length - b.title.length,
       width: "290px",
-
       render: (title, record: DataType) => (
         <a
           onClick={(e) => {
@@ -249,18 +217,7 @@ export default function IntakeList() {
       ),
     },
     {
-      title: (
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "center",
-          }}
-        >
-          <div>Status</div>
-
-        </div>
-      ),
+      title: "Title",
       key: "status",
       width: "100px",
       dataIndex: "status",
@@ -304,7 +261,6 @@ export default function IntakeList() {
                         marginTop: "5px",
                       }}
                     ></div>
-
                   </>
                 ) : status === "Complete ⚡️" ? (
                   <div
@@ -360,25 +316,12 @@ export default function IntakeList() {
           </>
         );
       }
-
     },
     {
-      title: (
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "center",
-          }}
-        >
-          <div>Platform</div>
-
-        </div>
-      ),
+      title: "Platform",
       dataIndex: "platform",
       key: "platform",
       width: "40px",
-
       render: (_, { platform }) => (
         <>
           {platform.map((platform, index) => (
@@ -394,14 +337,12 @@ export default function IntakeList() {
           ))}
         </>
       ),
-
     },
     {
       title: "Quick Actions",
       dataIndex: "quickActions",
       key: "quickActions",
       width: "70px",
-
       render: () => (
         <div style={{ display: "flex" }}>
           <a
@@ -469,6 +410,7 @@ export default function IntakeList() {
     //     ),
     // },
   ];
+
   const platformDropDown = [
     {
       key: "1",
@@ -798,7 +740,7 @@ export default function IntakeList() {
                       display: "flex",
                     }}
                   >
-                    Create{" "}
+                    Create
                     <Image
                       src={ARROWDOWNWHITE}
                       height={12}
@@ -829,7 +771,7 @@ export default function IntakeList() {
                       display: "flex",
                     }}
                   >
-                    Resolve{" "}
+                    Resolve
                     <Image
                       src={ARROWDOWNWHITE}
                       height={12}
@@ -843,7 +785,6 @@ export default function IntakeList() {
           ) : (
             <></>
           )}
-
           {keyValue == 0 ? (
             <Tooltip title={"Add Intake Manually"}>
               <Button
@@ -900,7 +841,7 @@ export default function IntakeList() {
                 arrow={{ pointAtCenter: true }}
               >
                 <Title className={styles.paginationdropDownField}>
-                  Rows Per Page: {pageSize}{" "}
+                  Rows Per Page: {pageSize}
                   <Image src={ARROW} height={18} alt="^" />
                 </Title>
               </Dropdown>
@@ -939,7 +880,7 @@ export default function IntakeList() {
                     display: "flex",
                   }}
                 >
-                  Create{" "}
+                  Create
                   <Image
                     src={ARROWDOWNWHITE}
                     height={12}
@@ -949,7 +890,6 @@ export default function IntakeList() {
                 </Button>
               </a>
             </Dropdown>
-
             <Dropdown menu={{ items }} trigger={["click"]}>
               <a
                 onClick={(e) => {
@@ -965,7 +905,7 @@ export default function IntakeList() {
                     display: "flex",
                   }}
                 >
-                  Resolve{" "}
+                  Resolve
                   <Image
                     src={ARROWDOWNWHITE}
                     height={12}
@@ -983,7 +923,6 @@ export default function IntakeList() {
             <ShowMoreText
               lines={3}
               more="Show more"
-
               less="Show less"
               anchorClass="show-more-less-clickable"
               onClick={executeOnClick}
@@ -1060,9 +999,7 @@ export default function IntakeList() {
               <div>- </div>
             </Row>
             <Divider></Divider>
-
             <div>Documents</div>
-
             <div>
               <div
                 style={{
@@ -1150,7 +1087,7 @@ export default function IntakeList() {
                   marginTop: "3px",
                 }}
               >
-                Create Intake{" "}
+                Create Intake
               </h2>
               <Button
                 style={{
@@ -1810,7 +1747,7 @@ export default function IntakeList() {
                     display: "flex",
                   }}
                 >
-                  Create{" "}
+                  Create
                   <Image
                     src={ARROWDOWNWHITE}
                     height={12}
@@ -1835,7 +1772,7 @@ export default function IntakeList() {
                     display: "flex",
                   }}
                 >
-                  Resolve{" "}
+                  Resolve
                   <Image
                     src={ARROWDOWNWHITE}
                     height={12}

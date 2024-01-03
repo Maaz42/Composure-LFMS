@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import type { DragSourceMonitor } from "react-dnd";
 import { useDrag } from "react-dnd";
 import Image from "next/image";
-import { Button, Modal,Input } from "antd";
+import { Modal, Input } from "antd";
 import styles from "./styles.module.css";
 import FloatLabel from "../../ReusableComponents/FloatLabel";
 
@@ -13,33 +13,25 @@ export interface BoxProps {
   onUpdateNameForm: (value: string) => void;
 }
 
-
-
-
 interface DropResult {
   allowedDropEffect: string;
   dropEffect: string;
   name: string;
 }
 
-export const Box: FC<BoxProps> = ({ name, imagePath ,onUpdateNameForm}) => {
+export const Box: FC<BoxProps> = ({ name, imagePath, onUpdateNameForm }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [nameform,setNameForm]=useState("")
-
-  const showModal = () => {
-    setIsModalOpen(true);
-  };
+  const [nameform, setNameForm] = useState("")
 
   const handleOk = () => {
     onUpdateNameForm(nameform); // Notify the Container component about the nameform value
     setIsModalOpen(false);
   };
 
-
-
   const handleCancel = () => {
     setIsModalOpen(false);
   };
+
   const [{ opacity }, drag] = useDrag(
     () => ({
       type: "box",
@@ -75,7 +67,7 @@ export const Box: FC<BoxProps> = ({ name, imagePath ,onUpdateNameForm}) => {
         <Image src={imagePath} height={20} alt="" /> &nbsp;
         {name}
       </div>
-     
+
       <Modal
         title="Field Details"
         open={isModalOpen}
@@ -83,14 +75,14 @@ export const Box: FC<BoxProps> = ({ name, imagePath ,onUpdateNameForm}) => {
         onCancel={handleCancel}
       >
         <div className="mb-5">
-              <FloatLabel label="Title" value={nameform}>
-                <Input
-                  style={{ height: "48px" }}
-                  value={nameform}
-                  onChange={(e) => setNameForm(e.target.value)}
-                />
-              </FloatLabel>
-            </div>
+          <FloatLabel label="Title" value={nameform}>
+            <Input
+              style={{ height: "48px" }}
+              value={nameform}
+              onChange={(e) => setNameForm(e.target.value)}
+            />
+          </FloatLabel>
+        </div>
       </Modal>
     </>
   );

@@ -4,6 +4,8 @@ import styles from "./styles.module.css";
 import { MenuOutlined, InboxOutlined } from "@ant-design/icons";
 import type { ColumnsType } from "antd/es/table";
 import type { MenuProps } from "antd";
+import { CustomTable } from "@/components/ReusableComponents/CustomTable";
+
 import {
   Button,
   Divider,
@@ -19,19 +21,19 @@ import {
   Upload,
   Tooltip,
 } from "antd";
+
 import {
   SEARCH,
   NAVBARS,
   CLOSE,
   THREEDOTS,
   FOLDERBLUE,
-  ARROWUP,
 } from "@/constants/images";
+
 import intakeData from "./fileData.json";
 import FloatLabel from "../../ReusableComponents/FloatLabel";
 import FloatLabelArrow from "../../ReusableComponents/FloatLabelArrow";
 import CustomDropDown from "@/components/ReusableComponents/DropDown";
-import { CustomTable } from "@/components/ReusableComponents/CustomTable";
 
 const { Header } = Layout;
 const { Option } = Select;
@@ -53,8 +55,7 @@ export default function FilesFolderList() {
   const [folderDrawer, setFolderDrawer] = useState(false);
   const [title, setTitle] = useState("Affiliated Entity Creation");
   const [selectLinkToFolderValue, setSelectLinkToFolderValue] = useState<any>();
-  const [selectLinkToProjectValue, setSelectLinkToProjectValue] =
-    useState<any>();
+  const [selectLinkToProjectValue, setSelectLinkToProjectValue] = useState<any>();
   const [selectFolderValue, setSelectFolderValue] = useState<any>();
 
   const showDrawer = () => {
@@ -68,16 +69,6 @@ export default function FilesFolderList() {
   const onClose = () => {
     setOpen(false);
     setFolderDrawer(false);
-  };
-
-  const topBoxStyle = {
-    width: "100%",
-    height: "65px",
-  };
-
-  const boxStyle = {
-    height: "50px",
-    borderBottom: "1px solid #eeeeee",
   };
 
   const handleSearch = ({ event }: any) => {
@@ -96,23 +87,9 @@ export default function FilesFolderList() {
 
   const columns: ColumnsType<DataType> = [
     {
-      title: (
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "center",
-          }}
-        >
-          <div>Title</div>
-          <div>
-            <Image src={ARROWUP} height={10} alt="" />
-          </div>
-        </div>
-      ),
+      title: "Title",
       dataIndex: "title",
       key: "title",
-
       ellipsis: {
         showTitle: false,
       },
@@ -124,77 +101,25 @@ export default function FilesFolderList() {
       ),
     },
     {
-      title: (
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "center",
-          }}
-        >
-          <div>Added By</div>
-          <div>
-            <Image src={ARROWUP} height={10} alt="" />
-          </div>
-        </div>
-      ),
+      title: "Added By",
       dataIndex: "addedBy",
       key: "addedBy",
       width: "220px",
     },
     {
-      title: (
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "center",
-          }}
-        >
-          <div>Date Added</div>
-          <div>
-            <Image src={ARROWUP} height={10} alt="" />
-          </div>
-        </div>
-      ),
+      title: "Date Added",
       dataIndex: "dateAdded",
       width: "160px",
       key: "dateAdded",
     },
     {
-      title: (
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "center",
-          }}
-        >
-          <div>Last Modified</div>
-          <div>
-            <Image src={ARROWUP} height={10} alt="" />
-          </div>
-        </div>
-      ),
+      title: "Last Modified",
       dataIndex: "lastModified",
       key: "lastModified",
       width: "160px",
     },
     {
-      title: (
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "center",
-          }}
-        >
-          <div>Revisions</div>
-          <div>
-            <Image src={ARROWUP} height={10} alt="" />
-          </div>
-        </div>
-      ),
+      title: "Revisions",
       dataIndex: "revisions",
       key: "revisions",
       width: "110px",
@@ -329,7 +254,7 @@ export default function FilesFolderList() {
         }}
       >
         <Flex gap="middle" align="start" vertical className="mx-3">
-          <Flex style={topBoxStyle} justify={"space-between"} align={"center"}>
+          <Flex className={styles.topBoxStyle} justify={"space-between"} align={"center"}>
             <Title level={4}>File Management</Title>
             <Flex
               className={styles.collapseTo}
@@ -365,7 +290,7 @@ export default function FilesFolderList() {
           </Flex>
         </Flex>
       </Header>
-      <Flex style={boxStyle} align={"center"} justify="space-between">
+      <Flex className={styles.boxStyle} align={"center"} justify="space-between">
         <MenuOutlined
           className={styles.collapseMenu}
           style={{ marginLeft: "10px" }}
@@ -429,6 +354,7 @@ export default function FilesFolderList() {
       <Layout
         style={{
           height: "calc(100vh - 120px)",
+          overflow: 'auto',
           background: "white",
         }}
       >
@@ -442,7 +368,6 @@ export default function FilesFolderList() {
                 <Image src={FOLDERBLUE} height={18} alt="" /> &nbsp;
                 <Tooltip title={"Employement Litigation"} placement="top">
                   <div className={styles.folderTitle}>
-                    {" "}
                     Employement Litigation
                   </div>
                 </Tooltip>
@@ -471,7 +396,6 @@ export default function FilesFolderList() {
                 <Image src={FOLDERBLUE} height={18} alt="" /> &nbsp;
                 <Tooltip title={"Employement Litigation"} placement="top">
                   <div className={styles.folderTitle}>
-                    {" "}
                     Employement Litigation
                   </div>
                 </Tooltip>
@@ -500,7 +424,6 @@ export default function FilesFolderList() {
                 <Image src={FOLDERBLUE} height={18} alt="" /> &nbsp;
                 <Tooltip title={"Employement Litigation"} placement="top">
                   <div className={styles.folderTitle}>
-                    {" "}
                     Employement Litigation
                   </div>
                 </Tooltip>
@@ -529,7 +452,6 @@ export default function FilesFolderList() {
                 <Image src={FOLDERBLUE} height={18} alt="" /> &nbsp;
                 <Tooltip title={"Employement Litigation"} placement="top">
                   <div className={styles.folderTitle}>
-                    {" "}
                     Employement Litigation
                   </div>
                 </Tooltip>

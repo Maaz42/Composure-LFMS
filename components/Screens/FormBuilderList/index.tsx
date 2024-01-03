@@ -46,6 +46,7 @@ export default function FormBuilderList() {
     const searchTerm = event.target.value;
     console.log("Search term:", searchTerm);
   };
+
   const paginationDropDown = [
     {
       key: "1",
@@ -98,23 +99,10 @@ export default function FormBuilderList() {
 
   const columns: ColumnsType<DataType> = [
     {
-      title: (
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "center",
-          }}
-        >
-          <div>Form</div>
-          <div>
-            <Image src={ARROWUP} height={10} alt="" />
-          </div>
-        </div>
-      ),
+      title:"Form",
       dataIndex: "form",
       key: "form",
-      width: "940px",
+      width: "920px",
       ellipsis: {
         showTitle: false,
       },
@@ -125,58 +113,19 @@ export default function FormBuilderList() {
       ),
     },
     {
-      title: (
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "center",
-          }}
-        >
-          <div>Created At</div>
-          <div>
-            <Image src={ARROWUP} height={10} alt="" />
-          </div>
-        </div>
-      ),
+      title: "Created At",
       dataIndex: "createdAt",
       key: "createdAt",
       width: "130px",
     },
     {
-      title: (
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "center",
-          }}
-        >
-          <div>Created By</div>
-          <div>
-            <Image src={ARROWUP} height={10} alt="" />
-          </div>
-        </div>
-      ),
+      title: "Created By",
       dataIndex: "createdBy",
       key: "createdBy",
       width: "190px",
     },
     {
-      title: (
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "center",
-          }}
-        >
-          <div>Status</div>
-          <div>
-            <Image src={ARROWUP} height={10} alt="" />
-          </div>
-        </div>
-      ),
+      title: "Status",
       key: "status",
       dataIndex: "status",
       width: "160px",
@@ -408,7 +357,6 @@ export default function FormBuilderList() {
               />
             </Title>
           </Dropdown>
-
           <CustomDropDown title={"Status"} dropDownItems={statusDropDown} />
           <Divider style={{ height: "50px", margin: "0" }} type="vertical" />
         </Flex>
@@ -450,7 +398,7 @@ export default function FormBuilderList() {
                   arrow={{ pointAtCenter: true }}
                 >
                   <Title className={styles.paginationdropDownField}>
-                    Rows Per Page: {pageSize}{" "}
+                    Rows Per Page: {pageSize}
                     <Image src={ARROW} height={18} alt="^" />
                   </Title>
                 </Dropdown>
