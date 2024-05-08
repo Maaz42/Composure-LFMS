@@ -100,13 +100,13 @@ export default function Dashboard() {
     curveType: "function",
     legend: { position: "bottom" },
     hAxis: {
-      gridlines: { color: "transparent" }, // Make grid lines on the x-axis transparent
-      textPosition: "out", // Move x-axis labels outside
-      textStyle: { color: "grey" }, // Change color of x-axis labels to grey
+      gridlines: { color: "transparent" }, 
+      textPosition: "out", 
+      textStyle: { color: "grey" }, 
     },
     vAxis: {
-      gridlines: { color: "transparent" }, // Make grid lines on the y-axis transparent
-      textStyle: { color: "grey" }, // Change color of y-axis labels to grey
+      gridlines: { color: "transparent" }, 
+      textStyle: { color: "grey" }, 
     },
     backgroundColor: "#F7F9FB",
     chartArea: {
@@ -114,7 +114,7 @@ export default function Dashboard() {
       top: 20,
       width: "100%",
       height: "70%",
-    }, // Expand chart area
+    }, 
   };
 
   const dataPie = [
@@ -129,7 +129,12 @@ export default function Dashboard() {
     pieHole: 0.5,
     is3D: false,
     title: "Intake Received by Platform",
-
+    chartArea: {
+      left: 30,
+      top: 20,
+      width: "70%",
+      height: "70%",
+    }, 
     slices: [
       { color: "#95A4FC" },
       { color: "#1C1C1C" },
@@ -142,21 +147,20 @@ export default function Dashboard() {
 
   const optionsBar: any = {
     chart: {
-      background: "#F7F9FB",
-      foreColor: "#333", // Text color
+      background: "#F7F9FB", 
       toolbar: {
-        show: false, // Hide toolbar if not needed
+        show: false, 
       },
     },
     title: {
       text: "Intake Sent By Platform",
-      align: "left", // Align the title to the left
+      align: "left", 
       marginTop: 100,
 
       style: {
         fontSize: "14px",
         fontWeight: 600,
-        fontFamily: "Work Sans, sans-serif", // Set the font family
+        fontFamily: "Work Sans, sans-serif", 
       },
     },
     plotOptions: {
@@ -177,19 +181,8 @@ export default function Dashboard() {
         "Dropbox",
         "Other",
       ],
-      labels: {
-        style: {
-          colors: "#333", // X-axis label color
-        },
-      },
     },
-    yaxis: {
-      labels: {
-        style: {
-          colors: "#333", // Y-axis label color
-        },
-      },
-    },
+    
   };
 
   const seriesData = [
@@ -571,7 +564,7 @@ export default function Dashboard() {
                               e.preventDefault()
                               setItems(markAsDropDown)
                             }}>
-                              <Button className={styles.infoButton}>
+                              <Button  className={styles.infoButton}>
                                 <Image style={{ marginLeft: "-10px", marginRight: "2px" }} src={INFO} alt="..." /> Mark As?
                               </Button>
                             </a>

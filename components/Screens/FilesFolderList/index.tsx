@@ -497,7 +497,7 @@ export default function FilesFolderList() {
                 Add File
               </h2>
               <Button
-                style={{
+                style={{ 
                   backgroundColor: "#7E81E8",
                   width: "100px",
                   color: "#fff",

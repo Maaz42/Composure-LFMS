@@ -7,9 +7,6 @@ import { CLOCK, FOLDER, INFO, MORE, PROFILE, SEND,PLUS_SOLID } from '@/constants
 import { UserOutlined, InboxOutlined, MenuOutlined } from '@ant-design/icons';
 import CustomDropDown from '@/components/ReusableComponents/DropDown';
 
-
-
-
 const { Header } = Layout;
 const { Dragger } = Upload;
 const { Title } = Typography;

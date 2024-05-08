@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import styles from "./styles.module.css";
-import Link from "next/link";
 import { MenuOutlined } from "@ant-design/icons";
 import type { ColumnsType } from "antd/es/table";
 import type { MenuProps } from "antd";
@@ -33,15 +32,8 @@ import {
   ARROW,
   SEARCH,
   NAVBARS,
-  THREEDOTS,
-  EDIT,
   CLOSE,
-  ARROWUP,
-  PLUS_SOLID,
-  ARROW_RIGHT,
-  ARROW_UP,
   USER_ADD,
-  Forward_Square,
   WARNING,
   FORWARDSQUARE
 } from "@/constants/images";

@@ -53,32 +53,6 @@
   overflow: auto;
 }
 
-.cardStyle {
-  border: 1px solid rgb(223 223 223);
-  padding: 20px;
-  background-color: #fafafa;
-  border-radius: 4px;
-  margin-bottom: 20px;
-}
-
-.cardInnerStyle {
-  width: 100%;
-  padding: 15px;
-}
-
-.cardTitleStyle {
-  font-size: 14px;
-  font-weight: 500;
-  color: #000000;
-  border: none;
-}
-
-.cardTitleStyle1 {
-  font-size: 18px !important;
-  color: #000000;
-  display: flex;
-}
-
 .cardTitleStyle2 {
   font-size: 20px !important;
   font-weight: bold;
@@ -174,13 +148,6 @@
   height: 22 !important
 }
 
-.taskButton {
-  background-color: #e0e0e0;
-  color: #000000;
-  display: flex;
-  border-radius: 65px;
-}
-
 .commentBox {
   bottom: 5px;
   background: #0000000f;
@@ -237,25 +204,6 @@
   width: 85%;
 }
 
-.cardStyle340px {
-  border: 1px solid rgb(223 223 223);
-  padding: 20px;
-  background-color: #fafafa;
-  flex: 1;
-  flex-direction: column;
-  display: flex;
-  overflow: auto;
-}
-
-.cardStyle350px {
-  padding: 20px;
-  background-color: #fafafa;
-  flex: 1;
-  flex-direction: column;
-  display: flex;
-  overflow: auto;
-}
-
 .resButton {
   font-size: 18px;
   font-weight: 600;
@@ -270,15 +218,6 @@
   flex-direction: column;
   display: flex;
   overflow: auto;
-}
-
-.folderNameStyle {
-  font-size: 0.89vw !important;
-  font-weight: 600;
-  color: #000000;
-  display: flex;
-  margin-top: 5px;
-  align-items: center;
 }
 
 .internalButton {
